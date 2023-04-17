@@ -138,25 +138,6 @@ class MailerMailerService implements MailerService {
       throw new Error("No email configuration found");
     }
 
-    console.log("options", {
-      mailOptions: JSON.parse(
-        JSON.stringify({
-          from: `"${resolvedFrom.firstName} ${resolvedFrom.lastName}" <${resolvedFrom.emailAddress}>`,
-          to: resolvedTo,
-          replyTo: resolvedReplyTo,
-          subject: envelop.subject || "No subject",
-          html: body,
-        })
-      ),
-      smtp: {
-        host: emailConfiguration.smtpHost,
-        port: emailConfiguration.smtpPort,
-        secure: emailConfiguration.secure,
-        user: emailConfiguration.username,
-        password: emailConfiguration.password,
-      },
-    });
-
     const [_, errors] = await sq.mutate((m) => {
       m.sendMail({
         mailOptions: JSON.parse(
@@ -200,7 +181,7 @@ export class EmailEngine {
   }
 
   async scheduleMail(
-    envelop: EmailEnvelope,
+    envelope: EmailEnvelope,
     body: string = "",
     authorizationUser?: {
       id: string;
@@ -214,9 +195,9 @@ export class EmailEngine {
 
         body = template.render(values);
 
-        const templateEnvelop = template.getEnvelop();
+        const templateEnvelope = template.getEnvelope();
 
-        if (templateEnvelop.from) {
+        if (templateEnvelope?.from) {
           // Override authorization to from email address authorization
           const templateAuthorizationUser = template.getAuthorizationUser();
 
@@ -225,11 +206,30 @@ export class EmailEngine {
           }
 
           console.log(
-            `Overriding authorizationUser to ${authorizationUser} for template ${this.templateId} from ${templateEnvelop.from}`
+            `Overriding authorizationUser to ${authorizationUser} for template ${this.templateId} from ${templateEnvelope.from}`
           );
         }
 
-        envelop = { ...envelop, ...templateEnvelop };
+        envelope = { ...envelope, ...templateEnvelope };
+
+        if (template.emailTemplate.confirmationTemplateId) {
+          const mailer = new EmailEngine(
+            template.emailTemplate.confirmationTemplateId,
+            this.mailerService
+          );
+
+          await mailer.scheduleMail(
+            {
+              to: envelope.replyTo ? [envelope.replyTo] : [],
+              subject: envelope.subject,
+              from: envelope.from,
+              replyTo: undefined,
+            },
+            body,
+            authorizationUser,
+            values
+          );
+        }
       }
 
       if (!authorizationUser) {
@@ -238,7 +238,7 @@ export class EmailEngine {
         );
       }
 
-      await this.mailerService.sendMail(envelop, body, authorizationUser);
+      await this.mailerService.sendMail(envelope, body, authorizationUser);
 
       return "Mail scheduled";
     } catch (error) {

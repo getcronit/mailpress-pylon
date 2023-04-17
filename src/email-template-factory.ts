@@ -20,6 +20,7 @@ interface EmailTemplate {
     id: string;
     authorization: string;
   };
+  confirmationTemplateId?: string;
 }
 
 interface TemplateVariables {
@@ -139,7 +140,8 @@ export class EmailTemplateFactory {
     return sanitizeHtml(value);
   }
 
-  private templateId: string;
+  templateId: string;
+  emailTemplate: EmailTemplate;
 
   constructor(templateId: string) {
     const template = EmailTemplateFactory.getTemplate(templateId);
@@ -149,6 +151,7 @@ export class EmailTemplateFactory {
     }
 
     this.templateId = templateId;
+    this.emailTemplate = template;
   }
 
   render(values?: TemplateVariableValues): string {
@@ -169,20 +172,16 @@ export class EmailTemplateFactory {
     }
   }
 
-  getEnvelop(): EmailEnvelope {
+  getEnvelope(): EmailEnvelope | undefined {
     const template = EmailTemplateFactory.getTemplate(this.templateId);
 
     if (!template) {
       throw new TemplateNotFoundError(this.templateId);
     }
 
-    if (!template.envelope) {
-      throw new EnvelopeNotFoundError(this.templateId);
-    }
+    const envelope = template.envelope;
 
-    const envelop = template.envelope;
-
-    return envelop;
+    return envelope;
   }
 
   getAuthorizationUser(): EmailTemplate["authorizationUser"] {
@@ -193,10 +192,10 @@ export class EmailTemplateFactory {
     }
 
     if (!template.authorizationUser) {
-      const envelop = template.envelope;
+      const envelope = template.envelope;
 
-      if (envelop?.from) {
-        throw new FromEmailAddressNotAuthorizedError(envelop.from.value);
+      if (envelope?.from) {
+        throw new FromEmailAddressNotAuthorizedError(envelope.from.value);
       }
 
       throw new Error(

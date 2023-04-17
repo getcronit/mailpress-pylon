@@ -46,7 +46,7 @@ export default defineService(
       mailSchedule: withContext(
         (context) =>
           async (
-            envelop: EmailEnvelope,
+            envelope: EmailEnvelope,
             body?: string,
             template?: {
               id: string;
@@ -60,7 +60,7 @@ export default defineService(
             const engine = new EmailEngine(template?.id);
 
             return await engine.scheduleMail(
-              envelop,
+              envelope,
               body,
               originUserId
                 ? {
