@@ -26,6 +26,18 @@ interface EmailTemplate {
   content: string;
   variables?: TemplateVariables;
   envelope?: EmailEnvelope;
+  /**
+   * If true, the replyTo address of the email will be verified against the
+   * authorized email addresses of the user that is sending the email.
+   *
+   * If the replyTo address is not authorized, an error will be thrown.
+   *
+   * If false, the replyTo address will not be verified.
+   * This is useful for e.g. contact forms where the email address of the sender
+   * is not known. A replyTo address is still required, but it can be any email
+   * address.
+   */
+  verifyReplyTo?: boolean;
   authorizationUser?: {
     id: string;
     authorization: string;

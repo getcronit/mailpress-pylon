@@ -106,4 +106,5 @@ EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", {
       },
     },
   },
+  verifyReplyTo: true,
 });

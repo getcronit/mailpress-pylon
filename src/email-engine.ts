@@ -8,18 +8,21 @@ import {
   resolveFromEmailAddress,
   lookupEmailAddress,
   ResolvedFromEmail,
+  verifyReplyToEmailAddress,
 } from "./resolve-email-address";
 import { sq } from "./clients/mailer/src/index.js";
 
+interface MailServiceSendMailOptions {
+  envelope: EmailEnvelope;
+  body: string;
+  authorizationUser: {
+    id: string;
+    authorization: string;
+  };
+}
+
 interface MailerService {
-  sendMail(
-    envelop: EmailEnvelope,
-    body: string,
-    authorizationUser: {
-      id: string;
-      authorization: string;
-    }
-  ): Promise<void>;
+  sendMail(options: MailServiceSendMailOptions): Promise<void>;
 }
 
 // class ConsoleMailerService implements MailerService {
@@ -80,26 +83,23 @@ interface MailerService {
 // }
 
 class MailerMailerService implements MailerService {
-  async sendMail(
-    envelop: EmailEnvelope,
-    body: string,
-    authorizationUser: {
-      id: string;
-      authorization: string;
-    }
-  ): Promise<void> {
-    if (!envelop.to || envelop.to.length === 0) {
+  async sendMail({
+    envelope,
+    body,
+    authorizationUser,
+  }: MailServiceSendMailOptions): Promise<void> {
+    if (!envelope.to || envelope.to.length === 0) {
       throw new Error("No to address provided");
     }
 
     let resolvedFrom: ResolvedFromEmail;
 
-    if (envelop.from) {
+    if (envelope.from) {
       // This means that there is no from address provided or given by the template
       // we need to resolve it from the authorization user
 
       resolvedFrom = await resolveFromEmailAddress(
-        envelop.from,
+        envelope.from,
         authorizationUser
       );
     } else {
@@ -113,13 +113,13 @@ class MailerMailerService implements MailerService {
     }
 
     const resolvedTo = await Promise.all(
-      envelop.to.map(async (to) => {
+      envelope.to.map(async (to) => {
         return await lookupEmailAddress(to, authorizationUser);
       })
     );
 
-    const resolvedReplyTo = envelop.replyTo
-      ? await lookupEmailAddress(envelop.replyTo, authorizationUser)
+    const resolvedReplyTo = envelope.replyTo
+      ? await lookupEmailAddress(envelope.replyTo, authorizationUser)
       : undefined;
 
     const emailConfiguration = resolvedFrom.emailConfiguration;
@@ -149,7 +149,7 @@ class MailerMailerService implements MailerService {
             from: `"${resolvedFrom.firstName} ${resolvedFrom.lastName}" <${resolvedFrom.emailAddress}>`,
             to: resolvedTo,
             replyTo: resolvedReplyTo,
-            subject: envelop.subject || "No subject",
+            subject: envelope.subject || "No subject",
             html: body,
           })
         ),
@@ -197,6 +197,22 @@ export class EmailEngine {
 
         const templateEnvelope = template.getEnvelope();
 
+        envelope = { ...envelope, ...templateEnvelope };
+
+        if (template.emailTemplate.verifyReplyTo !== undefined) {
+          if (envelope.replyTo && authorizationUser) {
+            await verifyReplyToEmailAddress(
+              envelope.replyTo,
+              authorizationUser
+            );
+          } else {
+            // reply to verification failed error
+            throw new GraphQLError(
+              `Verification of reply to email address failed`
+            );
+          }
+        }
+
         if (templateEnvelope?.from) {
           // Override authorization to from email address authorization
           const templateAuthorizationUser = template.getAuthorizationUser();
@@ -209,8 +225,6 @@ export class EmailEngine {
             `Overriding authorizationUser to ${authorizationUser} for template ${this.templateId} from ${templateEnvelope.from}`
           );
         }
-
-        envelope = { ...envelope, ...templateEnvelope };
 
         if (template.emailTemplate.confirmationTemplateId) {
           const mailer = new EmailEngine(
@@ -238,7 +252,11 @@ export class EmailEngine {
         );
       }
 
-      await this.mailerService.sendMail(envelope, body, authorizationUser);
+      await this.mailerService.sendMail({
+        envelope,
+        body,
+        authorizationUser,
+      });
 
       return "Mail scheduled";
     } catch (error) {

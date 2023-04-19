@@ -108,3 +108,42 @@ export async function lookupEmailAddress(
 
   return lookupedEmail;
 }
+
+export async function verifyReplyToEmailAddress(
+  replyTo: EmailAddress,
+  authorizationUser: {
+    id: string;
+    authorization: string;
+  }
+) {
+  console.log("replyTo: ", replyTo, authorizationUser);
+
+  const [_, errors] = await sq.query(
+    (q) => {
+      const user = q.user({
+        id: authorizationUser.id,
+      });
+
+      if (replyTo.type === EmailAddressType.USER_ID) {
+        return user.email().emailAddress;
+      } else if (replyTo.type === EmailAddressType.EMAIL_ID) {
+        return user.email({ filter: { emailId: replyTo.value } }).emailAddress;
+      } else if (replyTo.type === EmailAddressType.EMAIL_ADDRESS) {
+        return user.email({ filter: { emailAddress: replyTo.value } })
+          .emailAddress;
+      }
+
+      throw new GraphQLError("Invalid replyTo type");
+    },
+    {
+      headers: {
+        authorization: authorizationUser.authorization,
+      },
+    }
+  );
+
+  if (errors) {
+    console.error(errors);
+    throw new GraphQLError(errors[0].message);
+  }
+}
