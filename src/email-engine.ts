@@ -88,9 +88,6 @@ class MailerMailerService implements MailerService {
       authorization: string;
     }
   ): Promise<void> {
-    console.log("Envelop: ", envelop);
-    console.log("body: ", body);
-
     if (!envelop.to || envelop.to.length === 0) {
       throw new Error("No to address provided");
     }
@@ -125,20 +122,27 @@ class MailerMailerService implements MailerService {
       ? await lookupEmailAddress(envelop.replyTo, authorizationUser)
       : undefined;
 
-    // Send email
-    console.log("Resolved from: ", resolvedFrom);
-    console.log("Resolved to: ", resolvedTo);
-    console.log("Resolved replyTo: ", resolvedReplyTo);
-
-    console.log("Sending email: ", body);
-
     const emailConfiguration = resolvedFrom.emailConfiguration;
 
     if (!emailConfiguration) {
       throw new Error("No email configuration found");
     }
 
-    const [_, errors] = await sq.mutate((m) => {
+    console.log("Sendmail");
+
+    // Get length of bodt in bytes
+    const bodyLength = Buffer.byteLength(body, "utf8");
+
+    console.log("Body length: ", bodyLength, body.length);
+
+    // In kb
+    console.log("Body length: ", bodyLength / 1000);
+
+    if (bodyLength > 1000000) {
+      throw new GraphQLError("Email body is too long");
+    }
+
+    sq.mutate((m) => {
       m.sendMail({
         mailOptions: JSON.parse(
           JSON.stringify({
@@ -157,13 +161,9 @@ class MailerMailerService implements MailerService {
           password: emailConfiguration.password,
         },
       });
+    }).then((result) => {
+      console.log("Result: ", result);
     });
-
-    console.log("Errors: ", errors);
-
-    if (errors) {
-      throw new Error(errors[0].message);
-    }
   }
 }
 

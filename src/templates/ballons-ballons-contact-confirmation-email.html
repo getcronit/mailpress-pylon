@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kontaktanfrage erhalten</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 30px;
+      }
+      p {
+        font-size: 18px;
+        color: #555;
+        margin: 20px;
+        text-align: justify;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: #333;
+      }
+      li {
+        margin: 10px 0;
+      }
+      strong {
+        font-weight: bold;
+      }
+      img {
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://ballons.snek.at/static/2aac62fe8ca21b7ea3ed53738270c178/7463d/bg.avif"
+      alt="Random Image"
+    />
+    <h1>Kontaktanfrage erhalten</h1>
+    <p>
+      Vielen Dank für Ihre Kontaktanfrage. Wir werden uns so schnell wie möglich
+      bei Ihnen melden.
+    </p>
+    <ul>
+      <li><strong>Name:</strong>{{name}}</li>
+      <li><strong>Email:</strong>{{email}}</li>
+      <li><strong>Subject:</strong>{{subject}}</li>
+      <li><strong>Message:</strong>{{message}}</li>
+    </ul>
+  </body>
+</html>

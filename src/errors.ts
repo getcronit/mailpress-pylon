@@ -52,6 +52,19 @@ export class TemplateVariableValueNotProvidedError extends GraphQLError {
   }
 }
 
+export class TemplateVariableIsConstantError extends GraphQLError {
+  extensions: GraphQLErrorExtensions;
+  constructor(variableName: string) {
+    const message = `Variable "${variableName}" is constant and cannot be provided`;
+    super(message);
+    this.extensions = {
+      statusCode: 400,
+      code: "VARIABLE_IS_CONSTANT",
+      description: `The variable '${variableName}' is constant and cannot be provided`,
+    };
+  }
+}
+
 export class FromEmailAddressNotAuthorizedError extends GraphQLError {
   extensions: GraphQLErrorExtensions;
   constructor(from: string) {
