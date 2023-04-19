@@ -23,10 +23,9 @@ EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
   content: importLocalTemplate("ballons-ballons-contact-email.html"),
   variables: {
     name: { isRequired: true },
-    email: {},
-    subject: {},
-    message: {},
-    invokedOnUrl: {},
+    email: { isRequired: true },
+    message: { isRequired: true },
+    invokedOnUrl: { isRequired: true },
   },
   envelope: {
     from: {
@@ -52,10 +51,9 @@ EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
       ),
       variables: {
         name: { isRequired: true },
-        email: {},
-        subject: {},
-        message: {},
-        invokedOnUrl: {},
+        email: { isRequired: true },
+        message: { isRequired: true },
+        invokedOnUrl: { isRequired: true },
       },
       $transformer: ({ envelope }) => {
         console.log("parentTemplateenvelope", envelope);
