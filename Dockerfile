@@ -7,6 +7,7 @@ LABEL maintainer="opensource@snek.at"
 WORKDIR /app
 
 COPY .sf/ ./.sf
+COPY templates/ ./templates
 COPY package.json .
 
 RUN yarn install --production

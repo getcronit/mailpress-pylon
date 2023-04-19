@@ -14,7 +14,7 @@ if (!authorization) {
 }
 
 const importLocalTemplate = (templatePath: string) => {
-  const cwd = process.cwd() + "/src";
+  const cwd = process.cwd();
   const pathToTemplate = path.resolve(cwd, "templates", templatePath);
   return fs.readFileSync(pathToTemplate, "utf8");
 };
