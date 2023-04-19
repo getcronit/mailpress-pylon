@@ -57,19 +57,25 @@ export default defineService(
 
             console.log("originUserId", originUserId);
 
-            const engine = new EmailEngine(template?.id);
+            const emailTemplate = template?.id
+              ? EmailTemplateFactory.getTemplate(template?.id)
+              : undefined;
 
-            return await engine.scheduleMail(
-              envelope,
-              body,
-              originUserId
+            const engine = new EmailEngine({
+              template: emailTemplate,
+              authorizationUser: originUserId
                 ? {
                     id: originUserId,
                     authorization: context.req.headers.authorization!,
                   }
                 : undefined,
-              template?.values
-            );
+            });
+
+            return await engine.scheduleMail({
+              envelope,
+              body,
+              values: template?.values,
+            });
           },
         {
           decorators: [optionalAnyAuth],

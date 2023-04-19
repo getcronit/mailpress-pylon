@@ -10,7 +10,7 @@
     <meta name="x-apple-disable-message-reformatting" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta content="telephone=no" name="format-detection" />
-    <title>Neue Bestellung</title>
+    <title>Ihre Bestellung</title>
     <!--[if (mso 16)
       ]><style type="text/css">
         a {
@@ -597,7 +597,7 @@
                                         color: #333333;
                                       "
                                     >
-                                      Neue Bestellung
+                                      Ihre Bestellung
                                     </h1>
                                   </td>
                                 </tr>
@@ -727,8 +727,11 @@
                                         font-size: 14px;
                                       "
                                     >
-                                    Eine neue Bestellung wurde auf deinem Online-Shop aufgegeben.
-
+                                      Sehr geehrte/r {{customer.fullName}},
+                                      herzlichen Dank für Ihre Bestellung in
+                                      unserem Online-Shop. Wir werden uns so
+                                      schnell wie möglich mit genaueren Details
+                                      bei Ihnen melden.
                                     </p>
                                   </td>
                                 </tr>
@@ -1206,10 +1209,10 @@
                                         font-size: 14px;
                                       "
                                     >
-                                      Kunde: {{customer.fullName}} &lt;<a style="font-weight: bold;" href="mailto:{{customer.emailAddress}}?subject=Ihre Bestellung vom {{ 'now'|date('m/d/Y') }}">{{customer.emailAddress}}</a>&gt;
+                                      Kunde:
+                                      <strong>{{customer.emailAddress}}</strong>
                                     </p>
                                   </td>
-                                  <td>
                                 </tr>
                               </table>
                             </td>

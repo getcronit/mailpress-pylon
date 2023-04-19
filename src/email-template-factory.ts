@@ -17,12 +17,12 @@ import {
   TemplateVariableIsConstantError,
 } from "./errors";
 
-interface TemplateMetadata {
+export interface TemplateMetadata {
   id: string;
   template: EmailTemplate;
 }
 
-interface EmailTemplate {
+export interface EmailTemplate {
   content: string;
   variables?: TemplateVariables;
   envelope?: EmailEnvelope;
@@ -42,7 +42,8 @@ interface EmailTemplate {
     id: string;
     authorization: string;
   };
-  confirmationTemplateId?: string;
+  linkedEmailTemplates?: EmailTemplate[];
+  $transformer?: (context: { envelope: EmailEnvelope }) => any;
 }
 
 interface TemplateVariables {
@@ -96,6 +97,21 @@ export class EmailTemplateFactory {
     return [...EmailTemplateFactory.templates];
   }
 
+  private static minifyRenderedTemplate(template: string): string {
+    const result = minify(template, {
+      collapseWhitespace: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeEmptyElements: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true,
+    });
+
+    return result;
+  }
+
   static createTemplate(id: string, template: EmailTemplate): EmailTemplate {
     if (EmailTemplateFactory.templates.some((metadata) => metadata.id === id)) {
       throw new TemplateAlreadyExistsError(id);
@@ -119,21 +135,6 @@ export class EmailTemplateFactory {
     return EmailTemplateFactory.getAllTemplatesMetadata().map(
       (metadata) => metadata.template
     );
-  }
-
-  private static minifyRenderedTemplate(template: string): string {
-    const result = minify(template, {
-      collapseWhitespace: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeEmptyElements: true,
-      removeRedundantAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      useShortDoctype: true,
-    });
-
-    return result;
   }
 
   private static getContext(
@@ -173,14 +174,9 @@ export class EmailTemplateFactory {
   }
 
   private static renderTemplate(
-    templateId: string,
+    template: EmailTemplate,
     values: TemplateVariableValues = {}
   ): string {
-    const template = EmailTemplateFactory.getTemplate(templateId);
-    if (!template) {
-      throw new TemplateNotFoundError(templateId);
-    }
-
     const twigTemplate = Twig.twig({ data: template.content });
 
     const context = EmailTemplateFactory.getContext(template, values);
@@ -193,20 +189,12 @@ export class EmailTemplateFactory {
   templateId: string;
   emailTemplate: EmailTemplate;
 
-  constructor(templateId: string) {
-    const template = EmailTemplateFactory.getTemplate(templateId);
-
-    if (!template) {
-      throw new TemplateNotFoundError(templateId);
-    }
-
-    this.templateId = templateId;
-    this.emailTemplate = template;
-  }
-
-  render(values?: TemplateVariableValues): string {
+  static render(
+    emailTemplate: EmailTemplate,
+    values: TemplateVariableValues = {}
+  ): string {
     try {
-      return EmailTemplateFactory.renderTemplate(this.templateId, values);
+      return EmailTemplateFactory.renderTemplate(emailTemplate, values);
     } catch (error) {
       if (
         error instanceof TemplateNotFoundError ||
@@ -215,44 +203,8 @@ export class EmailTemplateFactory {
       ) {
         throw error;
       } else {
-        throw new Error(
-          `Failed to render template with id ${this.templateId}: ${error}`
-        );
+        throw new Error(`Failed to render template: ${error}`);
       }
     }
-  }
-
-  getEnvelope(): EmailEnvelope | undefined {
-    const template = EmailTemplateFactory.getTemplate(this.templateId);
-
-    if (!template) {
-      throw new TemplateNotFoundError(this.templateId);
-    }
-
-    const envelope = template.envelope;
-
-    return envelope;
-  }
-
-  getAuthorizationUser(): EmailTemplate["authorizationUser"] {
-    const template = EmailTemplateFactory.getTemplate(this.templateId);
-
-    if (!template) {
-      throw new TemplateNotFoundError(this.templateId);
-    }
-
-    if (!template.authorizationUser) {
-      const envelope = template.envelope;
-
-      if (envelope?.from) {
-        throw new FromEmailAddressNotAuthorizedError(envelope.from.value);
-      }
-
-      throw new Error(
-        `Template with id ${this.templateId} does not have an authorizationUser`
-      );
-    }
-
-    return template.authorizationUser;
   }
 }

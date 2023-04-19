@@ -1,15 +1,18 @@
 import { GraphQLError } from "graphql";
+
 import {
-  EmailTemplateFactory,
-  EmailEnvelope,
   EmailAddressType,
+  EmailEnvelope,
+  EmailTemplate,
+  EmailTemplateFactory,
 } from "./email-template-factory";
 import {
-  resolveFromEmailAddress,
-  lookupEmailAddress,
   ResolvedFromEmail,
+  lookupEmailAddress,
+  resolveFromEmailAddress,
   verifyReplyToEmailAddress,
 } from "./resolve-email-address";
+
 import { sq } from "./clients/mailer/src/index.js";
 
 interface MailServiceSendMailOptions {
@@ -24,63 +27,6 @@ interface MailServiceSendMailOptions {
 interface MailerService {
   sendMail(options: MailServiceSendMailOptions): Promise<void>;
 }
-
-// class ConsoleMailerService implements MailerService {
-//   async sendMail(
-//     envelop: EmailEnvelope,
-//     body: string,
-//     authorizationUser: {
-//       id: string;
-//       authorization: string;
-//     }
-//   ): Promise<void> {
-//     console.log("Envelop: ", envelop);
-//     console.log("body: ", body);
-
-//     if (!envelop.to || envelop.to.length === 0) {
-//       throw new Error("No to address provided");
-//     }
-
-//     let resolvedFrom: any;
-
-//     if (envelop.from) {
-//       // This means that there is no from address provided or given by the template
-//       // we need to resolve it from the authorization user
-
-//       resolvedFrom = await resolveFromEmailAddress(
-//         envelop.from,
-//         authorizationUser
-//       );
-//     } else {
-//       resolvedFrom = await resolveFromEmailAddress(
-//         {
-//           type: EmailAddressType.USER_ID,
-//           value: authorizationUser.id,
-//         },
-//         authorizationUser
-//       );
-//     }
-
-//     const resolvedTo = await Promise.all(
-//       envelop.to.map(async (to) => {
-//         return await lookupEmailAddress(to, authorizationUser);
-//       })
-//     );
-
-//     const resolvedReplyTo = envelop.replyTo
-//       ? await lookupEmailAddress(envelop.replyTo, authorizationUser)
-//       : undefined;
-
-//     // Send email
-//     console.log("Resolved from: ", resolvedFrom);
-//     console.log("Resolved to: ", resolvedTo);
-//     console.log("Resolved replyTo: ", resolvedReplyTo);
-
-//     console.log("Sending email: ", body);
-
-//     return Promise.resolve();
-//   }
-// }
 
 class MailerMailerService implements MailerService {
   async sendMail({
@@ -168,100 +114,120 @@ class MailerMailerService implements MailerService {
 }
 
 export class EmailEngine {
-  private mailerService: MailerService;
+  template?: EmailTemplate;
+  parentTemplate?: EmailTemplate;
+  authorizationUser?: {
+    id: string;
+    authorization: string;
+  };
 
-  private templateId?: string;
-
-  constructor(
-    templateId: string | undefined,
-    mailerService: MailerService = new MailerMailerService()
-  ) {
-    this.templateId = templateId;
-    this.mailerService = mailerService;
-  }
-
-  async scheduleMail(
-    envelope: EmailEnvelope,
-    body: string = "",
+  constructor(options: {
+    template?: EmailTemplate;
+    parentTemplate?: EmailTemplate;
     authorizationUser?: {
       id: string;
       authorization: string;
-    },
-    values?: Record<string, string>
-  ): Promise<string> {
-    try {
-      if (this.templateId) {
-        const template = new EmailTemplateFactory(this.templateId);
+    };
+  }) {
+    this.template = options.template;
+    this.parentTemplate = options.parentTemplate;
+    this.authorizationUser = options.authorizationUser;
+  }
 
-        body = template.render(values);
+  async scheduleMail({
+    envelope,
+    body = "",
+    values,
+  }: {
+    envelope: EmailEnvelope;
+    body?: string;
+    values?: Record<string, string>;
+  }) {
+    if (this.template) {
+      let emailTemplate = this.template;
 
-        const templateEnvelope = template.getEnvelope();
-
-        envelope = { ...envelope, ...templateEnvelope };
-
-        if (template.emailTemplate.verifyReplyTo !== undefined) {
-          if (envelope.replyTo && authorizationUser) {
-            await verifyReplyToEmailAddress(
-              envelope.replyTo,
-              authorizationUser
-            );
-          } else {
-            // reply to verification failed error
-            throw new GraphQLError(
-              `Verification of reply to email address failed`
-            );
-          }
-        }
-
-        if (templateEnvelope?.from) {
-          // Override authorization to from email address authorization
-          const templateAuthorizationUser = template.getAuthorizationUser();
-
-          if (templateAuthorizationUser) {
-            authorizationUser = templateAuthorizationUser;
-          }
-
-          console.log(
-            `Overriding authorizationUser to ${authorizationUser} for template ${this.templateId} from ${templateEnvelope.from}`
+      if (emailTemplate.$transformer) {
+        if (!this.parentTemplate) {
+          throw new GraphQLError(
+            "No parent template provided. This is required for linked email templates"
           );
         }
 
-        if (template.emailTemplate.confirmationTemplateId) {
-          const mailer = new EmailEngine(
-            template.emailTemplate.confirmationTemplateId,
-            this.mailerService
-          );
+        const transformedTemplate = emailTemplate.$transformer({
+          envelope,
+        });
 
-          await mailer.scheduleMail(
-            {
-              to: envelope.replyTo ? [envelope.replyTo] : [],
-              subject: envelope.subject,
-              from: envelope.from,
-              replyTo: undefined,
+        if (transformedTemplate) {
+          // Deep-Merge the transformed template with the email template
+          emailTemplate = {
+            ...emailTemplate,
+            ...transformedTemplate,
+            envelope: {
+              ...emailTemplate.envelope,
+              ...transformedTemplate.envelope,
             },
-            body,
-            authorizationUser,
-            values
+          };
+        }
+      }
+
+      body = EmailTemplateFactory.render(this.template, values);
+
+      envelope = {
+        ...envelope,
+        ...emailTemplate.envelope,
+      };
+
+      if (emailTemplate.verifyReplyTo !== undefined) {
+        if (envelope.replyTo && this.authorizationUser) {
+          await verifyReplyToEmailAddress(
+            envelope.replyTo,
+            this.authorizationUser
+          );
+        } else {
+          // reply to verification failed error
+          throw new GraphQLError(
+            `Verification of reply to email address failed`
           );
         }
       }
 
-      if (!authorizationUser) {
-        throw new GraphQLError(
-          `One of authorizationUser or template ${this.templateId} authorizationUser must be provided`
-        );
+      if (emailTemplate.envelope?.from) {
+        if (emailTemplate.authorizationUser) {
+          this.authorizationUser = emailTemplate.authorizationUser;
+        }
       }
-
-      await this.mailerService.sendMail({
-        envelope,
-        body,
-        authorizationUser,
-      });
-
-      return "Mail scheduled";
-    } catch (error) {
-      console.error(error);
-      throw new GraphQLError(`Failed to send email: ${error}`);
     }
+
+    if (!this.authorizationUser) {
+      throw new GraphQLError("No authorization user provided");
+    }
+
+    const mailer = new MailerMailerService();
+
+    await mailer.sendMail({
+      envelope,
+      body,
+      authorizationUser: this.authorizationUser,
+    });
+
+    if (this.template?.linkedEmailTemplates) {
+      const linkedEmailTemplates = this.template.linkedEmailTemplates;
+
+      for (const linkedEmailTemplate of linkedEmailTemplates) {
+        let linkedEmailEngine = new EmailEngine({
+          template: linkedEmailTemplate,
+          parentTemplate: this.template,
+          authorizationUser: this.authorizationUser,
+        });
+
+        await linkedEmailEngine.scheduleMail({
+          envelope,
+          body,
+          values,
+        });
+      }
+    }
+
+    return "Email scheduled and will be sent shortly";
   }
 }
