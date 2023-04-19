@@ -7,6 +7,7 @@ import {
 import {
   AuthenticationContext,
   AuthenticationRequiredError,
+  requireAdminForResource,
   requireAnyAuth,
 } from "@snek-functions/jwt";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
@@ -36,11 +37,23 @@ const optionalAnyAuth = decorator(async (context, args) => {
   return ctx;
 });
 
+const requireAdminOnMailpress = decorator(async (context, args) => {
+  const ctx = await requireAdminForResource(context, [
+    "8e111dc0-f6d2-4c95-8b46-abc336b76a14",
+  ]);
+
+  return ctx;
+});
+
 export default defineService(
   {
     Query: {
-      template: EmailTemplateFactory.getTemplate,
-      allTemplate: EmailTemplateFactory.getTemplates,
+      template: withContext(() => EmailTemplateFactory.getTemplate, {
+        decorators: [requireAdminOnMailpress],
+      }),
+      allTemplate: withContext(() => EmailTemplateFactory.getTemplates, {
+        decorators: [requireAdminOnMailpress],
+      }),
     },
     Mutation: {
       mailSchedule: withContext(
