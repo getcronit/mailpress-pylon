@@ -93,29 +93,50 @@ EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", {
   variables: {
     cart: {
       isRequired: true,
-      isConstant: true,
-      defaultValue: [
-        { name: "Ballon", price: 1.5, quantity: 1, sku: "B-15211" },
-        { name: "Ballon 2", price: 62, quantity: 4, sku: "B-15212" },
-        { name: "Ballon 3", price: 23, quantity: 7, sku: "B-15213" },
-      ],
+      // isConstant: true,
+      // defaultValue: [
+      //   {
+      //     name: "Ballon",
+      //     price: 1.5,
+      //     quantity: 1,
+      //     sku: "B-15211",
+      //     imgSrc:
+      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+      //   },
+      //   {
+      //     name: "Ballon 2",
+      //     price: 62,
+      //     quantity: 4,
+      //     sku: "B-1521A",
+      //     imgSrc:
+      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+      //   },
+      //   {
+      //     name: "Ballon 4",
+      //     price: 23,
+      //     quantity: 7,
+      //     sku: "B-15213",
+      //     imgSrc:
+      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+      //   },
+      // ],
     },
     order: {
       isRequired: true,
-      isConstant: true,
-      defaultValue: {
-        id: "123456789",
-        totalPrice: 123.45,
-        currency: "EUR",
-      },
+      // isConstant: true,
+      // defaultValue: {
+      //   id: "123456789",
+      //   totalPrice: 123.45,
+      //   currency: "EUR",
+      // },
     },
     customer: {
       isRequired: true,
-      isConstant: true,
-      defaultValue: {
-        emailAddress: "schett@snek.at",
-        fullName: "Nico Schett",
-      },
+      // isConstant: true,
+      // defaultValue: {
+      //   emailAddress: "schett@snek.at",
+      //   fullName: "Nico Schett",
+      // },
     },
   },
   verifyReplyTo: true,
@@ -127,29 +148,50 @@ EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", {
       variables: {
         cart: {
           isRequired: true,
-          isConstant: true,
-          defaultValue: [
-            { name: "Ballon", price: 1.5, quantity: 1, sku: "B-15211" },
-            { name: "Ballon 2", price: 62, quantity: 4, sku: "B-1521A" },
-            { name: "Ballon 3", price: 23, quantity: 7, sku: "B-15213" },
-          ],
+          // isConstant: true,
+          // defaultValue: [
+          //   {
+          //     name: "Ballon",
+          //     price: 1.5,
+          //     quantity: 1,
+          //     sku: "B-15211",
+          //     imgSrc:
+          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+          //   },
+          //   {
+          //     name: "Ballon 2",
+          //     price: 62,
+          //     quantity: 4,
+          //     sku: "B-1521A",
+          //     imgSrc:
+          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+          //   },
+          //   {
+          //     name: "Ballon 4",
+          //     price: 23,
+          //     quantity: 7,
+          //     sku: "B-15213",
+          //     imgSrc:
+          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+          //   },
+          // ],
         },
         order: {
           isRequired: true,
-          isConstant: true,
-          defaultValue: {
-            id: "123456789",
-            totalPrice: 123.45,
-            currency: "EUR",
-          },
+          // isConstant: true,
+          // defaultValue: {
+          //   id: "123456789",
+          //   totalPrice: 123.45,
+          //   currency: "EUR",
+          // },
         },
         customer: {
           isRequired: true,
-          isConstant: true,
-          defaultValue: {
-            emailAddress: "schett@snek.at",
-            fullName: "Nico Schett",
-          },
+          // isConstant: true,
+          // defaultValue: {
+          //   emailAddress: "schett@snek.at",
+          //   fullName: "Nico Schett",
+          // },
         },
       },
       envelope: {
