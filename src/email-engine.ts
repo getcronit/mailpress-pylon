@@ -68,13 +68,11 @@ class MailerMailerService implements MailerService {
       ? await lookupEmailAddress(envelope.replyTo, authorizationUser)
       : undefined;
 
-    const emailConfiguration = resolvedFrom.emailConfiguration;
+    const config = resolvedFrom.config;
 
-    if (!emailConfiguration) {
-      throw new Error("No email configuration found");
+    if (!config) {
+      throw new Error("No email config found");
     }
-
-    console.log("Sendmail");
 
     // Get length of bodt in bytes
     const bodyLength = Buffer.byteLength(body, "utf8");
@@ -88,28 +86,66 @@ class MailerMailerService implements MailerService {
       throw new GraphQLError("Email body is too long");
     }
 
-    sq.mutate((m) => {
-      m.sendMail({
-        mailOptions: JSON.parse(
-          JSON.stringify({
-            from: `"${resolvedFrom.firstName} ${resolvedFrom.lastName}" <${resolvedFrom.emailAddress}>`,
-            to: resolvedTo,
-            replyTo: resolvedReplyTo,
-            subject: envelope.subject || "No subject",
-            html: body,
-          })
-        ),
-        smtpOptions: {
-          host: emailConfiguration.smtpHost,
-          port: emailConfiguration.smtpPort,
-          secure: emailConfiguration.secure,
-          user: emailConfiguration.username,
-          password: emailConfiguration.password,
-        },
+    console.log("config", config);
+
+    if (config.externalCredential.smtp) {
+      sq.mutate((m) => {
+        m.sendMailSMTP({
+          mailOptions: JSON.parse(
+            JSON.stringify({
+              from: `"${resolvedFrom.firstName} ${resolvedFrom.lastName}" <${resolvedFrom.emailAddress}>`,
+              to: resolvedTo,
+              replyTo: resolvedReplyTo,
+              subject: envelope.subject || "No subject",
+              html: body,
+            })
+          ),
+          smtpOptions: {
+            host: config.externalCredential.smtp?.host!,
+            port: config.externalCredential.smtp?.port!,
+            secure: config.externalCredential.smtp?.secure!,
+            user: config.externalCredential.smtp?.username!,
+            password: config.externalCredential.smtp?.password!,
+          },
+        });
       });
-    }).then((result) => {
-      console.log("Result: ", result);
-    });
+    } else if (config.externalCredential.oauth) {
+      if (config.externalCredential.oauth.provider === "azure") {
+        sq.mutate((m) => {
+          m.sendMailAzure({
+            mailOptions: JSON.parse(
+              JSON.stringify({
+                from: `"${resolvedFrom.firstName} ${resolvedFrom.lastName}" <${resolvedFrom.emailAddress}>`,
+                to: resolvedTo,
+                replyTo: resolvedReplyTo,
+                subject: envelope.subject || "No subject",
+                html: body,
+              })
+            ),
+            oauthOptions: {
+              accessToken: config.externalCredential.oauth?.accessToken!,
+            },
+          });
+        });
+      } else if (config.externalCredential.oauth.provider === "google") {
+        sq.mutate((m) => {
+          m.sendMailGoogle({
+            mailOptions: JSON.parse(
+              JSON.stringify({
+                from: `"${resolvedFrom.firstName} ${resolvedFrom.lastName}" <${resolvedFrom.emailAddress}>`,
+                to: resolvedTo,
+                replyTo: resolvedReplyTo,
+                subject: envelope.subject || "No subject",
+                html: body,
+              })
+            ),
+            oauthOptions: {
+              accessToken: config.externalCredential.oauth?.accessToken!,
+            },
+          });
+        });
+      }
+    }
   }
 }
 

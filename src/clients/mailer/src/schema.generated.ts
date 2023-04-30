@@ -17,6 +17,9 @@ type SMTPOptionsInput = {
     user: t.String;
     password: t.String;
 };
+type OAuthOptionsInput = {
+    accessToken: t.String;
+};
 
 export class Query {
     __typename: t.String;
@@ -25,11 +28,19 @@ export class Query {
 }
 export class Mutation {
     __typename: t.String;
-    sendMail: (args: {
+    sendMailSMTP: (args: {
         mailOptions: MailOptionsInput;
         smtpOptions: SMTPOptionsInput;
     }) => SentMessageInfo;
-    constructor() { this.__typename = ""; this.sendMail = fnProxy(SentMessageInfo); }
+    sendMailAzure: (args: {
+        mailOptions: MailOptionsInput;
+        oauthOptions: OAuthOptionsInput;
+    }) => t.NotSupportedYet;
+    sendMailGoogle: (args: {
+        mailOptions: MailOptionsInput;
+        oauthOptions: OAuthOptionsInput;
+    }) => t.NotSupportedYet;
+    constructor() { this.__typename = ""; this.sendMailSMTP = fnProxy(SentMessageInfo); this.sendMailAzure = () => null; this.sendMailGoogle = () => null; }
 }
 export class SentMessageInfo {
     __typename: t.String;

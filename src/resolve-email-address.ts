@@ -9,7 +9,7 @@ export interface ResolvedFromEmail {
   firstName: string | null | undefined;
   lastName: string | null | undefined;
   emailAddress: string;
-  emailConfiguration: Email["emailConfiguration"];
+  config: Email["config"];
 }
 
 export async function resolveFromEmailAddress(
@@ -47,7 +47,15 @@ export async function resolveFromEmailAddress(
         firstName: user.details?.firstName,
         lastName: user.details?.lastName,
         emailAddress: email.emailAddress,
-        emailConfiguration: email.emailConfiguration,
+        config: {
+          id: email.config?.id,
+          isEnabled: email.config?.isEnabled,
+          externalCredential: {
+            id: email.config?.externalCredential?.id,
+            smtp: email.config?.externalCredential?.smtp,
+            oauth: email.config?.externalCredential?.oauth,
+          },
+        },
       };
     },
     {
@@ -62,7 +70,7 @@ export async function resolveFromEmailAddress(
     throw new GraphQLError(errors[0].message);
   }
 
-  return resolvedEmail;
+  return resolvedEmail as ResolvedFromEmail;
 }
 
 export async function lookupEmailAddress(
@@ -97,8 +105,6 @@ export async function lookupEmailAddress(
     }
   );
 
-  console.log("lookupedEmail: ", lookupedEmail);
-
   if (errors) {
     console.error(errors);
     throw new GraphQLError(errors[0].message);
@@ -116,8 +122,6 @@ export async function verifyReplyToEmailAddress(
     authorization: string;
   }
 ) {
-  console.log("replyTo: ", replyTo, authorizationUser);
-
   const [_, errors] = await sq.query(
     (q) => {
       const user = q.user({
