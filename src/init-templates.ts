@@ -210,3 +210,103 @@ EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", {
     },
   ],
 });
+
+EmailTemplateFactory.createTemplate("AGT_CONTACT_MAIL", {
+  content: importLocalTemplate("agt-contact-email.html"),
+  variables: {
+    name: { isRequired: true },
+    email: { isRequired: true },
+    message: { isRequired: true },
+    invokedOnUrl: { isRequired: true },
+  },
+  envelope: {
+    from: {
+      value: "mailpress@snek.at",
+      type: EmailAddressType.EMAIL_ADDRESS,
+    },
+    to: [
+      {
+        value: "schett@snek.at",
+        type: EmailAddressType.EMAIL_ADDRESS,
+      },
+    ],
+    subject: "Neue Kontaktanfrage",
+  },
+  authorizationUser: {
+    id: "74e7de97-48e5-40e0-bca6-e05daa6e466d",
+    authorization,
+  },
+  linkedEmailTemplates: [
+    {
+      content: importLocalTemplate("agt-contact-confirmation-email.html"),
+      variables: {
+        name: { isRequired: true },
+        email: { isRequired: true },
+        message: { isRequired: true },
+        invokedOnUrl: { isRequired: true },
+      },
+      $transformer: ({ envelope }) => {
+        console.log("parentTemplateenvelope", envelope);
+
+        if (envelope) {
+          envelope.to = envelope.replyTo ? [envelope.replyTo] : [];
+          envelope.replyTo = undefined;
+        }
+
+        return {
+          envelope,
+        };
+      },
+    },
+  ],
+});
+
+EmailTemplateFactory.createTemplate("AGT_ORDER_MAIL", {
+  content: importLocalTemplate("agt-order-email.html"),
+  variables: {
+    name: { isRequired: true },
+    email: { isRequired: true },
+    message: { isRequired: true },
+    invokedOnUrl: { isRequired: true },
+  },
+  envelope: {
+    from: {
+      value: "mailpress@snek.at",
+      type: EmailAddressType.EMAIL_ADDRESS,
+    },
+    to: [
+      {
+        value: "schett@snek.at",
+        type: EmailAddressType.EMAIL_ADDRESS,
+      },
+    ],
+    subject: "Neue Bestellung auf AGT Gun Trade",
+  },
+  authorizationUser: {
+    id: "74e7de97-48e5-40e0-bca6-e05daa6e466d",
+    authorization,
+  },
+  linkedEmailTemplates: [
+    {
+      content: importLocalTemplate("agt-order-confirmation-email.html"),
+      variables: {
+        name: { isRequired: true },
+        email: { isRequired: true },
+        message: { isRequired: true },
+        invokedOnUrl: { isRequired: true },
+      },
+      $transformer: ({ envelope }) => {
+        console.log("parentTemplateenvelope", envelope);
+
+        if (envelope) {
+          envelope.to = envelope.replyTo ? [envelope.replyTo] : [];
+          envelope.replyTo = undefined;
+        }
+
+        return {
+          envelope,
+        };
+      },
+    },
+  ],
+});
