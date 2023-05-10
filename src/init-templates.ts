@@ -34,7 +34,7 @@ EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
     },
     to: [
       {
-        value: "schett@snek.at",
+        value: "office@ballons-ballons.at",
         type: EmailAddressType.EMAIL_ADDRESS,
       },
     ],
@@ -80,7 +80,7 @@ EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", {
     },
     to: [
       {
-        value: "schett@snek.at",
+        value: "office@ballons-ballons.at",
         type: EmailAddressType.EMAIL_ADDRESS,
       },
     ],
@@ -226,7 +226,7 @@ EmailTemplateFactory.createTemplate("AGT_CONTACT_MAIL", {
     },
     to: [
       {
-        value: "schett@snek.at",
+        value: "info@agt-guntrade.at",
         type: EmailAddressType.EMAIL_ADDRESS,
       },
     ],
@@ -276,7 +276,7 @@ EmailTemplateFactory.createTemplate("AGT_ORDER_MAIL", {
     },
     to: [
       {
-        value: "schett@snek.at",
+        value: "info@agt-guntrade.at",
         type: EmailAddressType.EMAIL_ADDRESS,
       },
     ],
