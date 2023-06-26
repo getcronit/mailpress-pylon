@@ -29,7 +29,7 @@
     "@snek-at/function": "*",
     "@snek-at/function-cli": "*",
     "@snek-at/function-server": "*",
-    "@snek-functions/jwt": "^0.0.31",
+    "@snek-functions/jwt": "*",
     "dotenv": "^16.0.3",
     "html-minifier": "^4.0.0",
     "twig": "^1.16.0"
