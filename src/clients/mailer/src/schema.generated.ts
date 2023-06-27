@@ -7,8 +7,8 @@ type MailOptionsInput = {
     to: t.String[];
     replyTo?: t.String;
     subject: t.String;
-    text?: t.String;
-    html: t.String;
+    text: t.String;
+    html?: t.String;
 };
 type SMTPOptionsInput = {
     host: t.String;

@@ -17,6 +17,7 @@ import { sq } from "./clients/mailer/src/index.js";
 
 interface MailServiceSendMailOptions {
   envelope: EmailEnvelope;
+  bodyHTML?: string;
   body: string;
   authorizationUser: {
     id: string;
@@ -32,6 +33,7 @@ class MailerMailerService implements MailerService {
   async sendMail({
     envelope,
     body,
+    bodyHTML,
     authorizationUser,
   }: MailServiceSendMailOptions): Promise<void> {
     if (!envelope.to || envelope.to.length === 0) {
@@ -74,19 +76,19 @@ class MailerMailerService implements MailerService {
       throw new Error("No email config found");
     }
 
-    // Get length of bodt in bytes
-    const bodyLength = Buffer.byteLength(body, "utf8");
+    // // Get length of bodt in bytes
+    // const bodyLength = Buffer.byteLength(body, "utf8");
 
-    console.log("Body length: ", bodyLength, body.length);
+    // console.log("Body length: ", bodyLength, body.length);
 
-    // In kb
-    console.log("Body length: ", bodyLength / 1000);
+    // // In kb
+    // console.log("Body length: ", bodyLength / 1000);
 
-    if (bodyLength > 1000000) {
-      throw new GraphQLError("Email body is too long");
-    }
+    // if (bodyLength > 1000000) {
+    //   throw new GraphQLError("Email body is too long");
+    // }
 
-    console.log("config", config);
+    // console.log("config", config);
 
     if (config.externalCredential.smtp) {
       sq.mutate((m) => {
@@ -97,7 +99,8 @@ class MailerMailerService implements MailerService {
               to: resolvedTo,
               replyTo: resolvedReplyTo,
               subject: envelope.subject || "No subject",
-              html: body,
+              html: bodyHTML,
+              text: body,
             })
           ),
           smtpOptions: {
@@ -119,7 +122,8 @@ class MailerMailerService implements MailerService {
                 to: resolvedTo,
                 replyTo: resolvedReplyTo,
                 subject: envelope.subject || "No subject",
-                html: body,
+                html: bodyHTML,
+                text: body,
               })
             ),
             oauthOptions: {
@@ -136,7 +140,8 @@ class MailerMailerService implements MailerService {
                 to: resolvedTo,
                 replyTo: resolvedReplyTo,
                 subject: envelope.subject || "No subject",
-                html: body,
+                html: bodyHTML,
+                text: body,
               })
             ),
             oauthOptions: {
@@ -173,10 +178,12 @@ export class EmailEngine {
   async scheduleMail({
     envelope,
     body = "",
+    bodyHTML,
     values,
   }: {
     envelope: EmailEnvelope;
     body?: string;
+    bodyHTML?: string;
     values?: Record<string, string>;
   }) {
     if (this.template) {
@@ -243,6 +250,7 @@ export class EmailEngine {
     await mailer.sendMail({
       envelope,
       body,
+      bodyHTML,
       authorizationUser: this.authorizationUser,
     });
 
@@ -259,6 +267,7 @@ export class EmailEngine {
         await linkedEmailEngine.scheduleMail({
           envelope,
           body,
+          bodyHTML,
           values,
         });
       }

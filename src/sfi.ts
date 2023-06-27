@@ -53,6 +53,7 @@ export default defineService(
           async (
             envelope: EmailEnvelope,
             body?: string,
+            bodyHTML?: string,
             template?: {
               id: string;
               values?: TemplateVariableValues;
@@ -77,6 +78,7 @@ export default defineService(
             return await engine.scheduleMail({
               envelope,
               body,
+              bodyHTML,
               values: template?.values,
             });
           },
