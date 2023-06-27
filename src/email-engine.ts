@@ -213,7 +213,8 @@ export class EmailEngine {
         }
       }
 
-      body = EmailTemplateFactory.render(this.template, values);
+      bodyHTML = EmailTemplateFactory.render(this.template, values);
+      body = "";
 
       envelope = {
         ...envelope,
