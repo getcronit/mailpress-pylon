@@ -727,8 +727,8 @@
                                         font-size: 14px;
                                       "
                                     >
-                                    Eine neue Bestellung wurde auf deinem Online-Shop aufgegeben.
-
+                                      Eine neue Bestellung wurde auf deinem
+                                      Online-Shop aufgegeben.
                                     </p>
                                   </td>
                                 </tr>
@@ -765,7 +765,6 @@
                             "
                           >
                             <tr>
-                             
                               <td
                                 style="padding: 0; margin: 0; width: 20px"
                               ></td>
@@ -827,7 +826,8 @@
                                                 font-size: 14px;
                                               "
                                             >
-                                              <strong>{{product.name}}</strong> ({{product.sku}})
+                                              <strong>{{product.name}}</strong>
+                                              ({{product.sku}})
                                             </p>
                                           </td>
                                         </tr>
@@ -959,7 +959,8 @@
                                                 font-size: 14px;
                                               "
                                             >
-                                              {{(product.price * product.quantity)|format_currency('EUR')}}
+                                              {{(product.price *
+                                              product.quantity)|format_currency('EUR')}}
                                             </p>
                                           </td>
                                         </tr>
@@ -1041,9 +1042,9 @@
                                         font-size: 14px;
                                       "
                                     >
-                                      Zwischensumme:&nbsp;<strong> 
-                                      {{order.totalPrice|format_currency('EUR')}}</strong>
-                                      </strong>
+                                      Zwischensumme:&nbsp;<strong>
+                                        {{order.totalPrice|format_currency('EUR')}}</strong
+                                      >
                                     </p>
                                   </td>
                                 </tr>
@@ -1114,10 +1115,14 @@
                                         font-size: 14px;
                                       "
                                     >
-                                      Kunde: {{customer.fullName}} &lt;<a style="font-weight: bold;" href="mailto:{{customer.emailAddress}}?subject=Ihre Bestellung vom {{ 'now'|date('m/d/Y') }}">{{customer.emailAddress}}</a>&gt;
+                                      Kunde: {{customer.fullName}} &lt;<a
+                                        style="font-weight: bold"
+                                        href="mailto:{{customer.emailAddress}}?subject=Ihre Bestellung vom {{ 'now'|date('m/d/Y') }}"
+                                        >{{customer.emailAddress}}</a
+                                      >&gt;
                                     </p>
                                   </td>
-                                  <td>
+                                  <td></td>
                                 </tr>
                               </table>
                             </td>
