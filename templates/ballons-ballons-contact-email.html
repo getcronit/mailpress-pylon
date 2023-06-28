@@ -10,7 +10,7 @@
     <meta name="x-apple-disable-message-reformatting" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta content="telephone=no" name="format-detection" />
-    <title>Neue Bestellung</title>
+    <title>Neue Anfrage</title>
     <!--[if (mso 16)
       ]><style type="text/css">
         a {
@@ -698,7 +698,7 @@
                                         font-size: 14px;
                                       "
                                     >
-                                      {{ "now"|date("j. F Y \u\m G:i", "de") }}
+                                      {{ "now"|date('d/m/Y') }}
                                     </p>
                                   </td>
                                 </tr>
@@ -802,7 +802,7 @@
                                           >{{invokedOnUrl}}</a
                                         >
                                       </li>
-                                      <li><strong>Name: </strong>{{name}}</li>
+                                      <li><strong>Name: </strong>{{firstName}} {{lastName}}</li>,
                                       <li><strong>Email: </strong>{{email}}</li>
                                       <li>
                                         <strong>Message: </strong>{{message}}
