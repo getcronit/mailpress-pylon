@@ -19,10 +19,167 @@ const importLocalTemplate = (templatePath: string) => {
   return fs.readFileSync(pathToTemplate, "utf8");
 };
 
+const ballonsBallonsOrderEmail = (wholesale: boolean) => ({
+  content: importLocalTemplate("ballons-ballons-order-email.html"),
+  envelope: {
+    from: {
+      value: "mailpress@snek.at",
+      type: EmailAddressType.EMAIL_ADDRESS,
+    },
+    to: [
+      {
+        value: "office@ballons-ballons.at",
+        type: EmailAddressType.EMAIL_ADDRESS,
+      },
+    ],
+    subject: "Neue Anfrage auf Ballons & Ballons",
+  },
+  authorizationUser: {
+    id: "74e7de97-48e5-40e0-bca6-e05daa6e466d",
+    authorization,
+  },
+  variables: {
+    cart: {
+      isRequired: true,
+      // isConstant: true,
+      // defaultValue: [
+      //   {
+      //     name: "Ballon",
+      //     price: 1.5,
+      //     quantity: 1,
+      //     sku: "B-15211",
+      //     imgSrc:
+      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+      //   },
+      //   {
+      //     name: "Ballon 2",
+      //     price: 62,
+      //     quantity: 4,
+      //     sku: "B-1521A",
+      //     imgSrc:
+      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+      //   },
+      //   {
+      //     name: "Ballon 4",
+      //     price: 23,
+      //     quantity: 7,
+      //     sku: "B-15213",
+      //     imgSrc:
+      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+      //   },
+      // ],
+    },
+    order: {
+      isRequired: true,
+      // isConstant: true,
+      // defaultValue: {
+      //   id: "123456789",
+      //   totalPrice: 123.45,
+      //   currency: "EUR",
+      //   note: "Bitte an der Haustür abstellen",
+      // },
+    },
+    customer: {
+      isRequired: true,
+      // isConstant: true,
+      // defaultValue: {
+      //   emailAddress: "schett@snek.at",
+      //   firstName: "Nico",
+      //   lastName: "Schett",
+      //   phone: "+43 000 111 222 333"
+      // },
+    },
+    wholesale: {
+      isRequired: true,
+      // isConstant: true,
+      // defaultValue: wholesale,
+    }
+  },
+  verifyReplyTo: wholesale,
+  linkedEmailTemplates: [
+    {
+      content: importLocalTemplate(
+        "ballons-ballons-order-confirmation-email.html"
+      ),
+      variables: {
+        cart: {
+          isRequired: true,
+          // isConstant: true,
+          // defaultValue: [
+          //   {
+          //     name: "Ballon",
+          //     price: 1.5,
+          //     quantity: 1,
+          //     sku: "B-15211",
+          //     imgSrc:
+          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+          //   },
+          //   {
+          //     name: "Ballon 2",
+          //     price: 62,
+          //     quantity: 4,
+          //     sku: "B-1521A",
+          //     imgSrc:
+          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+          //   },
+          //   {
+          //     name: "Ballon 4",
+          //     price: 23,
+          //     quantity: 7,
+          //     sku: "B-15213",
+          //     imgSrc:
+          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
+          //   },
+          // ],
+        },
+        order: {
+          isRequired: true,
+          // isConstant: true,
+          // defaultValue: {
+          //   id: "123456789",
+          //   totalPrice: 123.45,
+          //   currency: "EUR",
+          //   note: "Bitte an der Haustür abstellen",
+          // },
+        },
+        customer: {
+          isRequired: true,
+          // isConstant: true,
+          // defaultValue: {
+          //   emailAddress: "schett@snek.at",
+          //   firstName: "Nico",
+          //   lastName: "Schett",
+          //   phone: "+43 000 111 222 333"
+          // },
+        },
+        wholesale: {
+          isRequired: true,
+          // isConstant: true,
+          // defaultValue: wholesale,
+        }
+      },
+      envelope: {
+        subject: "Ihre Anfrage auf Ballons & Ballons",
+      },
+      $transformer: ({ envelope }) => {
+        console.log("Parent envelope", envelope);
+
+        return {
+          envelope: {
+            to: envelope.replyTo ? [envelope.replyTo] : [],
+            replyTo: undefined,
+          },
+        };
+      },
+    },
+  ],
+})
+
 EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
   content: importLocalTemplate("ballons-ballons-contact-email.html"),
   variables: {
-    name: { isRequired: true },
+    firstName: { isRequired: true },
+    lastName: { isRequired: true },
     email: { isRequired: true },
     message: { isRequired: true },
     invokedOnUrl: { isRequired: true },
@@ -71,145 +228,9 @@ EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
   ],
 });
 
-EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", {
-  content: importLocalTemplate("ballons-ballons-order-email.html"),
-  envelope: {
-    from: {
-      value: "mailpress@snek.at",
-      type: EmailAddressType.EMAIL_ADDRESS,
-    },
-    to: [
-      {
-        value: "office@ballons-ballons.at",
-        type: EmailAddressType.EMAIL_ADDRESS,
-      },
-    ],
-    subject: "Neue Bestellung auf Ballons & Ballons",
-  },
-  authorizationUser: {
-    id: "74e7de97-48e5-40e0-bca6-e05daa6e466d",
-    authorization,
-  },
-  variables: {
-    cart: {
-      isRequired: true,
-      // isConstant: true,
-      // defaultValue: [
-      //   {
-      //     name: "Ballon",
-      //     price: 1.5,
-      //     quantity: 1,
-      //     sku: "B-15211",
-      //     imgSrc:
-      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
-      //   },
-      //   {
-      //     name: "Ballon 2",
-      //     price: 62,
-      //     quantity: 4,
-      //     sku: "B-1521A",
-      //     imgSrc:
-      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
-      //   },
-      //   {
-      //     name: "Ballon 4",
-      //     price: 23,
-      //     quantity: 7,
-      //     sku: "B-15213",
-      //     imgSrc:
-      //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
-      //   },
-      // ],
-    },
-    order: {
-      isRequired: true,
-      // isConstant: true,
-      // defaultValue: {
-      //   id: "123456789",
-      //   totalPrice: 123.45,
-      //   currency: "EUR",
-      // },
-    },
-    customer: {
-      isRequired: true,
-      // isConstant: true,
-      // defaultValue: {
-      //   emailAddress: "schett@snek.at",
-      //   fullName: "Nico Schett",
-      // },
-    },
-  },
-  verifyReplyTo: true,
-  linkedEmailTemplates: [
-    {
-      content: importLocalTemplate(
-        "ballons-ballons-order-confirmation-email.html"
-      ),
-      variables: {
-        cart: {
-          isRequired: true,
-          // isConstant: true,
-          // defaultValue: [
-          //   {
-          //     name: "Ballon",
-          //     price: 1.5,
-          //     quantity: 1,
-          //     sku: "B-15211",
-          //     imgSrc:
-          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
-          //   },
-          //   {
-          //     name: "Ballon 2",
-          //     price: 62,
-          //     quantity: 4,
-          //     sku: "B-1521A",
-          //     imgSrc:
-          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
-          //   },
-          //   {
-          //     name: "Ballon 4",
-          //     price: 23,
-          //     quantity: 7,
-          //     sku: "B-15213",
-          //     imgSrc:
-          //       "https://w7.pngwing.com/pngs/904/855/png-transparent-balloon-red-ballons-blue-heart-color-thumbnail.png",
-          //   },
-          // ],
-        },
-        order: {
-          isRequired: true,
-          // isConstant: true,
-          // defaultValue: {
-          //   id: "123456789",
-          //   totalPrice: 123.45,
-          //   currency: "EUR",
-          // },
-        },
-        customer: {
-          isRequired: true,
-          // isConstant: true,
-          // defaultValue: {
-          //   emailAddress: "schett@snek.at",
-          //   fullName: "Nico Schett",
-          // },
-        },
-      },
-      envelope: {
-        subject: "Ihre Bestellung auf Ballons & Ballons",
-      },
-      $transformer: ({ envelope }) => {
-        console.log("Parent envelope", envelope);
+EmailTemplateFactory.createTemplate("BALLOONS_ORDER_EMAIL", ballonsBallonsOrderEmail(false));
 
-        return {
-          envelope: {
-            to: envelope.replyTo ? [envelope.replyTo] : [],
-            replyTo: undefined,
-          },
-        };
-      },
-    },
-  ],
-});
+EmailTemplateFactory.createTemplate("BALLOONS_ORDER_WHOLESALE_EMAIL", ballonsBallonsOrderEmail(true));
 
 EmailTemplateFactory.createTemplate("AGT_CONTACT_MAIL", {
   content: importLocalTemplate("agt-contact-email.html"),
