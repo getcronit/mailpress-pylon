@@ -9,7 +9,7 @@
   <meta name="x-apple-disable-message-reformatting" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta content="telephone=no" name="format-detection" />
-  <title>Neue Anfrage</title>
+  <title>Neue Anfrage{% if wholesale %} im Großhandel{% endif %}</title>
   <!--[if (mso 16)
       ]><style type="text/css">
         a {
@@ -600,7 +600,7 @@
                                         font-weight: bold;
                                         color: #333333;
                                       ">
-                                    Neue Ihre {% if wholesale %}Großhandel{% endif %} Anfrage
+                                    Neue Anfrage{% if wholesale %} im Großhandel{% endif %}
                                   </h1>
                                 </td>
                               </tr>
