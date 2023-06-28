@@ -221,7 +221,7 @@ export class EmailEngine {
         ...emailTemplate.envelope,
       };
 
-      if (emailTemplate.verifyReplyTo !== undefined) {
+      if (emailTemplate.verifyReplyTo) {
         if (envelope.replyTo && this.authorizationUser) {
           await verifyReplyToEmailAddress(
             envelope.replyTo,
