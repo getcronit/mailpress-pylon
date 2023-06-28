@@ -840,6 +840,10 @@
                                             {{(product.price *
                                             product.quantity)|format_currency('EUR')}}
                                           </p>
+
+                                          <span style="font-size: 9pt">
+                                            {% if wholesale %}inkl.{% else %}exkl.{% endif %} USt.
+                                          </span>
                                         </td>
                                       </tr>
                                     </table>
