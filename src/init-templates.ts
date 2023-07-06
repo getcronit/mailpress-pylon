@@ -181,6 +181,7 @@ EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
     firstName: { isRequired: true },
     lastName: { isRequired: true },
     email: { isRequired: true },
+    phone:  { isRequired: false },
     message: { isRequired: true },
     invokedOnUrl: { isRequired: true },
   },
@@ -207,8 +208,10 @@ EmailTemplateFactory.createTemplate("BALLOONS_CONTACT_EMAIL", {
         "ballons-ballons-contact-confirmation-email.html"
       ),
       variables: {
-        name: { isRequired: true },
+        firstName: { isRequired: true },
+        lastName: { isRequired: true },
         email: { isRequired: true },
+        phone:  { isRequired: false },
         message: { isRequired: true },
         invokedOnUrl: { isRequired: true },
       },
