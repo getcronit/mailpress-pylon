@@ -927,7 +927,7 @@
                                       <tr>
                                         <td align="right" style="padding: 0; margin: 0">
                                           <span style="font-size: 9pt">
-                                            {% if wholesale %}inkl.{% else %}exkl.{% endif %} USt.
+                                            {% if not wholesale %}inkl.{% else %}exkl.{% endif %} USt.
                                           </span>
                                         </td>
                                       </tr>
