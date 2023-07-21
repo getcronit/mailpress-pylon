@@ -72,8 +72,12 @@ class MailerMailerService implements MailerService {
 
     const config = resolvedFrom.config;
 
-    if (!config) {
-      throw new Error("No email config found");
+    if (!config?.id) {
+      throw new GraphQLError("No config found for from address");
+    } else if (!config.isEnabled) {
+      throw new GraphQLError(
+        "This email address is not enabled for sending emails"
+      );
     }
 
     // // Get length of bodt in bytes
