@@ -1,16 +1,20 @@
 FROM --platform=linux/amd64 node:18.8.0-alpine
 
 LABEL description="This container serves as an entry point for our future Snek Function projects."
-LABEL org.opencontainers.image.source="https://github.com/snek-functions/mailpress"
+LABEL org.opencontainers.image.source="https://github.com/snek-functions/mailpresss"
 LABEL maintainer="opensource@snek.at"
 
 WORKDIR /app
 
 COPY .sf/ ./.sf
-COPY templates/ ./templates
 COPY package.json .
+COPY templates/ ./templates
+# Copy prisma files
+COPY prisma/schema.prisma ./prisma/schema.prisma
 
 RUN yarn install --production
+
+RUN npx prisma generate
 
 CMD ["sh", "-c", "yarn sf-server"]
 
