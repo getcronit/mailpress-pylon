@@ -15,7 +15,7 @@ import {
   EnvelopeNotFoundError,
   FromEmailAddressNotAuthorizedError,
   TemplateVariableIsConstantError,
-} from "./errors";
+} from "../../errors/email-factory.errors";
 
 export interface TemplateMetadata {
   id: string;
@@ -51,21 +51,15 @@ interface TemplateVariables {
 }
 
 export interface EmailEnvelope {
-  from?: EmailAddress;
-  to?: EmailAddress[];
-  subject?: string;
-  replyTo?: EmailAddress;
+  from?: EmailAddress | null;
+  to?: EmailAddress[] | null;
+  subject?: string | null;
+  replyTo?: EmailAddress | null;
 }
 
 export interface EmailAddress {
   value: string;
-  type: EmailAddressType;
-}
-
-export enum EmailAddressType {
-  EMAIL_ADDRESS = "EMAIL_ADDRESS",
-  EMAIL_ID = "EMAIL_ID",
-  USER_ID = "USER_ID",
+  type: "EMAIL_ADDRESS" | "EMAIL_ID" | "USER_ID";
 }
 
 interface VariableDefinition {
@@ -95,14 +89,14 @@ export class EmailTemplateFactory {
   }
 
   private static getContext(
-    template: EmailTemplate,
+    variables: TemplateVariables,
     values: TemplateVariableValues
   ): any {
     const context: any = {};
 
-    for (const variableName in template.variables) {
-      if (template.variables.hasOwnProperty(variableName)) {
-        const variable = template.variables[variableName];
+    for (const variableName in variables) {
+      if (variables.hasOwnProperty(variableName)) {
+        const variable = variables[variableName];
 
         // Check if variable is a constant and has a value provided
         if (variable.isConstant && variableName in values) {
@@ -131,12 +125,15 @@ export class EmailTemplateFactory {
   }
 
   private static renderTemplate(
-    template: EmailTemplate,
+    template: {
+      content: string;
+      variables: TemplateVariables;
+    },
     values: TemplateVariableValues = {}
   ): string {
     const twigTemplate = Twig.twig({ data: template.content });
 
-    const context = EmailTemplateFactory.getContext(template, values);
+    const context = EmailTemplateFactory.getContext(template.variables, values);
 
     const result = twigTemplate.render(context);
 
@@ -147,11 +144,14 @@ export class EmailTemplateFactory {
   emailTemplate: EmailTemplate;
 
   static render(
-    emailTemplate: EmailTemplate,
+    template: {
+      content: string;
+      variables: TemplateVariables;
+    },
     values: TemplateVariableValues = {}
   ): string {
     try {
-      return EmailTemplateFactory.renderTemplate(emailTemplate, values);
+      return EmailTemplateFactory.renderTemplate(template, values);
     } catch (error) {
       if (
         error instanceof TemplateNotFoundError ||

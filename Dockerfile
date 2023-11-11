@@ -8,7 +8,6 @@ WORKDIR /app
 
 COPY .sf/ ./.sf
 COPY package.json .
-COPY templates/ ./templates
 # Copy prisma files
 COPY prisma/schema.prisma ./prisma/schema.prisma
 

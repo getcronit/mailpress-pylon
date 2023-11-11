@@ -27,15 +27,18 @@
   },
   "dependencies": {
     "@devoxa/prisma-relay-cursor-connection": "^3.1.0",
+    "@netsnek/prisma-repository": "^0.0.2",
     "@prisma/client": "^5.2.0",
     "@snek-at/function": "*",
     "@snek-at/function-cli": "*",
     "@snek-at/function-server": "*",
     "@snek-functions/jwt": "*",
+    "deep-object-diff": "^1.1.9",
     "dotenv": "^16.0.3",
     "html-minifier": "^4.0.0",
-    "twig": "^1.16.0",
-    "prisma": "^5.2.0"
+    "isolated-vm": "^4.6.0",
+    "prisma": "^5.2.0",
+    "twig": "^1.16.0"
   },
   "devDependencies": {
     "@types/html-minifier": "^4.0.2",

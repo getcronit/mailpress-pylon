@@ -1,7 +1,6 @@
 import { GraphQLError } from "graphql";
 
 import {
-  EmailAddressType,
   EmailEnvelope,
   EmailTemplate,
   EmailTemplateFactory,
@@ -13,14 +12,18 @@ import {
   verifyReplyToEmailAddress,
 } from "./resolve-email-address";
 
-import { sq } from "./clients/mailer/src/index.js";
+import { sq } from "../../clients/mailer/src/index.js";
+
+import repository from "../../repository";
+import { executeInSandbox } from "./transformer-sandbox.js";
+import { AuthorizationUser } from "../../repository/.generated.js";
 
 interface MailServiceSendMailOptions {
   envelope: EmailEnvelope;
   bodyHTML?: string;
   body: string;
   authorizationUser: {
-    id: string;
+    userId: string;
     authorization: string;
   };
 }
@@ -53,8 +56,8 @@ class MailerMailerService implements MailerService {
     } else {
       resolvedFrom = await resolveFromEmailAddress(
         {
-          type: EmailAddressType.USER_ID,
-          value: authorizationUser.id,
+          type: "USER_ID",
+          value: authorizationUser.userId,
         },
         authorizationUser
       );
@@ -159,23 +162,20 @@ class MailerMailerService implements MailerService {
 }
 
 export class EmailEngine {
-  template?: EmailTemplate;
-  parentTemplate?: EmailTemplate;
+  template?: InstanceType<typeof repository.EmailTemplate>;
   authorizationUser?: {
-    id: string;
+    userId: string;
     authorization: string;
   };
 
   constructor(options: {
-    template?: EmailTemplate;
-    parentTemplate?: EmailTemplate;
+    template?: InstanceType<typeof repository.EmailTemplate>;
     authorizationUser?: {
-      id: string;
+      userId: string;
       authorization: string;
     };
   }) {
     this.template = options.template;
-    this.parentTemplate = options.parentTemplate;
     this.authorizationUser = options.authorizationUser;
   }
 
@@ -191,41 +191,88 @@ export class EmailEngine {
     values?: Record<string, string>;
   }) {
     if (this.template) {
-      let emailTemplate = this.template;
+      const templateEnvelope = await this.template.envelope();
 
-      if (emailTemplate.$transformer) {
-        if (!this.parentTemplate) {
-          throw new GraphQLError(
-            "No parent template provided. This is required for linked email templates"
-          );
+      if (templateEnvelope) {
+        if (templateEnvelope.subject) {
+          envelope.subject = templateEnvelope.subject;
         }
-
-        const transformedTemplate = emailTemplate.$transformer({
-          envelope,
-        });
-
-        if (transformedTemplate) {
-          // Deep-Merge the transformed template with the email template
-          emailTemplate = {
-            ...emailTemplate,
-            ...transformedTemplate,
-            envelope: {
-              ...emailTemplate.envelope,
-              ...transformedTemplate.envelope,
-            },
-          };
+        const from = await templateEnvelope.from();
+        if (from) {
+          envelope.from = from;
+        }
+        const to = await templateEnvelope.to();
+        if (to.length > 0) {
+          envelope.to = to;
+        }
+        const replyTo = await templateEnvelope.replyTo();
+        if (replyTo) {
+          envelope.replyTo = replyTo;
         }
       }
 
-      bodyHTML = EmailTemplateFactory.render(this.template, values);
+      if (this.template.transformer) {
+        const parentTemplate = await this.template.parent();
+
+        // transformer is a stringified function that is evaluated
+        // and returns a transformed email template
+
+        const transformedTemplate = await executeInSandbox({
+          input: {
+            envelope,
+            values: values || {},
+            body,
+            bodyHTML,
+          },
+          template: this.template,
+          parentTemplate,
+        });
+
+        if (transformedTemplate) {
+          if (transformedTemplate.verifyReplyTo !== undefined) {
+            this.template.verifyReplyTo = transformedTemplate.verifyReplyTo;
+          }
+
+          if (transformedTemplate.envelope) {
+            envelope = {
+              ...envelope,
+              ...transformedTemplate.envelope,
+            };
+          }
+        }
+      }
+
+      const variables = await this.template.variables();
+
+      console.log(
+        "variables",
+        Object.values(variables).reduce(
+          (acc, variable) => ({
+            ...acc,
+            [variable.name]: variable,
+          }),
+          {}
+        ),
+        values
+      );
+
+      bodyHTML = EmailTemplateFactory.render(
+        {
+          content: this.template.content,
+          variables: Object.values(variables).reduce(
+            (acc, variable) => ({
+              ...acc,
+              [variable.name]: variable,
+            }),
+            {}
+          ),
+        },
+        values
+      );
+
       body = "";
 
-      envelope = {
-        ...envelope,
-        ...emailTemplate.envelope,
-      };
-
-      if (emailTemplate.verifyReplyTo) {
+      if (this.template.verifyReplyTo) {
         if (envelope.replyTo && this.authorizationUser) {
           await verifyReplyToEmailAddress(
             envelope.replyTo,
@@ -239,10 +286,14 @@ export class EmailEngine {
         }
       }
 
-      if (emailTemplate.envelope?.from) {
-        if (emailTemplate.authorizationUser) {
-          this.authorizationUser = emailTemplate.authorizationUser;
-        }
+      // const emailTemplateEnvelope = await emailTemplate.envelope();
+
+      // const from = await emailTemplateEnvelope?.from();
+
+      const authorizationUser = await this.template.authorizationUser();
+
+      if (authorizationUser) {
+        this.authorizationUser = authorizationUser;
       }
     }
 
@@ -259,13 +310,12 @@ export class EmailEngine {
       authorizationUser: this.authorizationUser,
     });
 
-    if (this.template?.linkedEmailTemplates) {
-      const linkedEmailTemplates = this.template.linkedEmailTemplates;
+    const linkedEmailTemplates = await this.template?.linked();
 
+    if (linkedEmailTemplates) {
       for (const linkedEmailTemplate of linkedEmailTemplates) {
         let linkedEmailEngine = new EmailEngine({
           template: linkedEmailTemplate,
-          parentTemplate: this.template,
           authorizationUser: this.authorizationUser,
         });
 

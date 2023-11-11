@@ -1,9 +1,13 @@
 import { GraphQLError } from "graphql";
 import { asEnumKey } from "snek-query";
 
-import { sq } from "./clients/iam/src/index.js";
-import { Email, LookupTypeInput } from "./clients/iam/src/schema.generated.js";
-import { EmailAddress, EmailAddressType } from "./email-template-factory.js";
+import { sq } from "../../clients/iam/src/index.js";
+import {
+  Email,
+  LookupTypeInput,
+} from "../../clients/iam/src/schema.generated.js";
+import { EmailAddress } from "./email-template-factory.js";
+import { AuthorizationUser } from "../../repository/.generated.js";
 
 export interface ResolvedFromEmail {
   firstName: string | null | undefined;
@@ -15,7 +19,7 @@ export interface ResolvedFromEmail {
 export async function resolveFromEmailAddress(
   email: EmailAddress,
   authorizationUser: {
-    id: string;
+    userId: string;
     authorization: string;
   }
 ): Promise<ResolvedFromEmail> {
@@ -24,23 +28,23 @@ export async function resolveFromEmailAddress(
   const [resolvedEmail, errors] = await sq.query(
     (q) => {
       const user = q.user({
-        id: authorizationUser.id,
+        id: authorizationUser.userId,
       });
 
       let email: Email | undefined;
 
       switch (type) {
-        case EmailAddressType.EMAIL_ADDRESS:
+        case "EMAIL_ADDRESS":
           email = user.email({ filter: { emailAddress: value } });
           break;
-        case EmailAddressType.EMAIL_ID:
+        case "EMAIL_ID":
           email = user.email({ filter: { emailId: value } });
           break;
-        case EmailAddressType.USER_ID:
+        case "USER_ID":
           email = user.email();
           break;
         default:
-          throw new GraphQLError("Invalid email address type");
+          throw new GraphQLError(`Invalid email type: ${type}`);
       }
 
       return {
@@ -76,22 +80,22 @@ export async function resolveFromEmailAddress(
 export async function lookupEmailAddress(
   email: EmailAddress,
   authorizationUser: {
-    id: string;
+    userId: string;
     authorization: string;
   }
 ) {
   const { value, type } = email;
 
-  if (type === EmailAddressType.EMAIL_ADDRESS) return email.value;
+  if (type === "EMAIL_ADDRESS") return email.value;
 
   const [lookupedEmail, errors] = await sq.query(
     (q) => {
-      if (type === EmailAddressType.USER_ID) {
+      if (type === "USER_ID") {
         return q.emailLookup({
           id: value,
           type: asEnumKey(LookupTypeInput, "USER_ID"),
         })?.emailAddress;
-      } else if (type === EmailAddressType.EMAIL_ID) {
+      } else if (type === "EMAIL_ID") {
         return q.emailLookup({
           id: value,
           type: asEnumKey(LookupTypeInput, "EMAIL_ID"),
@@ -118,21 +122,21 @@ export async function lookupEmailAddress(
 export async function verifyReplyToEmailAddress(
   replyTo: EmailAddress,
   authorizationUser: {
-    id: string;
+    userId: string;
     authorization: string;
   }
 ) {
   const [_, errors] = await sq.query(
     (q) => {
       const user = q.user({
-        id: authorizationUser.id,
+        id: authorizationUser.userId,
       });
 
-      if (replyTo.type === EmailAddressType.USER_ID) {
+      if (replyTo.type === "USER_ID") {
         return user.email().emailAddress;
-      } else if (replyTo.type === EmailAddressType.EMAIL_ID) {
+      } else if (replyTo.type === "EMAIL_ID") {
         return user.email({ filter: { emailId: replyTo.value } }).emailAddress;
-      } else if (replyTo.type === EmailAddressType.EMAIL_ADDRESS) {
+      } else if (replyTo.type === "EMAIL_ADDRESS") {
         return user.email({ filter: { emailAddress: replyTo.value } })
           .emailAddress;
       }
