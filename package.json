@@ -1,58 +1,48 @@
 {
   "name": "@snek-functions/mailpress",
-  "baseURL": "https://services.snek.at/mailpress",
   "version": "0.0.1",
   "type": "module",
-  "description": "Generated with `sf new`",
+  "description": "Generated with `pylon new`",
   "author": "snek-at",
-  "exports": {
-    "./client": "./src/client/index.ts",
-    "./package.json": "./package.json"
-  },
-  "typesVersions": {
-    "*": {
-      "./client": [
-        "./src/client/index.ts"
-      ]
-    }
-  },
-  "files": [
-    "src/client",
-    "package.json"
-  ],
   "config": {
     "commitizen": {
       "path": "git-cz"
     }
   },
+  "pylon": {
+    "external": [
+      "@prisma/client",
+      "graphql",
+      "@cronitio/pylon",
+      "uglify-js"
+    ]
+  },
   "dependencies": {
+    "@cronitio/pylon": "*",
+    "@cronitio/pylon-cli": "*",
+    "@cronitio/pylon-server": "*",
     "@devoxa/prisma-relay-cursor-connection": "^3.1.0",
-    "@netsnek/prisma-repository": "^0.0.2",
+    "@netsnek/prisma-repository": "^0.0.39",
     "@prisma/client": "^5.2.0",
-    "@snek-at/function": "*",
-    "@snek-at/function-cli": "*",
-    "@snek-at/function-server": "*",
-    "@snek-functions/jwt": "*",
     "deep-object-diff": "^1.1.9",
     "dotenv": "^16.0.3",
     "html-minifier": "^4.0.0",
-    "isolated-vm": "^4.6.0",
+    "html-to-text": "^9.0.5",
     "prisma": "^5.2.0",
     "twig": "^1.16.0"
   },
   "devDependencies": {
     "@types/html-minifier": "^4.0.2",
+    "@types/html-to-text": "^9.0.4",
     "@types/twig": "^1.12.9",
     "commitizen": "^4.2.5",
     "git-cz": "^4.9.0",
-    "snek-query": "^0.0.78"
+    "snek-query": "^0.0.110"
   },
   "scripts": {
-    "develop": "yarn sf develop",
-    "build": "yarn sf build",
-    "migrate": "prisma migrate dev",
-    "generate-clients": "yarn snek-query generate https://services.snek.at/iam/graphql --output ./src/clients/iam && yarn snek-query generate https://services.snek.at/mailer/graphql --output ./src/clients/mailer",
-    "generate-clients-dev": "yarn snek-query generate http://localhost:4050/graphql --output ./src/clients/iam && yarn snek-query generate http://localhost:4020/graphql --output ./src/clients/mailer"
+    "develop": "pylon develop",
+    "build": "pylon build",
+    "migrate": "prisma migrate dev"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"
