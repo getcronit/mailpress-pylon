@@ -27,6 +27,8 @@ model OAuthApp {
     /// @sf-hide
     clientSecret String
 
+    redirectUrl String
+
     type OAuthProvider
 
     organization   Organization @relation(fields: [organizationId], references: [id])

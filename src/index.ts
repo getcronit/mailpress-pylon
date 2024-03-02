@@ -32,7 +32,7 @@ export const service = defineService(
       organizationSetSenderEmail: Organization.setSenderEmail,
 
       oauthAppCreate: OAuthApp.create,
-      oauthAppUpdate: OAuthApp.delete,
+      oauthAppDelete: OAuthApp.delete,
 
       sendMail: MailFactory.sendMail,
       sendTemplateMail: MailFactory.sendTemplateMail,
