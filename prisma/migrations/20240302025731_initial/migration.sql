@@ -10,6 +10,17 @@ CREATE TABLE "Organization" (
 );
 
 -- CreateTable
+CREATE TABLE "OAuthApp" (
+    "id" UUID NOT NULL,
+    "clientId" TEXT NOT NULL,
+    "clientSecret" TEXT NOT NULL,
+    "type" "OAuthProvider" NOT NULL,
+    "organizationId" TEXT NOT NULL,
+
+    CONSTRAINT "OAuthApp_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "organizationId" TEXT NOT NULL,
@@ -22,9 +33,7 @@ CREATE TABLE "Email" (
     "id" UUID NOT NULL,
     "isEnabled" BOOLEAN NOT NULL DEFAULT true,
     "email" TEXT NOT NULL,
-    "smtpConfigId" TEXT,
-    "oauthConfigId" TEXT,
-    "userId" TEXT NOT NULL,
+    "userId" TEXT,
 
     CONSTRAINT "Email_pkey" PRIMARY KEY ("id")
 );
@@ -47,6 +56,8 @@ CREATE TABLE "OAuthConfig" (
     "id" UUID NOT NULL,
     "provider" "OAuthProvider" NOT NULL,
     "accessToken" TEXT NOT NULL,
+    "accessTokenExpiresAt" TIMESTAMP(3) NOT NULL,
+    "refreshToken" TEXT NOT NULL,
     "emailId" UUID NOT NULL,
 
     CONSTRAINT "OAuthConfig_pkey" PRIMARY KEY ("id")
@@ -96,6 +107,9 @@ CREATE TABLE "EmailEnvelope" (
 CREATE UNIQUE INDEX "Organization_emailId_key" ON "Organization"("emailId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "OAuthApp_organizationId_type_key" ON "OAuthApp"("organizationId", "type");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Email_userId_key" ON "Email"("userId");
 
 -- CreateIndex
@@ -109,6 +123,9 @@ CREATE UNIQUE INDEX "EmailEnvelope_emailTemplateId_key" ON "EmailEnvelope"("emai
 
 -- AddForeignKey
 ALTER TABLE "Organization" ADD CONSTRAINT "Organization_emailId_fkey" FOREIGN KEY ("emailId") REFERENCES "Email"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OAuthApp" ADD CONSTRAINT "OAuthApp_organizationId_fkey" FOREIGN KEY ("organizationId") REFERENCES "Organization"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "User" ADD CONSTRAINT "User_organizationId_fkey" FOREIGN KEY ("organizationId") REFERENCES "Organization"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
