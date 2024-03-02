@@ -63,6 +63,8 @@ export class MailFactory {
           );
         }
 
+        const token = await oauthConfig.$freshAccessToken();
+
         if (oauthConfig.provider === "AZURE") {
           const [data, errors] = await sq.mutate((m) =>
             m.sendMailAzure({
@@ -75,7 +77,7 @@ export class MailFactory {
                 text: body,
               },
               oauthOptions: {
-                accessToken: oauthConfig.accessToken,
+                accessToken: token,
               },
             })
           );
@@ -97,7 +99,7 @@ export class MailFactory {
                 text: body,
               },
               oauthOptions: {
-                accessToken: oauthConfig.accessToken,
+                accessToken: token,
               },
             })
           );
@@ -112,6 +114,7 @@ export class MailFactory {
         throw new Error("No email configuration found");
       }
     } catch (e) {
+      console.error(e);
       throw new ServiceError("Error sending mail", {
         code: "MAIL_SEND_ERROR",
         statusCode: 500,
@@ -236,6 +239,8 @@ export class MailFactory {
     const ctx = await service.getContext(this);
 
     const senderEmail = await ctx.user!.email();
+
+    console.log(senderEmail, envelope, body, bodyHTML);
 
     if (!senderEmail) {
       throw new Error("No sender email found");

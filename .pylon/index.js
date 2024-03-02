@@ -1,6 +1,7 @@
-import * as __WEBPACK_EXTERNAL_MODULE_graphql__ from "graphql";
 import * as __WEBPACK_EXTERNAL_MODULE__prisma_client_d4dd1072__ from "@prisma/client";
+import * as __WEBPACK_EXTERNAL_MODULE_graphql__ from "graphql";
 import * as __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__ from "@cronitio/pylon";
+import * as __WEBPACK_EXTERNAL_MODULE_openid_client_38e2aad5__ from "openid-client";
 import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "module";
 /******/ var __webpack_modules__ = ({
 
@@ -28969,27 +28970,2973 @@ module.exports = function (Twig) {
 
 /***/ }),
 
-/***/ 6402:
+/***/ 7244:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 
 // EXPORTS
 __nccwpck_require__.d(__webpack_exports__, {
-  "pU": () => (/* binding */ configureApp),
-  "ZP": () => (/* binding */ src),
-  "Xn": () => (/* binding */ service)
+  "sq": () => (/* binding */ sq)
 });
 
-// EXTERNAL MODULE: external "@cronitio/pylon"
-var pylon_ = __nccwpck_require__(1121);
-// EXTERNAL MODULE: ./node_modules/dotenv/lib/main.js
-var main = __nccwpck_require__(2437);
-// EXTERNAL MODULE: ./src/repository/models/User.ts
-var User = __nccwpck_require__(5538);
-// EXTERNAL MODULE: ./src/repository/models/EmailTemplate.ts
-var EmailTemplate = __nccwpck_require__(3436);
-// EXTERNAL MODULE: ./src/repository/models/Email.ts
-var Email = __nccwpck_require__(7538);
+;// CONCATENATED MODULE: ./node_modules/snek-query/dist/index.js
+var n={__proto__:null};function a(){return a=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},a.apply(this,arguments)}var s=0;function o(e){return"__private_"+s+++"_"+e}function i(e,t){if(!Object.prototype.hasOwnProperty.call(e,t))throw new TypeError("attempted to use private field on non-instance");return e}function c(e){const t={},r=new Proxy(e,{get(r,n,a){const s=Reflect.get(r,n,a);return!r.$isTracked||"string"==typeof n&&n.startsWith("$")?s:("string"!=typeof n||n in t||!e.hasOwnProperty(n)&&"function"!=typeof s||(t[n]={name:n,args:[]}),"function"==typeof s?function(){const e=arguments[0]||[],r=Object.entries(e).map(([e,t])=>({name:e,value:t})),a=s.apply(this,arguments);if("string"==typeof n){t[n].isFnAndCalled=!0;for(const e of r)t[n].args=t[n].args.filter(t=>t.name!==e.name),t[n].args.push(e)}return a}:s)}});return Object.assign(r,{$trackedProps:t,$isTracked:!0})}function l(e){let t=null,r=c({});return new Proxy({},{get:(n,a,s)=>(t||(t=new e,r=c(t),t=r),Reflect.get(t,a,s)),getOwnPropertyDescriptor:(e,r)=>Object.getOwnPropertyDescriptor(t,r),ownKeys:()=>Reflect.ownKeys(t)})}function u(e){let t;return new Proxy([],{get(r,n,a){if(t||(t=c(new e)),!t||!t.$isTracked||"symbol"==typeof n||"length"===n)return Reflect.get(r,n,a);const s=Number(n);return isNaN(s)?Array.prototype.hasOwnProperty(n)?(...e)=>{const r=n;switch(r){case"concat":case"copyWithin":case"fill":case"pop":case"push":case"reverse":case"shift":case"sort":case"splice":case"unshift":case"filter":return Array.prototype[r].call([t],...e),[t];case"entries":case"flatMap":case"forEach":case"keys":case"map":case"slice":case"values":case"every":case"find":case"findIndex":case"includes":case"indexOf":case"lastIndexOf":case"some":case"flat":case"reduce":case"reduceRight":return Array.prototype[r].call([t],...e);case"toLocaleString":case"toString":return Array.prototype[r].call([t]);default:throw new Error(`Unsupported array prototype method: ${r.toString()}`)}}:Reflect.get(r,n,a):t}})}const f=e=>{const t=l(e),r=()=>t;return r.isProxied=!0,r},d=e=>{const t=u(e),r=()=>t;return r.isProxied=!0,r},y=async e=>{let t={headers:{}};for(const r of e){const e=await r({context:t});e&&(t=e)}return t},h=e=>!(!e||!("function"==typeof e&&e.isProxied||Array.isArray(e)&&e.length&&e[0].$isTracked||e.$isTracked));class p{constructor(e){this.type=void 0,this.name=void 0,this.fields=void 0,this.type=e.type,this.name=e.name,this.fields=[]}addField(e,t=""){if(e.args=e.args.filter(e=>{const t=typeof e.value;return("string"===t||"number"===t||"boolean"===t||"object"===t||"function"===t&&e.value.preventStringSerialization)&&null!=e.value}),t){const r=t.split(".");let n=this.fields;for(const e of r){const t=n.find(t=>t.name===e);t&&(t.fields=t.fields||[],n=t.fields)}n.push(e)}else this.fields.push(e)}toString(){const e=e=>{const r=e.args.map(e=>{const t="function"==typeof e.value&&e.value.preventStringSerialization?g(e.value(),!1):g(e.value);return`${e.name}: ${t}`}).join(", "),n=e.fields?` {__typename ${t(e.fields)}}`:"";return r?`${e.name}(${r})${n}`:`${e.name}${n}`},t=t=>t.map(e).join(" ");return`${this.type} ${this.name} {__typename ${t(this.fields)}}`}}function w(e){const t=()=>e;return t.preventStringSerialization=!0,t}const m=(e,t)=>{if(null===e)return t;if(void 0===e[t])throw new Error(`Enum key does not exist in enum: ${t.toString()}`);return w(t)};function g(e,t=!0){if(null==e)return"null";if("function"==typeof e&&e.preventStringSerialization)return g(e(),!1);if("object"!=typeof e)return t?JSON.stringify(e):String(e);if(Array.isArray(e)){const r=e.map(e=>g(e,t)).join(", ");return t?`[${r}]`:r}if("object"==typeof e)return`{${Object.entries(e).map(([e,r])=>`${e}: ${g(r,t)}`).join(", ")}}`;throw new Error("Cannot stringify data of type "+typeof e)}class v{constructor(e,t={}){this.url=void 0,this.headers=void 0,this.bypassCache=void 0,this.url=e,this.headers=t;const r=process.env.SQ_OFFLINE_MODE||process.env.EXPO_PUBLIC_SQ_OFFLINE_MODE||process.env.GATSBY_SQ_OFFLINE_MODE||"true";this.bypassCache="false"===r}isQueryOperation(e){return e.trim().startsWith("query ")}async execute(r){var n=this;const s=(e=>{const t=[];(({node:e,onPath:t})=>{const r=(e,n=[])=>{const a=Object.entries(e.$trackedProps||{});if(0===a.length){const r=Object.entries(e);for(const[e,a]of r){let r=a;Array.isArray(r)&&(r=r[0]),"function"==typeof r||h(r)||e.startsWith("$")||t(e,n.join("."),[])}}else for(const[s,o]of a){let a=e[s];if(("function"!=typeof a||o.isFnAndCalled)&&(o.isFnAndCalled&&(a=e[s]()),Array.isArray(a)&&(a=a[0]),t(s,n.join("."),o.args),h(a))){const e=[...n,s];r(a,e)}}};r(e)})({node:e.node,onPath:(e,r,n)=>{t.push({name:e,path:r,args:n})}});const r=new p({type:e.type,name:e.name});for(const{name:e,path:n,args:a}of t)r.addField({name:e,args:a},n);return r})({type:r.type,name:r.name,node:r.node}).toString(),o=this.isQueryOperation(s);if(this.bypassCache){const e=await fetch(this.url,{method:"POST",headers:a({"Content-Type":"application/json"},this.headers),body:JSON.stringify({query:s}),credentials:"include"});return await e.json()}if(!await L()){const e=await this.getCachedData(s);if(e)return{data:e,errors:[]};throw new Error("snek-query is offline. "+(o?"There is no cached data for this query.":"Mutations cannot be performed while offline."))}{const e=5e3,r=2e3,i=new AbortController,c=setTimeout(async function(){const e=new AbortController,a=setTimeout(()=>{e.abort(),i.abort()},r);await k();try{200!==(await fetch(n.url,{signal:e.signal})).status&&i.abort()}catch(e){}finally{clearTimeout(a)}},e);try{const e=await fetch(this.url,{method:"POST",headers:a({"Content-Type":"application/json"},this.headers),body:JSON.stringify({query:s}),credentials:"include",signal:i.signal}),t=await e.json();return o&&this.cacheData(s,t.data),t}catch(e){const t=await this.getCachedData(s);if(t)return{data:t,errors:[]};throw e}finally{clearTimeout(c)}}}async cacheData(e,t){const n=this.generateCacheKey(e),a=JSON.stringify(t);await C.set(n,a)}async getCachedData(e){const t=this.generateCacheKey(e),n=await C.get(t);return n?JSON.parse(n):null}generateCacheKey(e){return e.trim()}}var O=/*#__PURE__*/o("type"),b=/*#__PURE__*/o("node"),j=/*#__PURE__*/o("context"),P=/*#__PURE__*/o("apiURL"),S=/*#__PURE__*/o("attempt");class ${constructor(e){Object.defineProperty(this,O,{writable:!0,value:void 0}),this.name=void 0,Object.defineProperty(this,b,{writable:!0,value:void 0}),Object.defineProperty(this,j,{writable:!0,value:void 0}),Object.defineProperty(this,P,{writable:!0,value:void 0}),Object.defineProperty(this,S,{writable:!0,value:0}),i(this,O)[O]=e.type,this.name=e.name,i(this,b)[b]=e.node,i(this,j)[j]=e.context,i(this,P)[P]=e.apiURL}getContext(){return i(this,j)[j]}setContext(e){i(this,j)[j]=e}getAttempt(){return i(this,S)[S]}async execute(){i(this,S)[S]++;const e=new v(i(this,P)[P],i(this,j)[j].headers),{data:t,errors:r}=await e.execute({type:i(this,O)[O],name:this.name,node:i(this,b)[b]}),n=t?(e=>{const{node:t,data:r}=e,n=(e,t)=>{const r={};if(!t)return null;for(const[a,s]of Object.entries(t)){const t=e[a];if(void 0===t)continue;const o="function"==typeof t;let i=t;if(o&&(i=t()),Array.isArray(i)&&s){const e=s.map((e,t)=>i[t]?n(i[t],e):e);i=e}else if(null!==i&&"object"==typeof i){const e=n(i,s);i=e}else i=s;r[a]=o?()=>i:i}return r};return n(t,r)})({node:i(this,b)[b],data:t}):null;return{data:n,errors:r}}}const A=async(e,t)=>{var r;let n,a={data:null,errors:[]};try{a=await e.execute()}catch(e){n=e}if(t&&(null!=(r=a)&&r.errors||n)){var s;const r=null==t?void 0:t({forward:e=>A(e),operation:e,graphQLErrors:(null==(s=a)?void 0:s.errors)||[],networkError:n});if(r){const e=await r;if(e)return a=e,a}}if(n)throw n;return a},E=(e,t)=>{const r=async(r,n,s={})=>{const o=e[r];if(!o)throw new Error(`No ${r} operation defined.`);const i=l(o);n(i);const c=new Promise(async(e,o)=>{try{const o=await y(t.middlewares||[]);o.headers=a({},o.headers,s.headers);const c=new $({apiURL:t.apiURL,type:"Query"===r?"query":"mutation",name:s.name||"SnekQueryOperation",node:i,context:o}),l=await A(c,t.onError);e([n(l.data||i),l.errors])}catch(e){o(e)}});return c},n=(r,n="Unnamed")=>{const a=e[r];if(!a)throw new Error(`No ${r} operation defined.`);const s=l(a);return[async()=>{const e=await y(t.middlewares||[]),a=new $({apiURL:t.apiURL,type:"Query"===r?"query":"mutation",name:n,node:s,context:e}),o=await A(a,t.onError);return{data:o.data||s,errors:o.errors}},s]};return{query:async(e,t={})=>r("Query",e,t),mutate:async(e,t={})=>r("Mutation",e,t),lazyQuery:()=>n("Query"),lazyMutation:()=>n("Mutation")}};var x=/*#__PURE__*/o("makeKey");const _="undefined"!=typeof window?window.localStorage:{getItem:()=>null,setItem:()=>{},removeItem:()=>{}},C=new class{constructor(e,t){var r,n=this;this.storageKey=void 0,this.getAll=void 0,this.get=void 0,this.set=void 0,this.remove=void 0,this.removeAll=void 0,Object.defineProperty(this,x,{writable:!0,value:e=>`${this.storageKey}:${e}`}),this.storageKey=null!=(r=null==t?void 0:t.key)?r:"@snek-query:storage",this.getAll=async function(){const t=await e.get(n.storageKey);return t?JSON.parse(t):null},this.get=async function(t){var r;const a=await e.get(i(n,x)[x](t));if(a)return await e.remove(i(n,x)[x](t)),await n.set(t,a),a;const s=await n.getAll();return s&&null!=(r=s[t])?r:null},this.set=async function(t,r){const s=await n.getAll(),o=JSON.stringify(a({},s,{[t]:r}));return e.set(n.storageKey,o)},this.remove=async function(t){return await e.remove(t)},this.removeAll=async function(){return await e.remove(n.storageKey)}}}({get:e=>Promise.resolve(_.getItem(e)),set:(e,t)=>Promise.resolve(_.setItem(e,t)),remove:e=>Promise.resolve(_.removeItem(e))}),L=async()=>"undefined"==typeof navigator||navigator.onLine,k=async()=>{},T=e=>{const t=()=>e(!0),r=()=>e(!1);if("undefined"!=typeof window)return window.addEventListener("online",t),window.addEventListener("offline",r),()=>{window.removeEventListener("online",t),window.removeEventListener("offline",r)}};
+//# sourceMappingURL=index.js.map
+
+;// CONCATENATED MODULE: ./src/clients/mailer/src/schema.generated.ts
+
+class Query {
+    constructor() { this.__typename = ""; this.version = ""; }
+}
+class Mutation {
+    constructor() { this.__typename = ""; this.sendMailSMTP = f(SentMessageInfo); this.sendMailAzure = () => null; this.sendMailGoogle = () => null; }
+}
+class SentMessageInfo {
+    constructor() { this.__typename = ""; this.accepted = []; this.rejected = []; this.rejectedErrors = u(SMTPError); this.response = ""; this.envelopeTime = null; this.messageTime = null; this.messageSize = null; }
+}
+class SMTPError {
+    constructor() { this.__typename = ""; this.code = null; this.response = null; this.responseCode = null; this.command = null; this.errno = null; this.path = null; this.syscall = null; this.name = ""; this.message = ""; this.stack = null; }
+}
+
+;// CONCATENATED MODULE: ./src/clients/mailer/src/index.ts
+
+
+const apiURL = "https://services.snek.at/mailer/graphql";
+const sq = E({ Query: Query, Mutation: Mutation }, {
+    apiURL,
+});
+
+
+/***/ }),
+
+/***/ 6373:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "F": () => (/* binding */ PYLON_URL),
+/* harmony export */   "P": () => (/* binding */ PYLON_SECRET)
+/* harmony export */ });
+/* harmony import */ var crypto__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(6113);
+/* harmony import */ var crypto__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(crypto__WEBPACK_IMPORTED_MODULE_0__);
+
+const PYLON_URL = process.env.PYLON_URL || "http://localhost:3000";
+const PYLON_SECRET = process.env.PYLON_SECRET ||
+    (0,crypto__WEBPACK_IMPORTED_MODULE_0__.generateKeySync)("hmac", {
+        length: 32,
+    })
+        .export()
+        .toString("base64");
+
+
+/***/ }),
+
+/***/ 6144:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Xn": () => (/* binding */ service),
+/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "pU": () => (/* binding */ configureApp)
+/* harmony export */ });
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1121);
+/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2437);
+/* harmony import */ var dotenv__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(dotenv__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _repository_models_Email__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(7538);
+/* harmony import */ var _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(3436);
+/* harmony import */ var _repository_models_Organization__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(2478);
+/* harmony import */ var _repository_models_User__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(5538);
+/* harmony import */ var _services_mail_factory__WEBPACK_IMPORTED_MODULE_6__ = __nccwpck_require__(8989);
+/* harmony import */ var _services_oauth_google__WEBPACK_IMPORTED_MODULE_7__ = __nccwpck_require__(5737);
+/* harmony import */ var _services_oauth_azure__WEBPACK_IMPORTED_MODULE_8__ = __nccwpck_require__(5690);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_repository_models_Email__WEBPACK_IMPORTED_MODULE_2__, _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__, _repository_models_Organization__WEBPACK_IMPORTED_MODULE_4__, _repository_models_User__WEBPACK_IMPORTED_MODULE_5__, _services_mail_factory__WEBPACK_IMPORTED_MODULE_6__, _services_oauth_google__WEBPACK_IMPORTED_MODULE_7__, _services_oauth_azure__WEBPACK_IMPORTED_MODULE_8__]);
+([_repository_models_Email__WEBPACK_IMPORTED_MODULE_2__, _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__, _repository_models_Organization__WEBPACK_IMPORTED_MODULE_4__, _repository_models_User__WEBPACK_IMPORTED_MODULE_5__, _services_mail_factory__WEBPACK_IMPORTED_MODULE_6__, _services_oauth_google__WEBPACK_IMPORTED_MODULE_7__, _services_oauth_azure__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+
+
+
+
+
+
+dotenv__WEBPACK_IMPORTED_MODULE_1__.config();
+const service = (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.defineService)({
+    Query: {
+        me: _repository_models_User__WEBPACK_IMPORTED_MODULE_5__.User.me,
+        template: _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__.EmailTemplate.get,
+        allTemplate: _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__.EmailTemplate.all,
+    },
+    Mutation: {
+        templateCreate: _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__.EmailTemplate.create,
+        templateUpdate: _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__.EmailTemplate.update,
+        templateDelete: _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__.EmailTemplate["delete"],
+        templateTransformer: _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_3__.EmailTemplate.setTransformer,
+        senderEmailCreate: _repository_models_Email__WEBPACK_IMPORTED_MODULE_2__.Email.create,
+        senderEmailUpdate: _repository_models_Email__WEBPACK_IMPORTED_MODULE_2__.Email.update,
+        senderEmailDelete: _repository_models_Email__WEBPACK_IMPORTED_MODULE_2__.Email["delete"],
+        organizationSetSenderEmail: _repository_models_Organization__WEBPACK_IMPORTED_MODULE_4__.Organization.setSenderEmail,
+        sendMail: _services_mail_factory__WEBPACK_IMPORTED_MODULE_6__/* .MailFactory.sendMail */ .x.sendMail,
+        sendTemplateMail: _services_mail_factory__WEBPACK_IMPORTED_MODULE_6__/* .MailFactory.sendTemplateMail */ .x.sendTemplateMail,
+    },
+}, {
+    context: async (c) => {
+        const auth = c.get("auth");
+        let ctx = c;
+        if (auth) {
+            let user;
+            try {
+                user = await _repository_models_User__WEBPACK_IMPORTED_MODULE_5__.User.objects.get({ id: auth.sub });
+            }
+            catch {
+                _cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.logger.info(`Creating user with id: ${auth.sub}`);
+                const organizationId = auth["urn:zitadel:iam:org:id"];
+                user = await _repository_models_User__WEBPACK_IMPORTED_MODULE_5__.User.objects.create({
+                    id: auth.sub,
+                    organization: {
+                        connectOrCreate: {
+                            create: {
+                                id: organizationId,
+                            },
+                            where: {
+                                id: organizationId,
+                            },
+                        },
+                    },
+                });
+            }
+            ctx.user = user;
+        }
+        return ctx;
+    },
+});
+const configureApp = async (app) => {
+    app.use("*", _cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.auth.initialize());
+    app.get("/oauth/google", _services_oauth_google__WEBPACK_IMPORTED_MODULE_7__/* .handler */ .yf);
+    app.use("/oauth/google/callback", _services_oauth_google__WEBPACK_IMPORTED_MODULE_7__/* .handlerCb */ .uk);
+    app.get("/oauth/azure", _services_oauth_azure__WEBPACK_IMPORTED_MODULE_8__/* .handler */ .yf);
+    app.use("/oauth/azure/callback", _services_oauth_azure__WEBPACK_IMPORTED_MODULE_8__/* .handlerCb */ .uk);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (service);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 364:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Aw": () => (/* binding */ OrganizationRepository),
+/* harmony export */   "FY": () => (/* binding */ EmailTemplateRepository),
+/* harmony export */   "Fx": () => (/* binding */ VariableDefinitionRepository),
+/* harmony export */   "I2": () => (/* binding */ EmailEnvelopeRepository),
+/* harmony export */   "IW": () => (/* binding */ OAuthAppRepository),
+/* harmony export */   "cH": () => (/* binding */ OAuthConfigRepository),
+/* harmony export */   "hx": () => (/* binding */ SMTPConfigRepository),
+/* harmony export */   "jD": () => (/* binding */ UserRepository),
+/* harmony export */   "yH": () => (/* binding */ EmailRepository)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+
+class OrganizationRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["emailId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async users(pagination, where, orderBy) {
+        const _where = {
+            ...where,
+            organizationId: this.id
+        };
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.paginate(pagination, _where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async user(where) {
+        where = { ...where, organizationId: this.id };
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.get(where);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $usersAdd(data) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.create({ ...data, organizationId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $usersUpdate(data, where) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.update(data, { ...where, organizationId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $usersDelete(where) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.delete({ ...where, organizationId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async email(where, orderBy) {
+        if (!this.$emailId)
+            return null;
+        const _where = {
+            ...where,
+            id: this.$emailId
+        };
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $emailAdd(data) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.create({ ...data, id: this.$emailId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailUpdate(data, where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$emailId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailDelete(where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$emailId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async oAuthApps(pagination, where, orderBy) {
+        const _where = {
+            ...where,
+            organizationId: this.id
+        };
+        const Model = (await __nccwpck_require__(1918)).OAuthApp;
+        try {
+            return await Model.objects.paginate(pagination, _where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async oAuthApp(where) {
+        where = { ...where, organizationId: this.id };
+        const Model = (await __nccwpck_require__(1918)).OAuthApp;
+        try {
+            return await Model.objects.get(where);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $oAuthAppsAdd(data) {
+        const Model = (await __nccwpck_require__(1918)).OAuthApp;
+        try {
+            return await Model.objects.create({ ...data, organizationId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $oAuthAppsUpdate(data, where) {
+        const Model = (await __nccwpck_require__(1918)).OAuthApp;
+        try {
+            return await Model.objects.update(data, { ...where, organizationId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $oAuthAppsDelete(where) {
+        const Model = (await __nccwpck_require__(1918)).OAuthApp;
+        try {
+            return await Model.objects.delete({ ...where, organizationId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class OAuthAppRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["organizationId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async organization(where, orderBy) {
+        if (!this.$organizationId)
+            throw new Error("Relation organizationId is required");
+        const _where = {
+            ...where,
+            id: this.$organizationId
+        };
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $organizationAdd(data) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.create({ ...data, id: this.$organizationId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $organizationUpdate(data, where) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$organizationId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $organizationDelete(where) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$organizationId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class UserRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["organizationId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async emailTemplates(pagination, where, orderBy) {
+        const _where = {
+            ...where,
+            creatorId: this.id
+        };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.paginate(pagination, _where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async emailTemplate(where) {
+        where = { ...where, creatorId: this.id };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.get(where);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $emailTemplatesAdd(data) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.create({ ...data, creatorId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailTemplatesUpdate(data, where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.update(data, { ...where, creatorId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailTemplatesDelete(where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.delete({ ...where, creatorId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async email(where, orderBy) {
+        const _where = {
+            ...where,
+            userId: this.id
+        };
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $emailAdd(data) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.create({ ...data, userId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailUpdate(data, where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.update(data, { ...where, userId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailDelete(where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.delete({ ...where, userId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async organization(where, orderBy) {
+        if (!this.$organizationId)
+            throw new Error("Relation organizationId is required");
+        const _where = {
+            ...where,
+            id: this.$organizationId
+        };
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $organizationAdd(data) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.create({ ...data, id: this.$organizationId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $organizationUpdate(data, where) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$organizationId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $organizationDelete(where) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$organizationId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class EmailRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["userId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async smtpConfig(where, orderBy) {
+        const _where = {
+            ...where,
+            emailId: this.id
+        };
+        const Model = (await __nccwpck_require__(9366)).SMTPConfig;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $smtpConfigAdd(data) {
+        const Model = (await __nccwpck_require__(9366)).SMTPConfig;
+        try {
+            return await Model.objects.create({ ...data, emailId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $smtpConfigUpdate(data, where) {
+        const Model = (await __nccwpck_require__(9366)).SMTPConfig;
+        try {
+            return await Model.objects.update(data, { ...where, emailId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $smtpConfigDelete(where) {
+        const Model = (await __nccwpck_require__(9366)).SMTPConfig;
+        try {
+            return await Model.objects.delete({ ...where, emailId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async oauthConfig(where, orderBy) {
+        const _where = {
+            ...where,
+            emailId: this.id
+        };
+        const Model = (await __nccwpck_require__(1059)).OAuthConfig;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $oauthConfigAdd(data) {
+        const Model = (await __nccwpck_require__(1059)).OAuthConfig;
+        try {
+            return await Model.objects.create({ ...data, emailId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $oauthConfigUpdate(data, where) {
+        const Model = (await __nccwpck_require__(1059)).OAuthConfig;
+        try {
+            return await Model.objects.update(data, { ...where, emailId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $oauthConfigDelete(where) {
+        const Model = (await __nccwpck_require__(1059)).OAuthConfig;
+        try {
+            return await Model.objects.delete({ ...where, emailId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async user(where, orderBy) {
+        if (!this.$userId)
+            return null;
+        const _where = {
+            ...where,
+            id: this.$userId
+        };
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $userAdd(data) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.create({ ...data, id: this.$userId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $userUpdate(data, where) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$userId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $userDelete(where) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$userId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async organization(where, orderBy) {
+        const _where = {
+            ...where,
+            emailId: this.id
+        };
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $organizationAdd(data) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.create({ ...data, emailId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $organizationUpdate(data, where) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.update(data, { ...where, emailId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $organizationDelete(where) {
+        const Model = (await __nccwpck_require__(2478)).Organization;
+        try {
+            return await Model.objects.delete({ ...where, emailId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class SMTPConfigRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["emailId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async email(where, orderBy) {
+        if (!this.$emailId)
+            throw new Error("Relation emailId is required");
+        const _where = {
+            ...where,
+            id: this.$emailId
+        };
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $emailAdd(data) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.create({ ...data, id: this.$emailId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailUpdate(data, where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$emailId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailDelete(where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$emailId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class OAuthConfigRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["accessToken", "refreshToken", "emailId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async email(where, orderBy) {
+        if (!this.$emailId)
+            throw new Error("Relation emailId is required");
+        const _where = {
+            ...where,
+            id: this.$emailId
+        };
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $emailAdd(data) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.create({ ...data, id: this.$emailId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailUpdate(data, where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$emailId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailDelete(where) {
+        const Model = (await __nccwpck_require__(7538)).Email;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$emailId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class EmailTemplateRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["parentId", "creatorId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async envelope(where, orderBy) {
+        const _where = {
+            ...where,
+            emailTemplateId: this.id
+        };
+        const Model = (await __nccwpck_require__(4194)).EmailEnvelope;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $envelopeAdd(data) {
+        const Model = (await __nccwpck_require__(4194)).EmailEnvelope;
+        try {
+            return await Model.objects.create({ ...data, emailTemplateId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $envelopeUpdate(data, where) {
+        const Model = (await __nccwpck_require__(4194)).EmailEnvelope;
+        try {
+            return await Model.objects.update(data, { ...where, emailTemplateId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $envelopeDelete(where) {
+        const Model = (await __nccwpck_require__(4194)).EmailEnvelope;
+        try {
+            return await Model.objects.delete({ ...where, emailTemplateId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async parent(where, orderBy) {
+        if (!this.$parentId)
+            return null;
+        const _where = {
+            ...where,
+            id: this.$parentId
+        };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $parentAdd(data) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.create({ ...data, id: this.$parentId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $parentUpdate(data, where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$parentId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $parentDelete(where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$parentId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async links(pagination, where, orderBy) {
+        const _where = {
+            ...where,
+            parentId: this.id
+        };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.paginate(pagination, _where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async link(where) {
+        where = { ...where, parentId: this.id };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.get(where);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $linksAdd(data) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.create({ ...data, parentId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $linksUpdate(data, where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.update(data, { ...where, parentId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $linksDelete(where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.delete({ ...where, parentId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async variables(pagination, where, orderBy) {
+        const _where = {
+            ...where,
+            emailTemplateId: this.id
+        };
+        const Model = (await __nccwpck_require__(533)).VariableDefinition;
+        try {
+            return await Model.objects.paginate(pagination, _where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async variable(where) {
+        where = { ...where, emailTemplateId: this.id };
+        const Model = (await __nccwpck_require__(533)).VariableDefinition;
+        try {
+            return await Model.objects.get(where);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $variablesAdd(data) {
+        const Model = (await __nccwpck_require__(533)).VariableDefinition;
+        try {
+            return await Model.objects.create({ ...data, emailTemplateId: this.id });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $variablesUpdate(data, where) {
+        const Model = (await __nccwpck_require__(533)).VariableDefinition;
+        try {
+            return await Model.objects.update(data, { ...where, emailTemplateId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $variablesDelete(where) {
+        const Model = (await __nccwpck_require__(533)).VariableDefinition;
+        try {
+            return await Model.objects.delete({ ...where, emailTemplateId: this.id || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async creator(where, orderBy) {
+        if (!this.$creatorId)
+            throw new Error("Relation creatorId is required");
+        const _where = {
+            ...where,
+            id: this.$creatorId
+        };
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $creatorAdd(data) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.create({ ...data, id: this.$creatorId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $creatorUpdate(data, where) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$creatorId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $creatorDelete(where) {
+        const Model = (await __nccwpck_require__(5538)).User;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$creatorId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class VariableDefinitionRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["emailTemplateId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async emailTemplate(where, orderBy) {
+        if (!this.$emailTemplateId)
+            return null;
+        const _where = {
+            ...where,
+            id: this.$emailTemplateId
+        };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            return null;
+        }
+    }
+    ;
+    async $emailTemplateAdd(data) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.create({ ...data, id: this.$emailTemplateId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailTemplateUpdate(data, where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$emailTemplateId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailTemplateDelete(where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$emailTemplateId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+class EmailEnvelopeRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
+    constructor(data) {
+        super();
+        const hiddenFields = ["emailTemplateId"];
+        this.$boostrap(this, data, hiddenFields);
+    }
+    async emailTemplate(where, orderBy) {
+        if (!this.$emailTemplateId)
+            throw new Error("Relation emailTemplateId is required");
+        const _where = {
+            ...where,
+            id: this.$emailTemplateId
+        };
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.get(_where, orderBy);
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    ;
+    async $emailTemplateAdd(data) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.create({ ...data, id: this.$emailTemplateId });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailTemplateUpdate(data, where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.update(data, { ...where, id: this.$emailTemplateId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+    async $emailTemplateDelete(where) {
+        const Model = (await __nccwpck_require__(3436)).EmailTemplate;
+        try {
+            return await Model.objects.delete({ ...where, id: this.$emailTemplateId || undefined });
+        }
+        catch (e) {
+            throw e;
+        }
+    }
+}
+
+
+/***/ }),
+
+/***/ 3675:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "L": () => (/* binding */ client)
+});
+
+;// CONCATENATED MODULE: external "@prisma/client"
+var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
+var y = x => () => x
+const client_namespaceObject = x({ ["PrismaClient"]: () => __WEBPACK_EXTERNAL_MODULE__prisma_client_d4dd1072__.PrismaClient });
+;// CONCATENATED MODULE: ./src/repository/client.ts
+
+const client = new client_namespaceObject.PrismaClient();
+
+
+/***/ }),
+
+/***/ 7538:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Email": () => (/* binding */ Email)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(364);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6144);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_4__]);
+___WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+class Email extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailRepository */ .yH {
+    static async create(data) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return await ctx.user.$emailAdd({
+            email: data.email,
+            smtpConfig: {
+                create: data.smtpConfig,
+            },
+            oauthConfig: {
+                create: data.oauthConfig,
+            },
+        });
+    }
+    static async update(id, data) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return await ctx.user.$emailUpdate({
+            email: data.email,
+            smtpConfig: {
+                update: data.smtpConfig,
+            },
+            oauthConfig: {
+                update: data.oauthConfig,
+            },
+        }, { id });
+    }
+    static async delete(id) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return await ctx.user.$emailDelete({});
+    }
+}
+Email.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.email */ .L.email, Email);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
+], Email, "create", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
+], Email, "update", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
+], Email, "delete", null);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 4194:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "EmailEnvelope": () => (/* binding */ EmailEnvelope)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
+
+
+
+class EmailEnvelope extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .EmailEnvelopeRepository */ .I2 {
+}
+EmailEnvelope.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.emailEnvelope */ .L.emailEnvelope, EmailEnvelope);
+
+
+/***/ }),
+
+/***/ 3436:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "EmailTemplate": () => (/* binding */ EmailTemplate)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(364);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6144);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___WEBPACK_IMPORTED_MODULE_4__]);
+___WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemplateRepository */ .FY {
+    static async get(id) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return EmailTemplate.objects.get({
+            id,
+            creator: {
+                organizationId: ctx.user.$organizationId,
+            },
+        });
+    }
+    static async all(pagination, where, orderBy) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return EmailTemplate.objects.paginate(pagination, {
+            ...where,
+            creator: {
+                organizationId: ctx.user.$organizationId,
+            },
+        }, orderBy);
+    }
+    static async create(data) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return ctx.user.$emailTemplatesAdd({
+            content: data.content,
+            description: data.description,
+            variables: {
+                createMany: {
+                    data: data.variables || [],
+                },
+            },
+            envelope: {
+                create: {
+                    subject: data.envelope.subject,
+                    to: data.envelope.to,
+                    replyTo: data.envelope.replyTo,
+                },
+            },
+        });
+    }
+    static async update(id, data) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return EmailTemplate.objects.update({
+            content: data.content,
+            description: data.description,
+            variables: {
+                createMany: {
+                    data: data.variables || [],
+                },
+            },
+            envelope: {
+                create: {
+                    subject: data.envelope.subject,
+                    to: data.envelope.to,
+                    replyTo: data.envelope.replyTo,
+                },
+            },
+        }, {
+            id,
+            creator: {
+                organizationId: ctx.user.$organizationId,
+            },
+        });
+    }
+    static async setTransformer(id, transformer) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return EmailTemplate.objects.update({
+            transformer,
+        }, {
+            id,
+            creator: {
+                organizationId: ctx.user.$organizationId,
+            },
+        });
+    }
+    static async delete(id) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return EmailTemplate.objects.delete({
+            id,
+            creator: {
+                organizationId: ctx.user.$organizationId,
+            },
+        });
+    }
+    async creator(where, orderBy) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        if (this.$creatorId !== ctx.user.id) {
+            throw new _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError("Unauthorized", {
+                code: "UNAUTHORIZED",
+                statusCode: 401,
+            });
+        }
+        return super.creator(where, orderBy);
+    }
+}
+EmailTemplate.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.emailTemplate */ .L.emailTemplate, EmailTemplate);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
+        roles: ["mailpress:admin"],
+    })
+], EmailTemplate, "get", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
+        roles: ["mailpress:admin"],
+    })
+], EmailTemplate, "all", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
+        roles: ["mailpress:admin"],
+    })
+], EmailTemplate, "create", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
+        roles: ["mailpress:admin"],
+    })
+], EmailTemplate, "update", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({ roles: ["mailpress:unsafe-transformer"] })
+], EmailTemplate, "setTransformer", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
+        roles: ["mailpress:admin"],
+    })
+], EmailTemplate, "delete", null);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 1918:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "OAuthApp": () => (/* binding */ OAuthApp)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
+
+
+
+class OAuthApp extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .OAuthAppRepository */ .IW {
+}
+OAuthApp.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.oAuthApp */ .L.oAuthApp, OAuthApp);
+
+
+/***/ }),
+
+/***/ 1059:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "OAuthConfig": () => (/* binding */ OAuthConfig)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _services_oauth_google__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(5737);
+/* harmony import */ var _services_oauth_azure__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(5690);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(364);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(1121);
+/* harmony import */ var src_config__WEBPACK_IMPORTED_MODULE_6__ = __nccwpck_require__(6373);
+/* harmony import */ var _Organization__WEBPACK_IMPORTED_MODULE_7__ = __nccwpck_require__(2478);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_services_oauth_google__WEBPACK_IMPORTED_MODULE_1__, _services_oauth_azure__WEBPACK_IMPORTED_MODULE_2__, _Organization__WEBPACK_IMPORTED_MODULE_7__]);
+([_services_oauth_google__WEBPACK_IMPORTED_MODULE_1__, _services_oauth_azure__WEBPACK_IMPORTED_MODULE_2__, _Organization__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+
+
+
+
+
+class OAuthConfig extends _generated__WEBPACK_IMPORTED_MODULE_4__/* .OAuthConfigRepository */ .cH {
+    async $freshAccessToken() {
+        const organization = await _Organization__WEBPACK_IMPORTED_MODULE_7__.Organization.objects.get({
+            users: {
+                some: {
+                    email: {
+                        oauthConfig: {
+                            id: this.id,
+                        },
+                    },
+                },
+            },
+        });
+        if (this.provider === "GOOGLE") {
+            if (this.accessTokenExpiresAt > new Date()) {
+                return this.$accessToken;
+            }
+            try {
+                const client = await _services_oauth_google__WEBPACK_IMPORTED_MODULE_1__/* .getClient */ .s3(organization);
+                const tokenSet = await client.refresh(this.$refreshToken);
+                await OAuthConfig.objects.update({
+                    accessToken: tokenSet.access_token,
+                    accessTokenExpiresAt: new Date(tokenSet.expires_at * 1000),
+                }, {
+                    id: this.id,
+                });
+                return tokenSet.access_token;
+            }
+            catch (e) {
+                throw new _cronitio_pylon__WEBPACK_IMPORTED_MODULE_5__.ServiceError("Failed to refresh token", {
+                    code: "FAILED_TO_REFRESH_TOKEN",
+                    statusCode: 500,
+                    details: {
+                        description: "Failed to refresh token. Please re-authenticate.",
+                        loginUrl: `${src_config__WEBPACK_IMPORTED_MODULE_6__/* .PYLON_URL */ .F}/oauth/google`,
+                        provider: "GOOGLE",
+                    },
+                });
+            }
+        }
+        else if (this.provider === "AZURE") {
+            if (this.accessTokenExpiresAt > new Date()) {
+                return this.$accessToken;
+            }
+            try {
+                const client = await _services_oauth_azure__WEBPACK_IMPORTED_MODULE_2__/* .getClient */ .s3(organization);
+                const tokenSet = await client.refresh(this.$refreshToken);
+                await OAuthConfig.objects.update({
+                    accessToken: tokenSet.access_token,
+                    accessTokenExpiresAt: new Date(tokenSet.expires_at * 1000),
+                }, {
+                    id: this.id,
+                });
+                return tokenSet.access_token;
+            }
+            catch (e) {
+                throw new _cronitio_pylon__WEBPACK_IMPORTED_MODULE_5__.ServiceError("Failed to refresh token", {
+                    code: "FAILED_TO_REFRESH_TOKEN",
+                    statusCode: 500,
+                    details: {
+                        description: "Failed to refresh token. Please re-authenticate.",
+                        loginUrl: `${src_config__WEBPACK_IMPORTED_MODULE_6__/* .PYLON_URL */ .F}/oauth/azure`,
+                        provider: "AZURE",
+                    },
+                });
+            }
+        }
+        throw new Error(`Provider ${this.provider} not supported`);
+    }
+}
+OAuthConfig.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_3__/* .client.oAuthConfig */ .L.oAuthConfig, OAuthConfig);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 2478:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Organization": () => (/* binding */ Organization)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(364);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(1121);
+/* harmony import */ var _Email__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7538);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(6144);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Email__WEBPACK_IMPORTED_MODULE_4__, ___WEBPACK_IMPORTED_MODULE_5__]);
+([_Email__WEBPACK_IMPORTED_MODULE_4__, ___WEBPACK_IMPORTED_MODULE_5__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+class Organization extends _generated__WEBPACK_IMPORTED_MODULE_1__/* .OrganizationRepository */ .Aw {
+    static async setSenderEmail(email, smtpConfig) {
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_5__/* ["default"].getContext */ .ZP.getContext(this);
+        return await _Email__WEBPACK_IMPORTED_MODULE_4__.Email.objects.create({
+            email,
+            smtpConfig: {
+                create: smtpConfig,
+            },
+            organization: {
+                connect: {
+                    id: ctx.user.$organizationId,
+                },
+            },
+        });
+    }
+}
+Organization.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.organization */ .L.organization, Organization);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_3__.requireAuth)({
+        roles: ["mailpress:admin"],
+    })
+], Organization, "setSenderEmail", null);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 9366:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "SMTPConfig": () => (/* binding */ SMTPConfig)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
+
+
+
+class SMTPConfig extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .SMTPConfigRepository */ .hx {
+}
+SMTPConfig.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.sMTPConfig */ .L.sMTPConfig, SMTPConfig);
+
+
+/***/ }),
+
+/***/ 5538:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "User": () => (/* binding */ User)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(364);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6144);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_index__WEBPACK_IMPORTED_MODULE_4__]);
+_index__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+class User extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .UserRepository */ .jD {
+    static async me() {
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        return ctx.user;
+    }
+    async $getAuthenticatedEmail() {
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const baseUrl = process.env.AUTH_ISSUER;
+        const res = await fetch(`${baseUrl}/auth/v1/users/me/email`, {
+            headers: {
+                Authorization: `Bearer ${ctx.req.header("authorization")}`,
+            },
+        });
+        if (!res.ok) {
+            throw new Error("Failed to fetch user email");
+        }
+        const data = (await res.json());
+        if (!data.email.isEmailVerified) {
+            throw new Error("User email is not verified");
+        }
+        return data.email.email;
+    }
+}
+User.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.user */ .L.user, User);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
+], User.prototype, "$getAuthenticatedEmail", null);
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
+], User, "me", null);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 533:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "VariableDefinition": () => (/* binding */ VariableDefinition)
+/* harmony export */ });
+/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
+/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
+
+
+
+class VariableDefinition extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .VariableDefinitionRepository */ .Fx {
+}
+VariableDefinition.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.variableDefinition */ .L.variableDefinition, VariableDefinition);
+
+
+/***/ }),
+
+/***/ 7709:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "G": () => (/* binding */ EmailTemplateFactory)
+});
+
+// EXTERNAL MODULE: ./node_modules/html-minifier/src/htmlminifier.js
+var htmlminifier = __nccwpck_require__(609);
+// EXTERNAL MODULE: ./node_modules/twig/src/twig.js
+var twig = __nccwpck_require__(8456);
+var twig_default = /*#__PURE__*/__nccwpck_require__.n(twig);
+;// CONCATENATED MODULE: external "graphql"
+var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
+var y = x => () => x
+const external_graphql_namespaceObject = x({ ["GraphQLError"]: () => __WEBPACK_EXTERNAL_MODULE_graphql__.GraphQLError });
+;// CONCATENATED MODULE: ./src/errors.ts
+
+class TemplateNotFoundError extends external_graphql_namespaceObject.GraphQLError {
+    constructor(templateId) {
+        const message = `No template found with id ${templateId}`;
+        super(message);
+        this.extensions = {
+            statusCode: 404,
+            code: "TEMPLATE_NOT_FOUND",
+            description: "No template was found with the given id",
+        };
+    }
+}
+class EnvelopeNotFoundError extends external_graphql_namespaceObject.GraphQLError {
+    constructor(templateId) {
+        const message = `No envelop found for template ${templateId}`;
+        super(message);
+        this.extensions = {
+            statusCode: 404,
+            code: "ENVELOP_NOT_FOUND",
+            description: "No envelop was found for the given template",
+        };
+    }
+}
+class TemplateAlreadyExistsError extends (/* unused pure expression or super */ null && (GraphQLError)) {
+    constructor(templateId) {
+        const message = `Template with id ${templateId} already exists`;
+        super(message);
+        this.extensions = {
+            statusCode: 409,
+            code: "TEMPLATE_ALREADY_EXISTS",
+            description: "A template with the given id already exists",
+        };
+    }
+}
+class TemplateVariableValueNotProvidedError extends external_graphql_namespaceObject.GraphQLError {
+    constructor(variableName) {
+        const message = `Value for variable "${variableName}" is required but was not provided`;
+        super(message);
+        this.extensions = {
+            statusCode: 400,
+            code: "VARIABLE_VALUE_NOT_PROVIDED",
+            description: `A value for the required variable '${variableName}' was not provided`,
+        };
+    }
+}
+class TemplateVariableIsConstantError extends external_graphql_namespaceObject.GraphQLError {
+    constructor(variableName) {
+        const message = `Variable "${variableName}" is constant and cannot be provided`;
+        super(message);
+        this.extensions = {
+            statusCode: 400,
+            code: "VARIABLE_IS_CONSTANT",
+            description: `The variable '${variableName}' is constant and cannot be provided`,
+        };
+    }
+}
+class FromEmailAddressNotAuthorizedError extends (/* unused pure expression or super */ null && (GraphQLError)) {
+    constructor(from) {
+        const message = `From email address ${from} is not authorized`;
+        super(message);
+        this.extensions = {
+            statusCode: 403,
+            code: "FROM_EMAIL_ADDRESS_NOT_AUTHORIZED",
+            description: `The from email address ${from} is not authorized`,
+        };
+    }
+}
+
+;// CONCATENATED MODULE: ./src/services/email-template-factory.ts
+
+
+twig_default().extendFilter("format_currency", (value, params) => {
+    return new Intl.NumberFormat("de-AT", {
+        style: "currency",
+        currency: params ? params[0] : "EUR",
+    }).format(value);
+});
+
+class EmailTemplateFactory {
+    static minifyRenderedTemplate(template) {
+        const result = (0,htmlminifier/* minify */.S)(template, {
+            collapseWhitespace: true,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeEmptyElements: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            useShortDoctype: true,
+        });
+        return result;
+    }
+    static getContext(template, values) {
+        const context = {};
+        for (const variableName in template.variables) {
+            if (template.variables.hasOwnProperty(variableName)) {
+                const variable = template.variables[variableName];
+                if (variable.isConstant && variableName in values) {
+                    throw new TemplateVariableIsConstantError(variableName);
+                }
+                if (!variable.isConstant &&
+                    !(variableName in values) &&
+                    variable.isRequired) {
+                    throw new TemplateVariableValueNotProvidedError(variableName);
+                }
+                context[variableName] =
+                    values[variableName] || variable.defaultValue || null;
+            }
+        }
+        return context;
+    }
+    static renderTemplate(template, values = {}) {
+        const twigTemplate = twig_default().twig({ data: template.content });
+        const context = EmailTemplateFactory.getContext(template, values);
+        const result = twigTemplate.render(context);
+        return EmailTemplateFactory.minifyRenderedTemplate(result);
+    }
+    static render(emailTemplate, values = {}) {
+        try {
+            return EmailTemplateFactory.renderTemplate(emailTemplate, values);
+        }
+        catch (error) {
+            if (error instanceof TemplateNotFoundError ||
+                error instanceof EnvelopeNotFoundError ||
+                error instanceof TemplateVariableValueNotProvidedError) {
+                throw error;
+            }
+            else {
+                throw new Error(`Failed to render template: ${error}`);
+            }
+        }
+    }
+}
+
+
+/***/ }),
+
+/***/ 8989:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "x": () => (/* binding */ MailFactory)
+/* harmony export */ });
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1121);
+/* harmony import */ var html_to_text__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1989);
+/* harmony import */ var _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3436);
+/* harmony import */ var _repository_models_Email__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(7538);
+/* harmony import */ var _services_email_template_factory__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7709);
+/* harmony import */ var _services_transformer_sandbox__WEBPACK_IMPORTED_MODULE_7__ = __nccwpck_require__(9110);
+/* harmony import */ var _clients_mailer_src__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(7244);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_6__ = __nccwpck_require__(6144);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_2__, _repository_models_Email__WEBPACK_IMPORTED_MODULE_3__, ___WEBPACK_IMPORTED_MODULE_6__]);
+([_repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_2__, _repository_models_Email__WEBPACK_IMPORTED_MODULE_3__, ___WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+class MailFactory {
+    static async send(senderEmail, envelope, body, bodyHTML) {
+        try {
+            const smtpConfig = await senderEmail.smtpConfig();
+            if (smtpConfig) {
+                if (!smtpConfig) {
+                    throw new Error("No email configuration found. This should not happen");
+                }
+                const [data, errors] = await _clients_mailer_src__WEBPACK_IMPORTED_MODULE_5__.sq.mutate((m) => m.sendMailSMTP({
+                    mailOptions: {
+                        from: senderEmail.email,
+                        to: envelope.to,
+                        replyTo: envelope.replyTo,
+                        subject: envelope.subject,
+                        html: bodyHTML,
+                        text: body,
+                    },
+                    smtpOptions: {
+                        host: smtpConfig.host,
+                        port: smtpConfig.port,
+                        secure: smtpConfig.secure,
+                        user: smtpConfig.username,
+                        password: smtpConfig.password,
+                    },
+                }));
+                if (errors) {
+                    throw new Error(errors[0].message);
+                }
+                return data;
+            }
+            const oauthConfig = await senderEmail.oauthConfig();
+            if (oauthConfig) {
+                if (!oauthConfig) {
+                    throw new Error("No email configuration found. This should not happen");
+                }
+                const token = await oauthConfig.$freshAccessToken();
+                console.log("Token", token);
+                if (oauthConfig.provider === "AZURE") {
+                    const [data, errors] = await _clients_mailer_src__WEBPACK_IMPORTED_MODULE_5__.sq.mutate((m) => m.sendMailAzure({
+                        mailOptions: {
+                            from: senderEmail.email,
+                            to: envelope.to,
+                            replyTo: envelope.replyTo,
+                            subject: envelope.subject,
+                            html: bodyHTML,
+                            text: body,
+                        },
+                        oauthOptions: {
+                            accessToken: token,
+                        },
+                    }));
+                    if (errors) {
+                        throw new Error(errors[0].message);
+                    }
+                    return data;
+                }
+                else if (oauthConfig.provider === "GOOGLE") {
+                    const [data, errors] = await _clients_mailer_src__WEBPACK_IMPORTED_MODULE_5__.sq.mutate((m) => m.sendMailGoogle({
+                        mailOptions: {
+                            from: senderEmail.email,
+                            to: envelope.to,
+                            replyTo: envelope.replyTo,
+                            subject: envelope.subject,
+                            html: bodyHTML,
+                            text: body,
+                        },
+                        oauthOptions: {
+                            accessToken: token,
+                        },
+                    }));
+                    if (errors) {
+                        throw new Error(errors[0].message);
+                    }
+                    return data;
+                }
+            }
+            else {
+                throw new Error("No email configuration found");
+            }
+        }
+        catch (e) {
+            console.error(e);
+            throw new _cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.ServiceError("Error sending mail", {
+                code: "MAIL_SEND_ERROR",
+                statusCode: 500,
+                details: {
+                    error: e.toString(),
+                    stack: e.stack,
+                },
+            });
+        }
+    }
+    static async sendTemplateMail(id, values) {
+        const emailTemplate = await _repository_models_EmailTemplate__WEBPACK_IMPORTED_MODULE_2__.EmailTemplate.objects.get({ id });
+        const emailEnvelope = await emailTemplate.envelope();
+        let envelope = {
+            subject: emailEnvelope?.subject || "No subject",
+            to: emailEnvelope?.to || [],
+            replyTo: emailEnvelope?.replyTo || undefined,
+        };
+        const variables = await emailTemplate?.variables();
+        const bodyHTML = _services_email_template_factory__WEBPACK_IMPORTED_MODULE_4__/* .EmailTemplateFactory.render */ .G.render({
+            content: emailTemplate?.content,
+            variables: Object.values(variables.nodes).reduce((acc, variable) => ({
+                ...acc,
+                [variable.name]: variable,
+            }), {}),
+        }, values);
+        const body = (0,html_to_text__WEBPACK_IMPORTED_MODULE_1__/* .htmlToText */ .s9)(bodyHTML, {});
+        if (emailTemplate.transformer) {
+            const parentTemplate = await emailTemplate.parent();
+            const transformedTemplate = await (0,_services_transformer_sandbox__WEBPACK_IMPORTED_MODULE_7__/* .executeInSandbox */ .s)({
+                input: {
+                    envelope,
+                    values: values || {},
+                    body,
+                    bodyHTML,
+                },
+                template: emailTemplate,
+                parentTemplate,
+            });
+            if (transformedTemplate) {
+                if (transformedTemplate.verifyReplyTo !== undefined) {
+                    emailTemplate.verifyReplyTo = transformedTemplate.verifyReplyTo;
+                }
+                if (transformedTemplate.envelope) {
+                    envelope = {
+                        ...envelope,
+                        ...transformedTemplate.envelope,
+                    };
+                }
+            }
+        }
+        if (emailTemplate.verifyReplyTo) {
+            const ctx = await ___WEBPACK_IMPORTED_MODULE_6__/* .service.getContext */ .Xn.getContext(this);
+            const auth = ctx.get("auth");
+            if (!(auth &&
+                auth.email &&
+                auth.email_verified &&
+                auth.email === envelope.replyTo)) {
+                throw new Error("Verification of replyTo email failed. Possible reasons: User is not authenticated, email is not verified or email does not match the replyTo email");
+            }
+        }
+        const senderEmail = await _repository_models_Email__WEBPACK_IMPORTED_MODULE_3__.Email.objects.get({
+            organization: {
+                users: {
+                    some: {
+                        id: emailTemplate.$creatorId,
+                    },
+                },
+            },
+        });
+        await MailFactory.send(senderEmail, envelope, body, bodyHTML);
+        return "Mail scheduled successfully";
+    }
+    static async sendMail(envelope, body, bodyHTML) {
+        if (!body && !bodyHTML) {
+            throw new Error("No body or bodyHTML provided");
+        }
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_6__/* .service.getContext */ .Xn.getContext(this);
+        const senderEmail = await ctx.user.email();
+        console.log(senderEmail, envelope, body, bodyHTML);
+        if (!senderEmail) {
+            throw new Error("No sender email found");
+        }
+        if (bodyHTML) {
+            body = (0,html_to_text__WEBPACK_IMPORTED_MODULE_1__/* .htmlToText */ .s9)(bodyHTML, {});
+        }
+        if (body === undefined) {
+            throw new Error("No body provided. This should not happen");
+        }
+        await MailFactory.send(senderEmail, envelope, body, bodyHTML);
+        return "Mail scheduled successfully";
+    }
+}
+__decorate([
+    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.requireAuth)({})
+], MailFactory, "sendMail", null);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 5690:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "s3": () => (/* binding */ getClient),
+/* harmony export */   "uk": () => (/* binding */ handlerCb),
+/* harmony export */   "yf": () => (/* binding */ handler)
+/* harmony export */ });
+/* harmony import */ var openid_client__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(350);
+/* harmony import */ var hono_cookie__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(9417);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(1121);
+/* harmony import */ var _repository_client__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(3675);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6373);
+/* harmony import */ var _repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(2478);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__]);
+_repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+
+
+const issuer = await openid_client__WEBPACK_IMPORTED_MODULE_0__.Issuer.discover("https://login.microsoftonline.com/common/v2.0");
+const getClient = async (organization) => {
+    const app = await organization.oAuthApp({ type: "AZURE" });
+    const client = new issuer.Client({
+        client_id: app.clientId,
+        client_secret: app.clientSecret,
+        redirect_uris: [`${_config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_URL */ .F}/oauth/azure/callback`],
+        response_types: ["code"],
+    });
+    return client;
+};
+const handler = async (c) => {
+    await _cronitio_pylon__WEBPACK_IMPORTED_MODULE_2__.auth.require({})(c, () => Promise.resolve());
+    const sub = c.get("auth").sub;
+    await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .setSignedCookie */ .NI)(c, "google-oauth-sub", sub, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, {
+        httpOnly: true,
+        secure: true,
+    });
+    const code_verifier = openid_client__WEBPACK_IMPORTED_MODULE_0__.generators.codeVerifier();
+    await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .setSignedCookie */ .NI)(c, "google-oauth-code-verifier", code_verifier, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, {
+        httpOnly: true,
+        secure: true,
+    });
+    const code_challenge = openid_client__WEBPACK_IMPORTED_MODULE_0__.generators.codeChallenge(code_verifier);
+    const organization = await _repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__.Organization.objects.get({
+        users: {
+            some: {
+                id: sub,
+            },
+        },
+    });
+    const client = await getClient(organization);
+    const url = client.authorizationUrl({
+        scope: "openid email profile Mail.send offline_access",
+        code_challenge,
+        code_challenge_method: "S256",
+        access_type: "offline",
+        prompt: "consent",
+    });
+    return c.redirect(url);
+};
+const handlerCb = async (c) => {
+    const sub = await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .getSignedCookie */ .aX)(c, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, "google-oauth-sub");
+    const code_verifier = await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .getSignedCookie */ .aX)(c, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, "google-oauth-code-verifier");
+    if (!sub || !code_verifier) {
+        return new Response("Invalid state", { status: 400 });
+    }
+    const organization = await _repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__.Organization.objects.get({
+        users: {
+            some: {
+                id: sub,
+            },
+        },
+    });
+    const client = await getClient(organization);
+    const params = client.callbackParams(c.req.url);
+    const tokenSet = await client.callback(`${_config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_URL */ .F}/oauth/azure/callback`, params, { code_verifier });
+    const { access_token, refresh_token, expires_at } = tokenSet;
+    if (!access_token || !refresh_token || !expires_at) {
+        return new Response("Invalid token", { status: 400 });
+    }
+    const claims = tokenSet.claims();
+    const email = claims.email;
+    if (!email) {
+        return new Response("No email found", { status: 400 });
+    }
+    await _repository_client__WEBPACK_IMPORTED_MODULE_3__/* .client.email.upsert */ .L.email.upsert({
+        where: {
+            userId: sub,
+        },
+        create: {
+            email,
+            userId: sub,
+            oauthConfig: {
+                create: {
+                    provider: "AZURE",
+                    accessToken: access_token,
+                    accessTokenExpiresAt: new Date(expires_at * 1000),
+                    refreshToken: refresh_token,
+                },
+            },
+        },
+        update: {
+            email,
+            oauthConfig: {
+                update: {
+                    provider: "AZURE",
+                    accessToken: access_token,
+                    accessTokenExpiresAt: new Date(expires_at * 1000),
+                    refreshToken: refresh_token,
+                },
+            },
+        },
+    });
+    return new Response("OK from Azure callback", { status: 200 });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
+
+/***/ }),
+
+/***/ 5737:
+/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "s3": () => (/* binding */ getClient),
+/* harmony export */   "uk": () => (/* binding */ handlerCb),
+/* harmony export */   "yf": () => (/* binding */ handler)
+/* harmony export */ });
+/* harmony import */ var openid_client__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(350);
+/* harmony import */ var hono_cookie__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(9417);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(1121);
+/* harmony import */ var _repository_client__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(3675);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6373);
+/* harmony import */ var _repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(2478);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__]);
+_repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+
+
+const issuer = await openid_client__WEBPACK_IMPORTED_MODULE_0__.Issuer.discover("https://accounts.google.com");
+const getClient = async (organization) => {
+    const app = await organization.oAuthApp({ type: "GOOGLE" });
+    const client = new issuer.Client({
+        client_id: app.clientId,
+        client_secret: app.clientSecret,
+        redirect_uris: [`${_config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_URL */ .F}/oauth/google/callback`],
+        response_types: ["code"],
+    });
+    return client;
+};
+const handler = async (c) => {
+    await _cronitio_pylon__WEBPACK_IMPORTED_MODULE_2__.auth.require({})(c, () => Promise.resolve());
+    const sub = c.get("auth").sub;
+    await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .setSignedCookie */ .NI)(c, "google-oauth-sub", sub, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, {
+        httpOnly: true,
+        secure: true,
+    });
+    const code_verifier = openid_client__WEBPACK_IMPORTED_MODULE_0__.generators.codeVerifier();
+    await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .setSignedCookie */ .NI)(c, "google-oauth-code-verifier", code_verifier, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, {
+        httpOnly: true,
+        secure: true,
+    });
+    const code_challenge = openid_client__WEBPACK_IMPORTED_MODULE_0__.generators.codeChallenge(code_verifier);
+    const organization = await _repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__.Organization.objects.get({
+        users: {
+            some: {
+                id: sub,
+            },
+        },
+    });
+    const client = await getClient(organization);
+    const url = client.authorizationUrl({
+        scope: "openid email profile https://www.googleapis.com/auth/gmail.send",
+        code_challenge,
+        code_challenge_method: "S256",
+        access_type: "offline",
+        prompt: "consent",
+    });
+    return c.redirect(url);
+};
+const handlerCb = async (c) => {
+    const sub = await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .getSignedCookie */ .aX)(c, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, "google-oauth-sub");
+    const code_verifier = await (0,hono_cookie__WEBPACK_IMPORTED_MODULE_1__/* .getSignedCookie */ .aX)(c, _config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_SECRET */ .P, "google-oauth-code-verifier");
+    if (!sub || !code_verifier) {
+        return new Response("Invalid state", { status: 400 });
+    }
+    const organization = await _repository_models_Organization__WEBPACK_IMPORTED_MODULE_5__.Organization.objects.get({
+        users: {
+            some: {
+                id: sub,
+            },
+        },
+    });
+    const client = await getClient(organization);
+    const params = client.callbackParams(c.req.url);
+    const tokenSet = await client.callback(`${_config__WEBPACK_IMPORTED_MODULE_4__/* .PYLON_URL */ .F}/oauth/google/callback`, params, { code_verifier });
+    const { access_token, refresh_token, expires_at } = tokenSet;
+    if (!access_token || !refresh_token || !expires_at) {
+        return new Response("Invalid token", { status: 400 });
+    }
+    const claims = tokenSet.claims();
+    const email = claims.email;
+    if (!email) {
+        return new Response("No email found", { status: 400 });
+    }
+    await _repository_client__WEBPACK_IMPORTED_MODULE_3__/* .client.email.upsert */ .L.email.upsert({
+        where: {
+            userId: sub,
+        },
+        create: {
+            email,
+            userId: sub,
+            oauthConfig: {
+                create: {
+                    provider: "GOOGLE",
+                    accessToken: access_token,
+                    accessTokenExpiresAt: new Date(expires_at * 1000),
+                    refreshToken: refresh_token,
+                },
+            },
+        },
+        update: {
+            email,
+            oauthConfig: {
+                update: {
+                    provider: "GOOGLE",
+                    accessToken: access_token,
+                    accessTokenExpiresAt: new Date(expires_at * 1000),
+                    refreshToken: refresh_token,
+                },
+            },
+        },
+    });
+    return new Response("OK from Google callback", { status: 200 });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
+
+/***/ }),
+
+/***/ 9110:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "s": () => (/* binding */ executeInSandbox)
+/* harmony export */ });
+const executeInSandbox = async (args) => {
+    const code = args.template.transformer;
+    if (!code) {
+        throw new Error("No transformer code");
+    }
+    const buildEnvelopeFromTemplate = async (template) => {
+        template;
+        const emailEnvelope = await template.envelope();
+        if (emailEnvelope) {
+            const to = emailEnvelope.to;
+            const replyTo = emailEnvelope.replyTo || undefined;
+            return {
+                subject: emailEnvelope.subject || undefined,
+                to,
+                replyTo,
+            };
+        }
+    };
+    const templateEnvelope = await buildEnvelopeFromTemplate(args.template);
+    const parentTemplateEnvelope = args.parentTemplate
+        ? await buildEnvelopeFromTemplate(args.parentTemplate)
+        : undefined;
+    const result = eval(`const template = ${JSON.stringify(args.template)};
+  const parentTemplate = ${JSON.stringify(args.parentTemplate)};
+
+  const templateEnvelope = ${JSON.stringify(templateEnvelope)};
+  const parentTemplateEnvelope = ${JSON.stringify(parentTemplateEnvelope)};
+  const input = ${JSON.stringify(args.input)};
+
+  let result = {
+    verifyReplyTo: undefined,
+    envelope: {},
+  };
+
+  ${code}
+
+  result;
+  `);
+    return result;
+};
+
+
+/***/ }),
+
+/***/ 1121:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
+var y = x => () => x
+module.exports = x({ ["ServiceError"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.ServiceError, ["auth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.auth, ["defineService"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.defineService, ["logger"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.logger, ["requireAuth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.requireAuth });
+
+/***/ }),
+
+/***/ 350:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
+var y = x => () => x
+module.exports = x({ ["Issuer"]: () => __WEBPACK_EXTERNAL_MODULE_openid_client_38e2aad5__.Issuer, ["generators"]: () => __WEBPACK_EXTERNAL_MODULE_openid_client_38e2aad5__.generators });
+
+/***/ }),
+
+/***/ 6113:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("crypto");
+
+/***/ }),
+
+/***/ 7147:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
+
+/***/ }),
+
+/***/ 3685:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("http");
+
+/***/ }),
+
+/***/ 5687:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("https");
+
+/***/ }),
+
+/***/ 2037:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("os");
+
+/***/ }),
+
+/***/ 1017:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("path");
+
+/***/ }),
+
+/***/ 2391:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("uglify-js");
+
+/***/ }),
+
+/***/ 7310:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("url");
+
+/***/ }),
+
+/***/ 1060:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
+
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "_j": () => (/* binding */ Repository),
+/* harmony export */   "aP": () => (/* binding */ ObjectManager)
+/* harmony export */ });
+/* unused harmony exports CreateError, DeleteError, InvalidInputError, NotFoundError, UpdateError, UpsertError */
+/* harmony import */ var _devoxa_prisma_relay_cursor_connection__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7408);
+/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
+
+
+
+class NotFoundError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
+  constructor(message = "Object not found") {
+    super(message, {
+      code: "OBJECT_NOT_FOUND",
+      statusCode: 404,
+      message
+    });
+  }
+}
+class CreateError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
+  constructor(message = "Error creating object") {
+    super(message, {
+      code: "CREATE_ERROR",
+      statusCode: 500,
+      message
+    });
+  }
+}
+class UpdateError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
+  constructor(message = "Error updating object") {
+    super(message, {
+      code: "UPDATE_ERROR",
+      statusCode: 500,
+      message
+    });
+  }
+}
+class DeleteError extends (/* unused pure expression or super */ null && (ServiceError)) {
+  constructor(message = "Error deleting object") {
+    super(message, {
+      code: "DELETE_ERROR",
+      statusCode: 500,
+      message
+    });
+  }
+}
+class UpsertError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
+  constructor(message = "Error upserting object") {
+    super(message, {
+      code: "UPSERT_ERROR",
+      statusCode: 500,
+      message
+    });
+  }
+}
+class InvalidInputError extends (/* unused pure expression or super */ null && (ServiceError)) {
+  constructor(message = "Invalid input") {
+    super(message, {
+      code: "INVALID_INPUT",
+      statusCode: 400,
+      message
+    });
+  }
+}
+
+class ObjectManager {
+  constructor(instance, model) {
+    this.instance = void 0;
+    this.model = void 0;
+    this.get = async (where, orderBy) => {
+      const obj = await this.instance.findFirst({
+        where,
+        orderBy
+      });
+      if (!obj) {
+        throw new NotFoundError();
+      }
+      return new this.model(obj);
+    };
+    this.filter = async (where, orderBy) => {
+      const objs = await this.instance.findMany({
+        where,
+        orderBy
+      });
+      return objs.map(obj => new this.model(obj));
+    };
+    this.paginate = async (pagination, where, orderBy) => {
+      return (0,_devoxa_prisma_relay_cursor_connection__WEBPACK_IMPORTED_MODULE_0__.findManyCursorConnection)(async connectionArgs => {
+        const objs = await this.instance.findMany({
+          where,
+          orderBy,
+          ...connectionArgs
+        });
+        return objs.map(obj => new this.model(obj));
+      }, () => this.count(where, orderBy), pagination);
+    };
+    this.create = async data => {
+      try {
+        const obj = await this.instance.create({
+          data
+        });
+        return new this.model(obj);
+      } catch (e) {
+        console.error(e);
+        throw new CreateError();
+      }
+    };
+    this.update = async (data, where) => {
+      try {
+        const obj = await this.instance.update({
+          data,
+          where
+        });
+        return new this.model(obj);
+      } catch (e) {
+        console.error(e);
+        throw new UpdateError();
+      }
+    };
+    this.delete = async where => {
+      const obj = await this.instance.delete({
+        where
+      });
+      return new this.model(obj);
+    };
+    this.upsert = async (create, update, where) => {
+      try {
+        const obj = await this.instance.upsert({
+          create,
+          update,
+          where
+        });
+        return new this.model(obj);
+      } catch (e) {
+        console.error(e);
+        throw new UpsertError();
+      }
+    };
+    this.count = async (where, orderBy) => {
+      return await this.instance.count({
+        orderBy,
+        where
+      });
+    };
+    this.instance = instance;
+    this.model = model;
+  }
+}
+
+class Repository {
+  $save() {}
+  $fetch() {}
+  constructor() {}
+  $boostrap(that, fields, hiddenFields) {
+    for (const [key, value] of Object.entries(fields)) {
+      const keyName = hiddenFields.includes(key) ? "$" + key : key;
+      that[keyName] = value;
+    }
+  }
+}
+
+
+//# sourceMappingURL=index.module.js.map
+
+
+/***/ }),
+
+/***/ 9417:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
+
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "aX": () => (/* binding */ getSignedCookie),
+  "NI": () => (/* binding */ setSignedCookie)
+});
+
+// UNUSED EXPORTS: deleteCookie, getCookie, setCookie
+
+;// CONCATENATED MODULE: ./node_modules/hono/dist/utils/url.js
+// src/utils/url.ts
+var splitPath = (path) => {
+  const paths = path.split("/");
+  if (paths[0] === "") {
+    paths.shift();
+  }
+  return paths;
+};
+var splitRoutingPath = (routePath) => {
+  const { groups, path } = extractGroupsFromPath(routePath);
+  const paths = splitPath(path);
+  return replaceGroupMarks(paths, groups);
+};
+var extractGroupsFromPath = (path) => {
+  const groups = [];
+  path = path.replace(/\{[^}]+\}/g, (match, index) => {
+    const mark = `@${index}`;
+    groups.push([mark, match]);
+    return mark;
+  });
+  return { groups, path };
+};
+var replaceGroupMarks = (paths, groups) => {
+  for (let i = groups.length - 1; i >= 0; i--) {
+    const [mark] = groups[i];
+    for (let j = paths.length - 1; j >= 0; j--) {
+      if (paths[j].includes(mark)) {
+        paths[j] = paths[j].replace(mark, groups[i][1]);
+        break;
+      }
+    }
+  }
+  return paths;
+};
+var patternCache = {};
+var getPattern = (label) => {
+  if (label === "*") {
+    return "*";
+  }
+  const match = label.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);
+  if (match) {
+    if (!patternCache[label]) {
+      if (match[2]) {
+        patternCache[label] = [label, match[1], new RegExp("^" + match[2] + "$")];
+      } else {
+        patternCache[label] = [label, match[1], true];
+      }
+    }
+    return patternCache[label];
+  }
+  return null;
+};
+var getPath = (request) => {
+  const match = request.url.match(/^https?:\/\/[^/]+(\/[^?]*)/);
+  return match ? match[1] : "";
+};
+var getQueryStrings = (url) => {
+  const queryIndex = url.indexOf("?", 8);
+  return queryIndex === -1 ? "" : "?" + url.slice(queryIndex + 1);
+};
+var getPathNoStrict = (request) => {
+  const result = getPath(request);
+  return result.length > 1 && result[result.length - 1] === "/" ? result.slice(0, -1) : result;
+};
+var mergePath = (...paths) => {
+  let p = "";
+  let endsWithSlash = false;
+  for (let path of paths) {
+    if (p[p.length - 1] === "/") {
+      p = p.slice(0, -1);
+      endsWithSlash = true;
+    }
+    if (path[0] !== "/") {
+      path = `/${path}`;
+    }
+    if (path === "/" && endsWithSlash) {
+      p = `${p}/`;
+    } else if (path !== "/") {
+      p = `${p}${path}`;
+    }
+    if (path === "/" && p === "") {
+      p = "/";
+    }
+  }
+  return p;
+};
+var checkOptionalParameter = (path) => {
+  if (!path.match(/\:.+\?$/)) {
+    return null;
+  }
+  const segments = path.split("/");
+  const results = [];
+  let basePath = "";
+  segments.forEach((segment) => {
+    if (segment !== "" && !/\:/.test(segment)) {
+      basePath += "/" + segment;
+    } else if (/\:/.test(segment)) {
+      if (/\?/.test(segment)) {
+        if (results.length === 0 && basePath === "") {
+          results.push("/");
+        } else {
+          results.push(basePath);
+        }
+        const optionalSegment = segment.replace("?", "");
+        basePath += "/" + optionalSegment;
+        results.push(basePath);
+      } else {
+        basePath += "/" + segment;
+      }
+    }
+  });
+  return results.filter((v, i, a) => a.indexOf(v) === i);
+};
+var _decodeURI = (value) => {
+  if (!/[%+]/.test(value)) {
+    return value;
+  }
+  if (value.indexOf("+") !== -1) {
+    value = value.replace(/\+/g, " ");
+  }
+  return /%/.test(value) ? decodeURIComponent_(value) : value;
+};
+var _getQueryParam = (url, key, multiple) => {
+  let encoded;
+  if (!multiple && key && !/[%+]/.test(key)) {
+    let keyIndex2 = url.indexOf(`?${key}`, 8);
+    if (keyIndex2 === -1) {
+      keyIndex2 = url.indexOf(`&${key}`, 8);
+    }
+    while (keyIndex2 !== -1) {
+      const trailingKeyCode = url.charCodeAt(keyIndex2 + key.length + 1);
+      if (trailingKeyCode === 61) {
+        const valueIndex = keyIndex2 + key.length + 2;
+        const endIndex = url.indexOf("&", valueIndex);
+        return _decodeURI(url.slice(valueIndex, endIndex === -1 ? void 0 : endIndex));
+      } else if (trailingKeyCode == 38 || isNaN(trailingKeyCode)) {
+        return "";
+      }
+      keyIndex2 = url.indexOf(`&${key}`, keyIndex2 + 1);
+    }
+    encoded = /[%+]/.test(url);
+    if (!encoded) {
+      return void 0;
+    }
+  }
+  const results = {};
+  encoded ?? (encoded = /[%+]/.test(url));
+  let keyIndex = url.indexOf("?", 8);
+  while (keyIndex !== -1) {
+    const nextKeyIndex = url.indexOf("&", keyIndex + 1);
+    let valueIndex = url.indexOf("=", keyIndex);
+    if (valueIndex > nextKeyIndex && nextKeyIndex !== -1) {
+      valueIndex = -1;
+    }
+    let name = url.slice(
+      keyIndex + 1,
+      valueIndex === -1 ? nextKeyIndex === -1 ? void 0 : nextKeyIndex : valueIndex
+    );
+    if (encoded) {
+      name = _decodeURI(name);
+    }
+    keyIndex = nextKeyIndex;
+    if (name === "") {
+      continue;
+    }
+    let value;
+    if (valueIndex === -1) {
+      value = "";
+    } else {
+      value = url.slice(valueIndex + 1, nextKeyIndex === -1 ? void 0 : nextKeyIndex);
+      if (encoded) {
+        value = _decodeURI(value);
+      }
+    }
+    if (multiple) {
+      if (!(results[name] && Array.isArray(results[name]))) {
+        results[name] = [];
+      }
+      ;
+      results[name].push(value);
+    } else {
+      results[name] ?? (results[name] = value);
+    }
+  }
+  return key ? results[key] : results;
+};
+var getQueryParam = (/* unused pure expression or super */ null && (_getQueryParam));
+var getQueryParams = (url, key) => {
+  return _getQueryParam(url, key, true);
+};
+var decodeURIComponent_ = decodeURIComponent;
+
+
+;// CONCATENATED MODULE: ./node_modules/hono/dist/utils/cookie.js
+// src/utils/cookie.ts
+
+var algorithm = { name: "HMAC", hash: "SHA-256" };
+var getCryptoKey = async (secret) => {
+  const secretBuf = typeof secret === "string" ? new TextEncoder().encode(secret) : secret;
+  return await crypto.subtle.importKey("raw", secretBuf, algorithm, false, ["sign", "verify"]);
+};
+var makeSignature = async (value, secret) => {
+  const key = await getCryptoKey(secret);
+  const signature = await crypto.subtle.sign(algorithm.name, key, new TextEncoder().encode(value));
+  return btoa(String.fromCharCode(...new Uint8Array(signature)));
+};
+var verifySignature = async (base64Signature, value, secret) => {
+  try {
+    const signatureBinStr = atob(base64Signature);
+    const signature = new Uint8Array(signatureBinStr.length);
+    for (let i = 0; i < signatureBinStr.length; i++) {
+      signature[i] = signatureBinStr.charCodeAt(i);
+    }
+    return await crypto.subtle.verify(algorithm, secret, signature, new TextEncoder().encode(value));
+  } catch (e) {
+    return false;
+  }
+};
+var validCookieNameRegEx = /^[\w!#$%&'*.^`|~+-]+$/;
+var validCookieValueRegEx = /^[ !#-:<-[\]-~]*$/;
+var cookie_parse = (cookie, name) => {
+  const pairs = cookie.trim().split(";");
+  return pairs.reduce((parsedCookie, pairStr) => {
+    pairStr = pairStr.trim();
+    const valueStartPos = pairStr.indexOf("=");
+    if (valueStartPos === -1) {
+      return parsedCookie;
+    }
+    const cookieName = pairStr.substring(0, valueStartPos).trim();
+    if (name && name !== cookieName || !validCookieNameRegEx.test(cookieName)) {
+      return parsedCookie;
+    }
+    let cookieValue = pairStr.substring(valueStartPos + 1).trim();
+    if (cookieValue.startsWith('"') && cookieValue.endsWith('"')) {
+      cookieValue = cookieValue.slice(1, -1);
+    }
+    if (validCookieValueRegEx.test(cookieValue)) {
+      parsedCookie[cookieName] = decodeURIComponent_(cookieValue);
+    }
+    return parsedCookie;
+  }, {});
+};
+var parseSigned = async (cookie, secret, name) => {
+  const parsedCookie = {};
+  const secretKey = await getCryptoKey(secret);
+  for (const [key, value] of Object.entries(cookie_parse(cookie, name))) {
+    const signatureStartPos = value.lastIndexOf(".");
+    if (signatureStartPos < 1) {
+      continue;
+    }
+    const signedValue = value.substring(0, signatureStartPos);
+    const signature = value.substring(signatureStartPos + 1);
+    if (signature.length !== 44 || !signature.endsWith("=")) {
+      continue;
+    }
+    const isVerified = await verifySignature(signature, signedValue, secretKey);
+    parsedCookie[key] = isVerified ? signedValue : false;
+  }
+  return parsedCookie;
+};
+var _serialize = (name, value, opt = {}) => {
+  let cookie = `${name}=${value}`;
+  if (opt && typeof opt.maxAge === "number" && opt.maxAge >= 0) {
+    cookie += `; Max-Age=${Math.floor(opt.maxAge)}`;
+  }
+  if (opt.domain) {
+    cookie += `; Domain=${opt.domain}`;
+  }
+  if (opt.path) {
+    cookie += `; Path=${opt.path}`;
+  }
+  if (opt.expires) {
+    cookie += `; Expires=${opt.expires.toUTCString()}`;
+  }
+  if (opt.httpOnly) {
+    cookie += "; HttpOnly";
+  }
+  if (opt.secure) {
+    cookie += "; Secure";
+  }
+  if (opt.sameSite) {
+    cookie += `; SameSite=${opt.sameSite}`;
+  }
+  if (opt.partitioned) {
+    cookie += "; Partitioned";
+  }
+  return cookie;
+};
+var cookie_serialize = (name, value, opt = {}) => {
+  value = encodeURIComponent(value);
+  return _serialize(name, value, opt);
+};
+var serializeSigned = async (name, value, secret, opt = {}) => {
+  const signature = await makeSignature(value, secret);
+  value = `${value}.${signature}`;
+  value = encodeURIComponent(value);
+  return _serialize(name, value, opt);
+};
+
+
+;// CONCATENATED MODULE: ./node_modules/hono/dist/helper/cookie/index.js
+// src/helper/cookie/index.ts
+
+var getCookie = (c, key) => {
+  const cookie = c.req.raw.headers.get("Cookie");
+  if (typeof key === "string") {
+    if (!cookie) {
+      return void 0;
+    }
+    const obj2 = parse(cookie, key);
+    return obj2[key];
+  }
+  if (!cookie) {
+    return {};
+  }
+  const obj = parse(cookie);
+  return obj;
+};
+var getSignedCookie = async (c, secret, key) => {
+  const cookie = c.req.raw.headers.get("Cookie");
+  if (typeof key === "string") {
+    if (!cookie) {
+      return void 0;
+    }
+    const obj2 = await parseSigned(cookie, secret, key);
+    return obj2[key];
+  }
+  if (!cookie) {
+    return {};
+  }
+  const obj = await parseSigned(cookie, secret);
+  return obj;
+};
+var setCookie = (c, name, value, opt) => {
+  const cookie = serialize(name, value, { path: "/", ...opt });
+  c.header("set-cookie", cookie, { append: true });
+};
+var setSignedCookie = async (c, name, value, secret, opt) => {
+  const cookie = await serializeSigned(name, value, secret, { path: "/", ...opt });
+  c.header("set-cookie", cookie, { append: true });
+};
+var deleteCookie = (c, name, opt) => {
+  setCookie(c, name, "", { ...opt, maxAge: 0 });
+};
+
+
+
+/***/ }),
+
+/***/ 1989:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
+
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "s9": () => (/* binding */ convert)
+});
+
+// UNUSED EXPORTS: compile, convert
+
 ;// CONCATENATED MODULE: ./node_modules/domelementtype/lib/esm/index.js
 /** Types of elements found in htmlparser2's DOM */
 var esm_ElementType;
@@ -33983,11 +36930,11 @@ function getAtomFeed(feedRoot) {
             if (href) {
                 entry.link = href;
             }
-            const description = feeds_fetch("summary", children) || feeds_fetch("content", children);
+            const description = fetch("summary", children) || fetch("content", children);
             if (description) {
                 entry.description = description;
             }
-            const pubDate = feeds_fetch("updated", children);
+            const pubDate = fetch("updated", children);
             if (pubDate) {
                 entry.pubDate = new Date(pubDate);
             }
@@ -34001,7 +36948,7 @@ function getAtomFeed(feedRoot) {
         feed.link = href;
     }
     addConditionally(feed, "description", "subtitle", childs);
-    const updated = feeds_fetch("updated", childs);
+    const updated = fetch("updated", childs);
     if (updated) {
         feed.updated = new Date(updated);
     }
@@ -34027,7 +36974,7 @@ function getRssFeed(feedRoot) {
             addConditionally(entry, "title", "title", children);
             addConditionally(entry, "link", "link", children);
             addConditionally(entry, "description", "description", children);
-            const pubDate = feeds_fetch("pubDate", children) || feeds_fetch("dc:date", children);
+            const pubDate = fetch("pubDate", children) || fetch("dc:date", children);
             if (pubDate)
                 entry.pubDate = new Date(pubDate);
             return entry;
@@ -34036,7 +36983,7 @@ function getRssFeed(feedRoot) {
     addConditionally(feed, "title", "title", childs);
     addConditionally(feed, "link", "link", childs);
     addConditionally(feed, "description", "description", childs);
-    const updated = feeds_fetch("lastBuildDate", childs);
+    const updated = fetch("lastBuildDate", childs);
     if (updated) {
         feed.updated = new Date(updated);
     }
@@ -34101,7 +37048,7 @@ function getOneElement(tagName, node) {
  * @param recurse Whether to recurse into child nodes.
  * @returns The text content of the element.
  */
-function feeds_fetch(tagName, where, recurse = false) {
+function fetch(tagName, where, recurse = false) {
     return textContent(getElementsByTagName(tagName, where, recurse, 1)).trim();
 }
 /**
@@ -34114,7 +37061,7 @@ function feeds_fetch(tagName, where, recurse = false) {
  * @param recurse Whether to recurse into child nodes.
  */
 function addConditionally(obj, prop, tagName, where, recurse = false) {
-    const val = feeds_fetch(tagName, where, recurse);
+    const val = fetch(tagName, where, recurse);
     if (val)
         obj[prop] = val;
 }
@@ -35335,7 +38282,7 @@ function compile$1 (options = {}) {
   );
 
   return function (html, metadata = undefined) {
-    return html_to_text_process(html, metadata, options, picker, findBaseElements, limitedWalk);
+    return process(html, metadata, options, picker, findBaseElements, limitedWalk);
   };
 }
 
@@ -35354,7 +38301,7 @@ function compile$1 (options = {}) {
  * @param { RecursiveCallback } walk Recursive callback.
  * @returns { string }
  */
-function html_to_text_process (html, metadata, options, picker, findBaseElements, walk) {
+function process (html, metadata, options, picker, findBaseElements, walk) {
   const maxInputLength = options.limits.maxInputLength;
   if (maxInputLength && html && html.length > maxInputLength) {
     console.warn(
@@ -36351,2013 +39298,6 @@ function handleDeprecatedOptions (options) {
 
 
 
-// EXTERNAL MODULE: ./node_modules/html-minifier/src/htmlminifier.js
-var htmlminifier = __nccwpck_require__(609);
-// EXTERNAL MODULE: ./node_modules/twig/src/twig.js
-var twig = __nccwpck_require__(8456);
-var twig_default = /*#__PURE__*/__nccwpck_require__.n(twig);
-;// CONCATENATED MODULE: external "graphql"
-var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
-var y = x => () => x
-const external_graphql_namespaceObject = x({ ["GraphQLError"]: () => __WEBPACK_EXTERNAL_MODULE_graphql__.GraphQLError });
-;// CONCATENATED MODULE: ./src/errors.ts
-
-class TemplateNotFoundError extends external_graphql_namespaceObject.GraphQLError {
-    constructor(templateId) {
-        const message = `No template found with id ${templateId}`;
-        super(message);
-        this.extensions = {
-            statusCode: 404,
-            code: "TEMPLATE_NOT_FOUND",
-            description: "No template was found with the given id",
-        };
-    }
-}
-class EnvelopeNotFoundError extends external_graphql_namespaceObject.GraphQLError {
-    constructor(templateId) {
-        const message = `No envelop found for template ${templateId}`;
-        super(message);
-        this.extensions = {
-            statusCode: 404,
-            code: "ENVELOP_NOT_FOUND",
-            description: "No envelop was found for the given template",
-        };
-    }
-}
-class TemplateAlreadyExistsError extends (/* unused pure expression or super */ null && (GraphQLError)) {
-    constructor(templateId) {
-        const message = `Template with id ${templateId} already exists`;
-        super(message);
-        this.extensions = {
-            statusCode: 409,
-            code: "TEMPLATE_ALREADY_EXISTS",
-            description: "A template with the given id already exists",
-        };
-    }
-}
-class TemplateVariableValueNotProvidedError extends external_graphql_namespaceObject.GraphQLError {
-    constructor(variableName) {
-        const message = `Value for variable "${variableName}" is required but was not provided`;
-        super(message);
-        this.extensions = {
-            statusCode: 400,
-            code: "VARIABLE_VALUE_NOT_PROVIDED",
-            description: `A value for the required variable '${variableName}' was not provided`,
-        };
-    }
-}
-class TemplateVariableIsConstantError extends external_graphql_namespaceObject.GraphQLError {
-    constructor(variableName) {
-        const message = `Variable "${variableName}" is constant and cannot be provided`;
-        super(message);
-        this.extensions = {
-            statusCode: 400,
-            code: "VARIABLE_IS_CONSTANT",
-            description: `The variable '${variableName}' is constant and cannot be provided`,
-        };
-    }
-}
-class FromEmailAddressNotAuthorizedError extends (/* unused pure expression or super */ null && (GraphQLError)) {
-    constructor(from) {
-        const message = `From email address ${from} is not authorized`;
-        super(message);
-        this.extensions = {
-            statusCode: 403,
-            code: "FROM_EMAIL_ADDRESS_NOT_AUTHORIZED",
-            description: `The from email address ${from} is not authorized`,
-        };
-    }
-}
-
-;// CONCATENATED MODULE: ./src/services/email-template-factory.ts
-
-
-twig_default().extendFilter("format_currency", (value, params) => {
-    return new Intl.NumberFormat("de-AT", {
-        style: "currency",
-        currency: params ? params[0] : "EUR",
-    }).format(value);
-});
-
-class EmailTemplateFactory {
-    static minifyRenderedTemplate(template) {
-        const result = (0,htmlminifier/* minify */.S)(template, {
-            collapseWhitespace: true,
-            removeComments: true,
-            removeEmptyAttributes: true,
-            removeEmptyElements: true,
-            removeRedundantAttributes: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            useShortDoctype: true,
-        });
-        return result;
-    }
-    static getContext(template, values) {
-        const context = {};
-        for (const variableName in template.variables) {
-            if (template.variables.hasOwnProperty(variableName)) {
-                const variable = template.variables[variableName];
-                if (variable.isConstant && variableName in values) {
-                    throw new TemplateVariableIsConstantError(variableName);
-                }
-                if (!variable.isConstant &&
-                    !(variableName in values) &&
-                    variable.isRequired) {
-                    throw new TemplateVariableValueNotProvidedError(variableName);
-                }
-                context[variableName] =
-                    values[variableName] || variable.defaultValue || null;
-            }
-        }
-        return context;
-    }
-    static renderTemplate(template, values = {}) {
-        const twigTemplate = twig_default().twig({ data: template.content });
-        const context = EmailTemplateFactory.getContext(template, values);
-        const result = twigTemplate.render(context);
-        return EmailTemplateFactory.minifyRenderedTemplate(result);
-    }
-    static render(emailTemplate, values = {}) {
-        try {
-            return EmailTemplateFactory.renderTemplate(emailTemplate, values);
-        }
-        catch (error) {
-            if (error instanceof TemplateNotFoundError ||
-                error instanceof EnvelopeNotFoundError ||
-                error instanceof TemplateVariableValueNotProvidedError) {
-                throw error;
-            }
-            else {
-                throw new Error(`Failed to render template: ${error}`);
-            }
-        }
-    }
-}
-
-// EXTERNAL MODULE: ./src/services/transformer-sandbox.ts
-var transformer_sandbox = __nccwpck_require__(9110);
-;// CONCATENATED MODULE: ./node_modules/snek-query/dist/index.js
-var dist_n={__proto__:null};function a(){return a=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},a.apply(this,arguments)}var dist_s=0;function dist_o(e){return"__private_"+dist_s+++"_"+e}function i(e,t){if(!Object.prototype.hasOwnProperty.call(e,t))throw new TypeError("attempted to use private field on non-instance");return e}function dist_c(e){const t={},r=new Proxy(e,{get(r,n,a){const s=Reflect.get(r,n,a);return!r.$isTracked||"string"==typeof n&&n.startsWith("$")?s:("string"!=typeof n||n in t||!e.hasOwnProperty(n)&&"function"!=typeof s||(t[n]={name:n,args:[]}),"function"==typeof s?function(){const e=arguments[0]||[],r=Object.entries(e).map(([e,t])=>({name:e,value:t})),a=s.apply(this,arguments);if("string"==typeof n){t[n].isFnAndCalled=!0;for(const e of r)t[n].args=t[n].args.filter(t=>t.name!==e.name),t[n].args.push(e)}return a}:s)}});return Object.assign(r,{$trackedProps:t,$isTracked:!0})}function dist_l(e){let t=null,r=dist_c({});return new Proxy({},{get:(n,a,s)=>(t||(t=new e,r=dist_c(t),t=r),Reflect.get(t,a,s)),getOwnPropertyDescriptor:(e,r)=>Object.getOwnPropertyDescriptor(t,r),ownKeys:()=>Reflect.ownKeys(t)})}function u(e){let t;return new Proxy([],{get(r,n,a){if(t||(t=dist_c(new e)),!t||!t.$isTracked||"symbol"==typeof n||"length"===n)return Reflect.get(r,n,a);const s=Number(n);return isNaN(s)?Array.prototype.hasOwnProperty(n)?(...e)=>{const r=n;switch(r){case"concat":case"copyWithin":case"fill":case"pop":case"push":case"reverse":case"shift":case"sort":case"splice":case"unshift":case"filter":return Array.prototype[r].call([t],...e),[t];case"entries":case"flatMap":case"forEach":case"keys":case"map":case"slice":case"values":case"every":case"find":case"findIndex":case"includes":case"indexOf":case"lastIndexOf":case"some":case"flat":case"reduce":case"reduceRight":return Array.prototype[r].call([t],...e);case"toLocaleString":case"toString":return Array.prototype[r].call([t]);default:throw new Error(`Unsupported array prototype method: ${r.toString()}`)}}:Reflect.get(r,n,a):t}})}const f=e=>{const t=dist_l(e),r=()=>t;return r.isProxied=!0,r},d=e=>{const t=u(e),r=()=>t;return r.isProxied=!0,r},dist_y=async e=>{let t={headers:{}};for(const r of e){const e=await r({context:t});e&&(t=e)}return t},h=e=>!(!e||!("function"==typeof e&&e.isProxied||Array.isArray(e)&&e.length&&e[0].$isTracked||e.$isTracked));class p{constructor(e){this.type=void 0,this.name=void 0,this.fields=void 0,this.type=e.type,this.name=e.name,this.fields=[]}addField(e,t=""){if(e.args=e.args.filter(e=>{const t=typeof e.value;return("string"===t||"number"===t||"boolean"===t||"object"===t||"function"===t&&e.value.preventStringSerialization)&&null!=e.value}),t){const r=t.split(".");let n=this.fields;for(const e of r){const t=n.find(t=>t.name===e);t&&(t.fields=t.fields||[],n=t.fields)}n.push(e)}else this.fields.push(e)}toString(){const e=e=>{const r=e.args.map(e=>{const t="function"==typeof e.value&&e.value.preventStringSerialization?g(e.value(),!1):g(e.value);return`${e.name}: ${t}`}).join(", "),n=e.fields?` {__typename ${t(e.fields)}}`:"";return r?`${e.name}(${r})${n}`:`${e.name}${n}`},t=t=>t.map(e).join(" ");return`${this.type} ${this.name} {__typename ${t(this.fields)}}`}}function w(e){const t=()=>e;return t.preventStringSerialization=!0,t}const m=(e,t)=>{if(null===e)return t;if(void 0===e[t])throw new Error(`Enum key does not exist in enum: ${t.toString()}`);return w(t)};function g(e,t=!0){if(null==e)return"null";if("function"==typeof e&&e.preventStringSerialization)return g(e(),!1);if("object"!=typeof e)return t?JSON.stringify(e):String(e);if(Array.isArray(e)){const r=e.map(e=>g(e,t)).join(", ");return t?`[${r}]`:r}if("object"==typeof e)return`{${Object.entries(e).map(([e,r])=>`${e}: ${g(r,t)}`).join(", ")}}`;throw new Error("Cannot stringify data of type "+typeof e)}class v{constructor(e,t={}){this.url=void 0,this.headers=void 0,this.bypassCache=void 0,this.url=e,this.headers=t;const r=process.env.SQ_OFFLINE_MODE||process.env.EXPO_PUBLIC_SQ_OFFLINE_MODE||process.env.GATSBY_SQ_OFFLINE_MODE||"true";this.bypassCache="false"===r}isQueryOperation(e){return e.trim().startsWith("query ")}async execute(r){var n=this;const s=(e=>{const t=[];(({node:e,onPath:t})=>{const r=(e,n=[])=>{const a=Object.entries(e.$trackedProps||{});if(0===a.length){const r=Object.entries(e);for(const[e,a]of r){let r=a;Array.isArray(r)&&(r=r[0]),"function"==typeof r||h(r)||e.startsWith("$")||t(e,n.join("."),[])}}else for(const[s,o]of a){let a=e[s];if(("function"!=typeof a||o.isFnAndCalled)&&(o.isFnAndCalled&&(a=e[s]()),Array.isArray(a)&&(a=a[0]),t(s,n.join("."),o.args),h(a))){const e=[...n,s];r(a,e)}}};r(e)})({node:e.node,onPath:(e,r,n)=>{t.push({name:e,path:r,args:n})}});const r=new p({type:e.type,name:e.name});for(const{name:e,path:n,args:a}of t)r.addField({name:e,args:a},n);return r})({type:r.type,name:r.name,node:r.node}).toString(),o=this.isQueryOperation(s);if(this.bypassCache){const e=await fetch(this.url,{method:"POST",headers:a({"Content-Type":"application/json"},this.headers),body:JSON.stringify({query:s}),credentials:"include"});return await e.json()}if(!await L()){const e=await this.getCachedData(s);if(e)return{data:e,errors:[]};throw new Error("snek-query is offline. "+(o?"There is no cached data for this query.":"Mutations cannot be performed while offline."))}{const e=5e3,r=2e3,i=new AbortController,c=setTimeout(async function(){const e=new AbortController,a=setTimeout(()=>{e.abort(),i.abort()},r);await k();try{200!==(await fetch(n.url,{signal:e.signal})).status&&i.abort()}catch(e){}finally{clearTimeout(a)}},e);try{const e=await fetch(this.url,{method:"POST",headers:a({"Content-Type":"application/json"},this.headers),body:JSON.stringify({query:s}),credentials:"include",signal:i.signal}),t=await e.json();return o&&this.cacheData(s,t.data),t}catch(e){const t=await this.getCachedData(s);if(t)return{data:t,errors:[]};throw e}finally{clearTimeout(c)}}}async cacheData(e,t){const n=this.generateCacheKey(e),a=JSON.stringify(t);await C.set(n,a)}async getCachedData(e){const t=this.generateCacheKey(e),n=await C.get(t);return n?JSON.parse(n):null}generateCacheKey(e){return e.trim()}}var O=/*#__PURE__*/dist_o("type"),b=/*#__PURE__*/dist_o("node"),j=/*#__PURE__*/dist_o("context"),P=/*#__PURE__*/dist_o("apiURL"),S=/*#__PURE__*/dist_o("attempt");class ${constructor(e){Object.defineProperty(this,O,{writable:!0,value:void 0}),this.name=void 0,Object.defineProperty(this,b,{writable:!0,value:void 0}),Object.defineProperty(this,j,{writable:!0,value:void 0}),Object.defineProperty(this,P,{writable:!0,value:void 0}),Object.defineProperty(this,S,{writable:!0,value:0}),i(this,O)[O]=e.type,this.name=e.name,i(this,b)[b]=e.node,i(this,j)[j]=e.context,i(this,P)[P]=e.apiURL}getContext(){return i(this,j)[j]}setContext(e){i(this,j)[j]=e}getAttempt(){return i(this,S)[S]}async execute(){i(this,S)[S]++;const e=new v(i(this,P)[P],i(this,j)[j].headers),{data:t,errors:r}=await e.execute({type:i(this,O)[O],name:this.name,node:i(this,b)[b]}),n=t?(e=>{const{node:t,data:r}=e,n=(e,t)=>{const r={};if(!t)return null;for(const[a,s]of Object.entries(t)){const t=e[a];if(void 0===t)continue;const o="function"==typeof t;let i=t;if(o&&(i=t()),Array.isArray(i)&&s){const e=s.map((e,t)=>i[t]?n(i[t],e):e);i=e}else if(null!==i&&"object"==typeof i){const e=n(i,s);i=e}else i=s;r[a]=o?()=>i:i}return r};return n(t,r)})({node:i(this,b)[b],data:t}):null;return{data:n,errors:r}}}const A=async(e,t)=>{var r;let n,a={data:null,errors:[]};try{a=await e.execute()}catch(e){n=e}if(t&&(null!=(r=a)&&r.errors||n)){var s;const r=null==t?void 0:t({forward:e=>A(e),operation:e,graphQLErrors:(null==(s=a)?void 0:s.errors)||[],networkError:n});if(r){const e=await r;if(e)return a=e,a}}if(n)throw n;return a},E=(e,t)=>{const r=async(r,n,s={})=>{const o=e[r];if(!o)throw new Error(`No ${r} operation defined.`);const i=dist_l(o);n(i);const c=new Promise(async(e,o)=>{try{const o=await dist_y(t.middlewares||[]);o.headers=a({},o.headers,s.headers);const c=new $({apiURL:t.apiURL,type:"Query"===r?"query":"mutation",name:s.name||"SnekQueryOperation",node:i,context:o}),l=await A(c,t.onError);e([n(l.data||i),l.errors])}catch(e){o(e)}});return c},n=(r,n="Unnamed")=>{const a=e[r];if(!a)throw new Error(`No ${r} operation defined.`);const s=dist_l(a);return[async()=>{const e=await dist_y(t.middlewares||[]),a=new $({apiURL:t.apiURL,type:"Query"===r?"query":"mutation",name:n,node:s,context:e}),o=await A(a,t.onError);return{data:o.data||s,errors:o.errors}},s]};return{query:async(e,t={})=>r("Query",e,t),mutate:async(e,t={})=>r("Mutation",e,t),lazyQuery:()=>n("Query"),lazyMutation:()=>n("Mutation")}};var dist_x=/*#__PURE__*/dist_o("makeKey");const _="undefined"!=typeof window?window.localStorage:{getItem:()=>null,setItem:()=>{},removeItem:()=>{}},C=new class{constructor(e,t){var r,n=this;this.storageKey=void 0,this.getAll=void 0,this.get=void 0,this.set=void 0,this.remove=void 0,this.removeAll=void 0,Object.defineProperty(this,dist_x,{writable:!0,value:e=>`${this.storageKey}:${e}`}),this.storageKey=null!=(r=null==t?void 0:t.key)?r:"@snek-query:storage",this.getAll=async function(){const t=await e.get(n.storageKey);return t?JSON.parse(t):null},this.get=async function(t){var r;const a=await e.get(i(n,dist_x)[dist_x](t));if(a)return await e.remove(i(n,dist_x)[dist_x](t)),await n.set(t,a),a;const s=await n.getAll();return s&&null!=(r=s[t])?r:null},this.set=async function(t,r){const s=await n.getAll(),o=JSON.stringify(a({},s,{[t]:r}));return e.set(n.storageKey,o)},this.remove=async function(t){return await e.remove(t)},this.removeAll=async function(){return await e.remove(n.storageKey)}}}({get:e=>Promise.resolve(_.getItem(e)),set:(e,t)=>Promise.resolve(_.setItem(e,t)),remove:e=>Promise.resolve(_.removeItem(e))}),L=async()=>"undefined"==typeof navigator||navigator.onLine,k=async()=>{},T=e=>{const t=()=>e(!0),r=()=>e(!1);if("undefined"!=typeof window)return window.addEventListener("online",t),window.addEventListener("offline",r),()=>{window.removeEventListener("online",t),window.removeEventListener("offline",r)}};
-//# sourceMappingURL=index.js.map
-
-;// CONCATENATED MODULE: ./src/clients/mailer/src/schema.generated.ts
-
-class Query {
-    constructor() { this.__typename = ""; this.version = ""; }
-}
-class Mutation {
-    constructor() { this.__typename = ""; this.sendMailSMTP = f(SentMessageInfo); this.sendMailAzure = () => null; this.sendMailGoogle = () => null; }
-}
-class SentMessageInfo {
-    constructor() { this.__typename = ""; this.accepted = []; this.rejected = []; this.rejectedErrors = u(SMTPError); this.response = ""; this.envelopeTime = null; this.messageTime = null; this.messageSize = null; }
-}
-class SMTPError {
-    constructor() { this.__typename = ""; this.code = null; this.response = null; this.responseCode = null; this.command = null; this.errno = null; this.path = null; this.syscall = null; this.name = ""; this.message = ""; this.stack = null; }
-}
-
-;// CONCATENATED MODULE: ./src/clients/mailer/src/index.ts
-
-
-const apiURL = "https://services.snek.at/mailer/graphql";
-const sq = E({ Query: Query, Mutation: Mutation }, {
-    apiURL,
-});
-
-;// CONCATENATED MODULE: ./src/services/mail-factory.ts
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-class MailFactory {
-    static async send(senderEmail, envelope, body, bodyHTML) {
-        try {
-            const smtpConfig = await senderEmail.smtpConfig();
-            if (smtpConfig) {
-                if (!smtpConfig) {
-                    throw new Error("No email configuration found. This should not happen");
-                }
-                const [data, errors] = await sq.mutate((m) => m.sendMailSMTP({
-                    mailOptions: {
-                        from: senderEmail.email,
-                        to: envelope.to,
-                        replyTo: envelope.replyTo,
-                        subject: envelope.subject,
-                        html: bodyHTML,
-                        text: body,
-                    },
-                    smtpOptions: {
-                        host: smtpConfig.host,
-                        port: smtpConfig.port,
-                        secure: smtpConfig.secure,
-                        user: smtpConfig.username,
-                        password: smtpConfig.password,
-                    },
-                }));
-                if (errors) {
-                    throw new Error(errors[0].message);
-                }
-                return data;
-            }
-            const oauthConfig = await senderEmail.oauthConfig();
-            if (oauthConfig) {
-                if (!oauthConfig) {
-                    throw new Error("No email configuration found. This should not happen");
-                }
-                if (oauthConfig.provider === "AZURE") {
-                    const [data, errors] = await sq.mutate((m) => m.sendMailAzure({
-                        mailOptions: {
-                            from: senderEmail.email,
-                            to: envelope.to,
-                            replyTo: envelope.replyTo,
-                            subject: envelope.subject,
-                            html: bodyHTML,
-                            text: body,
-                        },
-                        oauthOptions: {
-                            accessToken: oauthConfig.accessToken,
-                        },
-                    }));
-                    if (errors) {
-                        throw new Error(errors[0].message);
-                    }
-                    return data;
-                }
-                else if (oauthConfig.provider === "GOOGLE") {
-                    const [data, errors] = await sq.mutate((m) => m.sendMailGoogle({
-                        mailOptions: {
-                            from: senderEmail.email,
-                            to: envelope.to,
-                            replyTo: envelope.replyTo,
-                            subject: envelope.subject,
-                            html: bodyHTML,
-                            text: body,
-                        },
-                        oauthOptions: {
-                            accessToken: oauthConfig.accessToken,
-                        },
-                    }));
-                    if (errors) {
-                        throw new Error(errors[0].message);
-                    }
-                    return data;
-                }
-            }
-            else {
-                throw new Error("No email configuration found");
-            }
-        }
-        catch (e) {
-            throw new pylon_.ServiceError("Error sending mail", {
-                code: "MAIL_SEND_ERROR",
-                statusCode: 500,
-                details: {
-                    error: e.toString(),
-                    stack: e.stack,
-                },
-            });
-        }
-    }
-    static async sendTemplateMail(id, values) {
-        const emailTemplate = await EmailTemplate/* EmailTemplate.objects.get */.V.objects.get({ id });
-        const emailEnvelope = await emailTemplate.envelope();
-        let envelope = {
-            subject: emailEnvelope?.subject || "No subject",
-            to: emailEnvelope?.to || [],
-            replyTo: emailEnvelope?.replyTo || undefined,
-        };
-        const variables = await emailTemplate?.variables();
-        const bodyHTML = EmailTemplateFactory.render({
-            content: emailTemplate?.content,
-            variables: Object.values(variables.nodes).reduce((acc, variable) => ({
-                ...acc,
-                [variable.name]: variable,
-            }), {}),
-        }, values);
-        const body = convert(bodyHTML, {});
-        if (emailTemplate.transformer) {
-            const parentTemplate = await emailTemplate.parent();
-            const transformedTemplate = await (0,transformer_sandbox/* executeInSandbox */.s)({
-                input: {
-                    envelope,
-                    values: values || {},
-                    body,
-                    bodyHTML,
-                },
-                template: emailTemplate,
-                parentTemplate,
-            });
-            if (transformedTemplate) {
-                if (transformedTemplate.verifyReplyTo !== undefined) {
-                    emailTemplate.verifyReplyTo = transformedTemplate.verifyReplyTo;
-                }
-                if (transformedTemplate.envelope) {
-                    envelope = {
-                        ...envelope,
-                        ...transformedTemplate.envelope,
-                    };
-                }
-            }
-        }
-        if (emailTemplate.verifyReplyTo) {
-            const ctx = await service.getContext(this);
-            const auth = ctx.get("auth");
-            if (!(auth &&
-                auth.email &&
-                auth.email_verified &&
-                auth.email === envelope.replyTo)) {
-                throw new Error("Verification of replyTo email failed. Possible reasons: User is not authenticated, email is not verified or email does not match the replyTo email");
-            }
-        }
-        const senderEmail = await Email/* Email.objects.get */.G.objects.get({
-            organization: {
-                users: {
-                    some: {
-                        id: emailTemplate.$creatorId,
-                    },
-                },
-            },
-        });
-        await MailFactory.send(senderEmail, envelope, body, bodyHTML);
-        return "Mail scheduled successfully";
-    }
-    static async sendMail(envelope, body, bodyHTML) {
-        if (!body && !bodyHTML) {
-            throw new Error("No body or bodyHTML provided");
-        }
-        const ctx = await service.getContext(this);
-        const senderEmail = await ctx.user.email();
-        if (!senderEmail) {
-            throw new Error("No sender email found");
-        }
-        if (bodyHTML) {
-            body = convert(bodyHTML, {});
-        }
-        if (body === undefined) {
-            throw new Error("No body provided. This should not happen");
-        }
-        await MailFactory.sendMail(senderEmail, envelope, body, bodyHTML);
-        return "Mail scheduled successfully";
-    }
-}
-__decorate([
-    (0,pylon_.requireAuth)({})
-], MailFactory, "sendMail", null);
-
-// EXTERNAL MODULE: ./src/repository/models/Organization.ts
-var Organization = __nccwpck_require__(2478);
-;// CONCATENATED MODULE: ./src/index.ts
-
-
-
-
-
-
-
-main.config();
-const service = (0,pylon_.defineService)({
-    Query: {
-        me: User/* User.me */.n.me,
-        template: EmailTemplate/* EmailTemplate.get */.V.get,
-        allTemplate: EmailTemplate/* EmailTemplate.all */.V.all,
-    },
-    Mutation: {
-        templateCreate: EmailTemplate/* EmailTemplate.create */.V.create,
-        templateUpdate: EmailTemplate/* EmailTemplate.update */.V.update,
-        templateDelete: EmailTemplate/* EmailTemplate.delete */.V["delete"],
-        templateTransformer: EmailTemplate/* EmailTemplate.setTransformer */.V.setTransformer,
-        senderEmailCreate: Email/* Email.create */.G.create,
-        senderEmailUpdate: Email/* Email.update */.G.update,
-        senderEmailDelete: Email/* Email.delete */.G["delete"],
-        organizationSetSenderEmail: Organization/* Organization.setSenderEmail */.c.setSenderEmail,
-        sendMail: MailFactory.sendMail,
-        sendTemplateMail: MailFactory.sendTemplateMail,
-    },
-}, {
-    context: async (c) => {
-        const auth = c.get("auth");
-        let ctx = c;
-        if (auth) {
-            let user;
-            try {
-                user = await User/* User.objects.get */.n.objects.get({ id: auth.sub });
-            }
-            catch {
-                pylon_.logger.info(`Creating user with id: ${auth.sub}`);
-                const organizationId = auth["urn:zitadel:iam:org:id"];
-                user = await User/* User.objects.create */.n.objects.create({
-                    id: auth.sub,
-                    organization: {
-                        connectOrCreate: {
-                            create: {
-                                id: organizationId,
-                            },
-                            where: {
-                                id: organizationId,
-                            },
-                        },
-                    },
-                });
-            }
-            ctx.user = user;
-        }
-        return ctx;
-    },
-});
-const configureApp = async (app) => {
-    app.use("*", pylon_.auth.initialize());
-};
-/* harmony default export */ const src = (service);
-
-
-/***/ }),
-
-/***/ 364:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "Aw": () => (/* binding */ OrganizationRepository),
-/* harmony export */   "FY": () => (/* binding */ EmailTemplateRepository),
-/* harmony export */   "Fx": () => (/* binding */ VariableDefinitionRepository),
-/* harmony export */   "I2": () => (/* binding */ EmailEnvelopeRepository),
-/* harmony export */   "cH": () => (/* binding */ OAuthConfigRepository),
-/* harmony export */   "hx": () => (/* binding */ SMTPConfigRepository),
-/* harmony export */   "jD": () => (/* binding */ UserRepository),
-/* harmony export */   "yH": () => (/* binding */ EmailRepository)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-
-class OrganizationRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["emailId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async users(pagination, where, orderBy) {
-        const _where = {
-            ...where,
-            organizationId: this.id
-        };
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.paginate(pagination, _where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async user(where) {
-        where = { ...where, organizationId: this.id };
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.get(where);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $usersAdd(data) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.create({ ...data, organizationId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $usersUpdate(data, where) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.update(data, { ...where, organizationId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $usersDelete(where) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.delete({ ...where, organizationId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async email(where, orderBy) {
-        if (!this.$emailId)
-            return null;
-        const _where = {
-            ...where,
-            id: this.$emailId
-        };
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $emailAdd(data) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.create({ ...data, id: this.$emailId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailUpdate(data, where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$emailId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailDelete(where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$emailId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class UserRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["organizationId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async emailTemplates(pagination, where, orderBy) {
-        const _where = {
-            ...where,
-            creatorId: this.id
-        };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.paginate(pagination, _where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async emailTemplate(where) {
-        where = { ...where, creatorId: this.id };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.get(where);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $emailTemplatesAdd(data) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.create({ ...data, creatorId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailTemplatesUpdate(data, where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.update(data, { ...where, creatorId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailTemplatesDelete(where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.delete({ ...where, creatorId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async email(where, orderBy) {
-        const _where = {
-            ...where,
-            userId: this.id
-        };
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $emailAdd(data) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.create({ ...data, userId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailUpdate(data, where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.update(data, { ...where, userId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailDelete(where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.delete({ ...where, userId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async organization(where, orderBy) {
-        if (!this.$organizationId)
-            throw new Error("Relation organizationId is required");
-        const _where = {
-            ...where,
-            id: this.$organizationId
-        };
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $organizationAdd(data) {
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.create({ ...data, id: this.$organizationId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $organizationUpdate(data, where) {
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$organizationId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $organizationDelete(where) {
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$organizationId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class EmailRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["userId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async smtpConfig(where, orderBy) {
-        const _where = {
-            ...where,
-            emailId: this.id
-        };
-        const Model = (__nccwpck_require__(9366)/* .SMTPConfig */ .P);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $smtpConfigAdd(data) {
-        const Model = (__nccwpck_require__(9366)/* .SMTPConfig */ .P);
-        try {
-            return await Model.objects.create({ ...data, emailId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $smtpConfigUpdate(data, where) {
-        const Model = (__nccwpck_require__(9366)/* .SMTPConfig */ .P);
-        try {
-            return await Model.objects.update(data, { ...where, emailId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $smtpConfigDelete(where) {
-        const Model = (__nccwpck_require__(9366)/* .SMTPConfig */ .P);
-        try {
-            return await Model.objects.delete({ ...where, emailId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async oauthConfig(where, orderBy) {
-        const _where = {
-            ...where,
-            emailId: this.id
-        };
-        const Model = (__nccwpck_require__(1059)/* .OAuthConfig */ .S);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $oauthConfigAdd(data) {
-        const Model = (__nccwpck_require__(1059)/* .OAuthConfig */ .S);
-        try {
-            return await Model.objects.create({ ...data, emailId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $oauthConfigUpdate(data, where) {
-        const Model = (__nccwpck_require__(1059)/* .OAuthConfig */ .S);
-        try {
-            return await Model.objects.update(data, { ...where, emailId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $oauthConfigDelete(where) {
-        const Model = (__nccwpck_require__(1059)/* .OAuthConfig */ .S);
-        try {
-            return await Model.objects.delete({ ...where, emailId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async user(where, orderBy) {
-        if (!this.$userId)
-            return null;
-        const _where = {
-            ...where,
-            id: this.$userId
-        };
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $userAdd(data) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.create({ ...data, id: this.$userId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $userUpdate(data, where) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$userId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $userDelete(where) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$userId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async organization(where, orderBy) {
-        const _where = {
-            ...where,
-            emailId: this.id
-        };
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $organizationAdd(data) {
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.create({ ...data, emailId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $organizationUpdate(data, where) {
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.update(data, { ...where, emailId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $organizationDelete(where) {
-        const Model = (__nccwpck_require__(2478)/* .Organization */ .c);
-        try {
-            return await Model.objects.delete({ ...where, emailId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class SMTPConfigRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["emailId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async email(where, orderBy) {
-        if (!this.$emailId)
-            throw new Error("Relation emailId is required");
-        const _where = {
-            ...where,
-            id: this.$emailId
-        };
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $emailAdd(data) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.create({ ...data, id: this.$emailId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailUpdate(data, where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$emailId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailDelete(where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$emailId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class OAuthConfigRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["emailId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async email(where, orderBy) {
-        if (!this.$emailId)
-            throw new Error("Relation emailId is required");
-        const _where = {
-            ...where,
-            id: this.$emailId
-        };
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $emailAdd(data) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.create({ ...data, id: this.$emailId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailUpdate(data, where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$emailId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailDelete(where) {
-        const Model = (__nccwpck_require__(7538)/* .Email */ .G);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$emailId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class EmailTemplateRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["parentId", "creatorId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async envelope(where, orderBy) {
-        const _where = {
-            ...where,
-            emailTemplateId: this.id
-        };
-        const Model = (__nccwpck_require__(4194)/* .EmailEnvelope */ .C);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $envelopeAdd(data) {
-        const Model = (__nccwpck_require__(4194)/* .EmailEnvelope */ .C);
-        try {
-            return await Model.objects.create({ ...data, emailTemplateId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $envelopeUpdate(data, where) {
-        const Model = (__nccwpck_require__(4194)/* .EmailEnvelope */ .C);
-        try {
-            return await Model.objects.update(data, { ...where, emailTemplateId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $envelopeDelete(where) {
-        const Model = (__nccwpck_require__(4194)/* .EmailEnvelope */ .C);
-        try {
-            return await Model.objects.delete({ ...where, emailTemplateId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async parent(where, orderBy) {
-        if (!this.$parentId)
-            return null;
-        const _where = {
-            ...where,
-            id: this.$parentId
-        };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $parentAdd(data) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.create({ ...data, id: this.$parentId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $parentUpdate(data, where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$parentId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $parentDelete(where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$parentId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async links(pagination, where, orderBy) {
-        const _where = {
-            ...where,
-            parentId: this.id
-        };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.paginate(pagination, _where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async link(where) {
-        where = { ...where, parentId: this.id };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.get(where);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $linksAdd(data) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.create({ ...data, parentId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $linksUpdate(data, where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.update(data, { ...where, parentId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $linksDelete(where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.delete({ ...where, parentId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async variables(pagination, where, orderBy) {
-        const _where = {
-            ...where,
-            emailTemplateId: this.id
-        };
-        const Model = (__nccwpck_require__(533)/* .VariableDefinition */ ._);
-        try {
-            return await Model.objects.paginate(pagination, _where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async variable(where) {
-        where = { ...where, emailTemplateId: this.id };
-        const Model = (__nccwpck_require__(533)/* .VariableDefinition */ ._);
-        try {
-            return await Model.objects.get(where);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $variablesAdd(data) {
-        const Model = (__nccwpck_require__(533)/* .VariableDefinition */ ._);
-        try {
-            return await Model.objects.create({ ...data, emailTemplateId: this.id });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $variablesUpdate(data, where) {
-        const Model = (__nccwpck_require__(533)/* .VariableDefinition */ ._);
-        try {
-            return await Model.objects.update(data, { ...where, emailTemplateId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $variablesDelete(where) {
-        const Model = (__nccwpck_require__(533)/* .VariableDefinition */ ._);
-        try {
-            return await Model.objects.delete({ ...where, emailTemplateId: this.id || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async creator(where, orderBy) {
-        if (!this.$creatorId)
-            throw new Error("Relation creatorId is required");
-        const _where = {
-            ...where,
-            id: this.$creatorId
-        };
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $creatorAdd(data) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.create({ ...data, id: this.$creatorId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $creatorUpdate(data, where) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$creatorId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $creatorDelete(where) {
-        const Model = (__nccwpck_require__(5538)/* .User */ .n);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$creatorId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class VariableDefinitionRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["emailTemplateId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async emailTemplate(where, orderBy) {
-        if (!this.$emailTemplateId)
-            return null;
-        const _where = {
-            ...where,
-            id: this.$emailTemplateId
-        };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            return null;
-        }
-    }
-    ;
-    async $emailTemplateAdd(data) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.create({ ...data, id: this.$emailTemplateId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailTemplateUpdate(data, where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$emailTemplateId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailTemplateDelete(where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$emailTemplateId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-class EmailEnvelopeRepository extends _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .Repository */ ._j {
-    constructor(data) {
-        super();
-        const hiddenFields = ["emailTemplateId"];
-        this.$boostrap(this, data, hiddenFields);
-    }
-    async emailTemplate(where, orderBy) {
-        if (!this.$emailTemplateId)
-            throw new Error("Relation emailTemplateId is required");
-        const _where = {
-            ...where,
-            id: this.$emailTemplateId
-        };
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.get(_where, orderBy);
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    ;
-    async $emailTemplateAdd(data) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.create({ ...data, id: this.$emailTemplateId });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailTemplateUpdate(data, where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.update(data, { ...where, id: this.$emailTemplateId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-    async $emailTemplateDelete(where) {
-        const Model = (__nccwpck_require__(3436)/* .EmailTemplate */ .V);
-        try {
-            return await Model.objects.delete({ ...where, id: this.$emailTemplateId || undefined });
-        }
-        catch (e) {
-            throw e;
-        }
-    }
-}
-
-
-/***/ }),
-
-/***/ 3675:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-
-// EXPORTS
-__nccwpck_require__.d(__webpack_exports__, {
-  "L": () => (/* binding */ client)
-});
-
-;// CONCATENATED MODULE: external "@prisma/client"
-var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
-var y = x => () => x
-const client_namespaceObject = x({ ["PrismaClient"]: () => __WEBPACK_EXTERNAL_MODULE__prisma_client_d4dd1072__.PrismaClient });
-;// CONCATENATED MODULE: ./src/repository/client.ts
-
-const client = new client_namespaceObject.PrismaClient();
-
-
-/***/ }),
-
-/***/ 7538:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "G": () => (/* binding */ Email)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(364);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6402);
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-class Email extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailRepository */ .yH {
-    static async create(data) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return await ctx.user.$emailAdd({
-            email: data.email,
-            smtpConfig: {
-                create: data.smtpConfig,
-            },
-            oauthConfig: {
-                create: data.oauthConfig,
-            },
-        });
-    }
-    static async update(id, data) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return await ctx.user.$emailUpdate({
-            email: data.email,
-            smtpConfig: {
-                update: data.smtpConfig,
-            },
-            oauthConfig: {
-                update: data.oauthConfig,
-            },
-        }, { id });
-    }
-    static async delete(id) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return await ctx.user.$emailDelete({});
-    }
-}
-Email.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.email */ .L.email, Email);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
-], Email, "create", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
-], Email, "update", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
-], Email, "delete", null);
-
-
-/***/ }),
-
-/***/ 4194:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "C": () => (/* binding */ EmailEnvelope)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
-
-
-
-class EmailEnvelope extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .EmailEnvelopeRepository */ .I2 {
-}
-EmailEnvelope.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.emailEnvelope */ .L.emailEnvelope, EmailEnvelope);
-
-
-/***/ }),
-
-/***/ 3436:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "V": () => (/* binding */ EmailTemplate)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(364);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6402);
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemplateRepository */ .FY {
-    static async get(id) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return EmailTemplate.objects.get({
-            id,
-            creator: {
-                organizationId: ctx.user.$organizationId,
-            },
-        });
-    }
-    static async all(pagination, where, orderBy) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return EmailTemplate.objects.paginate(pagination, {
-            ...where,
-            creator: {
-                organizationId: ctx.user.$organizationId,
-            },
-        }, orderBy);
-    }
-    static async create(data) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return ctx.user.$emailTemplatesAdd({
-            content: data.content,
-            description: data.description,
-            variables: {
-                createMany: {
-                    data: data.variables || [],
-                },
-            },
-            envelope: {
-                create: {
-                    subject: data.envelope.subject,
-                    to: data.envelope.to,
-                    replyTo: data.envelope.replyTo,
-                },
-            },
-        });
-    }
-    static async update(id, data) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return EmailTemplate.objects.update({
-            content: data.content,
-            description: data.description,
-            variables: {
-                createMany: {
-                    data: data.variables || [],
-                },
-            },
-            envelope: {
-                create: {
-                    subject: data.envelope.subject,
-                    to: data.envelope.to,
-                    replyTo: data.envelope.replyTo,
-                },
-            },
-        }, {
-            id,
-            creator: {
-                organizationId: ctx.user.$organizationId,
-            },
-        });
-    }
-    static async setTransformer(id, transformer) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return EmailTemplate.objects.update({
-            transformer,
-        }, {
-            id,
-            creator: {
-                organizationId: ctx.user.$organizationId,
-            },
-        });
-    }
-    static async delete(id) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return EmailTemplate.objects.delete({
-            id,
-            creator: {
-                organizationId: ctx.user.$organizationId,
-            },
-        });
-    }
-    async creator(where, orderBy) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        if (this.$creatorId !== ctx.user.id) {
-            throw new _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError("Unauthorized", {
-                code: "UNAUTHORIZED",
-                statusCode: 401,
-            });
-        }
-        return super.creator(where, orderBy);
-    }
-}
-EmailTemplate.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.emailTemplate */ .L.emailTemplate, EmailTemplate);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
-        roles: ["mailpress:admin"],
-    })
-], EmailTemplate, "get", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
-        roles: ["mailpress:admin"],
-    })
-], EmailTemplate, "all", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
-        roles: ["mailpress:admin"],
-    })
-], EmailTemplate, "create", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
-        roles: ["mailpress:admin"],
-    })
-], EmailTemplate, "update", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({ roles: ["mailpress:unsafe-transformer"] })
-], EmailTemplate, "setTransformer", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({
-        roles: ["mailpress:admin"],
-    })
-], EmailTemplate, "delete", null);
-
-
-/***/ }),
-
-/***/ 1059:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "S": () => (/* binding */ OAuthConfig)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
-
-
-
-class OAuthConfig extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .OAuthConfigRepository */ .cH {
-}
-OAuthConfig.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.oAuthConfig */ .L.oAuthConfig, OAuthConfig);
-
-
-/***/ }),
-
-/***/ 2478:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "c": () => (/* binding */ Organization)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(364);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
-/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(1121);
-/* harmony import */ var _Email__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7538);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(6402);
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-class Organization extends _generated__WEBPACK_IMPORTED_MODULE_1__/* .OrganizationRepository */ .Aw {
-    static async setSenderEmail(email, smtpConfig, oauthConfig) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_5__/* ["default"].getContext */ .ZP.getContext(this);
-        return await _Email__WEBPACK_IMPORTED_MODULE_4__/* .Email.objects.create */ .G.objects.create({
-            email,
-            smtpConfig: {
-                create: smtpConfig,
-            },
-            oauthConfig: {
-                create: oauthConfig,
-            },
-            organization: {
-                connect: {
-                    id: ctx.user.$organizationId,
-                },
-            },
-        });
-    }
-}
-Organization.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.organization */ .L.organization, Organization);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_3__.requireAuth)({
-        roles: ["mailpress:admin"],
-    })
-], Organization, "setSenderEmail", null);
-
-
-/***/ }),
-
-/***/ 9366:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "P": () => (/* binding */ SMTPConfig)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
-
-
-
-class SMTPConfig extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .SMTPConfigRepository */ .hx {
-}
-SMTPConfig.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.sMTPConfig */ .L.sMTPConfig, SMTPConfig);
-
-
-/***/ }),
-
-/***/ 5538:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "n": () => (/* binding */ User)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(364);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(6402);
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-class User extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .UserRepository */ .jD {
-    static async me() {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        return ctx.user;
-    }
-    async $getAuthenticatedEmail() {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
-        const baseUrl = process.env.AUTH_ISSUER;
-        const res = await fetch(`${baseUrl}/auth/v1/users/me/email`, {
-            headers: {
-                Authorization: `Bearer ${ctx.req.header("authorization")}`,
-            },
-        });
-        if (!res.ok) {
-            throw new Error("Failed to fetch user email");
-        }
-        const data = (await res.json());
-        if (!data.email.isEmailVerified) {
-            throw new Error("User email is not verified");
-        }
-        return data.email.email;
-    }
-}
-User.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_2__/* .client.user */ .L.user, User);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
-], User.prototype, "$getAuthenticatedEmail", null);
-__decorate([
-    (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.requireAuth)({})
-], User, "me", null);
-
-
-/***/ }),
-
-/***/ 533:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "_": () => (/* binding */ VariableDefinition)
-/* harmony export */ });
-/* harmony import */ var _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1060);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(3675);
-/* harmony import */ var _generated__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(364);
-
-
-
-class VariableDefinition extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .VariableDefinitionRepository */ .Fx {
-}
-VariableDefinition.objects = new _netsnek_prisma_repository__WEBPACK_IMPORTED_MODULE_0__/* .ObjectManager */ .aP(_client__WEBPACK_IMPORTED_MODULE_1__/* .client.variableDefinition */ .L.variableDefinition, VariableDefinition);
-
-
-/***/ }),
-
-/***/ 9110:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "s": () => (/* binding */ executeInSandbox)
-/* harmony export */ });
-const executeInSandbox = async (args) => {
-    const code = args.template.transformer;
-    if (!code) {
-        throw new Error("No transformer code");
-    }
-    const buildEnvelopeFromTemplate = async (template) => {
-        template;
-        const emailEnvelope = await template.envelope();
-        if (emailEnvelope) {
-            const to = emailEnvelope.to;
-            const replyTo = emailEnvelope.replyTo || undefined;
-            return {
-                subject: emailEnvelope.subject || undefined,
-                to,
-                replyTo,
-            };
-        }
-    };
-    const templateEnvelope = await buildEnvelopeFromTemplate(args.template);
-    const parentTemplateEnvelope = args.parentTemplate
-        ? await buildEnvelopeFromTemplate(args.parentTemplate)
-        : undefined;
-    const result = eval(`const template = ${JSON.stringify(args.template)};
-  const parentTemplate = ${JSON.stringify(args.parentTemplate)};
-
-  const templateEnvelope = ${JSON.stringify(templateEnvelope)};
-  const parentTemplateEnvelope = ${JSON.stringify(parentTemplateEnvelope)};
-  const input = ${JSON.stringify(args.input)};
-
-  let result = {
-    verifyReplyTo: undefined,
-    envelope: {},
-  };
-
-  ${code}
-
-  result;
-  `);
-    return result;
-};
-
-
-/***/ }),
-
-/***/ 1121:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
-var y = x => () => x
-module.exports = x({ ["ServiceError"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.ServiceError, ["auth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.auth, ["defineService"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.defineService, ["logger"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.logger, ["requireAuth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.requireAuth });
-
-/***/ }),
-
-/***/ 6113:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("crypto");
-
-/***/ }),
-
-/***/ 7147:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
-
-/***/ }),
-
-/***/ 3685:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("http");
-
-/***/ }),
-
-/***/ 5687:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("https");
-
-/***/ }),
-
-/***/ 2037:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("os");
-
-/***/ }),
-
-/***/ 1017:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("path");
-
-/***/ }),
-
-/***/ 2391:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("uglify-js");
-
-/***/ }),
-
-/***/ 7310:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("url");
-
-/***/ }),
-
-/***/ 1060:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
-
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "_j": () => (/* binding */ Repository),
-/* harmony export */   "aP": () => (/* binding */ ObjectManager)
-/* harmony export */ });
-/* unused harmony exports CreateError, DeleteError, InvalidInputError, NotFoundError, UpdateError, UpsertError */
-/* harmony import */ var _devoxa_prisma_relay_cursor_connection__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7408);
-/* harmony import */ var _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1121);
-
-
-
-class NotFoundError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
-  constructor(message = "Object not found") {
-    super(message, {
-      code: "OBJECT_NOT_FOUND",
-      statusCode: 404,
-      message
-    });
-  }
-}
-class CreateError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
-  constructor(message = "Error creating object") {
-    super(message, {
-      code: "CREATE_ERROR",
-      statusCode: 500,
-      message
-    });
-  }
-}
-class UpdateError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
-  constructor(message = "Error updating object") {
-    super(message, {
-      code: "UPDATE_ERROR",
-      statusCode: 500,
-      message
-    });
-  }
-}
-class DeleteError extends (/* unused pure expression or super */ null && (ServiceError)) {
-  constructor(message = "Error deleting object") {
-    super(message, {
-      code: "DELETE_ERROR",
-      statusCode: 500,
-      message
-    });
-  }
-}
-class UpsertError extends _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError {
-  constructor(message = "Error upserting object") {
-    super(message, {
-      code: "UPSERT_ERROR",
-      statusCode: 500,
-      message
-    });
-  }
-}
-class InvalidInputError extends (/* unused pure expression or super */ null && (ServiceError)) {
-  constructor(message = "Invalid input") {
-    super(message, {
-      code: "INVALID_INPUT",
-      statusCode: 400,
-      message
-    });
-  }
-}
-
-class ObjectManager {
-  constructor(instance, model) {
-    this.instance = void 0;
-    this.model = void 0;
-    this.get = async (where, orderBy) => {
-      const obj = await this.instance.findFirst({
-        where,
-        orderBy
-      });
-      if (!obj) {
-        throw new NotFoundError();
-      }
-      return new this.model(obj);
-    };
-    this.filter = async (where, orderBy) => {
-      const objs = await this.instance.findMany({
-        where,
-        orderBy
-      });
-      return objs.map(obj => new this.model(obj));
-    };
-    this.paginate = async (pagination, where, orderBy) => {
-      return (0,_devoxa_prisma_relay_cursor_connection__WEBPACK_IMPORTED_MODULE_0__.findManyCursorConnection)(async connectionArgs => {
-        const objs = await this.instance.findMany({
-          where,
-          orderBy,
-          ...connectionArgs
-        });
-        return objs.map(obj => new this.model(obj));
-      }, () => this.count(where, orderBy), pagination);
-    };
-    this.create = async data => {
-      try {
-        const obj = await this.instance.create({
-          data
-        });
-        return new this.model(obj);
-      } catch (e) {
-        console.error(e);
-        throw new CreateError();
-      }
-    };
-    this.update = async (data, where) => {
-      try {
-        const obj = await this.instance.update({
-          data,
-          where
-        });
-        return new this.model(obj);
-      } catch (e) {
-        console.error(e);
-        throw new UpdateError();
-      }
-    };
-    this.delete = async where => {
-      const obj = await this.instance.delete({
-        where
-      });
-      return new this.model(obj);
-    };
-    this.upsert = async (create, update, where) => {
-      try {
-        const obj = await this.instance.upsert({
-          create,
-          update,
-          where
-        });
-        return new this.model(obj);
-      } catch (e) {
-        console.error(e);
-        throw new UpsertError();
-      }
-    };
-    this.count = async (where, orderBy) => {
-      return await this.instance.count({
-        orderBy,
-        where
-      });
-    };
-    this.instance = instance;
-    this.model = model;
-  }
-}
-
-class Repository {
-  $save() {}
-  $fetch() {}
-  constructor() {}
-  $boostrap(that, fields, hiddenFields) {
-    for (const [key, value] of Object.entries(fields)) {
-      const keyName = hiddenFields.includes(key) ? "$" + key : key;
-      that[keyName] = value;
-    }
-  }
-}
-
-
-//# sourceMappingURL=index.module.js.map
-
 
 /***/ }),
 
@@ -38404,6 +39344,75 @@ module.exports = JSON.parse('{"name":"dotenv","version":"16.4.5","description":"
 /******/ }
 /******/ 
 /************************************************************************/
+/******/ /* webpack/runtime/async module */
+/******/ (() => {
+/******/ 	var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
+/******/ 	var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 	var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 	var resolveQueue = (queue) => {
+/******/ 		if(queue && !queue.d) {
+/******/ 			queue.d = 1;
+/******/ 			queue.forEach((fn) => (fn.r--));
+/******/ 			queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 		}
+/******/ 	}
+/******/ 	var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 		if(dep !== null && typeof dep === "object") {
+/******/ 			if(dep[webpackQueues]) return dep;
+/******/ 			if(dep.then) {
+/******/ 				var queue = [];
+/******/ 				queue.d = 0;
+/******/ 				dep.then((r) => {
+/******/ 					obj[webpackExports] = r;
+/******/ 					resolveQueue(queue);
+/******/ 				}, (e) => {
+/******/ 					obj[webpackError] = e;
+/******/ 					resolveQueue(queue);
+/******/ 				});
+/******/ 				var obj = {};
+/******/ 				obj[webpackQueues] = (fn) => (fn(queue));
+/******/ 				return obj;
+/******/ 			}
+/******/ 		}
+/******/ 		var ret = {};
+/******/ 		ret[webpackQueues] = x => {};
+/******/ 		ret[webpackExports] = dep;
+/******/ 		return ret;
+/******/ 	}));
+/******/ 	__nccwpck_require__.a = (module, body, hasAwait) => {
+/******/ 		var queue;
+/******/ 		hasAwait && ((queue = []).d = 1);
+/******/ 		var depQueues = new Set();
+/******/ 		var exports = module.exports;
+/******/ 		var currentDeps;
+/******/ 		var outerResolve;
+/******/ 		var reject;
+/******/ 		var promise = new Promise((resolve, rej) => {
+/******/ 			reject = rej;
+/******/ 			outerResolve = resolve;
+/******/ 		});
+/******/ 		promise[webpackExports] = exports;
+/******/ 		promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
+/******/ 		module.exports = promise;
+/******/ 		body((deps) => {
+/******/ 			currentDeps = wrapDeps(deps);
+/******/ 			var fn;
+/******/ 			var getResult = () => (currentDeps.map((d) => {
+/******/ 				if(d[webpackError]) throw d[webpackError];
+/******/ 				return d[webpackExports];
+/******/ 			}))
+/******/ 			var promise = new Promise((resolve) => {
+/******/ 				fn = () => (resolve(getResult));
+/******/ 				fn.r = 0;
+/******/ 				var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 				currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
+/******/ 			});
+/******/ 			return fn.r ? promise : getResult();
+/******/ 		}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 		queue && (queue.d = 0);
+/******/ 	};
+/******/ })();
+/******/ 
 /******/ /* webpack/runtime/compat get default export */
 /******/ (() => {
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -38433,6 +39442,17 @@ module.exports = JSON.parse('{"name":"dotenv","version":"16.4.5","description":"
 /******/ 	__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ })();
 /******/ 
+/******/ /* webpack/runtime/make namespace object */
+/******/ (() => {
+/******/ 	// define __esModule on exports
+/******/ 	__nccwpck_require__.r = (exports) => {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/ })();
+/******/ 
 /******/ /* webpack/runtime/node module decorator */
 /******/ (() => {
 /******/ 	__nccwpck_require__.nmd = (module) => {
@@ -38451,10 +39471,11 @@ module.exports = JSON.parse('{"name":"dotenv","version":"16.4.5","description":"
 /******/ // startup
 /******/ // Load entry module and return exports
 /******/ // This entry module is referenced by other modules so it can't be inlined
-/******/ var __webpack_exports__ = __nccwpck_require__(6402);
+/******/ var __webpack_exports__ = __nccwpck_require__(6144);
+/******/ __webpack_exports__ = await __webpack_exports__;
 /******/ var __webpack_exports__configureApp = __webpack_exports__.pU;
 /******/ var __webpack_exports__default = __webpack_exports__.ZP;
 /******/ var __webpack_exports__service = __webpack_exports__.Xn;
 /******/ export { __webpack_exports__configureApp as configureApp, __webpack_exports__default as default, __webpack_exports__service as service };
 /******/ 
-export const typeDefs = "input ConnectionArgumentsInput {\n\tfirst: Number\n\tafter: String\n\tlast: Number\n\tbefore: String\n}\ninput EmailTemplateWhereInputInput {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput WithoutInput_16AndEmailEnvelopeWhereInputInput {\n\tis: EmailEnvelopeWhereInputInput\n\tisNot: EmailEnvelopeWhereInputInput\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tid: String\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n\temailTemplateId: String\n\temailTemplate: WithoutInput_22AndEmailTemplateWhereInputInput\n}\ninput EmailEnvelopeWhereInputInput {\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tid: String\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n\temailTemplateId: String\n\temailTemplate: WithoutInput_22AndEmailTemplateWhereInputInput\n}\ninput StringNullableListFilterInput {\n\tequals: [String]\n\thas: String\n\thasEvery: [String]\n\thasSome: [String]\n\tisEmpty: Boolean\n}\ninput WithoutInput_22AndEmailTemplateWhereInputInput {\n\tis: EmailTemplateWhereInputInput\n\tisNot: EmailTemplateWhereInputInput\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput WithoutInput_18AndEmailTemplateWhereInputInput {\n\tis: EmailTemplateWhereInputInput\n\tisNot: EmailTemplateWhereInputInput\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput EmailTemplateListRelationFilterInput {\n\tevery: EmailTemplateWhereInputInput\n\tsome: EmailTemplateWhereInputInput\n\tnone: EmailTemplateWhereInputInput\n}\ninput VariableDefinitionListRelationFilterInput {\n\tevery: VariableDefinitionWhereInputInput\n\tsome: VariableDefinitionWhereInputInput\n\tnone: VariableDefinitionWhereInputInput\n}\ninput VariableDefinitionWhereInputInput {\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n\temailTemplate: WithoutInput_18AndEmailTemplateWhereInputInput\n}\ninput WithoutInput_20AndUserWhereInputInput {\n\tis: UserWhereInputInput\n\tisNot: UserWhereInputInput\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n\torganization: WithoutInput_26AndOrganizationWhereInputInput\n}\ninput UserWhereInputInput {\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n\torganization: WithoutInput_26AndOrganizationWhereInputInput\n}\ninput WithoutInput_24AndEmailWhereInputInput {\n\tis: EmailWhereInputInput\n\tisNot: EmailWhereInputInput\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: WithoutInput_28AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_30AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_32AndUserWhereInputInput\n\torganization: WithoutInput_34AndOrganizationWhereInputInput\n}\ninput EmailWhereInputInput {\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: WithoutInput_28AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_30AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_32AndUserWhereInputInput\n\torganization: WithoutInput_34AndOrganizationWhereInputInput\n}\ninput WithoutInput_28AndSMTPConfigWhereInputInput {\n\tis: SMTPConfigWhereInputInput\n\tisNot: SMTPConfigWhereInputInput\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temailId: String\n\temail: WithoutInput_36AndEmailWhereInputInput\n}\ninput SMTPConfigWhereInputInput {\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temailId: String\n\temail: WithoutInput_36AndEmailWhereInputInput\n}\ninput WithoutInput_36AndEmailWhereInputInput {\n\tis: EmailWhereInputInput\n\tisNot: EmailWhereInputInput\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: WithoutInput_28AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_30AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_32AndUserWhereInputInput\n\torganization: WithoutInput_34AndOrganizationWhereInputInput\n}\ninput WithoutInput_30AndOAuthConfigWhereInputInput {\n\tis: OAuthConfigWhereInputInput\n\tisNot: OAuthConfigWhereInputInput\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tid: String\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\temailId: String\n\temail: WithoutInput_36AndEmailWhereInputInput\n}\ninput OAuthConfigWhereInputInput {\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tid: String\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\temailId: String\n\temail: WithoutInput_36AndEmailWhereInputInput\n}\ninput EnumOAuthProviderFilterInput {\n\tequals: String\n\tin: [OAuthProviderInput]\n\tnotIn: [OAuthProviderInput]\n\tnot: String\n}\ninput WithoutInput_32AndUserWhereInputInput {\n\tis: UserWhereInputInput\n\tisNot: UserWhereInputInput\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n\torganization: WithoutInput_26AndOrganizationWhereInputInput\n}\ninput WithoutInput_26AndOrganizationWhereInputInput {\n\tis: OrganizationWhereInputInput\n\tisNot: OrganizationWhereInputInput\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\temailId: String\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n}\ninput OrganizationWhereInputInput {\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\temailId: String\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n}\ninput UserListRelationFilterInput {\n\tevery: UserWhereInputInput\n\tsome: UserWhereInputInput\n\tnone: UserWhereInputInput\n}\ninput WithoutInput_34AndOrganizationWhereInputInput {\n\tis: OrganizationWhereInputInput\n\tisNot: OrganizationWhereInputInput\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\temailId: String\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n}\ninput EmailTemplateOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tdescription: SortOrderInput\n\tcontent: SortOrderInput\n\tverifyReplyTo: String\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: SortOrderInput\n\tupdatedAt: SortOrderInput\n\tcreatorId: SortOrderInput\n\tenvelope: EmailEnvelopeOrderByWithRelationInputInput\n\tparent: EmailTemplateOrderByWithRelationInputInput\n\tlinks: EmailTemplateOrderByRelationAggregateInputInput\n\tvariables: VariableDefinitionOrderByRelationAggregateInputInput\n\tcreator: UserOrderByWithRelationInputInput\n}\ninput EmailEnvelopeOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tsubject: String\n\tto: SortOrderInput\n\treplyTo: String\n\temailTemplateId: SortOrderInput\n\temailTemplate: EmailTemplateOrderByWithRelationInputInput\n}\ninput EmailTemplateOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput VariableDefinitionOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput UserOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\torganizationId: SortOrderInput\n\temailTemplates: EmailTemplateOrderByRelationAggregateInputInput\n\temail: EmailOrderByWithRelationInputInput\n\torganization: OrganizationOrderByWithRelationInputInput\n}\ninput EmailOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tisEnabled: SortOrderInput\n\temail: SortOrderInput\n\tuserId: String\n\tsmtpConfig: SMTPConfigOrderByWithRelationInputInput\n\toauthConfig: OAuthConfigOrderByWithRelationInputInput\n\tuser: UserOrderByWithRelationInputInput\n\torganization: OrganizationOrderByWithRelationInputInput\n}\ninput SMTPConfigOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\thost: SortOrderInput\n\tport: SortOrderInput\n\tusername: SortOrderInput\n\tpassword: SortOrderInput\n\tsecure: SortOrderInput\n\temailId: SortOrderInput\n\temail: EmailOrderByWithRelationInputInput\n}\ninput OAuthConfigOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tprovider: SortOrderInput\n\taccessToken: SortOrderInput\n\temailId: SortOrderInput\n\temail: EmailOrderByWithRelationInputInput\n}\ninput OrganizationOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\temailId: String\n\tusers: UserOrderByRelationAggregateInputInput\n\temail: EmailOrderByWithRelationInputInput\n}\ninput UserOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput OmitInput_8 {\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n}\ninput EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput {\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: EmailEnvelopeCreateOrConnectWithoutEmailTemplateInputInput\n\tconnect: WhereInput_11AndWhereInput_12\n}\ninput ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput {\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput EmailEnvelopeCreateOrConnectWithoutEmailTemplateInputInput {\n\twhere: WhereInput_11AndWhereInput_12!\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput!\n}\ninput WhereInput_11AndWhereInput_12 {\n\tid: String\n\temailTemplateId: String\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n\temailTemplate: WithoutInput_22AndEmailTemplateWhereInputInput\n}\ninput EmailTemplateCreateNestedOneWithoutLinksInputInput {\n\tcreate: WithoutInput_38AndEmailTemplateUncheckedCreateWithoutLinksInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutLinksInputInput\n\tconnect: WhereInputAndWhereInput_1\n}\ninput WithoutInput_38AndEmailTemplateUncheckedCreateWithoutLinksInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput UserCreateNestedOneWithoutEmailTemplatesInputInput {\n\tcreate: WithoutInput_40AndUserUncheckedCreateWithoutEmailTemplatesInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailTemplatesInputInput\n\tconnect: WhereInput_18AndWhereInput_19\n}\ninput WithoutInput_40AndUserUncheckedCreateWithoutEmailTemplatesInputInput {\n\torganization: OrganizationCreateNestedOneWithoutUsersInputInput\n\tid: String!\n\torganizationId: String\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n}\ninput OrganizationCreateNestedOneWithoutUsersInputInput {\n\tcreate: WithoutInput_42AndOrganizationUncheckedCreateWithoutUsersInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutUsersInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n}\ninput WithoutInput_42AndOrganizationUncheckedCreateWithoutUsersInputInput {\n\temail: EmailCreateNestedOneWithoutOrganizationInputInput\n\tid: String!\n\temailId: String\n}\ninput EmailCreateNestedOneWithoutOrganizationInputInput {\n\tcreate: WithoutInput_44AndEmailUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutOrganizationInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n}\ninput WithoutInput_44AndEmailUncheckedCreateWithoutOrganizationInputInput {\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput UserCreateNestedOneWithoutEmailInputInput {\n\tcreate: WithoutInput_46AndUserUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_18AndWhereInput_19\n}\ninput WithoutInput_46AndUserUncheckedCreateWithoutEmailInputInput {\n\torganization: OrganizationCreateNestedOneWithoutUsersInputInput\n\tid: String!\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n}\ninput EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput {\n\tcreate: WithoutInput_48AndEmailTemplateUncheckedCreateWithoutCreatorInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutCreatorInputInput]\n\tcreateMany: EmailTemplateCreateManyCreatorInputEnvelopeInput\n\tconnect: WhereInput_2AndWhereInput_1\n}\ninput WithoutInput_48AndEmailTemplateUncheckedCreateWithoutCreatorInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput {\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutParentInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutParentInputInput]\n\tcreateMany: EmailTemplateCreateManyParentInputEnvelopeInput\n\tconnect: WhereInput_2AndWhereInput_1\n}\ninput WithoutInput_50AndEmailTemplateUncheckedCreateWithoutParentInputInput {\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput {\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: [VariableDefinitionCreateOrConnectWithoutEmailTemplateInputInput]\n\tcreateMany: VariableDefinitionCreateManyEmailTemplateInputEnvelopeInput\n\tconnect: WhereInput_17AndWhereInput_16\n}\ninput ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput {\n\tid: String\n\tname: String!\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput VariableDefinitionCreateOrConnectWithoutEmailTemplateInputInput {\n\twhere: WhereInput_15AndWhereInput_16!\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput!\n}\ninput WhereInput_15AndWhereInput_16 {\n\tid: String\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n\temailTemplate: WithoutInput_18AndEmailTemplateWhereInputInput\n}\ninput VariableDefinitionCreateManyEmailTemplateInputEnvelopeInput {\n\tdata: [VariableDefinitionCreateManyEmailTemplateInputInput!]\n\tskipDuplicates: Boolean\n}\ninput VariableDefinitionCreateManyEmailTemplateInputInput {\n\tid: String\n\tname: String!\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput WhereInput_17AndWhereInput_16 {\n\tid: String\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n\temailTemplate: WithoutInput_18AndEmailTemplateWhereInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutParentInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutParentInputInput!\n}\ninput WhereInputAndWhereInput_1 {\n\tid: String\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput EmailTemplateCreateManyParentInputEnvelopeInput {\n\tdata: [EmailTemplateCreateManyParentInputInput!]\n\tskipDuplicates: Boolean\n}\ninput EmailTemplateCreateManyParentInputInput {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String!\n}\ninput WhereInput_2AndWhereInput_1 {\n\tid: String\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutCreatorInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_48AndEmailTemplateUncheckedCreateWithoutCreatorInputInput!\n}\ninput EmailTemplateCreateManyCreatorInputEnvelopeInput {\n\tdata: [EmailTemplateCreateManyCreatorInputInput!]\n\tskipDuplicates: Boolean\n}\ninput EmailTemplateCreateManyCreatorInputInput {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n}\ninput UserCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tcreate: WithoutInput_46AndUserUncheckedCreateWithoutEmailInputInput!\n}\ninput WhereInput_18AndWhereInput_19 {\n\tid: String\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n\torganization: WithoutInput_26AndOrganizationWhereInputInput\n}\ninput SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput {\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: SMTPConfigCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_21AndWhereInput_22\n}\ninput ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput {\n\tid: String\n\thost: String!\n\tport: Number!\n\tusername: String!\n\tpassword: String!\n\tsecure: Boolean!\n}\ninput SMTPConfigCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_21AndWhereInput_22!\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput!\n}\ninput WhereInput_21AndWhereInput_22 {\n\tid: String\n\temailId: String\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temail: WithoutInput_36AndEmailWhereInputInput\n}\ninput OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput {\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OAuthConfigCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_25AndWhereInput_26\n}\ninput ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput {\n\tid: String\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n}\ninput OAuthConfigCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_25AndWhereInput_26!\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput!\n}\ninput WhereInput_25AndWhereInput_26 {\n\tid: String\n\temailId: String\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\temail: WithoutInput_36AndEmailWhereInputInput\n}\ninput EmailCreateOrConnectWithoutOrganizationInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: WithoutInput_44AndEmailUncheckedCreateWithoutOrganizationInputInput!\n}\ninput WhereInput_3AndWhereInput_4 {\n\tid: String\n\tuserId: String\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tisEnabled: Boolean\n\temail: String\n\tsmtpConfig: WithoutInput_28AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_30AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_32AndUserWhereInputInput\n\torganization: WithoutInput_34AndOrganizationWhereInputInput\n}\ninput OrganizationCreateOrConnectWithoutUsersInputInput {\n\twhere: WhereInput_7AndWhereInput_8!\n\tcreate: WithoutInput_42AndOrganizationUncheckedCreateWithoutUsersInputInput!\n}\ninput WhereInput_7AndWhereInput_8 {\n\tid: String\n\temailId: String\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n}\ninput EmailUncheckedCreateNestedOneWithoutUserInputInput {\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutUserInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n}\ninput ObjectAndEmailUncheckedCreateWithoutUserInputInput {\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput OrganizationUncheckedCreateNestedOneWithoutEmailInputInput {\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n}\ninput ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput {\n\tid: String!\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput UserUncheckedCreateNestedManyWithoutOrganizationInputInput {\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: [UserCreateOrConnectWithoutOrganizationInputInput]\n\tcreateMany: UserCreateManyOrganizationInputEnvelopeInput\n\tconnect: WhereInput_20AndWhereInput_19\n}\ninput ObjectAndUserUncheckedCreateWithoutOrganizationInputInput {\n\tid: String!\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n}\ninput UserCreateOrConnectWithoutOrganizationInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput!\n}\ninput UserCreateManyOrganizationInputEnvelopeInput {\n\tdata: [UserCreateManyOrganizationInputInput!]\n\tskipDuplicates: Boolean\n}\ninput UserCreateManyOrganizationInputInput {\n\tid: String!\n}\ninput WhereInput_20AndWhereInput_19 {\n\tid: String\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n\torganization: WithoutInput_26AndOrganizationWhereInputInput\n}\ninput OrganizationCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_7AndWhereInput_8!\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput!\n}\ninput EmailCreateOrConnectWithoutUserInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput!\n}\ninput UserCreateOrConnectWithoutEmailTemplatesInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tcreate: WithoutInput_40AndUserUncheckedCreateWithoutEmailTemplatesInputInput!\n}\ninput EmailTemplateCreateOrConnectWithoutLinksInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_38AndEmailTemplateUncheckedCreateWithoutLinksInputInput!\n}\ninput WithoutInputAndEmailTemplateUncheckedUpdateInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput EmailTemplateUpdateOneWithoutLinksNestedInputInput {\n\tcreate: WithoutInput_38AndEmailTemplateUncheckedCreateWithoutLinksInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutLinksInputInput\n\tupsert: EmailTemplateUpsertWithoutLinksInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInputAndWhereInput_1\n\tupdate: WithoutInput_52AndEmailTemplateUncheckedUpdateWithoutLinksInputInput\n}\ninput EmailTemplateUpsertWithoutLinksInputInput {\n\tupdate: WithoutInput_58AndEmailTemplateUncheckedUpdateWithoutLinksInputInput!\n\tcreate: WithoutInput_38AndEmailTemplateUncheckedCreateWithoutLinksInputInput!\n\twhere: EmailTemplateWhereInputInput\n}\ninput WithoutInput_58AndEmailTemplateUncheckedUpdateWithoutLinksInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput {\n\tcreate: WithoutInput_40AndUserUncheckedCreateWithoutEmailTemplatesInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailTemplatesInputInput\n\tupsert: UserUpsertWithoutEmailTemplatesInputInput\n\tconnect: WhereInput_18AndWhereInput_19\n\tupdate: WithoutInput_60AndUserUncheckedUpdateWithoutEmailTemplatesInputInput\n}\ninput UserUpsertWithoutEmailTemplatesInputInput {\n\tupdate: WithoutInput_66AndUserUncheckedUpdateWithoutEmailTemplatesInputInput!\n\tcreate: WithoutInput_40AndUserUncheckedCreateWithoutEmailTemplatesInputInput!\n\twhere: UserWhereInputInput\n}\ninput WithoutInput_66AndUserUncheckedUpdateWithoutEmailTemplatesInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tid: String\n\torganizationId: String\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput OrganizationUpdateOneRequiredWithoutUsersNestedInputInput {\n\tcreate: WithoutInput_42AndOrganizationUncheckedCreateWithoutUsersInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutUsersInputInput\n\tupsert: OrganizationUpsertWithoutUsersInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n\tupdate: WithoutInput_68AndOrganizationUncheckedUpdateWithoutUsersInputInput\n}\ninput OrganizationUpsertWithoutUsersInputInput {\n\tupdate: WithoutInput_74AndOrganizationUncheckedUpdateWithoutUsersInputInput!\n\tcreate: WithoutInput_42AndOrganizationUncheckedCreateWithoutUsersInputInput!\n\twhere: OrganizationWhereInputInput\n}\ninput WithoutInput_74AndOrganizationUncheckedUpdateWithoutUsersInputInput {\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tid: String\n\temailId: String\n}\ninput EmailUpdateOneWithoutOrganizationNestedInputInput {\n\tcreate: WithoutInput_44AndEmailUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutOrganizationInputInput\n\tupsert: EmailUpsertWithoutOrganizationInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_76AndEmailUncheckedUpdateWithoutOrganizationInputInput\n}\ninput EmailUpsertWithoutOrganizationInputInput {\n\tupdate: WithoutInput_82AndEmailUncheckedUpdateWithoutOrganizationInputInput!\n\tcreate: WithoutInput_44AndEmailUncheckedCreateWithoutOrganizationInputInput!\n\twhere: EmailWhereInputInput\n}\ninput WithoutInput_82AndEmailUncheckedUpdateWithoutOrganizationInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput UserUpdateOneWithoutEmailNestedInputInput {\n\tcreate: WithoutInput_46AndUserUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailInputInput\n\tupsert: UserUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_18AndWhereInput_19\n\tupdate: WithoutInput_84AndUserUncheckedUpdateWithoutEmailInputInput\n}\ninput UserUpsertWithoutEmailInputInput {\n\tupdate: WithoutInput_90AndUserUncheckedUpdateWithoutEmailInputInput!\n\tcreate: WithoutInput_46AndUserUncheckedCreateWithoutEmailInputInput!\n\twhere: UserWhereInputInput\n}\ninput WithoutInput_90AndUserUncheckedUpdateWithoutEmailInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n}\ninput EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput {\n\tcreate: WithoutInput_48AndEmailTemplateUncheckedCreateWithoutCreatorInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutCreatorInputInput]\n\tupsert: [EmailTemplateUpsertWithWhereUniqueWithoutCreatorInputInput]\n\tcreateMany: EmailTemplateCreateManyCreatorInputEnvelopeInput\n\tset: WhereInput_2AndWhereInput_1\n\tdisconnect: WhereInput_2AndWhereInput_1\n\tdelete: WhereInput_2AndWhereInput_1\n\tconnect: WhereInput_2AndWhereInput_1\n\tupdate: [EmailTemplateUpdateWithWhereUniqueWithoutCreatorInputInput]\n\tupdateMany: [EmailTemplateUpdateManyWithWhereWithoutCreatorInputInput]\n\tdeleteMany: [EmailTemplateScalarWhereInputInput]\n}\ninput EmailTemplateUpsertWithWhereUniqueWithoutCreatorInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tupdate: WithoutInput_92AndEmailTemplateUncheckedUpdateWithoutCreatorInputInput!\n\tcreate: WithoutInput_48AndEmailTemplateUncheckedCreateWithoutCreatorInputInput!\n}\ninput WithoutInput_92AndEmailTemplateUncheckedUpdateWithoutCreatorInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput {\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: EmailEnvelopeCreateOrConnectWithoutEmailTemplateInputInput\n\tupsert: EmailEnvelopeUpsertWithoutEmailTemplateInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_11AndWhereInput_12\n\tupdate: WithoutInput_94AndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput\n}\ninput EmailEnvelopeUpsertWithoutEmailTemplateInputInput {\n\tupdate: ObjectAndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput!\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput!\n\twhere: EmailEnvelopeWhereInputInput\n}\ninput ObjectAndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput {\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput WithoutInput_94AndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput {\n\twhere: EmailEnvelopeWhereInputInput\n\tdata: ObjectAndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput {\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutParentInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutParentInputInput]\n\tupsert: [EmailTemplateUpsertWithWhereUniqueWithoutParentInputInput]\n\tcreateMany: EmailTemplateCreateManyParentInputEnvelopeInput\n\tset: WhereInput_2AndWhereInput_1\n\tdisconnect: WhereInput_2AndWhereInput_1\n\tdelete: WhereInput_2AndWhereInput_1\n\tconnect: WhereInput_2AndWhereInput_1\n\tupdate: [EmailTemplateUpdateWithWhereUniqueWithoutParentInputInput]\n\tupdateMany: [EmailTemplateUpdateManyWithWhereWithoutParentInputInput]\n\tdeleteMany: [EmailTemplateScalarWhereInputInput]\n}\ninput EmailTemplateUpsertWithWhereUniqueWithoutParentInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tupdate: WithoutInput_98AndEmailTemplateUncheckedUpdateWithoutParentInputInput!\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutParentInputInput!\n}\ninput WithoutInput_98AndEmailTemplateUncheckedUpdateWithoutParentInputInput {\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput {\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: [VariableDefinitionCreateOrConnectWithoutEmailTemplateInputInput]\n\tupsert: [VariableDefinitionUpsertWithWhereUniqueWithoutEmailTemplateInputInput]\n\tcreateMany: VariableDefinitionCreateManyEmailTemplateInputEnvelopeInput\n\tset: WhereInput_17AndWhereInput_16\n\tdisconnect: WhereInput_17AndWhereInput_16\n\tdelete: WhereInput_17AndWhereInput_16\n\tconnect: WhereInput_17AndWhereInput_16\n\tupdate: [VariableDefinitionUpdateWithWhereUniqueWithoutEmailTemplateInputInput]\n\tupdateMany: [VariableDefinitionUpdateManyWithWhereWithoutEmailTemplateInputInput]\n\tdeleteMany: [VariableDefinitionScalarWhereInputInput]\n}\ninput VariableDefinitionUpsertWithWhereUniqueWithoutEmailTemplateInputInput {\n\twhere: WhereInput_15AndWhereInput_16!\n\tupdate: ObjectAndVariableDefinitionUncheckedUpdateWithoutEmailTemplateInputInput!\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput!\n}\ninput ObjectAndVariableDefinitionUncheckedUpdateWithoutEmailTemplateInputInput {\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput VariableDefinitionUpdateWithWhereUniqueWithoutEmailTemplateInputInput {\n\twhere: WhereInput_15AndWhereInput_16!\n\tdata: ObjectAndVariableDefinitionUncheckedUpdateWithoutEmailTemplateInputInput!\n}\ninput VariableDefinitionUpdateManyWithWhereWithoutEmailTemplateInputInput {\n\twhere: VariableDefinitionScalarWhereInputInput!\n\tdata: ObjectAndVariableDefinitionUncheckedUpdateManyWithoutEmailTemplateInputInput!\n}\ninput VariableDefinitionScalarWhereInputInput {\n\tAND: [VariableDefinitionScalarWhereInputInput]\n\tOR: [VariableDefinitionScalarWhereInputInput!]\n\tNOT: [VariableDefinitionScalarWhereInputInput]\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n}\ninput ObjectAndVariableDefinitionUncheckedUpdateManyWithoutEmailTemplateInputInput {\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput EmailTemplateUpdateWithWhereUniqueWithoutParentInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tdata: WithoutInput_98AndEmailTemplateUncheckedUpdateWithoutParentInputInput!\n}\ninput EmailTemplateUpdateManyWithWhereWithoutParentInputInput {\n\twhere: EmailTemplateScalarWhereInputInput!\n\tdata: ObjectAndEmailTemplateUncheckedUpdateManyWithoutParentInputInput!\n}\ninput EmailTemplateScalarWhereInputInput {\n\tAND: [EmailTemplateScalarWhereInputInput]\n\tOR: [EmailTemplateScalarWhereInputInput!]\n\tNOT: [EmailTemplateScalarWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n}\ninput ObjectAndEmailTemplateUncheckedUpdateManyWithoutParentInputInput {\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n}\ninput EmailTemplateUpdateWithWhereUniqueWithoutCreatorInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tdata: WithoutInput_92AndEmailTemplateUncheckedUpdateWithoutCreatorInputInput!\n}\ninput EmailTemplateUpdateManyWithWhereWithoutCreatorInputInput {\n\twhere: EmailTemplateScalarWhereInputInput!\n\tdata: ObjectAndEmailTemplateUncheckedUpdateManyWithoutCreatorInputInput!\n}\ninput ObjectAndEmailTemplateUncheckedUpdateManyWithoutCreatorInputInput {\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n}\ninput WithoutInput_84AndUserUncheckedUpdateWithoutEmailInputInput {\n\twhere: UserWhereInputInput\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tdata: WithoutInput_90AndUserUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n}\ninput SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput {\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: SMTPConfigCreateOrConnectWithoutEmailInputInput\n\tupsert: SMTPConfigUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_21AndWhereInput_22\n\tupdate: WithoutInput_102AndSMTPConfigUncheckedUpdateWithoutEmailInputInput\n}\ninput SMTPConfigUpsertWithoutEmailInputInput {\n\tupdate: ObjectAndSMTPConfigUncheckedUpdateWithoutEmailInputInput!\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput!\n\twhere: SMTPConfigWhereInputInput\n}\ninput ObjectAndSMTPConfigUncheckedUpdateWithoutEmailInputInput {\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n}\ninput WithoutInput_102AndSMTPConfigUncheckedUpdateWithoutEmailInputInput {\n\twhere: SMTPConfigWhereInputInput\n\tdata: ObjectAndSMTPConfigUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n}\ninput OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput {\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OAuthConfigCreateOrConnectWithoutEmailInputInput\n\tupsert: OAuthConfigUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_25AndWhereInput_26\n\tupdate: WithoutInput_106AndOAuthConfigUncheckedUpdateWithoutEmailInputInput\n}\ninput OAuthConfigUpsertWithoutEmailInputInput {\n\tupdate: ObjectAndOAuthConfigUncheckedUpdateWithoutEmailInputInput!\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput!\n\twhere: OAuthConfigWhereInputInput\n}\ninput ObjectAndOAuthConfigUncheckedUpdateWithoutEmailInputInput {\n\tid: String\n\tprovider: String\n\taccessToken: String\n}\ninput WithoutInput_106AndOAuthConfigUncheckedUpdateWithoutEmailInputInput {\n\twhere: OAuthConfigWhereInputInput\n\tdata: ObjectAndOAuthConfigUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\tprovider: String\n\taccessToken: String\n}\ninput WithoutInput_76AndEmailUncheckedUpdateWithoutOrganizationInputInput {\n\twhere: EmailWhereInputInput\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tdata: WithoutInput_82AndEmailUncheckedUpdateWithoutOrganizationInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_68AndOrganizationUncheckedUpdateWithoutUsersInputInput {\n\twhere: OrganizationWhereInputInput\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tdata: WithoutInput_74AndOrganizationUncheckedUpdateWithoutUsersInputInput\n\tid: String\n\temailId: String\n}\ninput EmailUncheckedUpdateOneWithoutUserNestedInputInput {\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutUserInputInput\n\tupsert: EmailUpsertWithoutUserInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_110AndEmailUncheckedUpdateWithoutUserInputInput\n}\ninput EmailUpsertWithoutUserInputInput {\n\tupdate: ObjectAndEmailUncheckedUpdateWithoutUserInputInput!\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput!\n\twhere: EmailWhereInputInput\n}\ninput ObjectAndEmailUncheckedUpdateWithoutUserInputInput {\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput {\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutEmailInputInput\n\tupsert: OrganizationUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_7AndWhereInput_8\n\tupdate: WithoutInput_114AndOrganizationUncheckedUpdateWithoutEmailInputInput\n}\ninput OrganizationUpsertWithoutEmailInputInput {\n\tupdate: ObjectAndOrganizationUncheckedUpdateWithoutEmailInputInput!\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput!\n\twhere: OrganizationWhereInputInput\n}\ninput ObjectAndOrganizationUncheckedUpdateWithoutEmailInputInput {\n\tid: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput UserUncheckedUpdateManyWithoutOrganizationNestedInputInput {\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: [UserCreateOrConnectWithoutOrganizationInputInput]\n\tupsert: [UserUpsertWithWhereUniqueWithoutOrganizationInputInput]\n\tcreateMany: UserCreateManyOrganizationInputEnvelopeInput\n\tset: WhereInput_20AndWhereInput_19\n\tdisconnect: WhereInput_20AndWhereInput_19\n\tdelete: WhereInput_20AndWhereInput_19\n\tconnect: WhereInput_20AndWhereInput_19\n\tupdate: [UserUpdateWithWhereUniqueWithoutOrganizationInputInput]\n\tupdateMany: [UserUpdateManyWithWhereWithoutOrganizationInputInput]\n\tdeleteMany: [UserScalarWhereInputInput]\n}\ninput UserUpsertWithWhereUniqueWithoutOrganizationInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tupdate: ObjectAndUserUncheckedUpdateWithoutOrganizationInputInput!\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput!\n}\ninput ObjectAndUserUncheckedUpdateWithoutOrganizationInputInput {\n\tid: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput UserUpdateWithWhereUniqueWithoutOrganizationInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tdata: ObjectAndUserUncheckedUpdateWithoutOrganizationInputInput!\n}\ninput UserUpdateManyWithWhereWithoutOrganizationInputInput {\n\twhere: UserScalarWhereInputInput!\n\tdata: ObjectAndUserUncheckedUpdateManyWithoutOrganizationInputInput!\n}\ninput UserScalarWhereInputInput {\n\tAND: [UserScalarWhereInputInput]\n\tOR: [UserScalarWhereInputInput!]\n\tNOT: [UserScalarWhereInputInput]\n\tid: String\n\torganizationId: String\n}\ninput ObjectAndUserUncheckedUpdateManyWithoutOrganizationInputInput {\n\tid: String\n}\ninput WithoutInput_114AndOrganizationUncheckedUpdateWithoutEmailInputInput {\n\twhere: OrganizationWhereInputInput\n\tdata: ObjectAndOrganizationUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput WithoutInput_110AndEmailUncheckedUpdateWithoutUserInputInput {\n\twhere: EmailWhereInputInput\n\tdata: ObjectAndEmailUncheckedUpdateWithoutUserInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_60AndUserUncheckedUpdateWithoutEmailTemplatesInputInput {\n\twhere: UserWhereInputInput\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tdata: WithoutInput_66AndUserUncheckedUpdateWithoutEmailTemplatesInputInput\n\tid: String\n\torganizationId: String\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput WithoutInput_52AndEmailTemplateUncheckedUpdateWithoutLinksInputInput {\n\twhere: EmailTemplateWhereInputInput\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tdata: WithoutInput_58AndEmailTemplateUncheckedUpdateWithoutLinksInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput OmitInput_9 {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput OmitInput_6 {\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput WithoutInput_6AndEmailEnvelopeUncheckedUpdateInputInput {\n\temailTemplate: EmailTemplateUpdateOneRequiredWithoutEnvelopeNestedInputInput\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n\temailTemplateId: String\n}\ninput EmailTemplateUpdateOneRequiredWithoutEnvelopeNestedInputInput {\n\tcreate: WithoutInput_118AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutEnvelopeInputInput\n\tupsert: EmailTemplateUpsertWithoutEnvelopeInputInput\n\tconnect: WhereInputAndWhereInput_1\n\tupdate: WithoutInput_120AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput\n}\ninput WithoutInput_118AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutEnvelopeInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_118AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput!\n}\ninput EmailTemplateUpsertWithoutEnvelopeInputInput {\n\tupdate: WithoutInput_126AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput!\n\tcreate: WithoutInput_118AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput!\n\twhere: EmailTemplateWhereInputInput\n}\ninput WithoutInput_126AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput WithoutInput_120AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput {\n\twhere: EmailTemplateWhereInputInput\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tdata: WithoutInput_126AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput OmitInput_7 {\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tid: String\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n}\ninput OmitInput_10 {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n}\ninput OmitInput_11 {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_20AndUserWhereInputInput\n}\ninput VariableDefinitionOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tname: SortOrderInput\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: String\n\tisConstant: String\n\temailTemplateId: String\n\temailTemplate: EmailTemplateOrderByWithRelationInputInput\n}\ninput OmitInput_12 {\n\tid: String\n\tdescription: String\n\tname: String!\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput WithoutInput_8AndVariableDefinitionUncheckedUpdateInputInput {\n\temailTemplate: EmailTemplateUpdateOneWithoutVariablesNestedInputInput\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n}\ninput EmailTemplateUpdateOneWithoutVariablesNestedInputInput {\n\tcreate: WithoutInput_128AndEmailTemplateUncheckedCreateWithoutVariablesInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutVariablesInputInput\n\tupsert: EmailTemplateUpsertWithoutVariablesInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInputAndWhereInput_1\n\tupdate: WithoutInput_130AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput\n}\ninput WithoutInput_128AndEmailTemplateUncheckedCreateWithoutVariablesInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutVariablesInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_128AndEmailTemplateUncheckedCreateWithoutVariablesInputInput!\n}\ninput EmailTemplateUpsertWithoutVariablesInputInput {\n\tupdate: WithoutInput_136AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput!\n\tcreate: WithoutInput_128AndEmailTemplateUncheckedCreateWithoutVariablesInputInput!\n\twhere: EmailTemplateWhereInputInput\n}\ninput WithoutInput_136AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n}\ninput WithoutInput_130AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput {\n\twhere: EmailTemplateWhereInputInput\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tdata: WithoutInput_136AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n}\ninput OmitInput_13 {\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tid: String\n\tdescription: String\n\tname: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput OmitInput_14 {\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n\torganization: OrganizationCreateNestedOneWithoutUsersInputInput\n}\ninput WithoutInput_10AndUserUncheckedUpdateInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput OmitInput_15 {\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n\torganization: WithoutInput_26AndOrganizationWhereInputInput\n}\ninput OmitInput {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput OmitInput_1 {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: WithoutInput_16AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_18AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n}\ninput OmitInput_22 {\n\temail: String!\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n\tisEnabled: Boolean\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n}\ninput WithoutInput_2AndEmailUncheckedUpdateInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OmitInput_23 {\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\temail: String\n\torganization: WithoutInput_34AndOrganizationWhereInputInput\n\tisEnabled: Boolean\n\tuserId: String\n\tsmtpConfig: WithoutInput_28AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_30AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_32AndUserWhereInputInput\n}\ninput OmitInput_16 {\n\tid: String\n\thost: String!\n\tport: Number!\n\tusername: String!\n\tpassword: String!\n\tsecure: Boolean!\n}\ninput WithoutInput_12AndSMTPConfigUncheckedUpdateInputInput {\n\temail: EmailUpdateOneRequiredWithoutSmtpConfigNestedInputInput\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temailId: String\n}\ninput EmailUpdateOneRequiredWithoutSmtpConfigNestedInputInput {\n\tcreate: WithoutInput_138AndEmailUncheckedCreateWithoutSmtpConfigInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutSmtpConfigInputInput\n\tupsert: EmailUpsertWithoutSmtpConfigInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_140AndEmailUncheckedUpdateWithoutSmtpConfigInputInput\n}\ninput WithoutInput_138AndEmailUncheckedCreateWithoutSmtpConfigInputInput {\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tuserId: String\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput EmailCreateOrConnectWithoutSmtpConfigInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: WithoutInput_138AndEmailUncheckedCreateWithoutSmtpConfigInputInput!\n}\ninput EmailUpsertWithoutSmtpConfigInputInput {\n\tupdate: WithoutInput_146AndEmailUncheckedUpdateWithoutSmtpConfigInputInput!\n\tcreate: WithoutInput_138AndEmailUncheckedCreateWithoutSmtpConfigInputInput!\n\twhere: EmailWhereInputInput\n}\ninput WithoutInput_146AndEmailUncheckedUpdateWithoutSmtpConfigInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_140AndEmailUncheckedUpdateWithoutSmtpConfigInputInput {\n\twhere: EmailWhereInputInput\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tdata: WithoutInput_146AndEmailUncheckedUpdateWithoutSmtpConfigInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OmitInput_17 {\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n}\ninput OmitInput_18 {\n\tid: String\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n}\ninput WithoutInput_14AndOAuthConfigUncheckedUpdateInputInput {\n\temail: EmailUpdateOneRequiredWithoutOauthConfigNestedInputInput\n\tid: String\n\tprovider: String\n\taccessToken: String\n\temailId: String\n}\ninput EmailUpdateOneRequiredWithoutOauthConfigNestedInputInput {\n\tcreate: WithoutInput_148AndEmailUncheckedCreateWithoutOauthConfigInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutOauthConfigInputInput\n\tupsert: EmailUpsertWithoutOauthConfigInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_150AndEmailUncheckedUpdateWithoutOauthConfigInputInput\n}\ninput WithoutInput_148AndEmailUncheckedCreateWithoutOauthConfigInputInput {\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput EmailCreateOrConnectWithoutOauthConfigInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: WithoutInput_148AndEmailUncheckedCreateWithoutOauthConfigInputInput!\n}\ninput EmailUpsertWithoutOauthConfigInputInput {\n\tupdate: WithoutInput_156AndEmailUncheckedUpdateWithoutOauthConfigInputInput!\n\tcreate: WithoutInput_148AndEmailUncheckedCreateWithoutOauthConfigInputInput!\n\twhere: EmailWhereInputInput\n}\ninput WithoutInput_156AndEmailUncheckedUpdateWithoutOauthConfigInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_150AndEmailUncheckedUpdateWithoutOauthConfigInputInput {\n\twhere: EmailWhereInputInput\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tdata: WithoutInput_156AndEmailUncheckedUpdateWithoutOauthConfigInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OmitInput_19 {\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tid: String\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n}\ninput OmitInput_24 {\n\tid: String!\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n}\ninput OmitInput_25 {\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_24AndEmailWhereInputInput\n}\ninput OmitInput_20 {\n\tid: String!\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput WithoutInput_4AndOrganizationUncheckedUpdateInputInput {\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tid: String\n\temailId: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput OmitInput_21 {\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\tusers: UserListRelationFilterInput\n}\ninput OmitInput_2 {\n\tid: String\n\temail: String!\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n\tisEnabled: Boolean\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput OmitInput_3 {\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\temail: String\n\torganization: WithoutInput_34AndOrganizationWhereInputInput\n\tisEnabled: Boolean\n\tsmtpConfig: WithoutInput_28AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_30AndOAuthConfigWhereInputInput\n}\ninput OmitInput_4 {\n\temail: EmailCreateNestedOneWithoutOrganizationInputInput\n\temailId: String\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput OmitInput_5 {\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\temail: WithoutInput_24AndEmailWhereInputInput\n\temailId: String\n\tusers: UserListRelationFilterInput\n}\ninput DataInput {\n\tcontent: String!\n\tdescription: String!\n\tvariables: [VariablesInput!]!\n\tenvelope: EnvelopeInput_1!\n}\ninput VariablesInput {\n\tname: String!\n\tisRequired: Boolean\n\tisConstant: Boolean\n\tdescription: String\n\tdefaultValue: String\n}\ninput EnvelopeInput_1 {\n\tsubject: String\n\tto: [String!]\n\treplyTo: String\n}\ninput DataInput_1 {\n\tcontent: String\n\tdescription: String\n\tvariables: [VariablesInput_1!]!\n\tenvelope: EnvelopeInput_2!\n}\ninput VariablesInput_1 {\n\tname: String!\n\tisRequired: Boolean\n\tisConstant: Boolean\n\tdescription: String\n\tdefaultValue: String\n}\ninput EnvelopeInput_2 {\n\tsubject: String\n\tto: [String!]\n\treplyTo: String\n}\ninput DataInput_2 {\n\temail: String!\n\tsmtpConfig: SmtpConfigInput_1\n\toauthConfig: OauthConfigInput_1\n}\ninput SmtpConfigInput_1 {\n\thost: String!\n\tport: Number!\n\tsecure: Boolean!\n\tusername: String!\n\tpassword: String!\n}\ninput OauthConfigInput_1 {\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n}\ninput DataInput_3 {\n\temail: String\n\tsmtpConfig: SmtpConfigInput_2\n\toauthConfig: OauthConfigInput_2\n}\ninput SmtpConfigInput_2 {\n\thost: String\n\tport: Number\n\tsecure: Boolean\n\tusername: String\n\tpassword: String\n}\ninput OauthConfigInput_2 {\n\tprovider: OAuthProviderInput\n\taccessToken: String\n}\ninput SmtpConfigInput {\n\thost: String!\n\tport: Number!\n\tsecure: Boolean!\n\tusername: String!\n\tpassword: String!\n}\ninput OauthConfigInput {\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n}\ninput EnvelopeInput {\n\tsubject: String!\n\tto: [String!]!\n\treplyTo: String\n}\ntype Query {\nme: User\ntemplate(id: String!): EmailTemplate!\nallTemplate(pagination: ConnectionArgumentsInput, where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): Connection!\nversion: String!\n}\ntype User {\nid: String!\nemailTemplates(pagination: ConnectionArgumentsInput, where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): Connection!\nemailTemplate(where: EmailTemplateWhereInputInput): EmailTemplate!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email\norganization(where: OrganizationWhereInputInput, orderBy: [OrganizationOrderByWithRelationInputInput]): Organization!\n}\ntype Connection {\nnodes: [EmailTemplate!]!\nedges: [Edge!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype EmailTemplate {\ncreator(where: UserWhereInputInput, orderBy: [UserOrderByWithRelationInputInput]): User!\nid: String!\ndescription: String!\ncontent: String!\nverifyReplyTo: Boolean\ntransformer: String\nenvelope(where: EmailEnvelopeWhereInputInput, orderBy: [EmailEnvelopeOrderByWithRelationInputInput]): EmailEnvelope\nenvelopeId: String\nparent(where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): EmailTemplate\nlinks(pagination: ConnectionArgumentsInput, where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): Connection!\nlink(where: EmailTemplateWhereInputInput): EmailTemplate!\nvariables(pagination: ConnectionArgumentsInput, where: VariableDefinitionWhereInputInput, orderBy: [VariableDefinitionOrderByWithRelationInputInput]): Connection_1!\nvariable(where: VariableDefinitionWhereInputInput): VariableDefinition!\n\"\"\"\nEnables basic storage and retrieval of dates and times.\n\"\"\"\ncreatedAt: Date!\n\"\"\"\nEnables basic storage and retrieval of dates and times.\n\"\"\"\nupdatedAt: Date!\n}\ntype EmailEnvelope {\nid: String!\nsubject: String\nto: [String!]!\nreplyTo: String\nemailTemplate(where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): EmailTemplate!\n}\ntype Connection_1 {\nnodes: [VariableDefinition!]!\nedges: [Edge_1!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype VariableDefinition {\nid: String!\nname: String!\ndescription: String\ndefaultValue: String\nisRequired: Boolean\nisConstant: Boolean\nemailTemplate(where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): EmailTemplate\n}\ntype Edge_1 {\ncursor: String!\nnode: VariableDefinition!\n}\ntype PageInfo {\nhasNextPage: Boolean!\nhasPreviousPage: Boolean!\nstartCursor: String\nendCursor: String\n}\ntype Edge {\ncursor: String!\nnode: EmailTemplate!\n}\ntype Email {\nid: String!\nisEnabled: Boolean!\nemail: String!\nsmtpConfig(where: SMTPConfigWhereInputInput, orderBy: [SMTPConfigOrderByWithRelationInputInput]): SMTPConfig\noauthConfig(where: OAuthConfigWhereInputInput, orderBy: [OAuthConfigOrderByWithRelationInputInput]): OAuthConfig\nuser(where: UserWhereInputInput, orderBy: [UserOrderByWithRelationInputInput]): User\norganization(where: OrganizationWhereInputInput, orderBy: [OrganizationOrderByWithRelationInputInput]): Organization\n}\ntype SMTPConfig {\nid: String!\nhost: String!\nport: Number!\nusername: String!\npassword: String!\nsecure: Boolean!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email!\n}\ntype OAuthConfig {\nid: String!\nprovider: OAuthProvider!\naccessToken: String!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email!\n}\ntype Organization {\nid: String!\nusers(pagination: ConnectionArgumentsInput, where: UserWhereInputInput, orderBy: [UserOrderByWithRelationInputInput]): Connection_2!\nuser(where: UserWhereInputInput): User!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email\n}\ntype Connection_2 {\nnodes: [User!]!\nedges: [Edge_2!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype Edge_2 {\ncursor: String!\nnode: User!\n}\ntype Mutation {\ntemplateCreate(data: DataInput!): EmailTemplate!\ntemplateUpdate(id: String!, data: DataInput_1!): EmailTemplate!\ntemplateDelete(id: String!): EmailTemplate!\ntemplateTransformer(id: String!, transformer: String!): EmailTemplate!\nsenderEmailCreate(data: DataInput_2!): Email!\nsenderEmailUpdate(id: String!, data: DataInput_3!): Email!\nsenderEmailDelete(id: Number!): Email!\norganizationSetSenderEmail(email: String!, smtpConfig: SmtpConfigInput, oauthConfig: OauthConfigInput): Email!\nsendMail(envelope: EnvelopeInput!, body: String, bodyHTML: String): String!\nsendTemplateMail(id: String!, values: Object): String!\n}\nscalar Number\nscalar Any\nscalar Object\nscalar File\nscalar Date\nscalar JSON\nscalar String\nscalar Boolean\nenum OAuthProvider {\n\tGOOGLE\n\tAZURE\n}\nenum OAuthProviderInput {\n\tGOOGLE\n\tAZURE\n}\nenum SortOrderInput {\n\tasc\n\tdesc\n}\n";
+export const typeDefs = "input ConnectionArgumentsInput {\n\tfirst: Number\n\tafter: String\n\tlast: Number\n\tbefore: String\n}\ninput EmailTemplateWhereInputInput {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput WithoutInput_18AndEmailEnvelopeWhereInputInput {\n\tis: EmailEnvelopeWhereInputInput\n\tisNot: EmailEnvelopeWhereInputInput\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tid: String\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n\temailTemplateId: String\n\temailTemplate: WithoutInput_24AndEmailTemplateWhereInputInput\n}\ninput EmailEnvelopeWhereInputInput {\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tid: String\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n\temailTemplateId: String\n\temailTemplate: WithoutInput_24AndEmailTemplateWhereInputInput\n}\ninput StringNullableListFilterInput {\n\tequals: [String]\n\thas: String\n\thasEvery: [String]\n\thasSome: [String]\n\tisEmpty: Boolean\n}\ninput WithoutInput_24AndEmailTemplateWhereInputInput {\n\tis: EmailTemplateWhereInputInput\n\tisNot: EmailTemplateWhereInputInput\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput WithoutInput_20AndEmailTemplateWhereInputInput {\n\tis: EmailTemplateWhereInputInput\n\tisNot: EmailTemplateWhereInputInput\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput EmailTemplateListRelationFilterInput {\n\tevery: EmailTemplateWhereInputInput\n\tsome: EmailTemplateWhereInputInput\n\tnone: EmailTemplateWhereInputInput\n}\ninput VariableDefinitionListRelationFilterInput {\n\tevery: VariableDefinitionWhereInputInput\n\tsome: VariableDefinitionWhereInputInput\n\tnone: VariableDefinitionWhereInputInput\n}\ninput VariableDefinitionWhereInputInput {\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n\temailTemplate: WithoutInput_20AndEmailTemplateWhereInputInput\n}\ninput WithoutInput_22AndUserWhereInputInput {\n\tis: UserWhereInputInput\n\tisNot: UserWhereInputInput\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput UserWhereInputInput {\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput WithoutInput_26AndEmailWhereInputInput {\n\tis: EmailWhereInputInput\n\tisNot: EmailWhereInputInput\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: WithoutInput_30AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_32AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_34AndUserWhereInputInput\n\torganization: WithoutInput_36AndOrganizationWhereInputInput\n}\ninput EmailWhereInputInput {\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: WithoutInput_30AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_32AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_34AndUserWhereInputInput\n\torganization: WithoutInput_36AndOrganizationWhereInputInput\n}\ninput WithoutInput_30AndSMTPConfigWhereInputInput {\n\tis: SMTPConfigWhereInputInput\n\tisNot: SMTPConfigWhereInputInput\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temailId: String\n\temail: WithoutInput_38AndEmailWhereInputInput\n}\ninput SMTPConfigWhereInputInput {\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temailId: String\n\temail: WithoutInput_38AndEmailWhereInputInput\n}\ninput WithoutInput_38AndEmailWhereInputInput {\n\tis: EmailWhereInputInput\n\tisNot: EmailWhereInputInput\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: WithoutInput_30AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_32AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_34AndUserWhereInputInput\n\torganization: WithoutInput_36AndOrganizationWhereInputInput\n}\ninput WithoutInput_32AndOAuthConfigWhereInputInput {\n\tis: OAuthConfigWhereInputInput\n\tisNot: OAuthConfigWhereInputInput\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tid: String\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n\temailId: String\n\temail: WithoutInput_38AndEmailWhereInputInput\n}\ninput OAuthConfigWhereInputInput {\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tid: String\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n\temailId: String\n\temail: WithoutInput_38AndEmailWhereInputInput\n}\ninput EnumOAuthProviderFilterInput {\n\tequals: String\n\tin: [OAuthProviderInput]\n\tnotIn: [OAuthProviderInput]\n\tnot: String\n}\ninput WithoutInput_34AndUserWhereInputInput {\n\tis: UserWhereInputInput\n\tisNot: UserWhereInputInput\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput WithoutInput_28AndOrganizationWhereInputInput {\n\tis: OrganizationWhereInputInput\n\tisNot: OrganizationWhereInputInput\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\temailId: String\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\toAuthApps: OAuthAppListRelationFilterInput\n}\ninput OrganizationWhereInputInput {\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\temailId: String\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\toAuthApps: OAuthAppListRelationFilterInput\n}\ninput UserListRelationFilterInput {\n\tevery: UserWhereInputInput\n\tsome: UserWhereInputInput\n\tnone: UserWhereInputInput\n}\ninput OAuthAppListRelationFilterInput {\n\tevery: OAuthAppWhereInputInput\n\tsome: OAuthAppWhereInputInput\n\tnone: OAuthAppWhereInputInput\n}\ninput OAuthAppWhereInputInput {\n\tAND: [OAuthAppWhereInputInput]\n\tOR: [OAuthAppWhereInputInput!]\n\tNOT: [OAuthAppWhereInputInput]\n\tid: String\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n\torganizationId: String\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput WithoutInput_36AndOrganizationWhereInputInput {\n\tis: OrganizationWhereInputInput\n\tisNot: OrganizationWhereInputInput\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\temailId: String\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\toAuthApps: OAuthAppListRelationFilterInput\n}\ninput EmailTemplateOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tdescription: SortOrderInput\n\tcontent: SortOrderInput\n\tverifyReplyTo: String\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: SortOrderInput\n\tupdatedAt: SortOrderInput\n\tcreatorId: SortOrderInput\n\tenvelope: EmailEnvelopeOrderByWithRelationInputInput\n\tparent: EmailTemplateOrderByWithRelationInputInput\n\tlinks: EmailTemplateOrderByRelationAggregateInputInput\n\tvariables: VariableDefinitionOrderByRelationAggregateInputInput\n\tcreator: UserOrderByWithRelationInputInput\n}\ninput EmailEnvelopeOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tsubject: String\n\tto: SortOrderInput\n\treplyTo: String\n\temailTemplateId: SortOrderInput\n\temailTemplate: EmailTemplateOrderByWithRelationInputInput\n}\ninput EmailTemplateOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput VariableDefinitionOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput UserOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\torganizationId: SortOrderInput\n\temailTemplates: EmailTemplateOrderByRelationAggregateInputInput\n\temail: EmailOrderByWithRelationInputInput\n\torganization: OrganizationOrderByWithRelationInputInput\n}\ninput EmailOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tisEnabled: SortOrderInput\n\temail: SortOrderInput\n\tuserId: String\n\tsmtpConfig: SMTPConfigOrderByWithRelationInputInput\n\toauthConfig: OAuthConfigOrderByWithRelationInputInput\n\tuser: UserOrderByWithRelationInputInput\n\torganization: OrganizationOrderByWithRelationInputInput\n}\ninput SMTPConfigOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\thost: SortOrderInput\n\tport: SortOrderInput\n\tusername: SortOrderInput\n\tpassword: SortOrderInput\n\tsecure: SortOrderInput\n\temailId: SortOrderInput\n\temail: EmailOrderByWithRelationInputInput\n}\ninput OAuthConfigOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tprovider: SortOrderInput\n\taccessToken: SortOrderInput\n\taccessTokenExpiresAt: SortOrderInput\n\trefreshToken: SortOrderInput\n\temailId: SortOrderInput\n\temail: EmailOrderByWithRelationInputInput\n}\ninput OrganizationOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\temailId: String\n\tusers: UserOrderByRelationAggregateInputInput\n\temail: EmailOrderByWithRelationInputInput\n\toAuthApps: OAuthAppOrderByRelationAggregateInputInput\n}\ninput UserOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput OAuthAppOrderByRelationAggregateInputInput {\n\t_count: SortOrderInput\n}\ninput OmitInput_8 {\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n}\ninput EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput {\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: EmailEnvelopeCreateOrConnectWithoutEmailTemplateInputInput\n\tconnect: WhereInput_11AndWhereInput_12\n}\ninput ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput {\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput EmailEnvelopeCreateOrConnectWithoutEmailTemplateInputInput {\n\twhere: WhereInput_11AndWhereInput_12!\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput!\n}\ninput WhereInput_11AndWhereInput_12 {\n\tid: String\n\temailTemplateId: String\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n\temailTemplate: WithoutInput_24AndEmailTemplateWhereInputInput\n}\ninput EmailTemplateCreateNestedOneWithoutLinksInputInput {\n\tcreate: WithoutInput_40AndEmailTemplateUncheckedCreateWithoutLinksInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutLinksInputInput\n\tconnect: WhereInputAndWhereInput_1\n}\ninput WithoutInput_40AndEmailTemplateUncheckedCreateWithoutLinksInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput UserCreateNestedOneWithoutEmailTemplatesInputInput {\n\tcreate: WithoutInput_42AndUserUncheckedCreateWithoutEmailTemplatesInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailTemplatesInputInput\n\tconnect: WhereInput_18AndWhereInput_19\n}\ninput WithoutInput_42AndUserUncheckedCreateWithoutEmailTemplatesInputInput {\n\torganization: OrganizationCreateNestedOneWithoutUsersInputInput\n\tid: String!\n\torganizationId: String\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n}\ninput OrganizationCreateNestedOneWithoutUsersInputInput {\n\tcreate: WithoutInput_44AndOrganizationUncheckedCreateWithoutUsersInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutUsersInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n}\ninput WithoutInput_44AndOrganizationUncheckedCreateWithoutUsersInputInput {\n\temail: EmailCreateNestedOneWithoutOrganizationInputInput\n\tid: String!\n\temailId: String\n\toAuthApps: OAuthAppUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput EmailCreateNestedOneWithoutOrganizationInputInput {\n\tcreate: WithoutInput_46AndEmailUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutOrganizationInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n}\ninput WithoutInput_46AndEmailUncheckedCreateWithoutOrganizationInputInput {\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput UserCreateNestedOneWithoutEmailInputInput {\n\tcreate: WithoutInput_48AndUserUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_18AndWhereInput_19\n}\ninput WithoutInput_48AndUserUncheckedCreateWithoutEmailInputInput {\n\torganization: OrganizationCreateNestedOneWithoutUsersInputInput\n\tid: String!\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n}\ninput EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput {\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutCreatorInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutCreatorInputInput]\n\tcreateMany: EmailTemplateCreateManyCreatorInputEnvelopeInput\n\tconnect: WhereInput_2AndWhereInput_1\n}\ninput WithoutInput_50AndEmailTemplateUncheckedCreateWithoutCreatorInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput {\n\tcreate: WithoutInput_52AndEmailTemplateUncheckedCreateWithoutParentInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutParentInputInput]\n\tcreateMany: EmailTemplateCreateManyParentInputEnvelopeInput\n\tconnect: WhereInput_2AndWhereInput_1\n}\ninput WithoutInput_52AndEmailTemplateUncheckedCreateWithoutParentInputInput {\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput {\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: [VariableDefinitionCreateOrConnectWithoutEmailTemplateInputInput]\n\tcreateMany: VariableDefinitionCreateManyEmailTemplateInputEnvelopeInput\n\tconnect: WhereInput_17AndWhereInput_16\n}\ninput ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput {\n\tid: String\n\tname: String!\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput VariableDefinitionCreateOrConnectWithoutEmailTemplateInputInput {\n\twhere: WhereInput_15AndWhereInput_16!\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput!\n}\ninput WhereInput_15AndWhereInput_16 {\n\tid: String\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n\temailTemplate: WithoutInput_20AndEmailTemplateWhereInputInput\n}\ninput VariableDefinitionCreateManyEmailTemplateInputEnvelopeInput {\n\tdata: [VariableDefinitionCreateManyEmailTemplateInputInput!]\n\tskipDuplicates: Boolean\n}\ninput VariableDefinitionCreateManyEmailTemplateInputInput {\n\tid: String\n\tname: String!\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput WhereInput_17AndWhereInput_16 {\n\tid: String\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n\temailTemplate: WithoutInput_20AndEmailTemplateWhereInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutParentInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_52AndEmailTemplateUncheckedCreateWithoutParentInputInput!\n}\ninput WhereInputAndWhereInput_1 {\n\tid: String\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput EmailTemplateCreateManyParentInputEnvelopeInput {\n\tdata: [EmailTemplateCreateManyParentInputInput!]\n\tskipDuplicates: Boolean\n}\ninput EmailTemplateCreateManyParentInputInput {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String!\n}\ninput WhereInput_2AndWhereInput_1 {\n\tid: String\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutCreatorInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutCreatorInputInput!\n}\ninput EmailTemplateCreateManyCreatorInputEnvelopeInput {\n\tdata: [EmailTemplateCreateManyCreatorInputInput!]\n\tskipDuplicates: Boolean\n}\ninput EmailTemplateCreateManyCreatorInputInput {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n}\ninput UserCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tcreate: WithoutInput_48AndUserUncheckedCreateWithoutEmailInputInput!\n}\ninput WhereInput_18AndWhereInput_19 {\n\tid: String\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput {\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: SMTPConfigCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_21AndWhereInput_22\n}\ninput ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput {\n\tid: String\n\thost: String!\n\tport: Number!\n\tusername: String!\n\tpassword: String!\n\tsecure: Boolean!\n}\ninput SMTPConfigCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_21AndWhereInput_22!\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput!\n}\ninput WhereInput_21AndWhereInput_22 {\n\tid: String\n\temailId: String\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temail: WithoutInput_38AndEmailWhereInputInput\n}\ninput OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput {\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OAuthConfigCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_25AndWhereInput_26\n}\ninput ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput {\n\tid: String\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n\taccessTokenExpiresAt: String!\n\trefreshToken: String!\n}\ninput OAuthConfigCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_25AndWhereInput_26!\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput!\n}\ninput WhereInput_25AndWhereInput_26 {\n\tid: String\n\temailId: String\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n\temail: WithoutInput_38AndEmailWhereInputInput\n}\ninput EmailCreateOrConnectWithoutOrganizationInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: WithoutInput_46AndEmailUncheckedCreateWithoutOrganizationInputInput!\n}\ninput WhereInput_3AndWhereInput_4 {\n\tid: String\n\tuserId: String\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tisEnabled: Boolean\n\temail: String\n\tsmtpConfig: WithoutInput_30AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_32AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_34AndUserWhereInputInput\n\torganization: WithoutInput_36AndOrganizationWhereInputInput\n}\ninput OAuthAppUncheckedCreateNestedManyWithoutOrganizationInputInput {\n\tcreate: ObjectAndOAuthAppUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: [OAuthAppCreateOrConnectWithoutOrganizationInputInput]\n\tcreateMany: OAuthAppCreateManyOrganizationInputEnvelopeInput\n\tconnect: WhereInput_31AndWhereInput_30\n}\ninput ObjectAndOAuthAppUncheckedCreateWithoutOrganizationInputInput {\n\tid: String\n\tclientId: String!\n\tclientSecret: String!\n\ttype: OAuthProviderInput!\n}\ninput OAuthAppCreateOrConnectWithoutOrganizationInputInput {\n\twhere: WhereInput_29AndWhereInput_30!\n\tcreate: ObjectAndOAuthAppUncheckedCreateWithoutOrganizationInputInput!\n}\ninput WhereInput_29AndWhereInput_30 {\n\tid: String\n\torganizationId_type: OAuthAppOrganizationIdTypeCompoundUniqueInputInput\n\tAND: [OAuthAppWhereInputInput]\n\tOR: [OAuthAppWhereInputInput!]\n\tNOT: [OAuthAppWhereInputInput]\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n\torganizationId: String\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput OAuthAppOrganizationIdTypeCompoundUniqueInputInput {\n\torganizationId: String!\n\ttype: OAuthProviderInput!\n}\ninput OAuthAppCreateManyOrganizationInputEnvelopeInput {\n\tdata: [OAuthAppCreateManyOrganizationInputInput!]\n\tskipDuplicates: Boolean\n}\ninput OAuthAppCreateManyOrganizationInputInput {\n\tid: String\n\tclientId: String!\n\tclientSecret: String!\n\ttype: OAuthProviderInput!\n}\ninput WhereInput_31AndWhereInput_30 {\n\tid: String\n\torganizationId_type: OAuthAppOrganizationIdTypeCompoundUniqueInputInput\n\tAND: [OAuthAppWhereInputInput]\n\tOR: [OAuthAppWhereInputInput!]\n\tNOT: [OAuthAppWhereInputInput]\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n\torganizationId: String\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput OrganizationCreateOrConnectWithoutUsersInputInput {\n\twhere: WhereInput_7AndWhereInput_8!\n\tcreate: WithoutInput_44AndOrganizationUncheckedCreateWithoutUsersInputInput!\n}\ninput WhereInput_7AndWhereInput_8 {\n\tid: String\n\temailId: String\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tusers: UserListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\toAuthApps: OAuthAppListRelationFilterInput\n}\ninput EmailUncheckedCreateNestedOneWithoutUserInputInput {\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutUserInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n}\ninput ObjectAndEmailUncheckedCreateWithoutUserInputInput {\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput OrganizationUncheckedCreateNestedOneWithoutEmailInputInput {\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutEmailInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n}\ninput ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput {\n\tid: String!\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n\toAuthApps: OAuthAppUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput UserUncheckedCreateNestedManyWithoutOrganizationInputInput {\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: [UserCreateOrConnectWithoutOrganizationInputInput]\n\tcreateMany: UserCreateManyOrganizationInputEnvelopeInput\n\tconnect: WhereInput_20AndWhereInput_19\n}\ninput ObjectAndUserUncheckedCreateWithoutOrganizationInputInput {\n\tid: String!\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n}\ninput UserCreateOrConnectWithoutOrganizationInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput!\n}\ninput UserCreateManyOrganizationInputEnvelopeInput {\n\tdata: [UserCreateManyOrganizationInputInput!]\n\tskipDuplicates: Boolean\n}\ninput UserCreateManyOrganizationInputInput {\n\tid: String!\n}\ninput WhereInput_20AndWhereInput_19 {\n\tid: String\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput OrganizationCreateOrConnectWithoutEmailInputInput {\n\twhere: WhereInput_7AndWhereInput_8!\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput!\n}\ninput EmailCreateOrConnectWithoutUserInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput!\n}\ninput UserCreateOrConnectWithoutEmailTemplatesInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tcreate: WithoutInput_42AndUserUncheckedCreateWithoutEmailTemplatesInputInput!\n}\ninput EmailTemplateCreateOrConnectWithoutLinksInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_40AndEmailTemplateUncheckedCreateWithoutLinksInputInput!\n}\ninput WithoutInputAndEmailTemplateUncheckedUpdateInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput EmailTemplateUpdateOneWithoutLinksNestedInputInput {\n\tcreate: WithoutInput_40AndEmailTemplateUncheckedCreateWithoutLinksInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutLinksInputInput\n\tupsert: EmailTemplateUpsertWithoutLinksInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInputAndWhereInput_1\n\tupdate: WithoutInput_54AndEmailTemplateUncheckedUpdateWithoutLinksInputInput\n}\ninput EmailTemplateUpsertWithoutLinksInputInput {\n\tupdate: WithoutInput_60AndEmailTemplateUncheckedUpdateWithoutLinksInputInput!\n\tcreate: WithoutInput_40AndEmailTemplateUncheckedCreateWithoutLinksInputInput!\n\twhere: EmailTemplateWhereInputInput\n}\ninput WithoutInput_60AndEmailTemplateUncheckedUpdateWithoutLinksInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput {\n\tcreate: WithoutInput_42AndUserUncheckedCreateWithoutEmailTemplatesInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailTemplatesInputInput\n\tupsert: UserUpsertWithoutEmailTemplatesInputInput\n\tconnect: WhereInput_18AndWhereInput_19\n\tupdate: WithoutInput_62AndUserUncheckedUpdateWithoutEmailTemplatesInputInput\n}\ninput UserUpsertWithoutEmailTemplatesInputInput {\n\tupdate: WithoutInput_68AndUserUncheckedUpdateWithoutEmailTemplatesInputInput!\n\tcreate: WithoutInput_42AndUserUncheckedCreateWithoutEmailTemplatesInputInput!\n\twhere: UserWhereInputInput\n}\ninput WithoutInput_68AndUserUncheckedUpdateWithoutEmailTemplatesInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tid: String\n\torganizationId: String\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput OrganizationUpdateOneRequiredWithoutUsersNestedInputInput {\n\tcreate: WithoutInput_44AndOrganizationUncheckedCreateWithoutUsersInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutUsersInputInput\n\tupsert: OrganizationUpsertWithoutUsersInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n\tupdate: WithoutInput_70AndOrganizationUncheckedUpdateWithoutUsersInputInput\n}\ninput OrganizationUpsertWithoutUsersInputInput {\n\tupdate: WithoutInput_76AndOrganizationUncheckedUpdateWithoutUsersInputInput!\n\tcreate: WithoutInput_44AndOrganizationUncheckedCreateWithoutUsersInputInput!\n\twhere: OrganizationWhereInputInput\n}\ninput WithoutInput_76AndOrganizationUncheckedUpdateWithoutUsersInputInput {\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tid: String\n\temailId: String\n\toAuthApps: OAuthAppUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput EmailUpdateOneWithoutOrganizationNestedInputInput {\n\tcreate: WithoutInput_46AndEmailUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutOrganizationInputInput\n\tupsert: EmailUpsertWithoutOrganizationInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_78AndEmailUncheckedUpdateWithoutOrganizationInputInput\n}\ninput EmailUpsertWithoutOrganizationInputInput {\n\tupdate: WithoutInput_84AndEmailUncheckedUpdateWithoutOrganizationInputInput!\n\tcreate: WithoutInput_46AndEmailUncheckedCreateWithoutOrganizationInputInput!\n\twhere: EmailWhereInputInput\n}\ninput WithoutInput_84AndEmailUncheckedUpdateWithoutOrganizationInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput UserUpdateOneWithoutEmailNestedInputInput {\n\tcreate: WithoutInput_48AndUserUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: UserCreateOrConnectWithoutEmailInputInput\n\tupsert: UserUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_18AndWhereInput_19\n\tupdate: WithoutInput_86AndUserUncheckedUpdateWithoutEmailInputInput\n}\ninput UserUpsertWithoutEmailInputInput {\n\tupdate: WithoutInput_92AndUserUncheckedUpdateWithoutEmailInputInput!\n\tcreate: WithoutInput_48AndUserUncheckedCreateWithoutEmailInputInput!\n\twhere: UserWhereInputInput\n}\ninput WithoutInput_92AndUserUncheckedUpdateWithoutEmailInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n}\ninput EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput {\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutCreatorInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutCreatorInputInput]\n\tupsert: [EmailTemplateUpsertWithWhereUniqueWithoutCreatorInputInput]\n\tcreateMany: EmailTemplateCreateManyCreatorInputEnvelopeInput\n\tset: WhereInput_2AndWhereInput_1\n\tdisconnect: WhereInput_2AndWhereInput_1\n\tdelete: WhereInput_2AndWhereInput_1\n\tconnect: WhereInput_2AndWhereInput_1\n\tupdate: [EmailTemplateUpdateWithWhereUniqueWithoutCreatorInputInput]\n\tupdateMany: [EmailTemplateUpdateManyWithWhereWithoutCreatorInputInput]\n\tdeleteMany: [EmailTemplateScalarWhereInputInput]\n}\ninput EmailTemplateUpsertWithWhereUniqueWithoutCreatorInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tupdate: WithoutInput_94AndEmailTemplateUncheckedUpdateWithoutCreatorInputInput!\n\tcreate: WithoutInput_50AndEmailTemplateUncheckedCreateWithoutCreatorInputInput!\n}\ninput WithoutInput_94AndEmailTemplateUncheckedUpdateWithoutCreatorInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput {\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: EmailEnvelopeCreateOrConnectWithoutEmailTemplateInputInput\n\tupsert: EmailEnvelopeUpsertWithoutEmailTemplateInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_11AndWhereInput_12\n\tupdate: WithoutInput_96AndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput\n}\ninput EmailEnvelopeUpsertWithoutEmailTemplateInputInput {\n\tupdate: ObjectAndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput!\n\tcreate: ObjectAndEmailEnvelopeUncheckedCreateWithoutEmailTemplateInputInput!\n\twhere: EmailEnvelopeWhereInputInput\n}\ninput ObjectAndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput {\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput WithoutInput_96AndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput {\n\twhere: EmailEnvelopeWhereInputInput\n\tdata: ObjectAndEmailEnvelopeUncheckedUpdateWithoutEmailTemplateInputInput\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput {\n\tcreate: WithoutInput_52AndEmailTemplateUncheckedCreateWithoutParentInputInput\n\tconnectOrCreate: [EmailTemplateCreateOrConnectWithoutParentInputInput]\n\tupsert: [EmailTemplateUpsertWithWhereUniqueWithoutParentInputInput]\n\tcreateMany: EmailTemplateCreateManyParentInputEnvelopeInput\n\tset: WhereInput_2AndWhereInput_1\n\tdisconnect: WhereInput_2AndWhereInput_1\n\tdelete: WhereInput_2AndWhereInput_1\n\tconnect: WhereInput_2AndWhereInput_1\n\tupdate: [EmailTemplateUpdateWithWhereUniqueWithoutParentInputInput]\n\tupdateMany: [EmailTemplateUpdateManyWithWhereWithoutParentInputInput]\n\tdeleteMany: [EmailTemplateScalarWhereInputInput]\n}\ninput EmailTemplateUpsertWithWhereUniqueWithoutParentInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tupdate: WithoutInput_100AndEmailTemplateUncheckedUpdateWithoutParentInputInput!\n\tcreate: WithoutInput_52AndEmailTemplateUncheckedCreateWithoutParentInputInput!\n}\ninput WithoutInput_100AndEmailTemplateUncheckedUpdateWithoutParentInputInput {\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput {\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput\n\tconnectOrCreate: [VariableDefinitionCreateOrConnectWithoutEmailTemplateInputInput]\n\tupsert: [VariableDefinitionUpsertWithWhereUniqueWithoutEmailTemplateInputInput]\n\tcreateMany: VariableDefinitionCreateManyEmailTemplateInputEnvelopeInput\n\tset: WhereInput_17AndWhereInput_16\n\tdisconnect: WhereInput_17AndWhereInput_16\n\tdelete: WhereInput_17AndWhereInput_16\n\tconnect: WhereInput_17AndWhereInput_16\n\tupdate: [VariableDefinitionUpdateWithWhereUniqueWithoutEmailTemplateInputInput]\n\tupdateMany: [VariableDefinitionUpdateManyWithWhereWithoutEmailTemplateInputInput]\n\tdeleteMany: [VariableDefinitionScalarWhereInputInput]\n}\ninput VariableDefinitionUpsertWithWhereUniqueWithoutEmailTemplateInputInput {\n\twhere: WhereInput_15AndWhereInput_16!\n\tupdate: ObjectAndVariableDefinitionUncheckedUpdateWithoutEmailTemplateInputInput!\n\tcreate: ObjectAndVariableDefinitionUncheckedCreateWithoutEmailTemplateInputInput!\n}\ninput ObjectAndVariableDefinitionUncheckedUpdateWithoutEmailTemplateInputInput {\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput VariableDefinitionUpdateWithWhereUniqueWithoutEmailTemplateInputInput {\n\twhere: WhereInput_15AndWhereInput_16!\n\tdata: ObjectAndVariableDefinitionUncheckedUpdateWithoutEmailTemplateInputInput!\n}\ninput VariableDefinitionUpdateManyWithWhereWithoutEmailTemplateInputInput {\n\twhere: VariableDefinitionScalarWhereInputInput!\n\tdata: ObjectAndVariableDefinitionUncheckedUpdateManyWithoutEmailTemplateInputInput!\n}\ninput VariableDefinitionScalarWhereInputInput {\n\tAND: [VariableDefinitionScalarWhereInputInput]\n\tOR: [VariableDefinitionScalarWhereInputInput!]\n\tNOT: [VariableDefinitionScalarWhereInputInput]\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n}\ninput ObjectAndVariableDefinitionUncheckedUpdateManyWithoutEmailTemplateInputInput {\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput EmailTemplateUpdateWithWhereUniqueWithoutParentInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tdata: WithoutInput_100AndEmailTemplateUncheckedUpdateWithoutParentInputInput!\n}\ninput EmailTemplateUpdateManyWithWhereWithoutParentInputInput {\n\twhere: EmailTemplateScalarWhereInputInput!\n\tdata: ObjectAndEmailTemplateUncheckedUpdateManyWithoutParentInputInput!\n}\ninput EmailTemplateScalarWhereInputInput {\n\tAND: [EmailTemplateScalarWhereInputInput]\n\tOR: [EmailTemplateScalarWhereInputInput!]\n\tNOT: [EmailTemplateScalarWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n}\ninput ObjectAndEmailTemplateUncheckedUpdateManyWithoutParentInputInput {\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n}\ninput EmailTemplateUpdateWithWhereUniqueWithoutCreatorInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tdata: WithoutInput_94AndEmailTemplateUncheckedUpdateWithoutCreatorInputInput!\n}\ninput EmailTemplateUpdateManyWithWhereWithoutCreatorInputInput {\n\twhere: EmailTemplateScalarWhereInputInput!\n\tdata: ObjectAndEmailTemplateUncheckedUpdateManyWithoutCreatorInputInput!\n}\ninput ObjectAndEmailTemplateUncheckedUpdateManyWithoutCreatorInputInput {\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n}\ninput WithoutInput_86AndUserUncheckedUpdateWithoutEmailInputInput {\n\twhere: UserWhereInputInput\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tdata: WithoutInput_92AndUserUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n}\ninput SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput {\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: SMTPConfigCreateOrConnectWithoutEmailInputInput\n\tupsert: SMTPConfigUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_21AndWhereInput_22\n\tupdate: WithoutInput_104AndSMTPConfigUncheckedUpdateWithoutEmailInputInput\n}\ninput SMTPConfigUpsertWithoutEmailInputInput {\n\tupdate: ObjectAndSMTPConfigUncheckedUpdateWithoutEmailInputInput!\n\tcreate: ObjectAndSMTPConfigUncheckedCreateWithoutEmailInputInput!\n\twhere: SMTPConfigWhereInputInput\n}\ninput ObjectAndSMTPConfigUncheckedUpdateWithoutEmailInputInput {\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n}\ninput WithoutInput_104AndSMTPConfigUncheckedUpdateWithoutEmailInputInput {\n\twhere: SMTPConfigWhereInputInput\n\tdata: ObjectAndSMTPConfigUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n}\ninput OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput {\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OAuthConfigCreateOrConnectWithoutEmailInputInput\n\tupsert: OAuthConfigUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_25AndWhereInput_26\n\tupdate: WithoutInput_108AndOAuthConfigUncheckedUpdateWithoutEmailInputInput\n}\ninput OAuthConfigUpsertWithoutEmailInputInput {\n\tupdate: ObjectAndOAuthConfigUncheckedUpdateWithoutEmailInputInput!\n\tcreate: ObjectAndOAuthConfigUncheckedCreateWithoutEmailInputInput!\n\twhere: OAuthConfigWhereInputInput\n}\ninput ObjectAndOAuthConfigUncheckedUpdateWithoutEmailInputInput {\n\tid: String\n\tprovider: String\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n}\ninput WithoutInput_108AndOAuthConfigUncheckedUpdateWithoutEmailInputInput {\n\twhere: OAuthConfigWhereInputInput\n\tdata: ObjectAndOAuthConfigUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\tprovider: String\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n}\ninput WithoutInput_78AndEmailUncheckedUpdateWithoutOrganizationInputInput {\n\twhere: EmailWhereInputInput\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tdata: WithoutInput_84AndEmailUncheckedUpdateWithoutOrganizationInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OAuthAppUncheckedUpdateManyWithoutOrganizationNestedInputInput {\n\tcreate: ObjectAndOAuthAppUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: [OAuthAppCreateOrConnectWithoutOrganizationInputInput]\n\tupsert: [OAuthAppUpsertWithWhereUniqueWithoutOrganizationInputInput]\n\tcreateMany: OAuthAppCreateManyOrganizationInputEnvelopeInput\n\tset: WhereInput_31AndWhereInput_30\n\tdisconnect: WhereInput_31AndWhereInput_30\n\tdelete: WhereInput_31AndWhereInput_30\n\tconnect: WhereInput_31AndWhereInput_30\n\tupdate: [OAuthAppUpdateWithWhereUniqueWithoutOrganizationInputInput]\n\tupdateMany: [OAuthAppUpdateManyWithWhereWithoutOrganizationInputInput]\n\tdeleteMany: [OAuthAppScalarWhereInputInput]\n}\ninput OAuthAppUpsertWithWhereUniqueWithoutOrganizationInputInput {\n\twhere: WhereInput_29AndWhereInput_30!\n\tupdate: ObjectAndOAuthAppUncheckedUpdateWithoutOrganizationInputInput!\n\tcreate: ObjectAndOAuthAppUncheckedCreateWithoutOrganizationInputInput!\n}\ninput ObjectAndOAuthAppUncheckedUpdateWithoutOrganizationInputInput {\n\tid: String\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n}\ninput OAuthAppUpdateWithWhereUniqueWithoutOrganizationInputInput {\n\twhere: WhereInput_29AndWhereInput_30!\n\tdata: ObjectAndOAuthAppUncheckedUpdateWithoutOrganizationInputInput!\n}\ninput OAuthAppUpdateManyWithWhereWithoutOrganizationInputInput {\n\twhere: OAuthAppScalarWhereInputInput!\n\tdata: ObjectAndOAuthAppUncheckedUpdateManyWithoutOrganizationInputInput!\n}\ninput OAuthAppScalarWhereInputInput {\n\tAND: [OAuthAppScalarWhereInputInput]\n\tOR: [OAuthAppScalarWhereInputInput!]\n\tNOT: [OAuthAppScalarWhereInputInput]\n\tid: String\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n\torganizationId: String\n}\ninput ObjectAndOAuthAppUncheckedUpdateManyWithoutOrganizationInputInput {\n\tid: String\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n}\ninput WithoutInput_70AndOrganizationUncheckedUpdateWithoutUsersInputInput {\n\twhere: OrganizationWhereInputInput\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tdata: WithoutInput_76AndOrganizationUncheckedUpdateWithoutUsersInputInput\n\tid: String\n\temailId: String\n\toAuthApps: OAuthAppUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput EmailUncheckedUpdateOneWithoutUserNestedInputInput {\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutUserInputInput\n\tupsert: EmailUpsertWithoutUserInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_112AndEmailUncheckedUpdateWithoutUserInputInput\n}\ninput EmailUpsertWithoutUserInputInput {\n\tupdate: ObjectAndEmailUncheckedUpdateWithoutUserInputInput!\n\tcreate: ObjectAndEmailUncheckedCreateWithoutUserInputInput!\n\twhere: EmailWhereInputInput\n}\ninput ObjectAndEmailUncheckedUpdateWithoutUserInputInput {\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput {\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutEmailInputInput\n\tupsert: OrganizationUpsertWithoutEmailInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInput_7AndWhereInput_8\n\tupdate: WithoutInput_116AndOrganizationUncheckedUpdateWithoutEmailInputInput\n}\ninput OrganizationUpsertWithoutEmailInputInput {\n\tupdate: ObjectAndOrganizationUncheckedUpdateWithoutEmailInputInput!\n\tcreate: ObjectAndOrganizationUncheckedCreateWithoutEmailInputInput!\n\twhere: OrganizationWhereInputInput\n}\ninput ObjectAndOrganizationUncheckedUpdateWithoutEmailInputInput {\n\tid: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n\toAuthApps: OAuthAppUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput UserUncheckedUpdateManyWithoutOrganizationNestedInputInput {\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput\n\tconnectOrCreate: [UserCreateOrConnectWithoutOrganizationInputInput]\n\tupsert: [UserUpsertWithWhereUniqueWithoutOrganizationInputInput]\n\tcreateMany: UserCreateManyOrganizationInputEnvelopeInput\n\tset: WhereInput_20AndWhereInput_19\n\tdisconnect: WhereInput_20AndWhereInput_19\n\tdelete: WhereInput_20AndWhereInput_19\n\tconnect: WhereInput_20AndWhereInput_19\n\tupdate: [UserUpdateWithWhereUniqueWithoutOrganizationInputInput]\n\tupdateMany: [UserUpdateManyWithWhereWithoutOrganizationInputInput]\n\tdeleteMany: [UserScalarWhereInputInput]\n}\ninput UserUpsertWithWhereUniqueWithoutOrganizationInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tupdate: ObjectAndUserUncheckedUpdateWithoutOrganizationInputInput!\n\tcreate: ObjectAndUserUncheckedCreateWithoutOrganizationInputInput!\n}\ninput ObjectAndUserUncheckedUpdateWithoutOrganizationInputInput {\n\tid: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput UserUpdateWithWhereUniqueWithoutOrganizationInputInput {\n\twhere: WhereInput_18AndWhereInput_19!\n\tdata: ObjectAndUserUncheckedUpdateWithoutOrganizationInputInput!\n}\ninput UserUpdateManyWithWhereWithoutOrganizationInputInput {\n\twhere: UserScalarWhereInputInput!\n\tdata: ObjectAndUserUncheckedUpdateManyWithoutOrganizationInputInput!\n}\ninput UserScalarWhereInputInput {\n\tAND: [UserScalarWhereInputInput]\n\tOR: [UserScalarWhereInputInput!]\n\tNOT: [UserScalarWhereInputInput]\n\tid: String\n\torganizationId: String\n}\ninput ObjectAndUserUncheckedUpdateManyWithoutOrganizationInputInput {\n\tid: String\n}\ninput WithoutInput_116AndOrganizationUncheckedUpdateWithoutEmailInputInput {\n\twhere: OrganizationWhereInputInput\n\tdata: ObjectAndOrganizationUncheckedUpdateWithoutEmailInputInput\n\tid: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n\toAuthApps: OAuthAppUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput WithoutInput_112AndEmailUncheckedUpdateWithoutUserInputInput {\n\twhere: EmailWhereInputInput\n\tdata: ObjectAndEmailUncheckedUpdateWithoutUserInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_62AndUserUncheckedUpdateWithoutEmailTemplatesInputInput {\n\twhere: UserWhereInputInput\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tdata: WithoutInput_68AndUserUncheckedUpdateWithoutEmailTemplatesInputInput\n\tid: String\n\torganizationId: String\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput WithoutInput_54AndEmailTemplateUncheckedUpdateWithoutLinksInputInput {\n\twhere: EmailTemplateWhereInputInput\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tdata: WithoutInput_60AndEmailTemplateUncheckedUpdateWithoutLinksInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput OmitInput_9 {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput OmitInput_6 {\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n}\ninput WithoutInput_6AndEmailEnvelopeUncheckedUpdateInputInput {\n\temailTemplate: EmailTemplateUpdateOneRequiredWithoutEnvelopeNestedInputInput\n\tid: String\n\tsubject: String\n\tto: [String]\n\treplyTo: String\n\temailTemplateId: String\n}\ninput EmailTemplateUpdateOneRequiredWithoutEnvelopeNestedInputInput {\n\tcreate: WithoutInput_120AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutEnvelopeInputInput\n\tupsert: EmailTemplateUpsertWithoutEnvelopeInputInput\n\tconnect: WhereInputAndWhereInput_1\n\tupdate: WithoutInput_122AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput\n}\ninput WithoutInput_120AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutEnvelopeInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_120AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput!\n}\ninput EmailTemplateUpsertWithoutEnvelopeInputInput {\n\tupdate: WithoutInput_128AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput!\n\tcreate: WithoutInput_120AndEmailTemplateUncheckedCreateWithoutEnvelopeInputInput!\n\twhere: EmailTemplateWhereInputInput\n}\ninput WithoutInput_128AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput WithoutInput_122AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput {\n\twhere: EmailTemplateWhereInputInput\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tdata: WithoutInput_128AndEmailTemplateUncheckedUpdateWithoutEnvelopeInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n\tvariables: VariableDefinitionUncheckedUpdateManyWithoutEmailTemplateNestedInputInput\n}\ninput OmitInput_7 {\n\tAND: [EmailEnvelopeWhereInputInput]\n\tOR: [EmailEnvelopeWhereInputInput!]\n\tNOT: [EmailEnvelopeWhereInputInput]\n\tid: String\n\tsubject: String\n\tto: StringNullableListFilterInput\n\treplyTo: String\n}\ninput OmitInput_10 {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n}\ninput OmitInput_11 {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n\tcreator: WithoutInput_22AndUserWhereInputInput\n}\ninput VariableDefinitionOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tname: SortOrderInput\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: String\n\tisConstant: String\n\temailTemplateId: String\n\temailTemplate: EmailTemplateOrderByWithRelationInputInput\n}\ninput OmitInput_12 {\n\tid: String\n\tdescription: String\n\tname: String!\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput WithoutInput_8AndVariableDefinitionUncheckedUpdateInputInput {\n\temailTemplate: EmailTemplateUpdateOneWithoutVariablesNestedInputInput\n\tid: String\n\tname: String\n\tdescription: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n\temailTemplateId: String\n}\ninput EmailTemplateUpdateOneWithoutVariablesNestedInputInput {\n\tcreate: WithoutInput_130AndEmailTemplateUncheckedCreateWithoutVariablesInputInput\n\tconnectOrCreate: EmailTemplateCreateOrConnectWithoutVariablesInputInput\n\tupsert: EmailTemplateUpsertWithoutVariablesInputInput\n\tdisconnect: Boolean\n\tdelete: Boolean\n\tconnect: WhereInputAndWhereInput_1\n\tupdate: WithoutInput_132AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput\n}\ninput WithoutInput_130AndEmailTemplateUncheckedCreateWithoutVariablesInputInput {\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tcreator: UserCreateNestedOneWithoutEmailTemplatesInputInput\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n}\ninput EmailTemplateCreateOrConnectWithoutVariablesInputInput {\n\twhere: WhereInputAndWhereInput_1!\n\tcreate: WithoutInput_130AndEmailTemplateUncheckedCreateWithoutVariablesInputInput!\n}\ninput EmailTemplateUpsertWithoutVariablesInputInput {\n\tupdate: WithoutInput_138AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput!\n\tcreate: WithoutInput_130AndEmailTemplateUncheckedCreateWithoutVariablesInputInput!\n\twhere: EmailTemplateWhereInputInput\n}\ninput WithoutInput_138AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput {\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n}\ninput WithoutInput_132AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput {\n\twhere: EmailTemplateWhereInputInput\n\tparent: EmailTemplateUpdateOneWithoutLinksNestedInputInput\n\tcreator: UserUpdateOneRequiredWithoutEmailTemplatesNestedInputInput\n\tdata: WithoutInput_138AndEmailTemplateUncheckedUpdateWithoutVariablesInputInput\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tcreatorId: String\n\tenvelope: EmailEnvelopeUncheckedUpdateOneWithoutEmailTemplateNestedInputInput\n\tlinks: EmailTemplateUncheckedUpdateManyWithoutParentNestedInputInput\n}\ninput OmitInput_13 {\n\tAND: [VariableDefinitionWhereInputInput]\n\tOR: [VariableDefinitionWhereInputInput!]\n\tNOT: [VariableDefinitionWhereInputInput]\n\tid: String\n\tdescription: String\n\tname: String\n\tdefaultValue: String\n\tisRequired: Boolean\n\tisConstant: Boolean\n}\ninput OmitInput_14 {\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n\torganization: OrganizationCreateNestedOneWithoutUsersInputInput\n}\ninput WithoutInput_10AndUserUncheckedUpdateInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutUsersNestedInputInput\n\tid: String\n\torganizationId: String\n\temailTemplates: EmailTemplateUncheckedUpdateManyWithoutCreatorNestedInputInput\n\temail: EmailUncheckedUpdateOneWithoutUserNestedInputInput\n}\ninput OmitInput_15 {\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\torganizationId: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n\torganization: WithoutInput_28AndOrganizationWhereInputInput\n}\ninput OmitInput {\n\tid: String\n\tdescription: String!\n\tcontent: String!\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: EmailEnvelopeUncheckedCreateNestedOneWithoutEmailTemplateInputInput\n\tparent: EmailTemplateCreateNestedOneWithoutLinksInputInput\n\tlinks: EmailTemplateUncheckedCreateNestedManyWithoutParentInputInput\n\tvariables: VariableDefinitionUncheckedCreateNestedManyWithoutEmailTemplateInputInput\n}\ninput OmitInput_1 {\n\tAND: [EmailTemplateWhereInputInput]\n\tOR: [EmailTemplateWhereInputInput!]\n\tNOT: [EmailTemplateWhereInputInput]\n\tid: String\n\tdescription: String\n\tcontent: String\n\tverifyReplyTo: Boolean\n\ttransformer: String\n\tenvelopeId: String\n\tparentId: String\n\tcreatedAt: String\n\tupdatedAt: String\n\tenvelope: WithoutInput_18AndEmailEnvelopeWhereInputInput\n\tparent: WithoutInput_20AndEmailTemplateWhereInputInput\n\tlinks: EmailTemplateListRelationFilterInput\n\tvariables: VariableDefinitionListRelationFilterInput\n}\ninput OmitInput_22 {\n\temail: String!\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n\tisEnabled: Boolean\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n}\ninput WithoutInput_2AndEmailUncheckedUpdateInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OmitInput_23 {\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\temail: String\n\torganization: WithoutInput_36AndOrganizationWhereInputInput\n\tisEnabled: Boolean\n\tuserId: String\n\tsmtpConfig: WithoutInput_30AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_32AndOAuthConfigWhereInputInput\n\tuser: WithoutInput_34AndUserWhereInputInput\n}\ninput OmitInput_16 {\n\tid: String\n\thost: String!\n\tport: Number!\n\tusername: String!\n\tpassword: String!\n\tsecure: Boolean!\n}\ninput WithoutInput_12AndSMTPConfigUncheckedUpdateInputInput {\n\temail: EmailUpdateOneRequiredWithoutSmtpConfigNestedInputInput\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n\temailId: String\n}\ninput EmailUpdateOneRequiredWithoutSmtpConfigNestedInputInput {\n\tcreate: WithoutInput_140AndEmailUncheckedCreateWithoutSmtpConfigInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutSmtpConfigInputInput\n\tupsert: EmailUpsertWithoutSmtpConfigInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_142AndEmailUncheckedUpdateWithoutSmtpConfigInputInput\n}\ninput WithoutInput_140AndEmailUncheckedCreateWithoutSmtpConfigInputInput {\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tuserId: String\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput EmailCreateOrConnectWithoutSmtpConfigInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: WithoutInput_140AndEmailUncheckedCreateWithoutSmtpConfigInputInput!\n}\ninput EmailUpsertWithoutSmtpConfigInputInput {\n\tupdate: WithoutInput_148AndEmailUncheckedUpdateWithoutSmtpConfigInputInput!\n\tcreate: WithoutInput_140AndEmailUncheckedCreateWithoutSmtpConfigInputInput!\n\twhere: EmailWhereInputInput\n}\ninput WithoutInput_148AndEmailUncheckedUpdateWithoutSmtpConfigInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_142AndEmailUncheckedUpdateWithoutSmtpConfigInputInput {\n\twhere: EmailWhereInputInput\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tdata: WithoutInput_148AndEmailUncheckedUpdateWithoutSmtpConfigInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\toauthConfig: OAuthConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OmitInput_17 {\n\tAND: [SMTPConfigWhereInputInput]\n\tOR: [SMTPConfigWhereInputInput!]\n\tNOT: [SMTPConfigWhereInputInput]\n\tid: String\n\thost: String\n\tport: Number\n\tusername: String\n\tpassword: String\n\tsecure: Boolean\n}\ninput OmitInput_18 {\n\tid: String\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n\taccessTokenExpiresAt: String!\n\trefreshToken: String!\n}\ninput WithoutInput_14AndOAuthConfigUncheckedUpdateInputInput {\n\temail: EmailUpdateOneRequiredWithoutOauthConfigNestedInputInput\n\tid: String\n\tprovider: String\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n\temailId: String\n}\ninput EmailUpdateOneRequiredWithoutOauthConfigNestedInputInput {\n\tcreate: WithoutInput_150AndEmailUncheckedCreateWithoutOauthConfigInputInput\n\tconnectOrCreate: EmailCreateOrConnectWithoutOauthConfigInputInput\n\tupsert: EmailUpsertWithoutOauthConfigInputInput\n\tconnect: WhereInput_3AndWhereInput_4\n\tupdate: WithoutInput_152AndEmailUncheckedUpdateWithoutOauthConfigInputInput\n}\ninput WithoutInput_150AndEmailUncheckedCreateWithoutOauthConfigInputInput {\n\tuser: UserCreateNestedOneWithoutEmailInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String!\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput EmailCreateOrConnectWithoutOauthConfigInputInput {\n\twhere: WhereInput_3AndWhereInput_4!\n\tcreate: WithoutInput_150AndEmailUncheckedCreateWithoutOauthConfigInputInput!\n}\ninput EmailUpsertWithoutOauthConfigInputInput {\n\tupdate: WithoutInput_158AndEmailUncheckedUpdateWithoutOauthConfigInputInput!\n\tcreate: WithoutInput_150AndEmailUncheckedCreateWithoutOauthConfigInputInput!\n\twhere: EmailWhereInputInput\n}\ninput WithoutInput_158AndEmailUncheckedUpdateWithoutOauthConfigInputInput {\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput WithoutInput_152AndEmailUncheckedUpdateWithoutOauthConfigInputInput {\n\twhere: EmailWhereInputInput\n\tuser: UserUpdateOneWithoutEmailNestedInputInput\n\tdata: WithoutInput_158AndEmailUncheckedUpdateWithoutOauthConfigInputInput\n\tid: String\n\tisEnabled: Boolean\n\temail: String\n\tuserId: String\n\tsmtpConfig: SMTPConfigUncheckedUpdateOneWithoutEmailNestedInputInput\n\torganization: OrganizationUncheckedUpdateOneWithoutEmailNestedInputInput\n}\ninput OmitInput_19 {\n\tAND: [OAuthConfigWhereInputInput]\n\tOR: [OAuthConfigWhereInputInput!]\n\tNOT: [OAuthConfigWhereInputInput]\n\tid: String\n\tprovider: EnumOAuthProviderFilterInput\n\taccessToken: String\n\taccessTokenExpiresAt: String\n\trefreshToken: String\n}\ninput OmitInput_24 {\n\tid: String!\n\temailTemplates: EmailTemplateUncheckedCreateNestedManyWithoutCreatorInputInput\n\temail: EmailUncheckedCreateNestedOneWithoutUserInputInput\n}\ninput OmitInput_25 {\n\tAND: [UserWhereInputInput]\n\tOR: [UserWhereInputInput!]\n\tNOT: [UserWhereInputInput]\n\tid: String\n\temailTemplates: EmailTemplateListRelationFilterInput\n\temail: WithoutInput_26AndEmailWhereInputInput\n}\ninput OAuthAppOrderByWithRelationInputInput {\n\tid: SortOrderInput\n\tclientId: SortOrderInput\n\tclientSecret: SortOrderInput\n\ttype: SortOrderInput\n\torganizationId: SortOrderInput\n\torganization: OrganizationOrderByWithRelationInputInput\n}\ninput OmitInput_4 {\n\temail: EmailCreateNestedOneWithoutOrganizationInputInput\n\temailId: String\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n\toAuthApps: OAuthAppUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput WithoutInput_4AndOrganizationUncheckedUpdateInputInput {\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tid: String\n\temailId: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n\toAuthApps: OAuthAppUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput OmitInput_5 {\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\temail: WithoutInput_26AndEmailWhereInputInput\n\temailId: String\n\tusers: UserListRelationFilterInput\n\toAuthApps: OAuthAppListRelationFilterInput\n}\ninput OmitInput_26 {\n\tid: String\n\tclientId: String!\n\tclientSecret: String!\n\ttype: OAuthProviderInput!\n}\ninput WithoutInput_16AndOAuthAppUncheckedUpdateInputInput {\n\torganization: OrganizationUpdateOneRequiredWithoutOAuthAppsNestedInputInput\n\tid: String\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n\torganizationId: String\n}\ninput OrganizationUpdateOneRequiredWithoutOAuthAppsNestedInputInput {\n\tcreate: WithoutInput_160AndOrganizationUncheckedCreateWithoutOAuthAppsInputInput\n\tconnectOrCreate: OrganizationCreateOrConnectWithoutOAuthAppsInputInput\n\tupsert: OrganizationUpsertWithoutOAuthAppsInputInput\n\tconnect: WhereInput_7AndWhereInput_8\n\tupdate: WithoutInput_162AndOrganizationUncheckedUpdateWithoutOAuthAppsInputInput\n}\ninput WithoutInput_160AndOrganizationUncheckedCreateWithoutOAuthAppsInputInput {\n\temail: EmailCreateNestedOneWithoutOrganizationInputInput\n\tid: String!\n\temailId: String\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput OrganizationCreateOrConnectWithoutOAuthAppsInputInput {\n\twhere: WhereInput_7AndWhereInput_8!\n\tcreate: WithoutInput_160AndOrganizationUncheckedCreateWithoutOAuthAppsInputInput!\n}\ninput OrganizationUpsertWithoutOAuthAppsInputInput {\n\tupdate: WithoutInput_168AndOrganizationUncheckedUpdateWithoutOAuthAppsInputInput!\n\tcreate: WithoutInput_160AndOrganizationUncheckedCreateWithoutOAuthAppsInputInput!\n\twhere: OrganizationWhereInputInput\n}\ninput WithoutInput_168AndOrganizationUncheckedUpdateWithoutOAuthAppsInputInput {\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tid: String\n\temailId: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput WithoutInput_162AndOrganizationUncheckedUpdateWithoutOAuthAppsInputInput {\n\twhere: OrganizationWhereInputInput\n\temail: EmailUpdateOneWithoutOrganizationNestedInputInput\n\tdata: WithoutInput_168AndOrganizationUncheckedUpdateWithoutOAuthAppsInputInput\n\tid: String\n\temailId: String\n\tusers: UserUncheckedUpdateManyWithoutOrganizationNestedInputInput\n}\ninput OmitInput_27 {\n\tAND: [OAuthAppWhereInputInput]\n\tOR: [OAuthAppWhereInputInput!]\n\tNOT: [OAuthAppWhereInputInput]\n\tid: String\n\tclientId: String\n\tclientSecret: String\n\ttype: String\n\torganizationId_type: OAuthAppOrganizationIdTypeCompoundUniqueInputInput\n}\ninput OmitInput_20 {\n\tid: String!\n\tusers: UserUncheckedCreateNestedManyWithoutOrganizationInputInput\n\toAuthApps: OAuthAppUncheckedCreateNestedManyWithoutOrganizationInputInput\n}\ninput OmitInput_21 {\n\tAND: [OrganizationWhereInputInput]\n\tOR: [OrganizationWhereInputInput!]\n\tNOT: [OrganizationWhereInputInput]\n\tid: String\n\tusers: UserListRelationFilterInput\n\toAuthApps: OAuthAppListRelationFilterInput\n}\ninput OmitInput_2 {\n\tid: String\n\temail: String!\n\torganization: OrganizationUncheckedCreateNestedOneWithoutEmailInputInput\n\tisEnabled: Boolean\n\tsmtpConfig: SMTPConfigUncheckedCreateNestedOneWithoutEmailInputInput\n\toauthConfig: OAuthConfigUncheckedCreateNestedOneWithoutEmailInputInput\n}\ninput OmitInput_3 {\n\tAND: [EmailWhereInputInput]\n\tOR: [EmailWhereInputInput!]\n\tNOT: [EmailWhereInputInput]\n\tid: String\n\temail: String\n\torganization: WithoutInput_36AndOrganizationWhereInputInput\n\tisEnabled: Boolean\n\tsmtpConfig: WithoutInput_30AndSMTPConfigWhereInputInput\n\toauthConfig: WithoutInput_32AndOAuthConfigWhereInputInput\n}\ninput DataInput {\n\tcontent: String!\n\tdescription: String!\n\tvariables: [VariablesInput!]!\n\tenvelope: EnvelopeInput_1!\n}\ninput VariablesInput {\n\tname: String!\n\tisRequired: Boolean\n\tisConstant: Boolean\n\tdescription: String\n\tdefaultValue: String\n}\ninput EnvelopeInput_1 {\n\tsubject: String\n\tto: [String!]\n\treplyTo: String\n}\ninput DataInput_1 {\n\tcontent: String\n\tdescription: String\n\tvariables: [VariablesInput_1!]!\n\tenvelope: EnvelopeInput_2!\n}\ninput VariablesInput_1 {\n\tname: String!\n\tisRequired: Boolean\n\tisConstant: Boolean\n\tdescription: String\n\tdefaultValue: String\n}\ninput EnvelopeInput_2 {\n\tsubject: String\n\tto: [String!]\n\treplyTo: String\n}\ninput DataInput_2 {\n\temail: String!\n\tsmtpConfig: SmtpConfigInput_1\n\toauthConfig: OauthConfigInput\n}\ninput SmtpConfigInput_1 {\n\thost: String!\n\tport: Number!\n\tsecure: Boolean!\n\tusername: String!\n\tpassword: String!\n}\ninput OauthConfigInput {\n\tprovider: OAuthProviderInput!\n\taccessToken: String!\n\taccessTokenExpiresAt: String!\n\trefreshToken: String!\n}\ninput DataInput_3 {\n\temail: String\n\tsmtpConfig: SmtpConfigInput_2\n\toauthConfig: OauthConfigInput_1\n}\ninput SmtpConfigInput_2 {\n\thost: String\n\tport: Number\n\tsecure: Boolean\n\tusername: String\n\tpassword: String\n}\ninput OauthConfigInput_1 {\n\tprovider: OAuthProviderInput\n\taccessToken: String\n}\ninput SmtpConfigInput {\n\thost: String!\n\tport: Number!\n\tsecure: Boolean!\n\tusername: String!\n\tpassword: String!\n}\ninput EnvelopeInput {\n\tsubject: String!\n\tto: [String!]!\n\treplyTo: String\n}\ntype Query {\nme: User\ntemplate(id: String!): EmailTemplate!\nallTemplate(pagination: ConnectionArgumentsInput, where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): Connection!\nversion: String!\n}\ntype User {\nid: String!\nemailTemplates(pagination: ConnectionArgumentsInput, where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): Connection!\nemailTemplate(where: EmailTemplateWhereInputInput): EmailTemplate!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email\norganization(where: OrganizationWhereInputInput, orderBy: [OrganizationOrderByWithRelationInputInput]): Organization!\n}\ntype Connection {\nnodes: [EmailTemplate!]!\nedges: [Edge!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype EmailTemplate {\ncreator(where: UserWhereInputInput, orderBy: [UserOrderByWithRelationInputInput]): User!\nid: String!\ndescription: String!\ncontent: String!\nverifyReplyTo: Boolean\ntransformer: String\nenvelope(where: EmailEnvelopeWhereInputInput, orderBy: [EmailEnvelopeOrderByWithRelationInputInput]): EmailEnvelope\nenvelopeId: String\nparent(where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): EmailTemplate\nlinks(pagination: ConnectionArgumentsInput, where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): Connection!\nlink(where: EmailTemplateWhereInputInput): EmailTemplate!\nvariables(pagination: ConnectionArgumentsInput, where: VariableDefinitionWhereInputInput, orderBy: [VariableDefinitionOrderByWithRelationInputInput]): Connection_1!\nvariable(where: VariableDefinitionWhereInputInput): VariableDefinition!\n\"\"\"\nEnables basic storage and retrieval of dates and times.\n\"\"\"\ncreatedAt: Date!\n\"\"\"\nEnables basic storage and retrieval of dates and times.\n\"\"\"\nupdatedAt: Date!\n}\ntype EmailEnvelope {\nid: String!\nsubject: String\nto: [String!]!\nreplyTo: String\nemailTemplate(where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): EmailTemplate!\n}\ntype Connection_1 {\nnodes: [VariableDefinition!]!\nedges: [Edge_1!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype VariableDefinition {\nid: String!\nname: String!\ndescription: String\ndefaultValue: String\nisRequired: Boolean\nisConstant: Boolean\nemailTemplate(where: EmailTemplateWhereInputInput, orderBy: [EmailTemplateOrderByWithRelationInputInput]): EmailTemplate\n}\ntype Edge_1 {\ncursor: String!\nnode: VariableDefinition!\n}\ntype PageInfo {\nhasNextPage: Boolean!\nhasPreviousPage: Boolean!\nstartCursor: String\nendCursor: String\n}\ntype Edge {\ncursor: String!\nnode: EmailTemplate!\n}\ntype Email {\nid: String!\nisEnabled: Boolean!\nemail: String!\nsmtpConfig(where: SMTPConfigWhereInputInput, orderBy: [SMTPConfigOrderByWithRelationInputInput]): SMTPConfig\noauthConfig(where: OAuthConfigWhereInputInput, orderBy: [OAuthConfigOrderByWithRelationInputInput]): OAuthConfig\nuser(where: UserWhereInputInput, orderBy: [UserOrderByWithRelationInputInput]): User\norganization(where: OrganizationWhereInputInput, orderBy: [OrganizationOrderByWithRelationInputInput]): Organization\n}\ntype SMTPConfig {\nid: String!\nhost: String!\nport: Number!\nusername: String!\npassword: String!\nsecure: Boolean!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email!\n}\ntype OAuthConfig {\nid: String!\nprovider: OAuthProvider!\n\"\"\"\nEnables basic storage and retrieval of dates and times.\n\"\"\"\naccessTokenExpiresAt: Date!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email!\n}\ntype Organization {\nid: String!\nusers(pagination: ConnectionArgumentsInput, where: UserWhereInputInput, orderBy: [UserOrderByWithRelationInputInput]): Connection_2!\nuser(where: UserWhereInputInput): User!\nemail(where: EmailWhereInputInput, orderBy: [EmailOrderByWithRelationInputInput]): Email\noAuthApps(pagination: ConnectionArgumentsInput, where: OAuthAppWhereInputInput, orderBy: [OAuthAppOrderByWithRelationInputInput]): Connection_3!\noAuthApp(where: OAuthAppWhereInputInput): OAuthApp!\n}\ntype Connection_2 {\nnodes: [User!]!\nedges: [Edge_2!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype Edge_2 {\ncursor: String!\nnode: User!\n}\ntype Connection_3 {\nnodes: [OAuthApp!]!\nedges: [Edge_3!]!\npageInfo: PageInfo!\ntotalCount: Number!\n}\ntype OAuthApp {\nid: String!\nclientId: String!\nclientSecret: String!\ntype: OAuthProvider!\norganization(where: OrganizationWhereInputInput, orderBy: [OrganizationOrderByWithRelationInputInput]): Organization!\n}\ntype Edge_3 {\ncursor: String!\nnode: OAuthApp!\n}\ntype Mutation {\ntemplateCreate(data: DataInput!): EmailTemplate!\ntemplateUpdate(id: String!, data: DataInput_1!): EmailTemplate!\ntemplateDelete(id: String!): EmailTemplate!\ntemplateTransformer(id: String!, transformer: String!): EmailTemplate!\nsenderEmailCreate(data: DataInput_2!): Email!\nsenderEmailUpdate(id: String!, data: DataInput_3!): Email!\nsenderEmailDelete(id: Number!): Email!\norganizationSetSenderEmail(email: String!, smtpConfig: SmtpConfigInput): Email!\nsendMail(envelope: EnvelopeInput!, body: String, bodyHTML: String): String!\nsendTemplateMail(id: String!, values: Object): String!\n}\nscalar Number\nscalar Any\nscalar Object\nscalar File\nscalar Date\nscalar JSON\nscalar String\nscalar Boolean\nenum OAuthProvider {\n\tGOOGLE\n\tAZURE\n}\nenum OAuthProviderInput {\n\tGOOGLE\n\tAZURE\n}\nenum SortOrderInput {\n\tasc\n\tdesc\n}\n";

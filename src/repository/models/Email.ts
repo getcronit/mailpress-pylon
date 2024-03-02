@@ -26,6 +26,8 @@ export class Email extends EmailRepository {
     oauthConfig?: {
       provider: $Enums.OAuthProvider;
       accessToken: string;
+      accessTokenExpiresAt: string;
+      refreshToken: string;
     };
   }) {
     const ctx = await service.getContext(this);

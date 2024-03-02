@@ -5,6 +5,7 @@ import { Prisma } from "@prisma/client";
 import { Repository, NullableGetFunction, NullablePaginateFunction } from "@netsnek/prisma-repository";
 
 import {Organization as OrganizationModel} from "./models/Organization";
+import {OAuthApp as OAuthAppModel} from "./models/OAuthApp";
 import {User as UserModel} from "./models/User";
 import {Email as EmailModel} from "./models/Email";
 import {SMTPConfig as SMTPConfigModel} from "./models/SMTPConfig";
@@ -34,7 +35,7 @@ async users (pagination?: Parameters<typeof UserModel.objects.paginate>[0], wher
         organizationId:this.id
       }
 
-        const Model = require('./models/User').User as typeof UserModel;
+        const Model = (await require('./models/User')).User as typeof UserModel;
 
       try {
         return await Model.objects.paginate(
@@ -52,7 +53,7 @@ async user (where: Parameters<typeof UserModel.objects.get>[0]) {
     
           where = {...where, organizationId:this.id};
     
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
     
           try {
             return await Model.objects.get(where);
@@ -63,7 +64,7 @@ async user (where: Parameters<typeof UserModel.objects.get>[0]) {
         };
 
 async $usersAdd (data: Omit<Prisma.UserCreateArgs['data'], 'organizationId' | 'organization'> ) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.create({...data, organizationId: this.id } as any);
@@ -73,7 +74,7 @@ async $usersAdd (data: Omit<Prisma.UserCreateArgs['data'], 'organizationId' | 'o
         }
       
 async $usersUpdate (data: Prisma.UserUpdateArgs['data'], where: Prisma.UserUpdateArgs['where']) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.update(data, {...where, organizationId: this.id || undefined});
@@ -85,7 +86,7 @@ async $usersUpdate (data: Prisma.UserUpdateArgs['data'], where: Prisma.UserUpdat
             }
           
 async $usersDelete (where: Omit<Prisma.UserDeleteArgs['where'], 'organizationId' | 'organization'>) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.delete({...where, organizationId: this.id || undefined} as any);
@@ -102,7 +103,7 @@ async $usersDelete (where: Omit<Prisma.UserDeleteArgs['where'], 'organizationId'
         id:this.$emailId
       }
 
-        const Model = require('./models/Email').Email as typeof EmailModel;
+        const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
       try {
         return await Model.objects.get(
@@ -116,7 +117,7 @@ async $usersDelete (where: Omit<Prisma.UserDeleteArgs['where'], 'organizationId'
     };
 
 async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.create({...data, id: this.$emailId } as any);
@@ -126,7 +127,7 @@ async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'id'> ) {
         }
       
 async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpdateArgs['where']) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$emailId || undefined});
@@ -138,7 +139,7 @@ async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpd
             }
           
 async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$emailId || undefined} as any);
@@ -147,6 +148,146 @@ async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'id'>) {
           }
         }
       $emailId!: string | null;
+async oAuthApps (pagination?: Parameters<typeof OAuthAppModel.objects.paginate>[0], where?: Parameters<typeof OAuthAppModel.objects.paginate>[1], orderBy?: Parameters<typeof OAuthAppModel.objects.paginate>[2]) {
+      
+
+
+      const _where = {
+        ...where,
+        organizationId:this.id
+      }
+
+        const Model = (await require('./models/OAuthApp')).OAuthApp as typeof OAuthAppModel;
+
+      try {
+        return await Model.objects.paginate(
+          pagination, _where, orderBy
+        );
+      } catch (e) {
+        throw e;
+      }
+  
+      
+    };
+
+async oAuthApp (where: Parameters<typeof OAuthAppModel.objects.get>[0]) {
+          
+    
+          where = {...where, organizationId:this.id};
+    
+          const Model = (await require('./models/OAuthApp')).OAuthApp as typeof OAuthAppModel;
+    
+          try {
+            return await Model.objects.get(where);
+          }
+          catch (e) {
+            throw e;
+          }
+        };
+
+async $oAuthAppsAdd (data: Omit<Prisma.OAuthAppCreateArgs['data'], 'organizationId' | 'organization'> ) {
+          const Model = (await require('./models/OAuthApp')).OAuthApp as typeof OAuthAppModel;
+
+          try {
+            return await Model.objects.create({...data, organizationId: this.id } as any);
+          } catch (e) {
+            throw e
+          }
+        }
+      
+async $oAuthAppsUpdate (data: Prisma.OAuthAppUpdateArgs['data'], where: Prisma.OAuthAppUpdateArgs['where']) {
+          const Model = (await require('./models/OAuthApp')).OAuthApp as typeof OAuthAppModel;
+
+          try {
+            return await Model.objects.update(data, {...where, organizationId: this.id || undefined});
+          } catch (e) {
+            throw e
+          }
+          
+       
+            }
+          
+async $oAuthAppsDelete (where: Omit<Prisma.OAuthAppDeleteArgs['where'], 'organizationId' | 'organization'>) {
+          const Model = (await require('./models/OAuthApp')).OAuthApp as typeof OAuthAppModel;
+
+          try {
+            return await Model.objects.delete({...where, organizationId: this.id || undefined} as any);
+          } catch (e) {
+            throw e
+          }
+        }
+      
+  }
+
+export abstract class OAuthAppRepository extends Repository {
+
+    constructor(data: Prisma.OAuthAppCreateInput) {
+        super();
+
+        const hiddenFields: string[] = ["clientSecret","organizationId"];
+
+        this.$boostrap(this, data, hiddenFields);
+  }
+
+
+    id!: string;
+clientId!: string;
+$clientSecret!: string;
+type!: $Enums.OAuthProvider;
+async organization (where?: Parameters<typeof OrganizationModel.objects.get>[0], orderBy?: Parameters<typeof OrganizationModel.objects.get>[1]) {
+      if (!this.$organizationId) throw new Error("Relation organizationId is required");
+
+
+      const _where = {
+        ...where,
+        id:this.$organizationId
+      }
+
+        const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
+
+      try {
+        return await Model.objects.get(
+          _where, orderBy
+        );
+      } catch (e) {
+        throw e;
+      }
+  
+      
+    };
+
+async $organizationAdd (data: Omit<Prisma.OrganizationCreateArgs['data'], 'id'> ) {
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
+
+          try {
+            return await Model.objects.create({...data, id: this.$organizationId } as any);
+          } catch (e) {
+            throw e
+          }
+        }
+      
+async $organizationUpdate (data: Prisma.OrganizationUpdateArgs['data'], where: Prisma.OrganizationUpdateArgs['where']) {
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
+
+          try {
+            return await Model.objects.update(data, {...where, id: this.$organizationId || undefined});
+          } catch (e) {
+            throw e
+          }
+          
+       
+            }
+          
+async $organizationDelete (where: Omit<Prisma.OrganizationDeleteArgs['where'], 'id'>) {
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
+
+          try {
+            return await Model.objects.delete({...where, id: this.$organizationId || undefined} as any);
+          } catch (e) {
+            throw e
+          }
+        }
+      $organizationId!: string;
 
   }
 
@@ -172,7 +313,7 @@ async emailTemplates (pagination?: Parameters<typeof EmailTemplateModel.objects.
         creatorId:this.id
       }
 
-        const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+        const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
       try {
         return await Model.objects.paginate(
@@ -190,7 +331,7 @@ async emailTemplate (where: Parameters<typeof EmailTemplateModel.objects.get>[0]
     
           where = {...where, creatorId:this.id};
     
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
     
           try {
             return await Model.objects.get(where);
@@ -201,7 +342,7 @@ async emailTemplate (where: Parameters<typeof EmailTemplateModel.objects.get>[0]
         };
 
 async $emailTemplatesAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'creatorId' | 'creator'> ) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.create({...data, creatorId: this.id } as any);
@@ -211,7 +352,7 @@ async $emailTemplatesAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'cr
         }
       
 async $emailTemplatesUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma.EmailTemplateUpdateArgs['where']) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.update(data, {...where, creatorId: this.id || undefined});
@@ -223,7 +364,7 @@ async $emailTemplatesUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where
             }
           
 async $emailTemplatesDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where'], 'creatorId' | 'creator'>) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.delete({...where, creatorId: this.id || undefined} as any);
@@ -240,7 +381,7 @@ async $emailTemplatesDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where']
         userId:this.id
       }
 
-        const Model = require('./models/Email').Email as typeof EmailModel;
+        const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
       try {
         return await Model.objects.get(
@@ -254,7 +395,7 @@ async $emailTemplatesDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where']
     };
 
 async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'userId' | 'user'> ) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.create({...data, userId: this.id } as any);
@@ -264,7 +405,7 @@ async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'userId' | 'user'> )
         }
       
 async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpdateArgs['where']) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.update(data, {...where, userId: this.id || undefined});
@@ -276,7 +417,7 @@ async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpd
             }
           
 async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'userId' | 'user'>) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.delete({...where, userId: this.id || undefined} as any);
@@ -293,7 +434,7 @@ async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'userId' | 'use
         id:this.$organizationId
       }
 
-        const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+        const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
       try {
         return await Model.objects.get(
@@ -307,7 +448,7 @@ async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'userId' | 'use
     };
 
 async $organizationAdd (data: Omit<Prisma.OrganizationCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
           try {
             return await Model.objects.create({...data, id: this.$organizationId } as any);
@@ -317,7 +458,7 @@ async $organizationAdd (data: Omit<Prisma.OrganizationCreateArgs['data'], 'id'> 
         }
       
 async $organizationUpdate (data: Prisma.OrganizationUpdateArgs['data'], where: Prisma.OrganizationUpdateArgs['where']) {
-          const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$organizationId || undefined});
@@ -329,7 +470,7 @@ async $organizationUpdate (data: Prisma.OrganizationUpdateArgs['data'], where: P
             }
           
 async $organizationDelete (where: Omit<Prisma.OrganizationDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$organizationId || undefined} as any);
@@ -363,7 +504,7 @@ async smtpConfig (where?: Parameters<NullableGetFunction<typeof SMTPConfigModel.
         emailId:this.id
       }
 
-        const Model = require('./models/SMTPConfig').SMTPConfig as typeof SMTPConfigModel;
+        const Model = (await require('./models/SMTPConfig')).SMTPConfig as typeof SMTPConfigModel;
 
       try {
         return await Model.objects.get(
@@ -377,7 +518,7 @@ async smtpConfig (where?: Parameters<NullableGetFunction<typeof SMTPConfigModel.
     };
 
 async $smtpConfigAdd (data: Omit<Prisma.SMTPConfigCreateArgs['data'], 'emailId' | 'email'> ) {
-          const Model = require('./models/SMTPConfig').SMTPConfig as typeof SMTPConfigModel;
+          const Model = (await require('./models/SMTPConfig')).SMTPConfig as typeof SMTPConfigModel;
 
           try {
             return await Model.objects.create({...data, emailId: this.id } as any);
@@ -387,7 +528,7 @@ async $smtpConfigAdd (data: Omit<Prisma.SMTPConfigCreateArgs['data'], 'emailId' 
         }
       
 async $smtpConfigUpdate (data: Prisma.SMTPConfigUpdateArgs['data'], where: Prisma.SMTPConfigUpdateArgs['where']) {
-          const Model = require('./models/SMTPConfig').SMTPConfig as typeof SMTPConfigModel;
+          const Model = (await require('./models/SMTPConfig')).SMTPConfig as typeof SMTPConfigModel;
 
           try {
             return await Model.objects.update(data, {...where, emailId: this.id || undefined});
@@ -399,7 +540,7 @@ async $smtpConfigUpdate (data: Prisma.SMTPConfigUpdateArgs['data'], where: Prism
             }
           
 async $smtpConfigDelete (where: Omit<Prisma.SMTPConfigDeleteArgs['where'], 'emailId' | 'email'>) {
-          const Model = require('./models/SMTPConfig').SMTPConfig as typeof SMTPConfigModel;
+          const Model = (await require('./models/SMTPConfig')).SMTPConfig as typeof SMTPConfigModel;
 
           try {
             return await Model.objects.delete({...where, emailId: this.id || undefined} as any);
@@ -416,7 +557,7 @@ async $smtpConfigDelete (where: Omit<Prisma.SMTPConfigDeleteArgs['where'], 'emai
         emailId:this.id
       }
 
-        const Model = require('./models/OAuthConfig').OAuthConfig as typeof OAuthConfigModel;
+        const Model = (await require('./models/OAuthConfig')).OAuthConfig as typeof OAuthConfigModel;
 
       try {
         return await Model.objects.get(
@@ -430,7 +571,7 @@ async $smtpConfigDelete (where: Omit<Prisma.SMTPConfigDeleteArgs['where'], 'emai
     };
 
 async $oauthConfigAdd (data: Omit<Prisma.OAuthConfigCreateArgs['data'], 'emailId' | 'email'> ) {
-          const Model = require('./models/OAuthConfig').OAuthConfig as typeof OAuthConfigModel;
+          const Model = (await require('./models/OAuthConfig')).OAuthConfig as typeof OAuthConfigModel;
 
           try {
             return await Model.objects.create({...data, emailId: this.id } as any);
@@ -440,7 +581,7 @@ async $oauthConfigAdd (data: Omit<Prisma.OAuthConfigCreateArgs['data'], 'emailId
         }
       
 async $oauthConfigUpdate (data: Prisma.OAuthConfigUpdateArgs['data'], where: Prisma.OAuthConfigUpdateArgs['where']) {
-          const Model = require('./models/OAuthConfig').OAuthConfig as typeof OAuthConfigModel;
+          const Model = (await require('./models/OAuthConfig')).OAuthConfig as typeof OAuthConfigModel;
 
           try {
             return await Model.objects.update(data, {...where, emailId: this.id || undefined});
@@ -452,7 +593,7 @@ async $oauthConfigUpdate (data: Prisma.OAuthConfigUpdateArgs['data'], where: Pri
             }
           
 async $oauthConfigDelete (where: Omit<Prisma.OAuthConfigDeleteArgs['where'], 'emailId' | 'email'>) {
-          const Model = require('./models/OAuthConfig').OAuthConfig as typeof OAuthConfigModel;
+          const Model = (await require('./models/OAuthConfig')).OAuthConfig as typeof OAuthConfigModel;
 
           try {
             return await Model.objects.delete({...where, emailId: this.id || undefined} as any);
@@ -469,7 +610,7 @@ async $oauthConfigDelete (where: Omit<Prisma.OAuthConfigDeleteArgs['where'], 'em
         id:this.$userId
       }
 
-        const Model = require('./models/User').User as typeof UserModel;
+        const Model = (await require('./models/User')).User as typeof UserModel;
 
       try {
         return await Model.objects.get(
@@ -483,7 +624,7 @@ async $oauthConfigDelete (where: Omit<Prisma.OAuthConfigDeleteArgs['where'], 'em
     };
 
 async $userAdd (data: Omit<Prisma.UserCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.create({...data, id: this.$userId } as any);
@@ -493,7 +634,7 @@ async $userAdd (data: Omit<Prisma.UserCreateArgs['data'], 'id'> ) {
         }
       
 async $userUpdate (data: Prisma.UserUpdateArgs['data'], where: Prisma.UserUpdateArgs['where']) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$userId || undefined});
@@ -505,7 +646,7 @@ async $userUpdate (data: Prisma.UserUpdateArgs['data'], where: Prisma.UserUpdate
             }
           
 async $userDelete (where: Omit<Prisma.UserDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$userId || undefined} as any);
@@ -523,7 +664,7 @@ async organization (where?: Parameters<NullableGetFunction<typeof OrganizationMo
         emailId:this.id
       }
 
-        const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+        const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
       try {
         return await Model.objects.get(
@@ -537,7 +678,7 @@ async organization (where?: Parameters<NullableGetFunction<typeof OrganizationMo
     };
 
 async $organizationAdd (data: Omit<Prisma.OrganizationCreateArgs['data'], 'emailId' | 'email'> ) {
-          const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
           try {
             return await Model.objects.create({...data, emailId: this.id } as any);
@@ -547,7 +688,7 @@ async $organizationAdd (data: Omit<Prisma.OrganizationCreateArgs['data'], 'email
         }
       
 async $organizationUpdate (data: Prisma.OrganizationUpdateArgs['data'], where: Prisma.OrganizationUpdateArgs['where']) {
-          const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
           try {
             return await Model.objects.update(data, {...where, emailId: this.id || undefined});
@@ -559,7 +700,7 @@ async $organizationUpdate (data: Prisma.OrganizationUpdateArgs['data'], where: P
             }
           
 async $organizationDelete (where: Omit<Prisma.OrganizationDeleteArgs['where'], 'emailId' | 'email'>) {
-          const Model = require('./models/Organization').Organization as typeof OrganizationModel;
+          const Model = (await require('./models/Organization')).Organization as typeof OrganizationModel;
 
           try {
             return await Model.objects.delete({...where, emailId: this.id || undefined} as any);
@@ -596,7 +737,7 @@ async email (where?: Parameters<typeof EmailModel.objects.get>[0], orderBy?: Par
         id:this.$emailId
       }
 
-        const Model = require('./models/Email').Email as typeof EmailModel;
+        const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
       try {
         return await Model.objects.get(
@@ -610,7 +751,7 @@ async email (where?: Parameters<typeof EmailModel.objects.get>[0], orderBy?: Par
     };
 
 async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.create({...data, id: this.$emailId } as any);
@@ -620,7 +761,7 @@ async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'id'> ) {
         }
       
 async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpdateArgs['where']) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$emailId || undefined});
@@ -632,7 +773,7 @@ async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpd
             }
           
 async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$emailId || undefined} as any);
@@ -649,7 +790,7 @@ export abstract class OAuthConfigRepository extends Repository {
     constructor(data: Prisma.OAuthConfigCreateInput) {
         super();
 
-        const hiddenFields: string[] = ["emailId"];
+        const hiddenFields: string[] = ["accessToken","refreshToken","emailId"];
 
         this.$boostrap(this, data, hiddenFields);
   }
@@ -657,7 +798,9 @@ export abstract class OAuthConfigRepository extends Repository {
 
     id!: string;
 provider!: $Enums.OAuthProvider;
-accessToken!: string;
+$accessToken!: string;
+accessTokenExpiresAt!: Date;
+$refreshToken!: string;
 async email (where?: Parameters<typeof EmailModel.objects.get>[0], orderBy?: Parameters<typeof EmailModel.objects.get>[1]) {
       if (!this.$emailId) throw new Error("Relation emailId is required");
 
@@ -667,7 +810,7 @@ async email (where?: Parameters<typeof EmailModel.objects.get>[0], orderBy?: Par
         id:this.$emailId
       }
 
-        const Model = require('./models/Email').Email as typeof EmailModel;
+        const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
       try {
         return await Model.objects.get(
@@ -681,7 +824,7 @@ async email (where?: Parameters<typeof EmailModel.objects.get>[0], orderBy?: Par
     };
 
 async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.create({...data, id: this.$emailId } as any);
@@ -691,7 +834,7 @@ async $emailAdd (data: Omit<Prisma.EmailCreateArgs['data'], 'id'> ) {
         }
       
 async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpdateArgs['where']) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$emailId || undefined});
@@ -703,7 +846,7 @@ async $emailUpdate (data: Prisma.EmailUpdateArgs['data'], where: Prisma.EmailUpd
             }
           
 async $emailDelete (where: Omit<Prisma.EmailDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/Email').Email as typeof EmailModel;
+          const Model = (await require('./models/Email')).Email as typeof EmailModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$emailId || undefined} as any);
@@ -740,7 +883,7 @@ async envelope (where?: Parameters<NullableGetFunction<typeof EmailEnvelopeModel
         emailTemplateId:this.id
       }
 
-        const Model = require('./models/EmailEnvelope').EmailEnvelope as typeof EmailEnvelopeModel;
+        const Model = (await require('./models/EmailEnvelope')).EmailEnvelope as typeof EmailEnvelopeModel;
 
       try {
         return await Model.objects.get(
@@ -754,7 +897,7 @@ async envelope (where?: Parameters<NullableGetFunction<typeof EmailEnvelopeModel
     };
 
 async $envelopeAdd (data: Omit<Prisma.EmailEnvelopeCreateArgs['data'], 'emailTemplateId' | 'emailTemplate'> ) {
-          const Model = require('./models/EmailEnvelope').EmailEnvelope as typeof EmailEnvelopeModel;
+          const Model = (await require('./models/EmailEnvelope')).EmailEnvelope as typeof EmailEnvelopeModel;
 
           try {
             return await Model.objects.create({...data, emailTemplateId: this.id } as any);
@@ -764,7 +907,7 @@ async $envelopeAdd (data: Omit<Prisma.EmailEnvelopeCreateArgs['data'], 'emailTem
         }
       
 async $envelopeUpdate (data: Prisma.EmailEnvelopeUpdateArgs['data'], where: Prisma.EmailEnvelopeUpdateArgs['where']) {
-          const Model = require('./models/EmailEnvelope').EmailEnvelope as typeof EmailEnvelopeModel;
+          const Model = (await require('./models/EmailEnvelope')).EmailEnvelope as typeof EmailEnvelopeModel;
 
           try {
             return await Model.objects.update(data, {...where, emailTemplateId: this.id || undefined});
@@ -776,7 +919,7 @@ async $envelopeUpdate (data: Prisma.EmailEnvelopeUpdateArgs['data'], where: Pris
             }
           
 async $envelopeDelete (where: Omit<Prisma.EmailEnvelopeDeleteArgs['where'], 'emailTemplateId' | 'emailTemplate'>) {
-          const Model = require('./models/EmailEnvelope').EmailEnvelope as typeof EmailEnvelopeModel;
+          const Model = (await require('./models/EmailEnvelope')).EmailEnvelope as typeof EmailEnvelopeModel;
 
           try {
             return await Model.objects.delete({...where, emailTemplateId: this.id || undefined} as any);
@@ -794,7 +937,7 @@ async parent (where?: Parameters<NullableGetFunction<typeof EmailTemplateModel.o
         id:this.$parentId
       }
 
-        const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+        const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
       try {
         return await Model.objects.get(
@@ -808,7 +951,7 @@ async parent (where?: Parameters<NullableGetFunction<typeof EmailTemplateModel.o
     };
 
 async $parentAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.create({...data, id: this.$parentId } as any);
@@ -818,7 +961,7 @@ async $parentAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'id'> ) {
         }
       
 async $parentUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma.EmailTemplateUpdateArgs['where']) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$parentId || undefined});
@@ -830,7 +973,7 @@ async $parentUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma
             }
           
 async $parentDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$parentId || undefined} as any);
@@ -848,7 +991,7 @@ async links (pagination?: Parameters<typeof EmailTemplateModel.objects.paginate>
         parentId:this.id
       }
 
-        const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+        const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
       try {
         return await Model.objects.paginate(
@@ -866,7 +1009,7 @@ async link (where: Parameters<typeof EmailTemplateModel.objects.get>[0]) {
     
           where = {...where, parentId:this.id};
     
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
     
           try {
             return await Model.objects.get(where);
@@ -877,7 +1020,7 @@ async link (where: Parameters<typeof EmailTemplateModel.objects.get>[0]) {
         };
 
 async $linksAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'parentId' | 'parent'> ) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.create({...data, parentId: this.id } as any);
@@ -887,7 +1030,7 @@ async $linksAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'parentId' |
         }
       
 async $linksUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma.EmailTemplateUpdateArgs['where']) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.update(data, {...where, parentId: this.id || undefined});
@@ -899,7 +1042,7 @@ async $linksUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma.
             }
           
 async $linksDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where'], 'parentId' | 'parent'>) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.delete({...where, parentId: this.id || undefined} as any);
@@ -916,7 +1059,7 @@ async $linksDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where'], 'parent
         emailTemplateId:this.id
       }
 
-        const Model = require('./models/VariableDefinition').VariableDefinition as typeof VariableDefinitionModel;
+        const Model = (await require('./models/VariableDefinition')).VariableDefinition as typeof VariableDefinitionModel;
 
       try {
         return await Model.objects.paginate(
@@ -934,7 +1077,7 @@ async variable (where: Parameters<typeof VariableDefinitionModel.objects.get>[0]
     
           where = {...where, emailTemplateId:this.id};
     
-          const Model = require('./models/VariableDefinition').VariableDefinition as typeof VariableDefinitionModel;
+          const Model = (await require('./models/VariableDefinition')).VariableDefinition as typeof VariableDefinitionModel;
     
           try {
             return await Model.objects.get(where);
@@ -945,7 +1088,7 @@ async variable (where: Parameters<typeof VariableDefinitionModel.objects.get>[0]
         };
 
 async $variablesAdd (data: Omit<Prisma.VariableDefinitionCreateArgs['data'], 'emailTemplateId' | 'emailTemplate'> ) {
-          const Model = require('./models/VariableDefinition').VariableDefinition as typeof VariableDefinitionModel;
+          const Model = (await require('./models/VariableDefinition')).VariableDefinition as typeof VariableDefinitionModel;
 
           try {
             return await Model.objects.create({...data, emailTemplateId: this.id } as any);
@@ -955,7 +1098,7 @@ async $variablesAdd (data: Omit<Prisma.VariableDefinitionCreateArgs['data'], 'em
         }
       
 async $variablesUpdate (data: Prisma.VariableDefinitionUpdateArgs['data'], where: Prisma.VariableDefinitionUpdateArgs['where']) {
-          const Model = require('./models/VariableDefinition').VariableDefinition as typeof VariableDefinitionModel;
+          const Model = (await require('./models/VariableDefinition')).VariableDefinition as typeof VariableDefinitionModel;
 
           try {
             return await Model.objects.update(data, {...where, emailTemplateId: this.id || undefined});
@@ -967,7 +1110,7 @@ async $variablesUpdate (data: Prisma.VariableDefinitionUpdateArgs['data'], where
             }
           
 async $variablesDelete (where: Omit<Prisma.VariableDefinitionDeleteArgs['where'], 'emailTemplateId' | 'emailTemplate'>) {
-          const Model = require('./models/VariableDefinition').VariableDefinition as typeof VariableDefinitionModel;
+          const Model = (await require('./models/VariableDefinition')).VariableDefinition as typeof VariableDefinitionModel;
 
           try {
             return await Model.objects.delete({...where, emailTemplateId: this.id || undefined} as any);
@@ -986,7 +1129,7 @@ async creator (where?: Parameters<typeof UserModel.objects.get>[0], orderBy?: Pa
         id:this.$creatorId
       }
 
-        const Model = require('./models/User').User as typeof UserModel;
+        const Model = (await require('./models/User')).User as typeof UserModel;
 
       try {
         return await Model.objects.get(
@@ -1000,7 +1143,7 @@ async creator (where?: Parameters<typeof UserModel.objects.get>[0], orderBy?: Pa
     };
 
 async $creatorAdd (data: Omit<Prisma.UserCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.create({...data, id: this.$creatorId } as any);
@@ -1010,7 +1153,7 @@ async $creatorAdd (data: Omit<Prisma.UserCreateArgs['data'], 'id'> ) {
         }
       
 async $creatorUpdate (data: Prisma.UserUpdateArgs['data'], where: Prisma.UserUpdateArgs['where']) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$creatorId || undefined});
@@ -1022,7 +1165,7 @@ async $creatorUpdate (data: Prisma.UserUpdateArgs['data'], where: Prisma.UserUpd
             }
           
 async $creatorDelete (where: Omit<Prisma.UserDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/User').User as typeof UserModel;
+          const Model = (await require('./models/User')).User as typeof UserModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$creatorId || undefined} as any);
@@ -1060,7 +1203,7 @@ async emailTemplate (where?: Parameters<NullableGetFunction<typeof EmailTemplate
         id:this.$emailTemplateId
       }
 
-        const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+        const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
       try {
         return await Model.objects.get(
@@ -1074,7 +1217,7 @@ async emailTemplate (where?: Parameters<NullableGetFunction<typeof EmailTemplate
     };
 
 async $emailTemplateAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.create({...data, id: this.$emailTemplateId } as any);
@@ -1084,7 +1227,7 @@ async $emailTemplateAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'id'
         }
       
 async $emailTemplateUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma.EmailTemplateUpdateArgs['where']) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$emailTemplateId || undefined});
@@ -1096,7 +1239,7 @@ async $emailTemplateUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where:
             }
           
 async $emailTemplateDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$emailTemplateId || undefined} as any);
@@ -1132,7 +1275,7 @@ async emailTemplate (where?: Parameters<typeof EmailTemplateModel.objects.get>[0
         id:this.$emailTemplateId
       }
 
-        const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+        const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
       try {
         return await Model.objects.get(
@@ -1146,7 +1289,7 @@ async emailTemplate (where?: Parameters<typeof EmailTemplateModel.objects.get>[0
     };
 
 async $emailTemplateAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'id'> ) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.create({...data, id: this.$emailTemplateId } as any);
@@ -1156,7 +1299,7 @@ async $emailTemplateAdd (data: Omit<Prisma.EmailTemplateCreateArgs['data'], 'id'
         }
       
 async $emailTemplateUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where: Prisma.EmailTemplateUpdateArgs['where']) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.update(data, {...where, id: this.$emailTemplateId || undefined});
@@ -1168,7 +1311,7 @@ async $emailTemplateUpdate (data: Prisma.EmailTemplateUpdateArgs['data'], where:
             }
           
 async $emailTemplateDelete (where: Omit<Prisma.EmailTemplateDeleteArgs['where'], 'id'>) {
-          const Model = require('./models/EmailTemplate').EmailTemplate as typeof EmailTemplateModel;
+          const Model = (await require('./models/EmailTemplate')).EmailTemplate as typeof EmailTemplateModel;
 
           try {
             return await Model.objects.delete({...where, id: this.$emailTemplateId || undefined} as any);

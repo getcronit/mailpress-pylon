@@ -24,10 +24,6 @@ export class Organization extends OrganizationRepository {
       secure: boolean;
       username: string;
       password: string;
-    },
-    oauthConfig?: {
-      provider: $Enums.OAuthProvider;
-      accessToken: string;
     }
   ) {
     const ctx = await service.getContext(this);
@@ -36,9 +32,6 @@ export class Organization extends OrganizationRepository {
       email,
       smtpConfig: {
         create: smtpConfig,
-      },
-      oauthConfig: {
-        create: oauthConfig,
       },
       organization: {
         connect: {

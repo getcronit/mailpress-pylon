@@ -9,4 +9,5 @@ export class SMTPConfig extends SMTPConfigRepository {
   static objects = new ObjectManager<"SMTPConfig", typeof SMTPConfig>(client.sMTPConfig,SMTPConfig);
 
   // Custom logic here...
+
 }
