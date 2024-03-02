@@ -5,6 +5,7 @@ import { auth } from "@cronitio/pylon";
 import { client as prisma } from "../../repository/client";
 import { PYLON_SECRET, PYLON_URL } from "../../config";
 import { Organization } from "../../repository/models/Organization";
+import { OAuthApp } from "../../repository/models/OAuthApp";
 
 const issuer = await Issuer.discover("https://accounts.google.com");
 
@@ -18,7 +19,7 @@ export const getClient = async (organization: Organization) => {
     response_types: ["code"],
   });
 
-  return client;
+  return { client, app };
 };
 
 export const handler: Handler = async (c) => {
@@ -56,7 +57,7 @@ export const handler: Handler = async (c) => {
     },
   });
 
-  const client = await getClient(organization);
+  const { client } = await getClient(organization);
 
   const url = client.authorizationUrl({
     scope: "openid email profile https://www.googleapis.com/auth/gmail.send",
@@ -89,7 +90,7 @@ export const handlerCb: Handler = async (c) => {
     },
   });
 
-  const client = await getClient(organization);
+  const { client, app } = await getClient(organization);
 
   const params = client.callbackParams(c.req.url);
 
@@ -142,5 +143,5 @@ export const handlerCb: Handler = async (c) => {
     },
   });
 
-  return new Response("OK from Google callback", { status: 200 });
+  return c.redirect(app.redirectUrl);
 };

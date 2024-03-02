@@ -40,7 +40,7 @@ export class OAuthConfig extends OAuthConfigRepository {
       }
 
       try {
-        const client = await oidcGoogle.getClient(organization);
+        const { client } = await oidcGoogle.getClient(organization);
 
         const tokenSet = await client.refresh(this.$refreshToken);
 
@@ -75,7 +75,7 @@ export class OAuthConfig extends OAuthConfigRepository {
       }
 
       try {
-        const client = await oidcAzure.getClient(organization);
+        const { client } = await oidcAzure.getClient(organization);
 
         const tokenSet = await client.refresh(this.$refreshToken);
 

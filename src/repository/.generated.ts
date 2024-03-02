@@ -233,6 +233,7 @@ export abstract class OAuthAppRepository extends Repository {
     id!: string;
 clientId!: string;
 $clientSecret!: string;
+redirectUrl!: string;
 type!: $Enums.OAuthProvider;
 async organization (where?: Parameters<typeof OrganizationModel.objects.get>[0], orderBy?: Parameters<typeof OrganizationModel.objects.get>[1]) {
       if (!this.$organizationId) throw new Error("Relation organizationId is required");
