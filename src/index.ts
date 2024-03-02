@@ -26,9 +26,9 @@ export const service = defineService(
       templateUpdate: EmailTemplate.update,
       templateDelete: EmailTemplate.delete,
       templateTransformer: EmailTemplate.setTransformer,
-      emailCreate: Email.create,
-      emailUpdate: Email.update,
-      emailDelete: Email.delete,
+      userEmailCreate: User.createEmail,
+      userEmailUpdate: User.updateEmail,
+      userEmailDelete: User.deleteEmail,
       organizationSetSenderEmail: Organization.setSenderEmail,
 
       oauthAppCreate: OAuthApp.create,

@@ -17,6 +17,61 @@ export class User extends UserRepository {
   }
 
   @requireAuth({})
+  static async createEmail(
+    email: string,
+    smtpConfig?: {
+      host: string;
+      port: number;
+      secure: boolean;
+      username: string;
+      password: string;
+    }
+  ) {
+    const ctx = await service.getContext(this);
+
+    return await ctx.user!.$emailAdd({
+      email: email,
+      smtpConfig: {
+        create: smtpConfig,
+      },
+    });
+  }
+
+  @requireAuth({})
+  static async updateEmail(
+    id: string,
+    data: {
+      email?: string;
+      smtpConfig?: {
+        host?: string;
+        port?: number;
+        secure?: boolean;
+        username?: string;
+        password?: string;
+      };
+    }
+  ) {
+    const ctx = await service.getContext(this);
+
+    return await ctx.user!.$emailUpdate(
+      {
+        email: data.email,
+        smtpConfig: {
+          update: data.smtpConfig,
+        },
+      },
+      { id }
+    );
+  }
+
+  @requireAuth({})
+  static async deleteEmail(id: string) {
+    const ctx = await service.getContext(this);
+
+    return await ctx.user!.$emailDelete({ id });
+  }
+
+  @requireAuth({})
   async $getAuthenticatedEmail() {
     const ctx = await service.getContext(this);
 
