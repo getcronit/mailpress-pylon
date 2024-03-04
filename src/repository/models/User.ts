@@ -4,6 +4,7 @@ import { requireAuth } from "@cronitio/pylon";
 import { client } from "../client";
 import { UserRepository } from "../.generated";
 import service from "../../index";
+import { Email } from "./Email";
 
 export class User extends UserRepository {
   static objects = new ObjectManager<"User", typeof User>(client.user, User);
@@ -29,12 +30,23 @@ export class User extends UserRepository {
   ) {
     const ctx = await service.getContext(this);
 
-    return await ctx.user!.$emailAdd({
-      email: email,
-      smtpConfig: {
-        create: smtpConfig,
+    return await Email.objects.upsert(
+      {
+        email: email,
+        smtpConfig: {
+          create: smtpConfig,
+        },
       },
-    });
+      {
+        email: email,
+        smtpConfig: {
+          update: smtpConfig,
+        },
+      },
+      {
+        userId: ctx.user!.id,
+      }
+    );
   }
 
   @requireAuth({})

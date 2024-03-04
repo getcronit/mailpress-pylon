@@ -17,6 +17,8 @@ model Organization {
     emailId String? @unique @db.Uuid
 
     oAuthApps OAuthApp[]
+
+    redirectUrl String?
 }
 
 model OAuthApp {
@@ -26,8 +28,6 @@ model OAuthApp {
 
     /// @sf-hide
     clientSecret String
-
-    redirectUrl String
 
     type OAuthProvider
 

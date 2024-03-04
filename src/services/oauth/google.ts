@@ -1,35 +1,75 @@
 import { Issuer, generators } from "openid-client";
 import { Handler } from "hono";
 import { setSignedCookie, getSignedCookie } from "hono/cookie";
-import { auth } from "@cronitio/pylon";
+import { ServiceError, auth } from "@cronitio/pylon";
 import { client as prisma } from "../../repository/client";
 import { PYLON_SECRET, PYLON_URL } from "../../config";
 import { Organization } from "../../repository/models/Organization";
-import { OAuthApp } from "../../repository/models/OAuthApp";
+import { User } from "../../repository/models/User";
+
+import * as crypto from "crypto";
 
 const issuer = await Issuer.discover("https://accounts.google.com");
 
 export const getClient = async (organization: Organization) => {
-  const app = await organization.oAuthApp({ type: "GOOGLE" });
+  console.log("getClient, GOT ORG", organization);
+  try {
+    const app = await organization.oAuthApp({ type: "GOOGLE" });
 
-  const client = new issuer.Client({
-    client_id: app.clientId,
-    client_secret: app.$clientSecret,
-    redirect_uris: [`${PYLON_URL}/oauth/google/callback`],
-    response_types: ["code"],
-  });
+    console.log("getClient, GOT APP", app);
 
-  return { client, app };
+    const client = new issuer.Client({
+      client_id: app.clientId,
+      client_secret: app.$clientSecret,
+      redirect_uris: [`${PYLON_URL}/oauth/google/callback`],
+      response_types: ["code"],
+    });
+
+    return { client, app };
+  } catch (e) {
+    console.error(e);
+    throw new ServiceError("Error getting client", e);
+  }
 };
 
 export const handler: Handler = async (c) => {
+  const token = c.req.query("token");
+
+  console.log("handler", token);
+
+  let newC: typeof c = c;
+
+  if (token) {
+    // Add it as Authorization header
+    c.req.raw.headers.append("Authorization", `Bearer ${token}`);
+
+    c.header("Authorization", `Bearer ${token}`);
+
+    console.log(c.req);
+  }
+
+  console.log("handler", c.req.header("Authorization"));
+
   await auth.require({})(c, () => Promise.resolve());
 
-  const sub = c.get("auth")!.sub;
+  const _a = c.get("auth")!;
+
+  const organizationId = _a["urn:zitadel:iam:user:resourceowner:id"] as string;
+
+  const user = await User.objects.upsert(
+    {
+      id: _a.sub,
+      organizationId,
+    },
+    {},
+    {
+      id: _a.sub,
+    }
+  );
 
   // store the userId in your framework's session mechanism, if it is a cookie based solution
   // it should be httpOnly (not readable by javascript) and encrypted.
-  await setSignedCookie(c, "google-oauth-sub", sub, PYLON_SECRET, {
+  await setSignedCookie(c, "google-oauth-sub", user.id, PYLON_SECRET, {
     httpOnly: true,
     secure: true,
   });
@@ -49,13 +89,27 @@ export const handler: Handler = async (c) => {
 
   const code_challenge = generators.codeChallenge(code_verifier);
 
-  const organization = await Organization.objects.get({
-    users: {
-      some: {
-        id: sub,
-      },
-    },
-  });
+  const organization = await user.organization();
+
+  console.log(c.req.queries());
+
+  const redirectUrl = c.req.query("redirectUrl") || organization.redirectUrl;
+
+  if (!redirectUrl) {
+    return new Response("No redirect URL found", { status: 400 });
+  }
+
+  // Set cookie
+  await setSignedCookie(
+    c,
+    "google-oauth-redirect-url",
+    redirectUrl,
+    PYLON_SECRET,
+    {
+      httpOnly: true,
+      secure: true,
+    }
+  );
 
   const { client } = await getClient(organization);
 
@@ -78,6 +132,8 @@ export const handlerCb: Handler = async (c) => {
     "google-oauth-code-verifier"
   );
 
+  console.log("handlerCb", sub, code_verifier);
+
   if (!sub || !code_verifier) {
     return new Response("Invalid state", { status: 400 });
   }
@@ -90,7 +146,13 @@ export const handlerCb: Handler = async (c) => {
     },
   });
 
-  const { client, app } = await getClient(organization);
+  const redirectUrl = await getSignedCookie(
+    c,
+    PYLON_SECRET,
+    "google-oauth-redirect-url"
+  );
+
+  const { client } = await getClient(organization);
 
   const params = client.callbackParams(c.req.url);
 
@@ -143,5 +205,5 @@ export const handlerCb: Handler = async (c) => {
     },
   });
 
-  return c.redirect(app.redirectUrl);
+  return c.redirect(`${redirectUrl}?type=oauth/google&status=success`);
 };

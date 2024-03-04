@@ -1,11 +1,10 @@
-import { Issuer, generators } from "openid-client";
 import { Handler } from "hono";
-import { setSignedCookie, getSignedCookie } from "hono/cookie";
-import { auth } from "@cronitio/pylon";
-import { client as prisma } from "../../repository/client";
+import { getSignedCookie, setSignedCookie } from "hono/cookie";
+import { Issuer, generators } from "openid-client";
 import { PYLON_SECRET, PYLON_URL } from "../../config";
+import { client as prisma } from "../../repository/client";
 import { Organization } from "../../repository/models/Organization";
-import { OAuthApp } from "../../repository/models/OAuthApp";
+import { User } from "../../repository/models/User";
 
 const issuer = await Issuer.discover(
   "https://login.microsoftonline.com/common/v2.0"
@@ -25,13 +24,24 @@ export const getClient = async (organization: Organization) => {
 };
 
 export const handler: Handler = async (c) => {
-  await auth.require({})(c, () => Promise.resolve());
+  const _a = c.get("auth")!;
 
-  const sub = c.get("auth")!.sub;
+  const organizationId = _a["urn:zitadel:iam:user:resourceowner:id"] as string;
+
+  const user = await User.objects.upsert(
+    {
+      id: _a.sub,
+      organizationId,
+    },
+    {},
+    {
+      id: _a.sub,
+    }
+  );
 
   // store the userId in your framework's session mechanism, if it is a cookie based solution
   // it should be httpOnly (not readable by javascript) and encrypted.
-  await setSignedCookie(c, "google-oauth-sub", sub, PYLON_SECRET, {
+  await setSignedCookie(c, "google-oauth-sub", user.id, PYLON_SECRET, {
     httpOnly: true,
     secure: true,
   });
@@ -51,13 +61,25 @@ export const handler: Handler = async (c) => {
 
   const code_challenge = generators.codeChallenge(code_verifier);
 
-  const organization = await Organization.objects.get({
-    users: {
-      some: {
-        id: sub,
-      },
-    },
-  });
+  const organization = await user.organization();
+
+  const redirectUrl = c.req.query("redirectUrl") || organization.redirectUrl;
+
+  if (!redirectUrl) {
+    return new Response("No redirect URL found", { status: 400 });
+  }
+
+  // Set cookie
+  await setSignedCookie(
+    c,
+    "google-azure-redirect-url",
+    redirectUrl,
+    PYLON_SECRET,
+    {
+      httpOnly: true,
+      secure: true,
+    }
+  );
 
   const { client } = await getClient(organization);
 
@@ -92,7 +114,13 @@ export const handlerCb: Handler = async (c) => {
     },
   });
 
-  const { client, app } = await getClient(organization);
+  const redirectUrl = await getSignedCookie(
+    c,
+    PYLON_SECRET,
+    "google-azure-redirect-url"
+  );
+
+  const { client } = await getClient(organization);
 
   const params = client.callbackParams(c.req.url);
 
@@ -145,5 +173,5 @@ export const handlerCb: Handler = async (c) => {
     },
   });
 
-  return c.redirect(app.redirectUrl);
+  return c.redirect(`${redirectUrl}?type=oauth/azure&status=success`);
 };

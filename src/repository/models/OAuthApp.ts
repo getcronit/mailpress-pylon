@@ -20,7 +20,6 @@ export class OAuthApp extends OAuthAppRepository {
   static async create(
     clientId: string,
     clientSecret: string,
-    redirectUrl: string,
     type: $Enums.OAuthProvider
   ) {
     const ctx = await service.getContext(this);
@@ -30,7 +29,6 @@ export class OAuthApp extends OAuthAppRepository {
     return await OAuthApp.objects.create({
       clientId,
       clientSecret,
-      redirectUrl,
       type,
       organizationId: user.$organizationId,
     });

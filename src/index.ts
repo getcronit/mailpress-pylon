@@ -1,5 +1,6 @@
 import { PylonAPI, auth, defineService, logger } from "@cronitio/pylon";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import { cors } from "hono/cors";
 
 import { Email } from "./repository/models/Email";
 import { EmailTemplate } from "./repository/models/EmailTemplate";
@@ -9,6 +10,8 @@ import { MailFactory } from "./services/mail-factory";
 import * as oidcGoogle from "./services/oauth/google";
 import * as oidcAzure from "./services/oauth/azure";
 import { OAuthApp } from "./repository/models/OAuthApp";
+
+import { serveStatic } from "hono/bun";
 
 dotenv.config();
 
@@ -47,29 +50,20 @@ export const service = defineService(
       } = c;
 
       if (auth) {
-        let user: User;
+        const organizationId = auth[
+          "urn:zitadel:iam:user:resourceowner:id"
+        ] as string;
 
-        try {
-          user = await User.objects.get({ id: auth.sub });
-        } catch {
-          logger.info(`Creating user with id: ${auth.sub}`);
-
-          const organizationId = auth["urn:zitadel:iam:org:id"] as string;
-
-          user = await User.objects.create({
+        const user = await User.objects.upsert(
+          {
             id: auth.sub,
-            organization: {
-              connectOrCreate: {
-                create: {
-                  id: organizationId,
-                },
-                where: {
-                  id: organizationId,
-                },
-              },
-            },
-          });
-        }
+            organizationId,
+          },
+          {},
+          {
+            id: auth.sub,
+          }
+        );
 
         // Add user to context
         ctx.user = user;
@@ -83,10 +77,12 @@ export const service = defineService(
 export const configureApp: PylonAPI["configureApp"] = async (app) => {
   app.use("*", auth.initialize());
 
-  app.get("/oauth/google", oidcGoogle.handler);
+  app.use("/oauth/google", oidcGoogle.handler);
+
   app.use("/oauth/google/callback", oidcGoogle.handlerCb);
 
-  app.get("/oauth/azure", oidcAzure.handler);
+  app.use("/oauth/azure", oidcAzure.handler);
+
   app.use("/oauth/azure/callback", oidcAzure.handlerCb);
 };
 
