@@ -55792,17 +55792,26 @@ const service = (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.defineService)({
     context: async (c) => {
         const auth = c.get("auth");
         let ctx = c;
-        if (auth) {
+        if (auth.active) {
             const organizationId = auth["urn:zitadel:iam:user:resourceowner:id"];
             const user = await _repository_models_User__WEBPACK_IMPORTED_MODULE_5__.User.objects.upsert({
                 id: auth.sub,
-                organizationId,
+                organization: {
+                    connectOrCreate: {
+                        create: {
+                            id: organizationId,
+                        },
+                        where: {
+                            id: organizationId,
+                        },
+                    },
+                },
             }, {}, {
                 id: auth.sub,
+                organizationId,
             });
             ctx.user = user;
         }
-        console.log("context finished");
         return ctx;
     },
 });
@@ -58155,6 +58164,7 @@ const handlerCb = async (c) => {
     const claims = tokenSet.claims();
     const email = claims.email;
     if (!email) {
+        _cronitio_pylon__WEBPACK_IMPORTED_MODULE_2__.logger.error("No email found", { claims });
         return new Response("No email found", { status: 400 });
     }
     await _repository_client__WEBPACK_IMPORTED_MODULE_3__/* .client.email.upsert */ .L.email.upsert({

@@ -45,7 +45,7 @@ export const service = defineService(
         user?: User;
       } = c;
 
-      if (auth) {
+      if (auth.active) {
         const organizationId = auth[
           "urn:zitadel:iam:user:resourceowner:id"
         ] as string;
@@ -53,18 +53,27 @@ export const service = defineService(
         const user = await User.objects.upsert(
           {
             id: auth.sub,
-            organizationId,
+            organization: {
+              connectOrCreate: {
+                create: {
+                  id: organizationId,
+                },
+                where: {
+                  id: organizationId,
+                },
+              },
+            },
           },
           {},
           {
             id: auth.sub,
+            organizationId,
           }
         );
 
         // Add user to context
         ctx.user = user;
       }
-      console.log("context finished");
 
       return ctx;
     },
