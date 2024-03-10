@@ -1,7 +1,7 @@
 import { Issuer, generators } from "openid-client";
 import { Handler } from "hono";
 import { setSignedCookie, getSignedCookie } from "hono/cookie";
-import { ServiceError, auth } from "@cronitio/pylon";
+import { ServiceError, auth, logger } from "@cronitio/pylon";
 import { client as prisma } from "../../repository/client";
 import { PYLON_SECRET, PYLON_URL } from "../../config";
 import { Organization } from "../../repository/models/Organization";
@@ -173,6 +173,8 @@ export const handlerCb: Handler = async (c) => {
   const email = claims.email;
 
   if (!email) {
+    logger.error("No email found", { claims });
+
     return new Response("No email found", { status: 400 });
   }
 

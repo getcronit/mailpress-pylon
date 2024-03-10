@@ -5,6 +5,7 @@ import { PYLON_SECRET, PYLON_URL } from "../../config";
 import { client as prisma } from "../../repository/client";
 import { Organization } from "../../repository/models/Organization";
 import { User } from "../../repository/models/User";
+import { logger } from "@cronitio/pylon";
 
 const issuer = await Issuer.discover(
   "https://login.microsoftonline.com/common/v2.0"
@@ -141,6 +142,7 @@ export const handlerCb: Handler = async (c) => {
   const email = claims.email;
 
   if (!email) {
+    logger.error("No email found", { claims });
     return new Response("No email found", { status: 400 });
   }
 

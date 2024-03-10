@@ -1,17 +1,13 @@
 import { PylonAPI, auth, defineService, logger } from "@cronitio/pylon";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-import { cors } from "hono/cors";
 
-import { Email } from "./repository/models/Email";
 import { EmailTemplate } from "./repository/models/EmailTemplate";
+import { OAuthApp } from "./repository/models/OAuthApp";
 import { Organization } from "./repository/models/Organization";
 import { User } from "./repository/models/User";
 import { MailFactory } from "./services/mail-factory";
-import * as oidcGoogle from "./services/oauth/google";
 import * as oidcAzure from "./services/oauth/azure";
-import { OAuthApp } from "./repository/models/OAuthApp";
-
-import { serveStatic } from "hono/bun";
+import * as oidcGoogle from "./services/oauth/google";
 
 dotenv.config();
 
@@ -68,6 +64,7 @@ export const service = defineService(
         // Add user to context
         ctx.user = user;
       }
+      console.log("context finished");
 
       return ctx;
     },
@@ -75,6 +72,8 @@ export const service = defineService(
 );
 
 export const configureApp: PylonAPI["configureApp"] = async (app) => {
+  logger.info("started");
+
   app.use("*", auth.initialize());
 
   app.use("/oauth/google", oidcGoogle.handler);

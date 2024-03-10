@@ -49,7 +49,7 @@ RUN bun run pylon build
 FROM base AS release
 RUN apt-get update -y && apt-get install -y openssl
 COPY --from=install /temp/prod/node_modules node_modules
-COPY --from=prerelease /usr/src/pylon/.pylon/index.js .pylon/index.js
+COPY --from=prerelease /usr/src/pylon/.pylon .pylon
 COPY --from=prerelease /usr/src/pylon/package.json .
 COPY --from=prerelease /usr/src/pylon/prisma prisma
 
