@@ -1,4 +1,4 @@
-import { ServiceError, requireAuth } from "@cronitio/pylon";
+import { ServiceError, logger, requireAuth } from "@cronitio/pylon";
 import { htmlToText } from "html-to-text";
 import { EmailTemplate } from "../repository/models/EmailTemplate";
 import { Email } from "../repository/models/Email";
@@ -240,7 +240,7 @@ export class MailFactory {
 
     const senderEmail = await ctx.user!.email();
 
-    console.log(senderEmail, envelope, body, bodyHTML);
+    logger.info("Mail sent", envelope);
 
     if (!senderEmail) {
       throw new Error("No sender email found");

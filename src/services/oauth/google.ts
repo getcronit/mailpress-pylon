@@ -12,11 +12,8 @@ import * as crypto from "crypto";
 const issuer = await Issuer.discover("https://accounts.google.com");
 
 export const getClient = async (organization: Organization) => {
-  console.log("getClient, GOT ORG", organization);
   try {
     const app = await organization.oAuthApp({ type: "GOOGLE" });
-
-    console.log("getClient, GOT APP", app);
 
     const client = new issuer.Client({
       client_id: app.clientId,
@@ -35,8 +32,6 @@ export const getClient = async (organization: Organization) => {
 export const handler: Handler = async (c) => {
   const token = c.req.query("token");
 
-  console.log("handler", token);
-
   let newC: typeof c = c;
 
   if (token) {
@@ -44,11 +39,7 @@ export const handler: Handler = async (c) => {
     c.req.raw.headers.append("Authorization", `Bearer ${token}`);
 
     c.header("Authorization", `Bearer ${token}`);
-
-    console.log(c.req);
   }
-
-  console.log("handler", c.req.header("Authorization"));
 
   await auth.require({})(c, () => Promise.resolve());
 
@@ -91,11 +82,11 @@ export const handler: Handler = async (c) => {
 
   const organization = await user.organization();
 
-  console.log(c.req.queries());
-
   const redirectUrl = c.req.query("redirectUrl") || organization.redirectUrl;
 
   if (!redirectUrl) {
+    logger.error("No redirect URL found");
+
     return new Response("No redirect URL found", { status: 400 });
   }
 
@@ -131,8 +122,6 @@ export const handlerCb: Handler = async (c) => {
     PYLON_SECRET,
     "google-oauth-code-verifier"
   );
-
-  console.log("handlerCb", sub, code_verifier);
 
   if (!sub || !code_verifier) {
     return new Response("Invalid state", { status: 400 });

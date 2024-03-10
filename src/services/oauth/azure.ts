@@ -67,6 +67,8 @@ export const handler: Handler = async (c) => {
   const redirectUrl = c.req.query("redirectUrl") || organization.redirectUrl;
 
   if (!redirectUrl) {
+    logger.error("No redirect URL found");
+
     return new Response("No redirect URL found", { status: 400 });
   }
 
