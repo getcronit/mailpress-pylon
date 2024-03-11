@@ -45,7 +45,7 @@ export const service = defineService(
         user?: User;
       } = c;
 
-      if (auth.active) {
+      if (auth?.active) {
         const organizationId = auth[
           "urn:zitadel:iam:user:resourceowner:id"
         ] as string;
