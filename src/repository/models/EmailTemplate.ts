@@ -122,9 +122,28 @@ export class EmailTemplate extends EmailTemplateRepository {
         description: data.description,
         parentId: data.parentId,
         variables: {
-          createMany: {
-            data: data.variables || [],
-          },
+          upsert: data.variables.map((variable) => ({
+            create: {
+              name: variable.name,
+              isRequired: variable.isRequired,
+              isConstant: variable.isConstant,
+              description: variable.description,
+              defaultValue: variable.defaultValue,
+            },
+            update: {
+              name: variable.name,
+              isRequired: variable.isRequired,
+              isConstant: variable.isConstant,
+              description: variable.description,
+              defaultValue: variable.defaultValue,
+            },
+            where: {
+              emailTemplateId_name: {
+                emailTemplateId: id,
+                name: variable.name,
+              },
+            },
+          })),
         },
         envelope: {
           upsert: {
