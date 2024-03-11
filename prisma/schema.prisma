@@ -127,6 +127,8 @@ model VariableDefinition {
     isConstant      Boolean?
     emailTemplate   EmailTemplate? @relation(fields: [emailTemplateId], references: [id], onDelete: Cascade)
     emailTemplateId String?        @db.Uuid
+
+    @@unique([emailTemplateId, name])
 }
 
 model EmailEnvelope {
