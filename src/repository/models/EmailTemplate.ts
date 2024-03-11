@@ -122,6 +122,10 @@ export class EmailTemplate extends EmailTemplateRepository {
         description: data.description,
         parentId: data.parentId,
         variables: {
+          deleteMany: {
+            emailTemplateId: id,
+            NOT: data.variables.map((v) => ({ name: v.name })),
+          },
           upsert: data.variables.map((variable) => ({
             create: {
               name: variable.name,
