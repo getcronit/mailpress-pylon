@@ -127,10 +127,17 @@ export class EmailTemplate extends EmailTemplateRepository {
           },
         },
         envelope: {
-          create: {
-            subject: data.envelope.subject,
-            to: data.envelope.to,
-            replyTo: data.envelope.replyTo,
+          upsert: {
+            create: {
+              subject: data.envelope.subject,
+              to: data.envelope.to,
+              replyTo: data.envelope.replyTo,
+            },
+            update: {
+              subject: data.envelope.subject,
+              to: data.envelope.to,
+              replyTo: data.envelope.replyTo,
+            },
           },
         },
       },
