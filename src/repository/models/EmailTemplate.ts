@@ -95,6 +95,7 @@ export class EmailTemplate extends EmailTemplateRepository {
   static async update(
     id: string,
     data: {
+      parentId?: string;
       content?: string;
       description?: string;
       variables: {
@@ -119,6 +120,7 @@ export class EmailTemplate extends EmailTemplateRepository {
       {
         content: data.content,
         description: data.description,
+        parentId: data.parentId,
         variables: {
           createMany: {
             data: data.variables || [],
