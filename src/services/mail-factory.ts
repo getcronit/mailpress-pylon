@@ -128,6 +128,7 @@ export class MailFactory {
 
   static async sendTemplateMail(
     id: string,
+    replyTo?: string,
     values?: {
       [variableName: string]: any;
     }
@@ -139,7 +140,7 @@ export class MailFactory {
     let envelope = {
       subject: emailEnvelope?.subject || "No subject",
       to: emailEnvelope?.to || [],
-      replyTo: emailEnvelope?.replyTo || undefined,
+      replyTo: emailEnvelope?.replyTo || replyTo,
     };
 
     const variables = await emailTemplate?.variables();
@@ -224,7 +225,7 @@ export class MailFactory {
     const links = (await emailTemplate.links()).nodes;
 
     for (const link of links) {
-      await MailFactory.sendTemplateMail(link.id, values);
+      await MailFactory.sendTemplateMail(link.id, replyTo, values);
     }
 
     return "Mail scheduled successfully";
