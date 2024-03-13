@@ -128,7 +128,11 @@ export class MailFactory {
 
   static async sendTemplateMail(
     id: string,
-    replyTo?: string,
+    envelope?: {
+      subject: string;
+      to: string[];
+      replyTo?: string;
+    },
     values?: {
       [variableName: string]: any;
     }
@@ -137,10 +141,10 @@ export class MailFactory {
 
     const emailEnvelope = await emailTemplate.envelope();
 
-    let envelope = {
-      subject: emailEnvelope?.subject || "No subject",
-      to: emailEnvelope?.to || [],
-      replyTo: emailEnvelope?.replyTo || replyTo,
+    let combinedEnvelope = {
+      subject: emailEnvelope?.subject || envelope?.subject || "No subject",
+      to: emailEnvelope?.to || envelope?.to || [],
+      replyTo: emailEnvelope?.replyTo || envelope?.replyTo || undefined,
     };
 
     const variables = await emailTemplate?.variables();
@@ -166,7 +170,7 @@ export class MailFactory {
 
       const transformedTemplate = await executeInSandbox({
         input: {
-          envelope,
+          envelope: combinedEnvelope,
           values: values || {},
           body,
           bodyHTML,
@@ -181,8 +185,8 @@ export class MailFactory {
         }
 
         if (transformedTemplate.envelope) {
-          envelope = {
-            ...envelope,
+          combinedEnvelope = {
+            ...combinedEnvelope,
             ...transformedTemplate.envelope,
           };
         }
@@ -200,7 +204,7 @@ export class MailFactory {
           auth &&
           auth.email &&
           auth.email_verified &&
-          auth.email === envelope.replyTo
+          auth.email === combinedEnvelope.replyTo
         )
       ) {
         throw new Error(
@@ -219,13 +223,13 @@ export class MailFactory {
       },
     });
 
-    MailFactory.send(senderEmail, envelope, body, bodyHTML);
+    MailFactory.send(senderEmail, combinedEnvelope, body, bodyHTML);
 
     // Call links
     const links = (await emailTemplate.links()).nodes;
 
     for (const link of links) {
-      await MailFactory.sendTemplateMail(link.id, replyTo, values);
+      await MailFactory.sendTemplateMail(link.id, combinedEnvelope, values);
     }
 
     return "Mail scheduled successfully";
