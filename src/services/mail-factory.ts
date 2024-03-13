@@ -129,8 +129,8 @@ export class MailFactory {
   static async sendTemplateMail(
     id: string,
     envelope?: {
-      subject: string;
-      to: string[];
+      subject?: string;
+      to?: string[];
       replyTo?: string;
     },
     values?: {
