@@ -218,7 +218,14 @@ export class MailFactory {
       },
     });
 
-    await MailFactory.send(senderEmail, envelope, body, bodyHTML);
+    MailFactory.send(senderEmail, envelope, body, bodyHTML);
+
+    // Call links
+    const links = (await emailTemplate.links()).nodes;
+
+    for (const link of links) {
+      await MailFactory.sendTemplateMail(link.id, values);
+    }
 
     return "Mail scheduled successfully";
   }
