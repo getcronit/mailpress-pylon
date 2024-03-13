@@ -143,9 +143,15 @@ export class MailFactory {
 
     let combinedEnvelope = {
       subject: emailEnvelope?.subject || envelope?.subject || "No subject",
-      to: (emailEnvelope?.to || []).length === 0 ? envelope?.to : [] || [],
+      to: [] as string[],
       replyTo: emailEnvelope?.replyTo || envelope?.replyTo || undefined,
     };
+
+    if (emailEnvelope?.to && emailEnvelope.to.length > 0) {
+      combinedEnvelope.to = emailEnvelope.to;
+    } else if (envelope?.to && envelope.to.length > 0) {
+      combinedEnvelope.to = envelope.to;
+    }
 
     const variables = await emailTemplate?.variables();
 

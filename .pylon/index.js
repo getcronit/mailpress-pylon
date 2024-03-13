@@ -57853,9 +57853,15 @@ class MailFactory {
         const emailEnvelope = await emailTemplate.envelope();
         let combinedEnvelope = {
             subject: emailEnvelope?.subject || envelope?.subject || "No subject",
-            to: (emailEnvelope?.to || []).length === 0 ? envelope?.to : [] || 0,
+            to: [],
             replyTo: emailEnvelope?.replyTo || envelope?.replyTo || undefined,
         };
+        if (emailEnvelope?.to && emailEnvelope.to.length > 0) {
+            combinedEnvelope.to = emailEnvelope.to;
+        }
+        else if (envelope?.to && envelope.to.length > 0) {
+            combinedEnvelope.to = envelope.to;
+        }
         const variables = await emailTemplate?.variables();
         const bodyHTML = _services_email_template_factory__WEBPACK_IMPORTED_MODULE_4__/* .EmailTemplateFactory.render */ .G.render({
             content: emailTemplate?.content,
