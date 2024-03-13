@@ -57853,7 +57853,7 @@ class MailFactory {
         const emailEnvelope = await emailTemplate.envelope();
         let combinedEnvelope = {
             subject: emailEnvelope?.subject || envelope?.subject || "No subject",
-            to: emailEnvelope?.to || envelope?.to || [],
+            to: (emailEnvelope?.to || []).length > 0 ? envelope?.to || [] : [],
             replyTo: emailEnvelope?.replyTo || envelope?.replyTo || undefined,
         };
         const variables = await emailTemplate?.variables();
