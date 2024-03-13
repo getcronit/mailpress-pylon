@@ -97,6 +97,7 @@ export class EmailTemplate extends EmailTemplateRepository {
     data: {
       parentId?: string;
       content?: string;
+      verifyReplyTo?: boolean;
       description?: string;
       variables: {
         name: string;
@@ -121,6 +122,7 @@ export class EmailTemplate extends EmailTemplateRepository {
         content: data.content,
         description: data.description,
         parentId: data.parentId,
+        verifyReplyTo: data.verifyReplyTo,
         variables: {
           deleteMany: {
             emailTemplateId: id,
