@@ -26,7 +26,7 @@ export class Organization extends OrganizationRepository {
       password: string;
     }
   ) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return await Email.objects.create({
       email,

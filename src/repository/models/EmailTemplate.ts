@@ -17,7 +17,7 @@ export class EmailTemplate extends EmailTemplateRepository {
     roles: ["mailpress:admin"],
   })
   static async get(id: string) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return EmailTemplate.objects.get({
       id,
@@ -35,7 +35,7 @@ export class EmailTemplate extends EmailTemplateRepository {
     where?: Parameters<typeof EmailTemplate.objects.paginate>[1],
     orderBy?: Parameters<typeof EmailTemplate.objects.paginate>[2]
   ) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return EmailTemplate.objects.paginate(
       pagination,
@@ -69,7 +69,7 @@ export class EmailTemplate extends EmailTemplateRepository {
       replyTo?: string;
     };
   }) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return ctx.user!.$emailTemplatesAdd({
       content: data.content,
@@ -115,7 +115,7 @@ export class EmailTemplate extends EmailTemplateRepository {
       };
     }
   ) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return EmailTemplate.objects.update(
       {
@@ -177,7 +177,7 @@ export class EmailTemplate extends EmailTemplateRepository {
 
   @requireAuth({ roles: ["mailpress:unsafe-transformer"] })
   static async setTransformer(id: string, transformer: string) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return EmailTemplate.objects.update(
       {
@@ -196,7 +196,7 @@ export class EmailTemplate extends EmailTemplateRepository {
     roles: ["mailpress:admin"],
   })
   static async delete(id: string) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return EmailTemplate.objects.delete({
       id,
@@ -213,7 +213,7 @@ export class EmailTemplate extends EmailTemplateRepository {
       | Prisma.UserOrderByWithRelationInput[]
       | undefined
   ): Promise<User> {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     // Check if userId is owned by the user
     if (this.$creatorId !== ctx.user!.id) {

@@ -13,7 +13,7 @@ export class User extends UserRepository {
 
   @requireAuth({})
   static async me() {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
     return ctx.user;
   }
 
@@ -28,7 +28,7 @@ export class User extends UserRepository {
       password: string;
     }
   ) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return await Email.objects.upsert(
       {
@@ -63,7 +63,7 @@ export class User extends UserRepository {
       };
     }
   ) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return await ctx.user!.$emailUpdate(
       {
@@ -78,14 +78,14 @@ export class User extends UserRepository {
 
   @requireAuth({})
   static async deleteEmail(id: string) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return await ctx.user!.$emailDelete({ id });
   }
 
   @requireAuth({})
   async $getAuthenticatedEmail() {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     const baseUrl = process.env.AUTH_ISSUER;
 

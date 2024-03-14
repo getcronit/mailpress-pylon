@@ -22,7 +22,7 @@ export class OAuthApp extends OAuthAppRepository {
     clientSecret: string,
     type: $Enums.OAuthProvider
   ) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     const user = ctx.user!;
 
@@ -38,7 +38,7 @@ export class OAuthApp extends OAuthAppRepository {
     roles: ["mailpress:admin"],
   })
   static async delete(id: string) {
-    const ctx = await service.getContext(this);
+    const ctx = await service.getContext();
 
     return await OAuthApp.objects.delete({
       id,

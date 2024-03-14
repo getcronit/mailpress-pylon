@@ -1,11 +1,11 @@
-import { ServiceError, logger, requireAuth } from "@cronitio/pylon";
+import { ServiceError, getContext, logger, requireAuth } from "@cronitio/pylon";
 import { htmlToText } from "html-to-text";
 import { EmailTemplate } from "../repository/models/EmailTemplate";
 import { Email } from "../repository/models/Email";
 import { EmailTemplateFactory } from "../services/email-template-factory";
 import { executeInSandbox } from "../services/transformer-sandbox";
 import { sq } from "../clients/mailer/src";
-import { service } from "..";
+import service from "..";
 
 export class MailFactory {
   private static async send(
@@ -201,7 +201,7 @@ export class MailFactory {
 
     if (emailTemplate.verifyReplyTo) {
       // Check if user has verified the replyTo email
-      const ctx = await service.getContext(this);
+      const ctx = getContext();
 
       const auth = ctx.get("auth");
 
@@ -254,7 +254,8 @@ export class MailFactory {
     if (!body && !bodyHTML) {
       throw new Error("No body or bodyHTML provided");
     }
-    const ctx = await service.getContext(this);
+
+    const ctx = await service.getContext();
 
     const senderEmail = await ctx.user!.email();
 

@@ -57050,7 +57050,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemplateRepository */ .FY {
     static async get(id) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return EmailTemplate.objects.get({
             id,
             creator: {
@@ -57059,7 +57059,7 @@ class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemp
         });
     }
     static async all(pagination, where, orderBy) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return EmailTemplate.objects.paginate(pagination, {
             ...where,
             creator: {
@@ -57068,7 +57068,7 @@ class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemp
         }, orderBy);
     }
     static async create(data) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return ctx.user.$emailTemplatesAdd({
             content: data.content,
             description: data.description,
@@ -57087,7 +57087,7 @@ class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemp
         });
     }
     static async update(id, data) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return EmailTemplate.objects.update({
             content: data.content,
             description: data.description,
@@ -57143,7 +57143,7 @@ class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemp
         });
     }
     static async setTransformer(id, transformer) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return EmailTemplate.objects.update({
             transformer,
         }, {
@@ -57154,7 +57154,7 @@ class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemp
         });
     }
     static async delete(id) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return EmailTemplate.objects.delete({
             id,
             creator: {
@@ -57163,7 +57163,7 @@ class EmailTemplate extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .EmailTemp
         });
     }
     async creator(where, orderBy) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         if (this.$creatorId !== ctx.user.id) {
             throw new _cronitio_pylon__WEBPACK_IMPORTED_MODULE_1__.ServiceError("Unauthorized", {
                 code: "UNAUTHORIZED",
@@ -57236,7 +57236,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 class OAuthApp extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .OAuthAppRepository */ .IW {
     static async create(clientId, clientSecret, type) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         const user = ctx.user;
         return await OAuthApp.objects.create({
             clientId,
@@ -57246,7 +57246,7 @@ class OAuthApp extends _generated__WEBPACK_IMPORTED_MODULE_2__/* .OAuthAppReposi
         });
     }
     static async delete(id) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return await OAuthApp.objects.delete({
             id,
             organizationId: ctx.user.$organizationId,
@@ -57403,7 +57403,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 class Organization extends _generated__WEBPACK_IMPORTED_MODULE_1__/* .OrganizationRepository */ .Aw {
     static async setSenderEmail(email, smtpConfig) {
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_5__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_5__/* ["default"].getContext */ .ZP.getContext();
         return await _Email__WEBPACK_IMPORTED_MODULE_4__.Email.objects.create({
             email,
             smtpConfig: {
@@ -57479,11 +57479,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 class User extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .UserRepository */ .jD {
     static async me() {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return ctx.user;
     }
     static async createEmail(email, smtpConfig) {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return await _Email__WEBPACK_IMPORTED_MODULE_5__.Email.objects.upsert({
             email: email,
             smtpConfig: {
@@ -57499,7 +57499,7 @@ class User extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .UserRepository */ 
         });
     }
     static async updateEmail(id, data) {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return await ctx.user.$emailUpdate({
             email: data.email,
             smtpConfig: {
@@ -57508,11 +57508,11 @@ class User extends _generated__WEBPACK_IMPORTED_MODULE_3__/* .UserRepository */ 
         }, { id });
     }
     static async deleteEmail(id) {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         return await ctx.user.$emailDelete({ id });
     }
     async $getAuthenticatedEmail() {
-        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext(this);
+        const ctx = await _index__WEBPACK_IMPORTED_MODULE_4__/* ["default"].getContext */ .ZP.getContext();
         const baseUrl = process.env.AUTH_ISSUER;
         const res = await fetch(`${baseUrl}/auth/v1/users/me/email`, {
             headers: {
@@ -57897,7 +57897,7 @@ class MailFactory {
             }
         }
         if (emailTemplate.verifyReplyTo) {
-            const ctx = await ___WEBPACK_IMPORTED_MODULE_6__/* .service.getContext */ .Xn.getContext(this);
+            const ctx = (0,_cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.getContext)();
             const auth = ctx.get("auth");
             if (!(auth &&
                 auth.email &&
@@ -57926,7 +57926,7 @@ class MailFactory {
         if (!body && !bodyHTML) {
             throw new Error("No body or bodyHTML provided");
         }
-        const ctx = await ___WEBPACK_IMPORTED_MODULE_6__/* .service.getContext */ .Xn.getContext(this);
+        const ctx = await ___WEBPACK_IMPORTED_MODULE_6__/* ["default"].getContext */ .ZP.getContext();
         const senderEmail = await ctx.user.email();
         _cronitio_pylon__WEBPACK_IMPORTED_MODULE_0__.logger.info("Mail sent", envelope);
         if (!senderEmail) {
@@ -58295,7 +58295,7 @@ const executeInSandbox = async (args) => {
 
 var x = y => { var x = {}; __nccwpck_require__.d(x, y); return x; }
 var y = x => () => x
-module.exports = x({ ["ServiceError"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.ServiceError, ["auth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.auth, ["defineService"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.defineService, ["logger"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.logger, ["requireAuth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.requireAuth });
+module.exports = x({ ["ServiceError"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.ServiceError, ["auth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.auth, ["defineService"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.defineService, ["getContext"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.getContext, ["logger"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.logger, ["requireAuth"]: () => __WEBPACK_EXTERNAL_MODULE__cronitio_pylon_61f0d5cd__.requireAuth });
 
 /***/ }),
 
@@ -58770,7 +58770,7 @@ var _getQueryParam = (url, key, multiple) => {
     }
   }
   const results = {};
-  encoded ?? (encoded = /[%+]/.test(url));
+  encoded ??= /[%+]/.test(url);
   let keyIndex = url.indexOf("?", 8);
   while (keyIndex !== -1) {
     const nextKeyIndex = url.indexOf("&", keyIndex + 1);
@@ -58805,7 +58805,7 @@ var _getQueryParam = (url, key, multiple) => {
       ;
       results[name].push(value);
     } else {
-      results[name] ?? (results[name] = value);
+      results[name] ??= value;
     }
   }
   return key ? results[key] : results;
@@ -58886,16 +58886,40 @@ var parseSigned = async (cookie, secret, name) => {
 };
 var _serialize = (name, value, opt = {}) => {
   let cookie = `${name}=${value}`;
+  if (name.startsWith("__Secure-") && !opt.secure) {
+    throw new Error("__Secure- Cookie must have Secure attributes");
+  }
+  if (name.startsWith("__Host-")) {
+    if (!opt.secure) {
+      throw new Error("__Host- Cookie must have Secure attributes");
+    }
+    if (opt.path !== "/") {
+      throw new Error('__Host- Cookie must have Path attributes with "/"');
+    }
+    if (opt.domain) {
+      throw new Error("__Host- Cookie must not have Domain attributes");
+    }
+  }
   if (opt && typeof opt.maxAge === "number" && opt.maxAge >= 0) {
+    if (opt.maxAge > 3456e4) {
+      throw new Error(
+        "Cookies Max-Age SHOULD NOT be greater than 400 days (34560000 seconds) in duration."
+      );
+    }
     cookie += `; Max-Age=${Math.floor(opt.maxAge)}`;
   }
-  if (opt.domain) {
+  if (opt.domain && opt.prefix !== "host") {
     cookie += `; Domain=${opt.domain}`;
   }
   if (opt.path) {
     cookie += `; Path=${opt.path}`;
   }
   if (opt.expires) {
+    if (opt.expires.getTime() - Date.now() > 3456e7) {
+      throw new Error(
+        "Cookies Expires SHOULD NOT be greater than 400 days (34560000 seconds) in the future."
+      );
+    }
     cookie += `; Expires=${opt.expires.toUTCString()}`;
   }
   if (opt.httpOnly) {
@@ -58908,6 +58932,9 @@ var _serialize = (name, value, opt = {}) => {
     cookie += `; SameSite=${opt.sameSite}`;
   }
   if (opt.partitioned) {
+    if (!opt.secure) {
+      throw new Error("Partitioned Cookie must have Secure attributes");
+    }
     cookie += "; Partitioned";
   }
   return cookie;
@@ -58927,14 +58954,20 @@ var serializeSigned = async (name, value, secret, opt = {}) => {
 ;// CONCATENATED MODULE: ./node_modules/hono/dist/helper/cookie/index.js
 // src/helper/cookie/index.ts
 
-var getCookie = (c, key) => {
+var getCookie = (c, key, prefix) => {
   const cookie = c.req.raw.headers.get("Cookie");
   if (typeof key === "string") {
     if (!cookie) {
       return void 0;
     }
-    const obj2 = parse(cookie, key);
-    return obj2[key];
+    let finalKey = key;
+    if (prefix === "secure") {
+      finalKey = "__Secure-" + key;
+    } else if (prefix === "host") {
+      finalKey = "__Host-" + key;
+    }
+    const obj2 = parse(cookie, finalKey);
+    return obj2[finalKey];
   }
   if (!cookie) {
     return {};
@@ -58942,14 +58975,20 @@ var getCookie = (c, key) => {
   const obj = parse(cookie);
   return obj;
 };
-var getSignedCookie = async (c, secret, key) => {
+var getSignedCookie = async (c, secret, key, prefix) => {
   const cookie = c.req.raw.headers.get("Cookie");
   if (typeof key === "string") {
     if (!cookie) {
       return void 0;
     }
-    const obj2 = await parseSigned(cookie, secret, key);
-    return obj2[key];
+    let finalKey = key;
+    if (prefix === "secure") {
+      finalKey = "__Secure-" + key;
+    } else if (prefix === "host") {
+      finalKey = "__Host-" + key;
+    }
+    const obj2 = await parseSigned(cookie, secret, finalKey);
+    return obj2[finalKey];
   }
   if (!cookie) {
     return {};
@@ -58958,11 +58997,39 @@ var getSignedCookie = async (c, secret, key) => {
   return obj;
 };
 var setCookie = (c, name, value, opt) => {
-  const cookie = serialize(name, value, { path: "/", ...opt });
+  let cookie;
+  if (opt?.prefix === "secure") {
+    cookie = serialize("__Secure-" + name, value, { path: "/", ...opt, secure: true });
+  } else if (opt?.prefix === "host") {
+    cookie = serialize("__Host-" + name, value, {
+      ...opt,
+      path: "/",
+      secure: true,
+      domain: void 0
+    });
+  } else {
+    cookie = serialize(name, value, { path: "/", ...opt });
+  }
   c.header("set-cookie", cookie, { append: true });
 };
 var setSignedCookie = async (c, name, value, secret, opt) => {
-  const cookie = await serializeSigned(name, value, secret, { path: "/", ...opt });
+  let cookie;
+  if (opt?.prefix === "secure") {
+    cookie = await serializeSigned("__Secure-" + name, value, secret, {
+      path: "/",
+      ...opt,
+      secure: true
+    });
+  } else if (opt?.prefix === "host") {
+    cookie = await serializeSigned("__Host-" + name, value, secret, {
+      ...opt,
+      path: "/",
+      secure: true,
+      domain: void 0
+    });
+  } else {
+    cookie = await serializeSigned(name, value, secret, { path: "/", ...opt });
+  }
   c.header("set-cookie", cookie, { append: true });
 };
 var deleteCookie = (c, name, opt) => {
