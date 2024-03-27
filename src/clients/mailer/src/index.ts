@@ -6,7 +6,7 @@ import { Query, Mutation } from "./schema.generated.js";
 //     ? "http://mailer:3000/graphql"
 //     : "https://services.snek.at/mailer/graphql";
 
-const apiURL = "https://services.snek.at/mailer/graphql";
+const apiURL = "https://mailer-pylon.cronit.io/graphql";
 
 export const sq = makeSnekQuery(
   { Query, Mutation },
