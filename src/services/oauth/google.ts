@@ -1,7 +1,7 @@
 import { Issuer, generators } from "openid-client";
 import { Handler } from "hono";
 import { setSignedCookie, getSignedCookie } from "hono/cookie";
-import { ServiceError, auth, logger } from "@cronitio/pylon";
+import { ServiceError, auth, logger } from "@getcronit/pylon";
 import { client as prisma } from "../../repository/client";
 import { PYLON_SECRET, PYLON_URL } from "../../config";
 import { Organization } from "../../repository/models/Organization";

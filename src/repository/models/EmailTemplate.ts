@@ -1,5 +1,5 @@
 import { ObjectManager } from "@netsnek/prisma-repository";
-import { ServiceError, requireAuth } from "@cronitio/pylon";
+import { ServiceError, requireAuth } from "@getcronit/pylon";
 
 import { client } from "../client";
 import { EmailTemplateRepository } from "../.generated";

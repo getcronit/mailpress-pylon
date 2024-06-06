@@ -4,7 +4,7 @@ import * as oidcGoogle from "../../services/oauth/google";
 import * as oidcAzure from "../../services/oauth/azure";
 import { client } from "../client";
 import { OAuthConfigRepository } from "../.generated";
-import { ServiceError } from "@cronitio/pylon";
+import { ServiceError } from "@getcronit/pylon";
 import { PYLON_URL } from "src/config";
 import { Organization } from "./Organization";
 

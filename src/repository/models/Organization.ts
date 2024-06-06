@@ -2,7 +2,7 @@ import { ObjectManager } from "@netsnek/prisma-repository";
 
 import { OrganizationRepository } from "../.generated";
 import { client } from "../client";
-import { requireAuth } from "@cronitio/pylon";
+import { requireAuth } from "@getcronit/pylon";
 import { $Enums } from "@prisma/client";
 import { Email } from "./Email";
 import service from "../..";

@@ -13,14 +13,14 @@
     "external": [
       "@prisma/client",
       "graphql",
-      "@cronitio/pylon",
+      "@getcronit/pylon",
       "uglify-js"
     ]
   },
   "dependencies": {
-    "@cronitio/pylon": "*",
-    "@cronitio/pylon-cli": "*",
-    "@cronitio/pylon-server": "*",
+    "@getcronit/pylon": "*",
+    "@getcronit/pylon-cli": "*",
+    "@getcronit/pylon-server": "*",
     "@devoxa/prisma-relay-cursor-connection": "^3.1.0",
     "@netsnek/prisma-repository": "^0.0.40",
     "@prisma/client": "^5.2.0",

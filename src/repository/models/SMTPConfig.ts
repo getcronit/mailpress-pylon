@@ -2,7 +2,7 @@ import { ObjectManager } from "@netsnek/prisma-repository";
 
 import { client } from "../client";
 import { SMTPConfigRepository } from "../.generated";
-import { requireAuth } from "@cronitio/pylon";
+import { requireAuth } from "@getcronit/pylon";
 import service from "../../";
 
 export class SMTPConfig extends SMTPConfigRepository {

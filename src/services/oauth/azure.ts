@@ -5,7 +5,7 @@ import { PYLON_SECRET, PYLON_URL } from "../../config";
 import { client as prisma } from "../../repository/client";
 import { Organization } from "../../repository/models/Organization";
 import { User } from "../../repository/models/User";
-import { logger } from "@cronitio/pylon";
+import { logger } from "@getcronit/pylon";
 
 const issuer = await Issuer.discover(
   "https://login.microsoftonline.com/common/v2.0"

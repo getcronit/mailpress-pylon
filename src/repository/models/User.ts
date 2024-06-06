@@ -1,5 +1,5 @@
 import { ObjectManager } from "@netsnek/prisma-repository";
-import { requireAuth } from "@cronitio/pylon";
+import { requireAuth } from "@getcronit/pylon";
 
 import { client } from "../client";
 import { UserRepository } from "../.generated";

@@ -1,4 +1,9 @@
-import { ServiceError, getContext, logger, requireAuth } from "@cronitio/pylon";
+import {
+  ServiceError,
+  getContext,
+  logger,
+  requireAuth,
+} from "@getcronit/pylon";
 import { htmlToText } from "html-to-text";
 
 import service from "..";
