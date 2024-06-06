@@ -6,8 +6,6 @@ import { PYLON_SECRET } from "../config";
 export function encrypt(text: string): string {
   const iv = crypto.randomBytes(16); // Generate a random IV
 
-  console.log(iv.length, PYLON_SECRET.length);
-
   const cipher = crypto.createCipheriv(
     "aes-256-cbc",
     Buffer.from(PYLON_SECRET, "hex"),
