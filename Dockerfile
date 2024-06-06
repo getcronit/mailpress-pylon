@@ -11,6 +11,13 @@ WORKDIR /usr/src/pylon
 # install dependencies into temp directory
 # this will cache them and speed up future builds
 FROM base AS install
+ARG NODE_VERSION=20
+RUN apt update \
+    && apt install -y curl
+RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n \
+    && bash n $NODE_VERSION \
+    && rm n \
+    && npm install -g n
 
 RUN mkdir -p /temp/dev
 COPY package.json bun.lockb /temp/dev/
@@ -50,6 +57,6 @@ COPY --from=prerelease /usr/src/pylon/package.json .
 COPY --from=prerelease /usr/src/pylon/prisma prisma
 
 # run the app
-#USER bun
+USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT ["sh", "-c", "bun prisma migrate deploy && exec su bun -c 'bun run ./node_modules/.bin/pylon-server'"]
+ENTRYPOINT [ "bun", "run", "./node_modules/.bin/pylon-server" ]
