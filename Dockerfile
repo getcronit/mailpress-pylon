@@ -42,10 +42,13 @@ COPY . .
 
 # [optional] tests & build
 ENV NODE_ENV=production
+
+# Create .pylon folder (mkdir)
+RUN mkdir .pylon
 # RUN bun test
 RUN bun run pylon build
 
-# copy production dependencies and source code into final image
+# copy production dependencies and asource code into final image
 FROM base AS release
 RUN apt-get update -y && apt-get install -y openssl
 COPY --from=install /temp/prod/node_modules node_modules
