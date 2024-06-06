@@ -56,4 +56,4 @@ COPY --from=prerelease /usr/src/pylon/prisma prisma
 # run the app
 USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "./node_modules/.bin/pylon-server" ]
+ENTRYPOINT ["sh", "-c", "bun prisma migrate deploy && bun run ./node_modules/.bin/pylon-server"]
