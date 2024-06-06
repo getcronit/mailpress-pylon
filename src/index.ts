@@ -11,8 +11,6 @@ import * as oidcGoogle from "./services/oauth/google";
 
 dotenv.config();
 
-// Method to generate a random string
-
 export const service = defineService(
   {
     Query: {

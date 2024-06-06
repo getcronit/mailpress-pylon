@@ -2,7 +2,7 @@
 import type {$Enums} from "@prisma/client";
 
 import { Prisma } from "@prisma/client";
-import { Repository, NullableGetFunction, NullablePaginateFunction } from "@netsnek/prisma-repository";
+import { Repository, NullableGetFunction, NullablePaginateFunction } from "@getcronit/prisma-extended-models";
 
 import {Organization as OrganizationModel} from "./models/Organization";
 import {OAuthApp as OAuthAppModel} from "./models/OAuthApp";

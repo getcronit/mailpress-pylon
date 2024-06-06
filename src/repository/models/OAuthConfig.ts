@@ -1,4 +1,4 @@
-import { ObjectManager } from "@netsnek/prisma-repository";
+import { ObjectManager } from "@getcronit/prisma-extended-models";
 
 import * as oidcGoogle from "../../services/oauth/google";
 import * as oidcAzure from "../../services/oauth/azure";

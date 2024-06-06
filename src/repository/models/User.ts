@@ -1,4 +1,4 @@
-import { ObjectManager } from "@netsnek/prisma-repository";
+import { ObjectManager } from "@getcronit/prisma-extended-models";
 import { requireAuth } from "@getcronit/pylon";
 
 import { client } from "../client";
