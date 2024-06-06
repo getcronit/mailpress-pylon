@@ -2,7 +2,7 @@ name: publish
 
 on: [push]
 env:
-  IMAGE_NAME: mailpress
+  IMAGE_NAME: mailpress-pylon
 
 jobs:
   # Push image to GitHub Packages.
