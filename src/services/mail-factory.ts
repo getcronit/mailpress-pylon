@@ -14,6 +14,7 @@ import { sendMail as sendMailAzure } from "../services/mailer/azure";
 import { sendMail as sendMailGoogle } from "../services/mailer/google";
 import { sendMail as sendMailSMTP } from "../services/mailer/smtp";
 import { executeInSandbox } from "../services/transformer-sandbox";
+import { decrypt } from "./crypt";
 
 export class MailFactory {
   private static async send(
@@ -49,7 +50,7 @@ export class MailFactory {
             port: smtpConfig.port,
             secure: smtpConfig.secure,
             user: smtpConfig.username,
-            password: smtpConfig.password,
+            password: decrypt(smtpConfig.password),
           }
         );
 

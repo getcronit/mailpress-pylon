@@ -5,6 +5,7 @@ import { client } from "../client";
 import { UserRepository } from "../.generated";
 import service from "../../index";
 import { Email } from "./Email";
+import { encrypt } from "../../services/crypt";
 
 export class User extends UserRepository {
   static objects = new ObjectManager<"User", typeof User>(client.user, User);
@@ -29,6 +30,10 @@ export class User extends UserRepository {
     }
   ) {
     const ctx = await service.getContext();
+
+    if (smtpConfig?.password) {
+      smtpConfig.password = encrypt(smtpConfig.password);
+    }
 
     return await Email.objects.upsert(
       {
