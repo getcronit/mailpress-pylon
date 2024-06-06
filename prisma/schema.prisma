@@ -8,81 +8,141 @@ generator client {
     provider = "prisma-client-js"
 }
 
+model Organization {
+    id String @id
+
+    users User[]
+
+    email   Email?  @relation(fields: [emailId], references: [id])
+    emailId String? @unique @db.Uuid
+
+    oAuthApps OAuthApp[]
+
+    redirectUrl String?
+}
+
+model OAuthApp {
+    id String @id @default(uuid()) @db.Uuid
+
+    clientId String
+
+    /// @sf-hide
+    clientSecret String
+
+    type OAuthProvider
+
+    organization   Organization @relation(fields: [organizationId], references: [id])
+    organizationId String
+
+    @@unique([organizationId, type])
+}
+
+model User {
+    id             String @id
+    organizationId String
+
+    emailTemplates EmailTemplate[]
+    email          Email?
+
+    organization Organization @relation(fields: [organizationId], references: [id])
+}
+
+model Email {
+    id        String  @id @default(uuid()) @db.Uuid
+    isEnabled Boolean @default(true)
+
+    email String
+
+    smtpConfig SMTPConfig?
+
+    oauthConfig OAuthConfig?
+
+    user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String? @unique
+
+    organization Organization?
+}
+
+model SMTPConfig {
+    id String @id @default(uuid()) @db.Uuid
+
+    host     String
+    port     Int
+    username String
+    password String
+    secure   Boolean
+
+    email   Email  @relation(fields: [emailId], references: [id], onDelete: Cascade)
+    emailId String @unique @db.Uuid
+}
+
+model OAuthConfig {
+    id String @id @default(uuid()) @db.Uuid
+
+    provider OAuthProvider
+
+    /// @sf-hide
+    accessToken          String
+    accessTokenExpiresAt DateTime
+
+    /// @sf-hide
+    refreshToken String
+
+    email   Email  @relation(fields: [emailId], references: [id], onDelete: Cascade)
+    emailId String @unique @db.Uuid
+}
+
 model EmailTemplate {
-    id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    id            String   @id @default(uuid()) @db.Uuid
     description   String
     content       String
     verifyReplyTo Boolean?
     transformer   String?
 
-    authorizationUser   AuthorizationUser? @relation(fields: [authorizationUserId], references: [id])
-    authorizationUserId String?            @db.Uuid
-
-    envelope   EmailEnvelope? @relation(fields: [envelopeId], references: [id])
-    envelopeId String?        @db.Uuid
+    envelope   EmailEnvelope?
+    envelopeId String?
 
     parent   EmailTemplate? @relation("EmailTemplateParent", fields: [parentId], references: [id])
     parentId String?        @db.Uuid
 
-    linked EmailTemplate[] @relation("EmailTemplateParent")
+    links EmailTemplate[] @relation("EmailTemplateParent")
 
     variables VariableDefinition[]
-
-    // IAM data
-    createdBy  String @db.Uuid
-    resourceId String @db.Uuid
 
     // Timestamps
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    creator   User   @relation(fields: [creatorId], references: [id])
+    creatorId String
 }
 
 model VariableDefinition {
-    id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    id          String  @id @default(uuid()) @db.Uuid
     name        String
     description String?
 
     defaultValue    String?
     isRequired      Boolean?
     isConstant      Boolean?
-    EmailTemplate   EmailTemplate? @relation(fields: [emailTemplateId], references: [id])
+    emailTemplate   EmailTemplate? @relation(fields: [emailTemplateId], references: [id], onDelete: Cascade)
     emailTemplateId String?        @db.Uuid
-}
 
-model AuthorizationUser {
-    id            String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-    userId        String          @db.Uuid
-    // @sf-hide
-    authorization String
-    EmailTemplate EmailTemplate[]
+    @@unique([emailTemplateId, name])
 }
 
 model EmailEnvelope {
-    id            String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-    subject       String?
-    EmailTemplate EmailTemplate[]
+    id      String  @id @default(uuid()) @db.Uuid
+    subject String?
 
-    from   EmailAddress? @relation("FromEnvelopes", fields: [fromId], references: [id])
-    fromId String?       @db.Uuid
+    to      String[]
+    replyTo String?
 
-    replyTo   EmailAddress? @relation("ReplyToEnvelopes", fields: [replyToId], references: [id])
-    replyToId String?       @db.Uuid
-
-    to EmailAddress[]
+    emailTemplate   EmailTemplate @relation(fields: [emailTemplateId], references: [id], onDelete: Cascade)
+    emailTemplateId String        @unique @db.Uuid
 }
 
-model EmailAddress {
-    id    String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-    value String
-    type  EmailAddressType
-
-    ToEnvelopes      EmailEnvelope[]
-    FromEnvelopes    EmailEnvelope[] @relation("FromEnvelopes")
-    ReplyToEnvelopes EmailEnvelope[] @relation("ReplyToEnvelopes")
-}
-
-enum EmailAddressType {
-    EMAIL_ADDRESS
-    EMAIL_ID
-    USER_ID
+enum OAuthProvider {
+    GOOGLE
+    AZURE
 }
