@@ -28,12 +28,15 @@
     "dotenv": "^16.0.3",
     "html-minifier": "^4.0.0",
     "html-to-text": "^9.0.5",
+    "nodemailer": "^6.9.13",
+    "nodemailer-plugin-inline-base64": "^2.1.1",
     "prisma": "^5.2.0",
     "twig": "^1.16.0"
   },
   "devDependencies": {
     "@types/html-minifier": "^4.0.2",
     "@types/html-to-text": "^9.0.4",
+    "@types/nodemailer": "^6.4.15",
     "@types/twig": "^1.12.9",
     "commitizen": "^4.2.5",
     "git-cz": "^4.9.0",

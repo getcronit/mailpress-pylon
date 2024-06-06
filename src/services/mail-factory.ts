@@ -1,11 +1,14 @@
 import { ServiceError, getContext, logger, requireAuth } from "@cronitio/pylon";
 import { htmlToText } from "html-to-text";
-import { EmailTemplate } from "../repository/models/EmailTemplate";
-import { Email } from "../repository/models/Email";
-import { EmailTemplateFactory } from "../services/email-template-factory";
-import { executeInSandbox } from "../services/transformer-sandbox";
-import { sq } from "../clients/mailer/src";
+
 import service from "..";
+import { Email } from "../repository/models/Email";
+import { EmailTemplate } from "../repository/models/EmailTemplate";
+import { EmailTemplateFactory } from "../services/email-template-factory";
+import { sendMail as sendMailAzure } from "../services/mailer/azure";
+import { sendMail as sendMailGoogle } from "../services/mailer/google";
+import { sendMail as sendMailSMTP } from "../services/mailer/smtp";
+import { executeInSandbox } from "../services/transformer-sandbox";
 
 export class MailFactory {
   private static async send(
@@ -27,29 +30,23 @@ export class MailFactory {
           );
         }
 
-        const [data, errors] = await sq.mutate((m) =>
-          m.sendMailSMTP({
-            mailOptions: {
-              from: senderEmail.email,
-              to: envelope.to,
-              replyTo: envelope.replyTo,
-              subject: envelope.subject,
-              html: bodyHTML,
-              text: body,
-            },
-            smtpOptions: {
-              host: smtpConfig.host,
-              port: smtpConfig.port,
-              secure: smtpConfig.secure,
-              user: smtpConfig.username,
-              password: smtpConfig.password,
-            },
-          })
+        const data = await sendMailSMTP(
+          {
+            from: senderEmail.email,
+            to: envelope.to,
+            replyTo: envelope.replyTo,
+            subject: envelope.subject,
+            html: bodyHTML,
+            text: body,
+          },
+          {
+            host: smtpConfig.host,
+            port: smtpConfig.port,
+            secure: smtpConfig.secure,
+            user: smtpConfig.username,
+            password: smtpConfig.password,
+          }
         );
-
-        if (errors) {
-          throw new Error(errors[0].message);
-        }
 
         return data;
       }
@@ -66,47 +63,35 @@ export class MailFactory {
         const token = await oauthConfig.$freshAccessToken();
 
         if (oauthConfig.provider === "AZURE") {
-          const [data, errors] = await sq.mutate((m) =>
-            m.sendMailAzure({
-              mailOptions: {
-                from: senderEmail.email,
-                to: envelope.to,
-                replyTo: envelope.replyTo,
-                subject: envelope.subject,
-                html: bodyHTML,
-                text: body,
-              },
-              oauthOptions: {
-                accessToken: token,
-              },
-            })
+          const data = await sendMailAzure(
+            {
+              from: senderEmail.email,
+              to: envelope.to,
+              replyTo: envelope.replyTo,
+              subject: envelope.subject,
+              html: bodyHTML,
+              text: body,
+            },
+            {
+              accessToken: token,
+            }
           );
-
-          if (errors) {
-            throw new Error(errors[0].message);
-          }
 
           return data;
         } else if (oauthConfig.provider === "GOOGLE") {
-          const [data, errors] = await sq.mutate((m) =>
-            m.sendMailGoogle({
-              mailOptions: {
-                from: senderEmail.email,
-                to: envelope.to,
-                replyTo: envelope.replyTo,
-                subject: envelope.subject,
-                html: bodyHTML,
-                text: body,
-              },
-              oauthOptions: {
-                accessToken: token,
-              },
-            })
+          const data = await sendMailGoogle(
+            {
+              from: senderEmail.email,
+              to: envelope.to,
+              replyTo: envelope.replyTo,
+              subject: envelope.subject,
+              html: bodyHTML,
+              text: body,
+            },
+            {
+              accessToken: token,
+            }
           );
-
-          if (errors) {
-            throw new Error(errors[0].message);
-          }
 
           return data;
         }
