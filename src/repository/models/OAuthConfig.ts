@@ -4,7 +4,7 @@ import * as oidcGoogle from "../../services/oauth/google";
 import * as oidcAzure from "../../services/oauth/azure";
 import { client } from "../client";
 import { OAuthConfigRepository } from "../.generated";
-import { ServiceError } from "@cronitio/pylon";
+import { ServiceError, logger } from "@cronitio/pylon";
 import { PYLON_URL } from "src/config";
 import { Organization } from "./Organization";
 
@@ -44,10 +44,17 @@ export class OAuthConfig extends OAuthConfigRepository {
 
         const tokenSet = await client.refresh(this.$refreshToken);
 
+        if (!tokenSet.refresh_token) {
+          logger.warn("Refresh token not returned during token refresh", {
+            tokenSet,
+          });
+        }
+
         await OAuthConfig.objects.update(
           {
             accessToken: tokenSet.access_token,
             accessTokenExpiresAt: new Date(tokenSet.expires_at! * 1000),
+            refreshToken: tokenSet.refresh_token,
           },
           {
             id: this.id,
@@ -79,10 +86,17 @@ export class OAuthConfig extends OAuthConfigRepository {
 
         const tokenSet = await client.refresh(this.$refreshToken);
 
+        if (!tokenSet.refresh_token) {
+          logger.warn("Refresh token not returned during token refresh", {
+            tokenSet,
+          });
+        }
+
         await OAuthConfig.objects.update(
           {
             accessToken: tokenSet.access_token,
             accessTokenExpiresAt: new Date(tokenSet.expires_at! * 1000),
+            refreshToken: tokenSet.refresh_token,
           },
           {
             id: this.id,
