@@ -77,10 +77,10 @@ export class User extends UserRepository {
   }
 
   @requireAuth({})
-  static async deleteEmail() {
+  static async deleteEmail(id: string) {
     const ctx = await service.getContext();
 
-    return await ctx.user!.$emailDelete({});
+    return await ctx.user!.$emailDelete({ id });
   }
 
   @requireAuth({})
