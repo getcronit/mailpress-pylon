@@ -63,6 +63,7 @@ export class OAuthConfig extends OAuthConfigRepository {
 
         return tokenSet.access_token!;
       } catch (e) {
+        console.error(e)
         throw new ServiceError("Failed to refresh token", {
           code: "FAILED_TO_REFRESH_TOKEN",
           statusCode: 500,
@@ -105,6 +106,7 @@ export class OAuthConfig extends OAuthConfigRepository {
 
         return tokenSet.access_token!;
       } catch (e) {
+        console.error(e)
         throw new ServiceError("Failed to refresh token", {
           code: "FAILED_TO_REFRESH_TOKEN",
           statusCode: 500,
