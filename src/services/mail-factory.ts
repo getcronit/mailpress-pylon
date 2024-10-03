@@ -104,7 +104,7 @@ export class MailFactory {
       } else {
         throw new Error("No email configuration found");
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
       throw new ServiceError("Error sending mail", {
         code: "MAIL_SEND_ERROR",
