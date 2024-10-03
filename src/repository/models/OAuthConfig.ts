@@ -5,7 +5,7 @@ import * as oidcAzure from "../../services/oauth/azure";
 import { client } from "../client";
 import { OAuthConfigRepository } from "../.generated";
 import { ServiceError } from "@getcronit/pylon";
-import { PYLON_URL } from "src/config";
+import { PYLON_URL } from "../../config";
 import { Organization } from "./Organization";
 
 export class OAuthConfig extends OAuthConfigRepository {
@@ -56,6 +56,8 @@ export class OAuthConfig extends OAuthConfigRepository {
 
         return tokenSet.access_token!;
       } catch (e) {
+        console.error(e);
+
         throw new ServiceError("Failed to refresh token", {
           code: "FAILED_TO_REFRESH_TOKEN",
           statusCode: 500,
